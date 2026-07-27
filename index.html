@@ -9,7 +9,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://github.com/h2rhenry">
     <meta property="og:title" content="ʜ2ʀʜᴇɴʀʏ | ᴘᴇʀsᴏɴᴀʟ ᴘʀᴏғɪʟᴇ">
-    <meta property="og:description" content="Đam mê tối ưu hóa hệ thống, phát triển các tính năng máy chủ tùy biến bằng ngôn ngữ cấu trúc logic và tạo dựng trải nghiệm visual ấn tượng thông qua nghệ thuật kỹ thuật số.">
+    <meta property="og:description" content="Đam đam mê tối ưu hóa hệ thống, phát triển các tính năng máy chủ tùy biến bằng ngôn ngữ cấu trúc logic và tạo dựng trải nghiệm visual ấn tượng thông qua nghệ thuật kỹ thuật số.">
     <meta property="og:image" content="https://i.postimg.cc/9MjPYrYr/IMG-20260217-140516-842.webp">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://github.com/h2rhenry">
@@ -1341,42 +1341,63 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- CẤU HÌNH COOKIE & LƯỢT TRUY CẬP (CHỐNG SPAM F5) ---
             const visitCountEl = document.getElementById('visit-count');
             if (visitCountEl) {
-                // Thời gian giãn cách giữa 2 lần cộng view: 3 giờ (tính bằng miligiây)
-                const COOLDOWN_TIME = 3 * 60 * 60 * 1000; 
-                const lastVisit = localStorage.getItem('last_visit_timestamp');
-                const now = Date.now();
+                // Hàm lấy cookie
+                const getCookie = (name) => {
+                    const value = `; ${document.cookie}`;
+                    const parts = value.split(`; ${name}=`);
+                    if (parts.length === 2) return parts.pop().split(';').shift();
+                    return null;
+                };
 
-                // Kiểm tra xem chưa từng truy cập HOẶC lần truy cập cuối đã hơn 3 tiếng
-                const shouldIncrement = !lastVisit || (now - parseInt(lastVisit, 10)) > COOLDOWN_TIME;
+                // Hàm ghi cookie (mặc định lưu 1 ngày / 24 giờ)
+                const setCookie = (name, value, days = 1) => {
+                    const date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/; SameSite=Lax`;
+                };
 
-                // Nếu thỏa mãn 3 giờ thì gọi API tăng lượt xem (/up), ngược lại chỉ lấy số view hiện tại
-                const apiUrl = shouldIncrement 
-                    ? 'https://api.counterapi.dev/v1/h2rhenry_portfolio/visits/up'
-                    : 'https://api.counterapi.dev/v1/h2rhenry_portfolio/visits';
+                const COOKIE_NAME = 'h2r_visited_portfolio';
+                const hasVisited = getCookie(COOKIE_NAME) || localStorage.getItem(COOKIE_NAME);
 
-                fetch(apiUrl)
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data && typeof data.count !== 'undefined') {
-                            visitCountEl.textContent = data.count.toLocaleString();
-                            if (shouldIncrement) {
-                                localStorage.setItem('last_visit_timestamp', now.toString());
+                if (!hasVisited) {
+                    // Chưa xem -> Gọi API /up để tăng lượt xem + Lưu Cookie & LocalStorage
+                    fetch('https://api.counterapi.dev/v1/h2rhenry_portfolio/visits/up')
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data && typeof data.count !== 'undefined') {
+                                visitCountEl.textContent = data.count.toLocaleString();
+                                setCookie(COOKIE_NAME, 'true', 1);
+                                localStorage.setItem(COOKIE_NAME, 'true');
+                            } else {
+                                throw new Error('API format invalid');
                             }
-                        } else {
-                            throw new Error('API format invalid');
-                        }
-                    })
-                    .catch(() => {
-                        let visits = parseInt(localStorage.getItem('site_visits') || '1240', 10);
-                        if (shouldIncrement) {
-                            visits += 1;
-                            localStorage.setItem('site_visits', visits.toString());
-                            localStorage.setItem('last_visit_timestamp', now.toString());
-                        }
-                        visitCountEl.textContent = visits.toLocaleString();
-                    });
+                        })
+                        .catch(() => {
+                            let visits = parseInt(localStorage.getItem('site_visits') || '1240', 10) + 1;
+                            localStorage.setItem('site_visits', visits);
+                            visitCountEl.textContent = visits.toLocaleString();
+                            setCookie(COOKIE_NAME, 'true', 1);
+                            localStorage.setItem(COOKIE_NAME, 'true');
+                        });
+                } else {
+                    // Đã có Cookie (đã tính lượt xem rồi) -> Chỉ lấy số lượng hiện tại mà KHÔNG tăng view
+                    fetch('https://api.counterapi.dev/v1/h2rhenry_portfolio/visits')
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data && typeof data.count !== 'undefined') {
+                                visitCountEl.textContent = data.count.toLocaleString();
+                            } else {
+                                throw new Error('API format invalid');
+                            }
+                        })
+                        .catch(() => {
+                            let visits = parseInt(localStorage.getItem('site_visits') || '1240', 10);
+                            visitCountEl.textContent = visits.toLocaleString();
+                        });
+                }
             }
 
             const loaderBar = document.getElementById('loader-bar');

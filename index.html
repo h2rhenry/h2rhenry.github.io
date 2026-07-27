@@ -20,11 +20,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <meta name="theme-color" content="#00c3ff">
+    <meta name="theme-color" content="#00d2ff">
     <link rel="icon" href="https://i.postimg.cc/9MjPYrYr/IMG-20260217-140516-842.webp" type="image/webp">
     <link rel="apple-touch-icon" href="https://i.postimg.cc/9MjPYrYr/IMG-20260217-140516-842.webp">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#00d2ff">
     
     <style>
         :root {
@@ -1085,7 +1084,7 @@
             <div class="logo">HENRY TRAN</div>
 
             <ul class="nav-links" id="nav-links">
-                <li><a href="#home"><i class="fas fa-house"></i> <span data-vi="Trang chủ" data-en="Home">Trang chủ</span></a></li>
+                <li><a href="#home" class="active"><i class="fas fa-house"></i> <span data-vi="Trang chủ" data-en="Home">Trang chủ</span></a></li>
                 <li><a href="#about"><i class="fas fa-user"></i> <span data-vi="Giới thiệu" data-en="About">Giới thiệu</span></a></li>
                 <li><a href="#experience"><i class="fas fa-briefcase"></i> <span data-vi="Kinh nghiệm" data-en="Experience">Kinh nghiệm</span></a></li>
                 <li><a href="#projects"><i class="fas fa-code"></i> <span data-vi="Dự án" data-en="Projects">Dự án</span></a></li>
@@ -1126,7 +1125,7 @@
 
         <div class="discord-status" id="discord-status">
             <div class="discord-status-avatar-wrap">
-                <img id="discord-avatar" class="discord-status-avatar" src="" alt="Discord avatar">
+                <img id="discord-avatar" class="discord-status-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Discord avatar">
                 <span class="discord-status-dot" id="discord-status-dot"></span>
             </div>
             <div class="discord-status-text">
@@ -1215,8 +1214,8 @@
                     <div class="timeline-period">
                         <i class="far fa-calendar-alt"></i> 25/7/2025 - <span data-vi="Hiện tại" data-en="Present">Hiện tại</span>
                     </div>
-                    <div class="timeline-desc" data-vi="Nhân viên phát triển sản phẩm, cấu hình skript một cách tối ưu giúp nâng cap trải nghiệm người dùng." data-en="Product development staff, optimizing skript configuration to improve the user experience.">
-                        Nhân viên phát triển sản phẩm, cấu hình skript một cách tối ưu giúp nâng cap trải nghiệm người dùng.
+                    <div class="timeline-desc" data-vi="Nhân viên phát triển sản phẩm, cấu hình skript một cách tối ưu giúp nâng cao trải nghiệm người dùng." data-en="Product development staff, optimizing skript configuration to improve the user experience.">
+                        Nhân viên phát triển sản phẩm, cấu hình skript một cách tối ưu giúp nâng cao trải nghiệm người dùng.
                     </div>
                     <div class="timeline-tags">
                         <span class="tech-badge">Skript</span>
@@ -1303,7 +1302,7 @@
                         </div>
                     </div>
                     <h3>Chat Manager Script</h3>
-                    <p data-vi="Quản lí tin nhắn: @mentions (@player / @all); Lọc tin nhắn chứa từ ngữ vi phạm, chống spam chat. Tự động Ban/Mute theo mốc vi phạm." data-en="Message management: @mentions (@player / @all); filters messages containing prohibited words, prevents chat spam, and automatically bans/mutes based on violation thresholds.">Quản lí tin nhắn: @mentions (@player / @all); Lọc tin nhắn chứa từ ngữ vi phạm, chống spam chat. Tự động Ban/Mute theo mốc vi phạm.</p>
+                    <p data-vi="Quản lý tin nhắn: @mentions (@player / @all); Lọc tin nhắn chứa từ ngữ vi phạm, chống spam chat. Tự động Ban/Mute theo mốc vi phạm." data-en="Message management: @mentions (@player / @all); filters messages containing prohibited words, prevents chat spam, and automatically bans/mutes based on violation thresholds.">Quản lý tin nhắn: @mentions (@player / @all); Lọc tin nhắn chứa từ ngữ vi phạm, chống spam chat. Tự động Ban/Mute theo mốc vi phạm.</p>
                 </div>
                 <div class="project-tech">
                     <span class="tech-badge">Skript</span>
@@ -1547,6 +1546,26 @@
                 });
             });
 
+            const sections = document.querySelectorAll('header[id], section[id]');
+            const navItems = document.querySelectorAll('.nav-links a');
+
+            function updateActiveNav() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 140;
+                    if (window.scrollY >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${current}`) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+
             const fadeElements = document.querySelectorAll('.fade-in-up:not(.hero)');
             const fadeObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -1730,6 +1749,7 @@
                 const docHeight = document.documentElement.scrollHeight - window.innerHeight;
                 const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
                 scrollProgress.style.width = pct + '%';
+                updateActiveNav();
             }
             window.addEventListener('scroll', updateScrollProgress, { passive: true });
             window.addEventListener('resize', updateScrollProgress);

@@ -1,5 +1,4 @@
     document.addEventListener('DOMContentLoaded', () => {
-        // Visitor Counter Logic
         const visitCountEl = document.getElementById('visit-count');
         if (visitCountEl) {
             const getCookie = (name) => {
@@ -54,7 +53,6 @@
             }
         }
 
-        // Preloader Logic
         const loaderBar = document.getElementById('loader-bar');
         const loaderStatus = document.getElementById('loader-status');
         const preloader = document.getElementById('preloader');
@@ -77,7 +75,6 @@
             }
         }, 50);
 
-        // Mobile Navigation Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const navLinks = document.getElementById('nav-links');
         const menuBackdrop = document.getElementById('menu-backdrop');
@@ -92,7 +89,6 @@
         if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMenu);
         if (menuBackdrop) menuBackdrop.addEventListener('click', toggleMenu);
 
-        // Multi-Language Toggle
         const langToggleBtn = document.getElementById('lang-toggle');
         const langLabel = document.getElementById('lang-label');
 
@@ -132,7 +128,6 @@
                 .catch(() => applyLanguage('vi'));
         }
 
-        // Lanyard API & Spotify Integration
         const DISCORD_USER_ID = '1320923672034148482';
         const discordAvatar = document.getElementById('discord-avatar');
         const discordDot = document.getElementById('discord-status-dot');
@@ -241,7 +236,6 @@
         setInterval(fetchDiscordStatus, 20000);
         setInterval(updateSpotifyProgress, 1000);
 
-        // Smooth Scroll To Section Without Leaving #hash In The URL
         const navbarEl = document.querySelector('.navbar');
 
         function scrollToSection(targetEl) {
@@ -259,7 +253,6 @@
                     if (targetEl) {
                         e.preventDefault();
                         scrollToSection(targetEl);
-                        // Xoá/không thêm #id vào URL, tránh mất thẩm mỹ
                         history.replaceState(null, '', window.location.pathname + window.location.search);
                     }
 
@@ -270,7 +263,6 @@
             });
         }
 
-        // Scroll Active Navigation Highlight
         const sections = document.querySelectorAll('header[id], section[id]');
         const navItems = document.querySelectorAll('.nav-links a');
 
@@ -291,7 +283,6 @@
             });
         }
 
-        // Intersection Observer for Smooth Fade In
         const fadeElements = document.querySelectorAll('.fade-in-up:not(.hero)');
         const fadeObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -304,7 +295,6 @@
 
         fadeElements.forEach(el => fadeObserver.observe(el));
 
-        // Skill Progress Bar Animation
         const skillBars = document.querySelectorAll('.skill-bar-progress');
         const skillObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -318,7 +308,6 @@
 
         skillBars.forEach(bar => skillObserver.observe(bar));
 
-        // Background Particle Canvas System
         const canvas = document.getElementById('particles-bg');
         if (canvas) {
             const ctx = canvas.getContext('2d');
@@ -473,7 +462,6 @@
             animateParticles();
         }
 
-        // Scroll Progress Bar
         const scrollProgress = document.getElementById('scroll-progress');
         function updateScrollProgress() {
             const scrollTop = window.scrollY;
@@ -487,7 +475,6 @@
         window.addEventListener('resize', updateScrollProgress);
         updateScrollProgress();
 
-        // Cursor Particle Effects on Desktop
         if (window.matchMedia('(pointer: fine)').matches) {
             let lastParticleTime = 0;
             document.addEventListener('mousemove', (e) => {
@@ -505,15 +492,11 @@
         }
     });
 
-    // Service Worker Registration
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('sw.js').catch(() => {});
         });
 
-        // Khi có bản Service Worker mới giành quyền kiểm soát trang (nghĩa là
-        // vừa có bản cập nhật được cài xong), tự tải lại trang MỘT LẦN để
-        // người dùng luôn thấy phiên bản mới nhất mà không cần tự xoá cache.
         let swRefreshed = false;
         navigator.serviceWorker.addEventListener('controllerchange', () => {
             if (swRefreshed) return;

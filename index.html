@@ -3,186 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ʜ2ʀʜᴇɴʀʏ | Personal Profile</title>
-    
+    <title>ʜ2ʀʜᴇɴʀʏ | ᴘᴇʀsᴏɴᴀʟ ᴘʀᴏғɪʟᴇ</title>
+    <meta name="title" content="ʜ2ʀʜᴇɴʀʏ | ᴘᴇʀsᴏɴᴀʟ ᴘʀᴏғɪʟᴇ">
+    <meta name="description" content="Đam mê tối ưu hóa hệ thống, phát triển các tính năng máy chủ tùy biến bằng ngôn ngữ cấu trúc logic và tạo dựng trải nghiệm visual ấn tượng thông qua nghệ thuật kỹ thuật số.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/h2rhenry">
+    <meta property="og:title" content="ʜ2ʀʜᴇɴʀʏ | ᴘᴇʀsᴏɴᴀʟ ᴘʀᴏғɪʟᴇ">
+    <meta property="og:description" content="Đam mê tối ưu hóa hệ thống, phát triển các tính năng máy chủ tùy biến bằng ngôn ngữ cấu trúc logic và tạo dựng trải nghiệm visual ấn tượng thông qua nghệ thuật kỹ thuật số.">
+    <meta property="og:image" content="https://i.postimg.cc/9MjPYrYr/IMG-20260217-140516-842.webp">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://github.com/h2rhenry">
+    <meta property="twitter:title" content="ʜ2ʀʜᴇɴʀʏ | ᴘᴇʀsᴏɴᴀʟ ᴘʀᴏғɪʟᴇ">
+    <meta property="twitter:description" content="Đam mê tối ưu hóa hệ thống, phát triển các tính năng máy chủ tùy biến bằng ngôn ngữ cấu trúc logic và tạo dựng trải nghiệm visual ấn tượng thông qua nghệ thuật kỹ thuật số.">
+    <meta property="twitter:image" content="https://i.postimg.cc/9MjPYrYr/IMG-20260217-140516-842.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <meta name="theme-color" content="#00d2ff">
+    <link rel="icon" href="https://i.postimg.cc/9MjPYrYr/IMG-20260217-140516-842.webp" type="image/webp">
+    <link rel="apple-touch-icon" href="https://i.postimg.cc/9MjPYrYr/IMG-20260217-140516-842.webp">
+    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/style.css">
-
-    <script src="js/particles.js" defer></script>
-    <script src="js/lanyard.js" defer></script>
-    <script src="js/main.js" defer></script>
 </head>
 <body>
     <div id="scroll-progress"></div>
     <div id="preloader">
         <div class="loader-content">
-            <div class="loader-spinner"></div>
-            <div id="loader-status">INITIALIZING SYSTEM... 0%</div>
+            <div class="loader-logo">HENRY TRAN</div>
             <div class="loader-bar-bg">
-                <div id="loader-bar"></div>
+                <div class="loader-bar" id="loader-bar"></div>
             </div>
+            <div class="loader-status" id="loader-status">INITIALIZING SYSTEM... 0%</div>
         </div>
     </div>
+
     <canvas id="particles-bg"></canvas>
-    <header id="header">
+
+    <div class="menu-backdrop" id="menu-backdrop"></div>
+
+    <nav class="navbar">
         <div class="nav-container">
-            <a href="#hero" class="logo">ʜ2ʀ<span>ʜᴇɴʀʏ</span></a>
-            <button id="mobile-menu-btn" aria-label="Toggle Navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav id="nav-links" class="nav-links">
-                <a href="#hero" class="active" data-vi="Trang chủ" data-en="Home">Trang chủ</a>
-                <a href="#about" data-vi="Giới thiệu" data-en="About">Giới thiệu</a>
-                <a href="#skills" data-vi="Kỹ năng" data-en="Skills">Kỹ năng</a>
-                <a href="#projects" data-vi="Dự án" data-en="Projects">Dự án</a>
-                <a href="#contact" data-vi="Liên hệ" data-en="Contact">Liên hệ</a>
-            </nav>
-            <button id="lang-toggle" class="lang-btn" aria-label="Switch Language">
-                <i class="fa-solid @globe"></i> <span id="lang-label">VI</span>
-            </button>
+            <div class="logo">HENRY TRAN</div>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="active"><i class="fas fa-house"></i> <span data-vi="Trang chủ" data-en="Home">Trang chủ</span></a></li>
+                <li><a href="#about"><i class="fas fa-user"></i> <span data-vi="Giới thiệu" data-en="About">Giới thiệu</span></a></li>
+                <li><a href="#experience"><i class="fas fa-briefcase"></i> <span data-vi="Kinh nghiệm" data-en="Experience">Kinh nghiệm</span></a></li>
+                <li><a href="#projects"><i class="fas fa-code"></i> <span data-vi="Dự án" data-en="Projects">Dự án</span></a></li>
+                <li><a href="#hobbies"><i class="fas fa-heart"></i> <span data-vi="Sở thích" data-en="Hobbies">Sở thích</span></a></li>
+            </ul>
+
+            <div class="nav-controls">
+                <div class="icon-btn visitor-counter" id="visitor-counter" title="Lượt truy cập website" aria-label="Lượt truy cập website">
+                    <i class="fas fa-eye"></i>
+                    <span id="visit-count">...</span>
+                </div>
+                <button class="icon-btn" id="lang-toggle" data-aria-vi="Đổi ngôn ngữ" data-aria-en="Switch language" aria-label="Đổi ngôn ngữ">
+                    <span id="lang-label">VI</span>
+                </button>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
         </div>
-        <div id="menu-backdrop"></div>
+    </nav>
+
+    <header id="home" class="hero fade-in-up">
+        <div class="avatar-wrapper">
+            <img src="https://i.postimg.cc/9MjPYrYr/IMG-20260217-140516-842.webp" alt="Avatar Hoàng Hải" class="avatar">
+        </div>
+        <h1 data-vi="Hi! Tôi là <span>Hoàng Hải (h2rhenry)</span>" data-en="Hi! I'm <span>Hoàng Hải (h2rhenry)</span>">Hi! Tôi là <span>Hoàng Hải (h2rhenry)</span></h1>
+        <div class="tagline">Vibe coder & Minecraft Server Dev</div>
+        <p class="description" data-vi="Đam mê tối ưu hóa hệ thống, phát triển các tính năng máy chủ tùy biến bằng ngôn ngữ cấu trúc logic và tạo dựng trải nghiệm visual ấn tượng thông qua nghệ thuật kỹ thuật số." data-en="Passionate about system optimization, building custom server features with logic-based scripting languages, and crafting striking visual experiences through digital art.">
+            Đam mê tối ưu hóa hệ thống, phát triển các tính năng máy chủ tùy biến bằng ngôn ngữ cấu trúc logic và tạo dựng trải nghiệm visual ấn tượng thông qua nghệ thuật kỹ thuật số.
+        </p>
+        <div class="social-icons">
+            <a href="https://github.com/h2rhenry" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Github"><i class="fab fa-github"></i></a>
+            <a href="https://www.facebook.com/h2r.henry/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://discord.gg/6araPUDjE2" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Discord"><i class="fab fa-discord"></i></a>
+        </div>
+
+        <div class="discord-status" id="discord-status">
+            <div class="discord-status-avatar-wrap">
+                <img id="discord-avatar" class="discord-status-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Discord avatar">
+                <span class="discord-status-dot" id="discord-status-dot"></span>
+            </div>
+            <div class="discord-status-text">
+                <div class="discord-status-name" id="discord-username">Discord</div>
+                <div class="discord-status-activity" id="discord-activity">Đang tải trạng thái...</div>
+            </div>
+        </div>
+
+        <div class="spotify-player" id="spotify-player" style="display:none;">
+            <img class="spotify-art" id="spotify-art" src="" alt="Album art">
+            <div class="spotify-info">
+                <div class="spotify-track" id="spotify-track"></div>
+                <div class="spotify-artist" id="spotify-artist"></div>
+                <div class="spotify-progress-row">
+                    <span class="spotify-time" id="spotify-time-current">0:00</span>
+                    <div class="spotify-progress-bg">
+                        <div class="spotify-progress-fill" id="spotify-progress-fill"></div>
+                    </div>
+                    <span class="spotify-time" id="spotify-time-total">0:00</span>
+                </div>
+                <div class="spotify-waveform" id="spotify-waveform">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <section id="hero" class="hero fade-in-up">
-            <div class="hero-content">
-                <div class="profile-card">
-                    <div class="avatar-container">
-                        <img id="discord-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
-                        <span id="discord-status-dot" class="discord-status-dot offline"></span>
-                    </div>
-                    <h1 class="glitch-text">ʜ2ʀʜᴇɴʀʏ</h1>
-                    <p class="subtitle" data-vi="Developer & Creator" data-en="Developer & Creator">Developer & Creator</p>
-                    <p id="discord-activity" class="discord-activity" data-vi="Đang tải trạng thái..." data-en="Loading status...">Đang tải trạng thái...</p>
-                </div>
-                <div id="spotify-player" class="spotify-card" style="display: none;">
-                    <div class="spotify-header">
-                        <i class="fa-brands fa-spotify"></i>
-                        <span data-vi="Đang phát trên Spotify" data-en="Listening to Spotify">Đang phát trên Spotify</span>
-                        <div id="spotify-waveform" class="waveform">
-                            <span></span><span></span><span></span><span></span>
-                        </div>
-                    </div>
-                    <div class="spotify-body">
-                        <img id="spotify-art" src="" alt="Album Art">
-                        <div class="spotify-info">
-                            <div id="spotify-track" class="track-name">Track Name</div>
-                            <div id="spotify-artist" class="artist-name">Artist Name</div>
-                            <div class="spotify-progress-container">
-                                <div class="spotify-progress-bar">
-                                    <div id="spotify-progress-fill"></div>
-                                </div>
-                                <div class="spotify-timestamps">
-                                    <span id="spotify-time-current">0:00</span>
-                                    <span id="spotify-time-total">0:00</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="social-links">
-                    <a href="https://github.com/h2rhenry" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://discord.com" target="_blank" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
-                    <a href="mailto:contact@h2rhenry.dev" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-                </div>
+    <section id="about" class="fade-in-up">
+        <h2 class="section-title" data-vi="Giới Thiệu & Kỹ Năng" data-en="About & Skills">Giới Thiệu & Kỹ Năng</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p data-vi="Tôi là một nhà phát triển mới trong cộng đồng minecraft server. Biết cách sử dụng AI hiệu quả để làm nhiều projects khác nhau." data-en="I'm a new developer in the Minecraft server community, skilled at using AI effectively to build a variety of different projects.">Tôi là một nhà phát triển mới trong cộng đồng minecraft server. Biết cách sử dụng AI hiệu quả để làm nhiều projects khác nhau.</p>
+                <p data-vi="Bên cạnh việc lập trình, tôi còn dành nhiều thời gian cho việc giải trí thông qua game Delta Force & Minecraft." data-en="Besides coding, I also spend a lot of time unwinding by playing Delta Force & Minecraft.">Bên cạnh việc lập trình, tôi còn dành nhiều thời gian cho việc giải trí thông qua game Delta Force & Minecraft.</p>
             </div>
-        </section>
-
-        <section id="about" class="section fade-in-up">
-            <h2 class="section-title" data-vi="Về Tôi" data-en="About Me">Về Tôi</h2>
-            <div class="glass-card">
-                <p data-vi="Xin chào! Tôi là h2rhenry, một người yêu thích lập trình và sáng tạo nội dung số. Tôi tập trung phát triển các hệ thống server Minecraft, tối ưu hóa script, thiết kế đồ họa và xây dựng giao diện web mượt mà."
-                   data-en="Hello! I'm h2rhenry, a passionate developer and digital creator. I focus on developing Minecraft server systems, script optimization, graphic design, and building smooth web interfaces.">
-                   Xin chào! Tôi là h2rhenry, một người yêu thích lập trình và sáng tạo nội dung số. Tôi tập trung phát triển các hệ thống server Minecraft, tối ưu hóa script, thiết kế đồ họa và xây dựng giao diện web mượt mà.
-                </p>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <i class="fa-solid fa-eye"></i>
-                        <span id="visit-count">---</span>
-                        <label data-vi="Lượt ghé thăm" data-en="Total Visits">Lượt ghé thăm</label>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fa-solid fa-code"></i>
-                        <span>100%</span>
-                        <label data-vi="Đam mê" data-en="Passion">Đam mê</label>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="section fade-in-up">
-            <h2 class="section-title" data-vi="Kỹ Năng" data-en="Skills">Kỹ Năng</h2>
-            <div class="skills-grid">
-                <div class="glass-card skill-item">
+            <div class="skills-wrapper">
+                <div class="skill-box">
                     <div class="skill-info">
-                        <span>Minecraft Skript & Config</span>
+                        <span>Skript Language (Minecraft Scripting)</span>
                         <span>90%</span>
                     </div>
-                    <div class="skill-bar"><div class="skill-bar-progress" data-width="90%"></div></div>
-                </div>
-                <div class="glass-card skill-item">
-                    <div class="skill-info">
-                        <span>HTML / CSS / JavaScript</span>
-                        <span>80%</span>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-progress" data-width="90%"></div>
                     </div>
-                    <div class="skill-bar"><div class="skill-bar-progress" data-width="80%"></div></div>
                 </div>
-                <div class="glass-card skill-item">
+                <div class="skill-box">
                     <div class="skill-info">
-                        <span>Graphic & Logo Design</span>
-                        <span>75%</span>
+                        <span>Server Optimization & Management</span>
+                        <span>70%</span>
                     </div>
-                    <div class="skill-bar"><div class="skill-bar-progress" data-width="75%"></div></div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-progress" data-width="70%"></div>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-info">
+                        <span>Minecraft AntiCheat Configuration</span>
+                        <span>50%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-progress" data-width="50%"></div>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-info">
+                        <span>Front-end Dev (HTML / CSS / JS Vanilla)</span>
+                        <span>36%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-bar-progress" data-width="36%"></div>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="projects" class="section fade-in-up">
-            <h2 class="section-title" data-vi="Dự Án" data-en="Projects">Dự Án</h2>
-            <div class="projects-grid">
-                <div class="glass-card project-card">
-                    <div class="project-icon"><i class="fa-solid fa-cubes"></i></div>
-                    <h3>Minecraft KOTH & Spawn Skript</h3>
-                    <p data-vi="Hệ thống Skript tùy chỉnh nâng cao cho server Minecraft, tối ưu hiệu năng cho số lượng người chơi lớn."
-                       data-en="Advanced custom Skript system for Minecraft servers, optimized for high player counts.">
-                       Hệ thống Skript tùy chỉnh nâng cao cho server Minecraft, tối ưu hiệu năng cho số lượng người chơi lớn.
-                    </p>
-                </div>
-                <div class="glass-card project-card">
-                    <div class="project-icon"><i class="fa-solid fa-globe"></i></div>
-                    <h3>Personal Portfolio Web</h3>
-                    <p data-vi="Trang web cá nhân thiết kế chuẩn glassmorphism tích hợp Discord & Spotify live activity."
-                       data-en="Personal glassmorphism portfolio featuring real-time Discord & Spotify integrations.">
-                       Trang web cá nhân thiết kế chuẩn glassmorphism tích hợp Discord & Spotify live activity.
-                    </p>
+    <section id="experience" class="fade-in-up">
+        <h2 class="section-title" data-vi="Kinh Nghiệm Làm Việc" data-en="Work Experience">Kinh Nghiệm Làm Việc</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div class="role-title">CoreLinks Studio</div>
+                        <span class="company-badge">Minecraft Studio</span>
+                    </div>
+                    <div class="timeline-period">
+                        <i class="far fa-calendar-alt"></i> 25/7/2025 - <span data-vi="Hiện tại" data-en="Present">Hiện tại</span>
+                    </div>
+                    <div class="timeline-desc" data-vi="Nhân viên phát triển sản phẩm, cấu hình skript một cách tối ưu giúp nâng cao trải nghiệm người dùng." data-en="Product development staff, optimizing skript configuration to improve the user experience.">
+                        Nhân viên phát triển sản phẩm, cấu hình skript một cách tối ưu giúp nâng cao trải nghiệm người dùng.
+                    </div>
+                    <div class="timeline-tags">
+                        <span class="tech-badge">Skript</span>
+                        <span class="tech-badge">Game Designer</span>
+                        <span class="tech-badge">Custom Logic</span>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <section id="contact" class="section fade-in-up">
-            <h2 class="section-title" data-vi="Liên Hệ" data-en="Contact">Liên Hệ</h2>
-            <div class="glass-card contact-card">
-                <p data-vi="Bạn muốn hợp tác hoặc trao đổi công việc? Hãy gửi tin nhắn cho tôi!"
-                   data-en="Want to collaborate or discuss a project? Drop me a message!">
-                   Bạn muốn hợp tác hoặc trao đổi công việc? Hãy gửi tin nhắn cho tôi!
-                </p>
-                <a href="https://discord.com" target="_blank" class="btn-primary">
-                    <i class="fa-brands fa-discord"></i> Connect via Discord
-                </a>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div class="role-title">Server Developer & Founder</div>
+                        <span class="company-badge">TbmVN Minecraft Server</span>
+                    </div>
+                    <div class="timeline-period">
+                        <i class="far fa-calendar-alt"></i> 08/2024 - 10/2025
+                    </div>
+                    <div class="timeline-desc" data-vi="Người thành lập TbmVN.asia (Minecraft Server). Chuyên phụ trách tối ưu Optimization và cấu hình AntiCheat. Hầu hết mọi việc để phát triển máy chủ game. Cộng đồng giải thể vào tháng 10 năm 2025 do không đủ nhân lực." data-en="Founder of TbmVN.asia (Minecraft Server). In charge of performance optimization and AntiCheat configuration, along with most other game server development work. The community disbanded in October 2025 due to insufficient manpower.">
+                        Người thành lập TbmVN.asia (Minecraft Server). Chuyên phụ trách tối ưu Optimization và cấu hình AntiCheat. Hầu hết mọi việc để phát triển máy chủ game. Cộng đồng giải thể vào tháng 10 năm 2025 do không đủ nhân lực.
+                    </div>
+                    <div class="timeline-tags">
+                        <span class="tech-badge">Paper / Purpur</span>
+                        <span class="tech-badge">Config Translation</span>
+                        <span class="tech-badge">Optimization</span>
+                        <span class="tech-badge">AntiCheat</span>
+                    </div>
+                </div>
             </div>
-        </section>
-    </main>
 
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div class="role-title">Minecraft Server Admin</div>
+                        <span class="company-badge">SwordLand (&copy CoreLinks)</span>
+                    </div>
+                    <div class="timeline-period">
+                        <i class="far fa-calendar-alt"></i> 30/7/2024 - <span data-vi="Hiện tại" data-en="Present">Hiện tại</span>
+                    </div>
+                    <div class="timeline-desc" data-vi="Phụ trách chính việc phát triển cụm máy chủ con MythicSMP. Thiết kế model, tối ưu hiệu năng và cấu hình AntiCheat,..." data-en="Lead developer for the MythicSMP sub-server cluster. Responsible for model design, performance optimization, and AntiCheat configuration, among other tasks.">
+                        Phụ trách chính việc phát triển cụm máy chủ con MythicSMP. Thiết kế model, tối ưu hiệu năng và cấu hình AntiCheat,...
+                    </div>
+                    <div class="timeline-tags">
+                        <span class="tech-badge">Admin</span>
+                        <span class="tech-badge">Resource Pack</span>
+                        <span class="tech-badge">Configuration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="fade-in-up">
+        <h2 class="section-title" data-vi="Dự Án Nổi Bật" data-en="Featured Projects">Dự Án Nổi Bật</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div>
+                    <div class="project-top">
+                        <div class="project-icon"><i class="fas fa-server"></i></div>
+                        <div class="project-links">
+                            <a href="https://github.com/h2rhenry" target="_blank" rel="noopener noreferrer" data-aria-vi="Xem Source Code" data-aria-en="View Source Code" aria-label="Xem Source Code"><i class="fab fa-github"></i></a>
+                            <a href="javascript:void(0)" data-aria-vi="Xem Chi Tiết" data-aria-en="View Details" aria-label="Xem Chi Tiết"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <h3>Better World Regen Script</h3>
+                    <p data-vi="Tự động tái tạo thế giới minecraft được chỉ định một cách trơn tru, bossbar & placeholder hiển thị." data-en="Automatically and smoothly regenerates a designated Minecraft world, with a bossbar & placeholder display.">Tự động tái tạo thế giới minecraft được chỉ định một cách trơn tru, bossbar & placeholder hiển thị.</p>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-badge">Skript</span>
+                    <span class="tech-badge">SkBee</span>
+                    <span class="tech-badge">EzCountDown</span>
+                    <span class="tech-badge">Multiverse-Core</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div>
+                    <div class="project-top">
+                        <div class="project-icon"><i class="fas fa-sliders-h"></i></div>
+                        <div class="project-links">
+                            <a href="https://github.com/h2rhenry" target="_blank" rel="noopener noreferrer" data-aria-vi="Xem Source Code" data-aria-en="View Source Code" aria-label="Xem Source Code"><i class="fab fa-github"></i></a>
+                            <a href="javascript:void(0)" data-aria-vi="Xem Chi Tiết" data-aria-en="View Details" aria-label="Xem Chi Tiết"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <h3>Chat Manager Script</h3>
+                    <p data-vi="Quản lý tin nhắn: @mentions (@player / @all); Lọc tin nhắn chứa từ ngữ vi phạm, chống spam chat. Tự động Ban/Mute theo mốc vi phạm." data-en="Message management: @mentions (@player / @all); filters messages containing prohibited words, prevents chat spam, and automatically bans/mutes based on violation thresholds.">Quản lý tin nhắn: @mentions (@player / @all); Lọc tin nhắn chứa từ ngữ vi phạm, chống spam chat. Tự động Ban/Mute theo mốc vi phạm.</p>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-badge">Skript</span>
+                    <span class="tech-badge">SkBee</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hobbies" class="fade-in-up">
+        <h2 class="section-title" data-vi="Sở Thích & Cảm Hứng" data-en="Hobbies & Inspiration">Sở Thích & Cảm Hứng</h2>
+        <div class="hobbies-grid">
+            <div class="hobby-box">
+                <i class="fas fa-gamepad"></i>
+                <h4 data-vi="Thế Giới Khối Vuông" data-en="Blocky World">Thế Giới Khối Vuông</h4>
+            </div>
+            <div class="hobby-box">
+                <i class="fas fa-crosshairs"></i>
+                <h4 data-vi="Bắn súng FPS" data-en="FPS Shooters">Bắn súng FPS</h4>
+            </div>
+            <div class="hobby-box">
+                <i class="fas fa-book-open"></i>
+                <h4 data-vi="Khám Phá Học Thuật" data-en="Academic Exploration">Khám Phá Học Thuật</h4>
+            </div>
+        </div>
+    </section>
+    
     <footer>
-        <p>&copy; 2026 ʜ2ʀʜᴇɴʀʏ.</p>
+        <p>&copy; 2026 H2R.HENRY</p>
+        <div class="social-icons">
+            <a href="https://github.com/h2rhenry" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Github"><i class="fab fa-github"></i></a>
+            <a href="https://www.facebook.com/h2r.henry/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://discord.gg/6araPUDjE2" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Discord"><i class="fab fa-discord"></i></a>
+        </div>
     </footer>
+
+    <script src="js/main.js" defer></script>
 </body>
 </html>

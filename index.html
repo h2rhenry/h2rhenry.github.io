@@ -1278,8 +1278,8 @@
                     <div class="project-top">
                         <div class="project-icon"><i class="fas fa-server"></i></div>
                         <div class="project-links">
-                            <a href="https://github.com/h2rhenry" target="_blank" data-aria-vi="Xem Source Code" data-aria-en="View Source Code" aria-label="Xem Source Code"><i class="fab fa-github"></i></a>
-                            <a href="#" data-aria-vi="Xem Chi Tiết" data-aria-en="View Details" aria-label="Xem Chi Tiết"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/h2rhenry" target="_blank" rel="noopener noreferrer" data-aria-vi="Xem Source Code" data-aria-en="View Source Code" aria-label="Xem Source Code"><i class="fab fa-github"></i></a>
+                            <a href="javascript:void(0)" data-aria-vi="Xem Chi Tiết" data-aria-en="View Details" aria-label="Xem Chi Tiết"><i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                     <h3>Better World Regen Script</h3>
@@ -1297,8 +1297,8 @@
                     <div class="project-top">
                         <div class="project-icon"><i class="fas fa-sliders-h"></i></div>
                         <div class="project-links">
-                            <a href="https://github.com/h2rhenry" target="_blank" data-aria-vi="Xem Source Code" data-aria-en="View Source Code" aria-label="Xem Source Code"><i class="fab fa-github"></i></a>
-                            <a href="#" data-aria-vi="Xem Chi Tiết" data-aria-en="View Details" aria-label="Xem Chi Tiết"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/h2rhenry" target="_blank" rel="noopener noreferrer" data-aria-vi="Xem Source Code" data-aria-en="View Source Code" aria-label="Xem Source Code"><i class="fab fa-github"></i></a>
+                            <a href="javascript:void(0)" data-aria-vi="Xem Chi Tiết" data-aria-en="View Details" aria-label="Xem Chi Tiết"><i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                     <h3>Chat Manager Script</h3>
@@ -1341,6 +1341,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Visitor Counter Logic
             const visitCountEl = document.getElementById('visit-count');
             if (visitCountEl) {
                 const getCookie = (name) => {
@@ -1395,6 +1396,7 @@
                 }
             }
 
+            // Preloader Logic
             const loaderBar = document.getElementById('loader-bar');
             const loaderStatus = document.getElementById('loader-status');
             const preloader = document.getElementById('preloader');
@@ -1404,18 +1406,20 @@
                 progress += Math.floor(Math.random() * 15) + 8;
                 if (progress > 100) progress = 100;
                 
-                loaderBar.style.width = `${progress}%`;
-                loaderStatus.innerText = `INITIALIZING SYSTEM... ${progress}%`;
+                if (loaderBar) loaderBar.style.width = `${progress}%`;
+                if (loaderStatus) loaderStatus.innerText = `INITIALIZING SYSTEM... ${progress}%`;
 
                 if (progress >= 100) {
                     clearInterval(loadingInterval);
                     setTimeout(() => {
-                        preloader.classList.add('loaded');
-                        document.querySelector('.hero').classList.add('visible');
+                        if (preloader) preloader.classList.add('loaded');
+                        const hero = document.querySelector('.hero');
+                        if (hero) hero.classList.add('visible');
                     }, 400);
                 }
             }, 50);
 
+            // Mobile Navigation Toggle
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const navLinks = document.getElementById('nav-links');
             const menuBackdrop = document.getElementById('menu-backdrop');
@@ -1427,9 +1431,10 @@
                 document.body.style.overflow = isActive ? 'hidden' : '';
             }
 
-            mobileMenuBtn.addEventListener('click', toggleMenu);
-            menuBackdrop.addEventListener('click', toggleMenu);
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMenu);
+            if (menuBackdrop) menuBackdrop.addEventListener('click', toggleMenu);
 
+            // Multi-Language Toggle
             const langToggleBtn = document.getElementById('lang-toggle');
             const langLabel = document.getElementById('lang-label');
 
@@ -1443,14 +1448,18 @@
                     const label = el.getAttribute(lang === 'en' ? 'data-aria-en' : 'data-aria-vi');
                     if (label !== null) el.setAttribute('aria-label', label);
                 });
-                langLabel.textContent = lang === 'en' ? 'EN' : 'VI';
+                if (langLabel) langLabel.textContent = lang === 'en' ? 'EN' : 'VI';
                 localStorage.setItem('lang', lang);
             }
 
-            langToggleBtn.addEventListener('click', () => {
-                const current = localStorage.getItem('lang') === 'en' ? 'en' : 'vi';
-                applyLanguage(current === 'en' ? 'vi' : 'en');
-            });
+            if (langToggleBtn) {
+                langToggleBtn.addEventListener('click', () => {
+                    const currentLang = document.documentElement.getAttribute('lang') || 'vi';
+                    const nextLang = currentLang === 'en' ? 'vi' : 'en';
+                    applyLanguage(nextLang);
+                    renderDiscordStatus(lastDiscordData);
+                });
+            }
 
             const savedLang = localStorage.getItem('lang');
             if (savedLang) {
@@ -1465,8 +1474,8 @@
                     .catch(() => applyLanguage('vi'));
             }
 
+            // Lanyard API & Spotify Integration
             const DISCORD_USER_ID = '1320923672034148482';
-            const discordWidget = document.getElementById('discord-status');
             const discordAvatar = document.getElementById('discord-avatar');
             const discordDot = document.getElementById('discord-status-dot');
             const discordName = document.getElementById('discord-username');
@@ -1483,7 +1492,7 @@
             let lastDiscordData = null;
 
             function getCurrentLang() {
-                return localStorage.getItem('lang') === 'en' ? 'en' : 'vi';
+                return document.documentElement.getAttribute('lang') || 'vi';
             }
 
             const statusLabels = {
@@ -1501,14 +1510,16 @@
             }
 
             function updateSpotifyProgress() {
-                if (!lastDiscordData || !lastDiscordData.spotify) return;
+                if (!lastDiscordData || !lastDiscordData.spotify || !lastDiscordData.spotify.timestamps) return;
                 const { start, end } = lastDiscordData.spotify.timestamps;
+                if (!start || !end) return;
+
                 const now = Date.now();
                 const total = end - start;
                 const elapsed = Math.min(total, Math.max(0, now - start));
-                spotifyProgressFill.style.width = (elapsed / total * 100) + '%';
-                spotifyTimeCurrent.textContent = formatMs(elapsed);
-                spotifyTimeTotal.textContent = formatMs(total);
+                if (spotifyProgressFill) spotifyProgressFill.style.width = (elapsed / total * 100) + '%';
+                if (spotifyTimeCurrent) spotifyTimeCurrent.textContent = formatMs(elapsed);
+                if (spotifyTimeTotal) spotifyTimeTotal.textContent = formatMs(total);
             }
 
             function renderDiscordStatus(data) {
@@ -1516,7 +1527,7 @@
                 const lang = getCurrentLang();
                 const user = data.discord_user;
 
-                if (user) {
+                if (user && discordName && discordAvatar) {
                     discordName.textContent = user.global_name || user.username;
                     discordAvatar.src = user.avatar
                         ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=64`
@@ -1524,28 +1535,30 @@
                 }
 
                 const status = data.discord_status || 'offline';
-                discordDot.className = 'discord-status-dot ' + status;
+                if (discordDot) discordDot.className = 'discord-status-dot ' + status;
 
                 const spotify = data.spotify;
                 const activity = (data.activities || []).find(a => a.type === 0);
 
-                if (spotify) {
-                    discordActivity.textContent = lang === 'en' ? '🎧 Listening to Spotify' : '🎧 Đang nghe Spotify';
-                    spotifyArt.src = spotify.album_art_url || '';
-                    spotifyTrack.textContent = spotify.song;
-                    spotifyArtist.textContent = spotify.artist;
-                    spotifyWaveform.classList.add('playing');
+                if (spotify && spotifyPlayer) {
+                    if (discordActivity) discordActivity.textContent = lang === 'en' ? '🎧 Listening to Spotify' : '🎧 Đang nghe Spotify';
+                    if (spotifyArt) spotifyArt.src = spotify.album_art_url || '';
+                    if (spotifyTrack) spotifyTrack.textContent = spotify.song || '';
+                    if (spotifyArtist) spotifyArtist.textContent = spotify.artist || '';
+                    if (spotifyWaveform) spotifyWaveform.classList.add('playing');
                     spotifyPlayer.style.display = 'flex';
                     updateSpotifyProgress();
                 } else {
-                    spotifyWaveform.classList.remove('playing');
-                    spotifyPlayer.style.display = 'none';
+                    if (spotifyWaveform) spotifyWaveform.classList.remove('playing');
+                    if (spotifyPlayer) spotifyPlayer.style.display = 'none';
 
-                    if (activity) {
-                        discordActivity.textContent = (lang === 'en' ? '🎮 Playing ' : '🎮 Đang chơi ') + activity.name;
-                    } else {
-                        const label = statusLabels[status] || statusLabels.offline;
-                        discordActivity.textContent = label[lang];
+                    if (discordActivity) {
+                        if (activity) {
+                            discordActivity.textContent = (lang === 'en' ? '🎮 Playing ' : '🎮 Đang chơi ') + activity.name;
+                        } else {
+                            const label = statusLabels[status] || statusLabels.offline;
+                            discordActivity.textContent = label[lang];
+                        }
                     }
                 }
             }
@@ -1558,11 +1571,11 @@
                             lastDiscordData = json.data;
                             renderDiscordStatus(lastDiscordData);
                         } else {
-                            discordActivity.textContent = getCurrentLang() === 'en' ? 'Status unavailable' : 'Không lấy được trạng thái';
+                            if (discordActivity) discordActivity.textContent = getCurrentLang() === 'en' ? 'Status unavailable' : 'Không lấy được trạng thái';
                         }
                     })
                     .catch(() => {
-                        discordActivity.textContent = getCurrentLang() === 'en' ? 'Status unavailable' : 'Không lấy được trạng thái';
+                        if (discordActivity) discordActivity.textContent = getCurrentLang() === 'en' ? 'Status unavailable' : 'Không lấy được trạng thái';
                     });
             }
 
@@ -1570,18 +1583,18 @@
             setInterval(fetchDiscordStatus, 20000);
             setInterval(updateSpotifyProgress, 1000);
 
-            langToggleBtn.addEventListener('click', () => {
-                setTimeout(() => renderDiscordStatus(lastDiscordData), 0);
-            });
-
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (navLinks.classList.contains('active')) {
-                        toggleMenu();
-                    }
+            // Nav Link Auto Close Mobile Menu
+            if (navLinks) {
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (navLinks.classList.contains('active')) {
+                            toggleMenu();
+                        }
+                    });
                 });
-            });
+            }
 
+            // Scroll Active Navigation Highlight
             const sections = document.querySelectorAll('header[id], section[id]');
             const navItems = document.querySelectorAll('.nav-links a');
 
@@ -1602,6 +1615,7 @@
                 });
             }
 
+            // Intersection Observer for Smooth Fade In
             const fadeElements = document.querySelectorAll('.fade-in-up:not(.hero)');
             const fadeObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -1614,6 +1628,7 @@
 
             fadeElements.forEach(el => fadeObserver.observe(el));
 
+            // Skill Progress Bar Animation
             const skillBars = document.querySelectorAll('.skill-bar-progress');
             const skillObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -1627,170 +1642,176 @@
 
             skillBars.forEach(bar => skillObserver.observe(bar));
 
+            // Background Particle Canvas System
             const canvas = document.getElementById('particles-bg');
-            const ctx = canvas.getContext('2d');
-            let particlesArray = [];
-            let animationFrameId;
-            let isTabActive = true;
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                let particlesArray = [];
+                let animationFrameId;
+                let isTabActive = true;
 
-            const mouse = {
-                x: null,
-                y: null,
-                radius: 140
-            };
+                const mouse = {
+                    x: null,
+                    y: null,
+                    radius: 140
+                };
 
-            window.addEventListener('mousemove', (e) => {
-                mouse.x = e.clientX;
-                mouse.y = e.clientY;
-            });
+                window.addEventListener('mousemove', (e) => {
+                    mouse.x = e.clientX;
+                    mouse.y = e.clientY;
+                });
 
-            window.addEventListener('mouseleave', () => {
-                mouse.x = null;
-                mouse.y = null;
-            });
+                window.addEventListener('mouseleave', () => {
+                    mouse.x = null;
+                    mouse.y = null;
+                });
 
-            function setCanvasSize() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.size = Math.random() * 2.5 + 1;
-                    this.speedX = (Math.random() - 0.5) * 0.8;
-                    this.speedY = (Math.random() - 0.5) * 0.8;
-                    this.color = Math.random() > 0.5 ? '#00d2ff' : '#9b5de5';
-                    this.baseAlpha = Math.random() * 0.5 + 0.3;
-                    this.alpha = this.baseAlpha;
-                    this.pulseSpeed = Math.random() * 0.015 + 0.005;
+                function setCanvasSize() {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
                 }
 
-                update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-
-                    if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
-                    if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
-
-                    this.alpha += this.pulseSpeed;
-                    if (this.alpha > 0.9 || this.alpha < 0.2) {
-                        this.pulseSpeed = -this.pulseSpeed;
+                class Particle {
+                    constructor() {
+                        this.x = Math.random() * canvas.width;
+                        this.y = Math.random() * canvas.height;
+                        this.size = Math.random() * 2.5 + 1;
+                        this.speedX = (Math.random() - 0.5) * 0.8;
+                        this.speedY = (Math.random() - 0.5) * 0.8;
+                        this.color = Math.random() > 0.5 ? '#00d2ff' : '#9b5de5';
+                        this.baseAlpha = Math.random() * 0.5 + 0.3;
+                        this.alpha = this.baseAlpha;
+                        this.pulseSpeed = Math.random() * 0.015 + 0.005;
                     }
 
-                    if (mouse.x !== null && mouse.y !== null) {
-                        let dx = mouse.x - this.x;
-                        let dy = mouse.y - this.y;
-                        let distance = Math.sqrt(dx * dx + dy * dy);
+                    update() {
+                        this.x += this.speedX;
+                        this.y += this.speedY;
 
-                        if (distance < mouse.radius) {
-                            const force = (mouse.radius - distance) / mouse.radius;
-                            const angle = Math.atan2(dy, dx);
-                            this.x -= Math.cos(angle) * force * 3;
-                            this.y -= Math.sin(angle) * force * 3;
+                        if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
+                        if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
+
+                        this.alpha += this.pulseSpeed;
+                        if (this.alpha > 0.9 || this.alpha < 0.2) {
+                            this.pulseSpeed = -this.pulseSpeed;
+                        }
+
+                        if (mouse.x !== null && mouse.y !== null) {
+                            let dx = mouse.x - this.x;
+                            let dy = mouse.y - this.y;
+                            let distance = Math.sqrt(dx * dx + dy * dy);
+
+                            if (distance < mouse.radius) {
+                                const force = (mouse.radius - distance) / mouse.radius;
+                                const angle = Math.atan2(dy, dx);
+                                this.x -= Math.cos(angle) * force * 3;
+                                this.y -= Math.sin(angle) * force * 3;
+                            }
+                        }
+                    }
+
+                    draw() {
+                        ctx.save();
+                        ctx.globalAlpha = Math.max(0, Math.min(1, this.alpha));
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                        ctx.fillStyle = this.color;
+                        ctx.shadowBlur = 12;
+                        ctx.shadowColor = this.color;
+                        ctx.fill();
+                        ctx.restore();
+                    }
+                }
+
+                function initParticles() {
+                    particlesArray = [];
+                    const numberOfParticles = Math.min(Math.floor((canvas.width * canvas.height) / 9000), 95);
+                    for (let i = 0; i < numberOfParticles; i++) {
+                        particlesArray.push(new Particle());
+                    }
+                }
+
+                function connectParticles() {
+                    const maxDistance = 125;
+                    for (let a = 0; a < particlesArray.length; a++) {
+                        for (let b = a + 1; b < particlesArray.length; b++) {
+                            let dx = particlesArray[a].x - particlesArray[b].x;
+                            let dy = particlesArray[a].y - particlesArray[b].y;
+                            let distance = Math.sqrt(dx * dx + dy * dy);
+
+                            if (distance < maxDistance) {
+                                let opacity = (1 - distance / maxDistance) * 0.35;
+                                ctx.save();
+                                ctx.globalAlpha = opacity;
+                                ctx.lineWidth = 1;
+
+                                let gradient = ctx.createLinearGradient(
+                                    particlesArray[a].x, particlesArray[a].y,
+                                    particlesArray[b].x, particlesArray[b].y
+                                );
+                                gradient.addColorStop(0, particlesArray[a].color);
+                                gradient.addColorStop(1, particlesArray[b].color);
+
+                                ctx.strokeStyle = gradient;
+                                ctx.beginPath();
+                                ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                                ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                                ctx.stroke();
+                                ctx.restore();
+                            }
                         }
                     }
                 }
 
-                draw() {
-                    ctx.save();
-                    ctx.globalAlpha = Math.max(0, Math.min(1, this.alpha));
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fillStyle = this.color;
-                    ctx.shadowBlur = 12;
-                    ctx.shadowColor = this.color;
-                    ctx.fill();
-                    ctx.restore();
-                }
-            }
+                function animateParticles() {
+                    if (!isTabActive) return;
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            function initParticles() {
-                particlesArray = [];
-                const numberOfParticles = Math.min(Math.floor((canvas.width * canvas.height) / 9000), 95);
-                for (let i = 0; i < numberOfParticles; i++) {
-                    particlesArray.push(new Particle());
-                }
-            }
-
-            function connectParticles() {
-                const maxDistance = 125;
-                for (let a = 0; a < particlesArray.length; a++) {
-                    for (let b = a + 1; b < particlesArray.length; b++) {
-                        let dx = particlesArray[a].x - particlesArray[b].x;
-                        let dy = particlesArray[a].y - particlesArray[b].y;
-                        let distance = Math.sqrt(dx * dx + dy * dy);
-
-                        if (distance < maxDistance) {
-                            let opacity = (1 - distance / maxDistance) * 0.35;
-                            ctx.save();
-                            ctx.globalAlpha = opacity;
-                            ctx.lineWidth = 1;
-
-                            let gradient = ctx.createLinearGradient(
-                                particlesArray[a].x, particlesArray[a].y,
-                                particlesArray[b].x, particlesArray[b].y
-                            );
-                            gradient.addColorStop(0, particlesArray[a].color);
-                            gradient.addColorStop(1, particlesArray[b].color);
-
-                            ctx.strokeStyle = gradient;
-                            ctx.beginPath();
-                            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                            ctx.stroke();
-                            ctx.restore();
-                        }
+                    for (let i = 0; i < particlesArray.length; i++) {
+                        particlesArray[i].update();
+                        particlesArray[i].draw();
                     }
-                }
-            }
 
-            function animateParticles() {
-                if (!isTabActive) return;
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                for (let i = 0; i < particlesArray.length; i++) {
-                    particlesArray[i].update();
-                    particlesArray[i].draw();
+                    connectParticles();
+                    animationFrameId = requestAnimationFrame(animateParticles);
                 }
 
-                connectParticles();
+                window.addEventListener('resize', () => {
+                    setCanvasSize();
+                    initParticles();
+                });
 
-                animationFrameId = requestAnimationFrame(animateParticles);
-            }
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) {
+                        isTabActive = false;
+                        cancelAnimationFrame(animationFrameId);
+                    } else {
+                        isTabActive = true;
+                        cancelAnimationFrame(animationFrameId);
+                        animateParticles();
+                    }
+                });
 
-            window.addEventListener('resize', () => {
                 setCanvasSize();
                 initParticles();
-            });
+                animateParticles();
+            }
 
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    isTabActive = false;
-                    cancelAnimationFrame(animationFrameId);
-                } else {
-                    isTabActive = true;
-                    animateParticles();
-                }
-            });
-
-            setCanvasSize();
-            initParticles();
-            animateParticles();
-
+            // Scroll Progress Bar
             const scrollProgress = document.getElementById('scroll-progress');
             function updateScrollProgress() {
                 const scrollTop = window.scrollY;
                 const docHeight = document.documentElement.scrollHeight - window.innerHeight;
                 const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-                scrollProgress.style.width = pct + '%';
+                if (scrollProgress) scrollProgress.style.width = pct + '%';
                 updateActiveNav();
             }
+
             window.addEventListener('scroll', updateScrollProgress, { passive: true });
             window.addEventListener('resize', updateScrollProgress);
             updateScrollProgress();
 
+            // Cursor Particle Effects on Desktop
             if (window.matchMedia('(pointer: fine)').matches) {
                 let lastParticleTime = 0;
                 document.addEventListener('mousemove', (e) => {
@@ -1808,6 +1829,7 @@
             }
         });
 
+        // Service Worker Registration
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js').catch(() => {});

@@ -510,4 +510,14 @@
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('sw.js').catch(() => {});
         });
+
+        // Khi có bản Service Worker mới giành quyền kiểm soát trang (nghĩa là
+        // vừa có bản cập nhật được cài xong), tự tải lại trang MỘT LẦN để
+        // người dùng luôn thấy phiên bản mới nhất mà không cần tự xoá cache.
+        let swRefreshed = false;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+            if (swRefreshed) return;
+            swRefreshed = true;
+            window.location.reload();
+        });
     }

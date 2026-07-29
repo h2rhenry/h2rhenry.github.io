@@ -3,16 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ʜ2ʀʜᴇɴʀʏ | ᴘᴇʀsᴏɴᴀʟ ᴘʀᴏғɪʟᴇ</title>
+    <title>ʜ2ʀʜᴇɴʀʏ | Personal Profile</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="css/style.css">
+
     <script src="js/particles.js" defer></script>
     <script src="js/lanyard.js" defer></script>
     <script src="js/main.js" defer></script>
 </head>
 <body>
+    <div id="scroll-progress"></div>
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div id="loader-status">INITIALIZING SYSTEM... 0%</div>
+            <div class="loader-bar-bg">
+                <div id="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+    <canvas id="particles-bg"></canvas>
+    <header id="header">
+        <div class="nav-container">
+            <a href="#hero" class="logo">ʜ2ʀ<span>ʜᴇɴʀʏ</span></a>
+            <button id="mobile-menu-btn" aria-label="Toggle Navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="nav-links" class="nav-links">
+                <a href="#hero" class="active" data-vi="Trang chủ" data-en="Home">Trang chủ</a>
+                <a href="#about" data-vi="Giới thiệu" data-en="About">Giới thiệu</a>
+                <a href="#skills" data-vi="Kỹ năng" data-en="Skills">Kỹ năng</a>
+                <a href="#projects" data-vi="Dự án" data-en="Projects">Dự án</a>
+                <a href="#contact" data-vi="Liên hệ" data-en="Contact">Liên hệ</a>
+            </nav>
+            <button id="lang-toggle" class="lang-btn" aria-label="Switch Language">
+                <i class="fa-solid @globe"></i> <span id="lang-label">VI</span>
+            </button>
+        </div>
+        <div id="menu-backdrop"></div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero fade-in-up">
+            <div class="hero-content">
+                <div class="profile-card">
+                    <div class="avatar-container">
+                        <img id="discord-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar">
+                        <span id="discord-status-dot" class="discord-status-dot offline"></span>
+                    </div>
+                    <h1 class="glitch-text">ʜ2ʀʜᴇɴʀʏ</h1>
+                    <p class="subtitle" data-vi="Developer & Creator" data-en="Developer & Creator">Developer & Creator</p>
+                    <p id="discord-activity" class="discord-activity" data-vi="Đang tải trạng thái..." data-en="Loading status...">Đang tải trạng thái...</p>
+                </div>
+                <div id="spotify-player" class="spotify-card" style="display: none;">
+                    <div class="spotify-header">
+                        <i class="fa-brands fa-spotify"></i>
+                        <span data-vi="Đang phát trên Spotify" data-en="Listening to Spotify">Đang phát trên Spotify</span>
+                        <div id="spotify-waveform" class="waveform">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="spotify-body">
+                        <img id="spotify-art" src="" alt="Album Art">
+                        <div class="spotify-info">
+                            <div id="spotify-track" class="track-name">Track Name</div>
+                            <div id="spotify-artist" class="artist-name">Artist Name</div>
+                            <div class="spotify-progress-container">
+                                <div class="spotify-progress-bar">
+                                    <div id="spotify-progress-fill"></div>
+                                </div>
+                                <div class="spotify-timestamps">
+                                    <span id="spotify-time-current">0:00</span>
+                                    <span id="spotify-time-total">0:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://github.com/h2rhenry" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://discord.com" target="_blank" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="mailto:contact@h2rhenry.dev" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section fade-in-up">
+            <h2 class="section-title" data-vi="Về Tôi" data-en="About Me">Về Tôi</h2>
+            <div class="glass-card">
+                <p data-vi="Xin chào! Tôi là h2rhenry, một người yêu thích lập trình và sáng tạo nội dung số. Tôi tập trung phát triển các hệ thống server Minecraft, tối ưu hóa script, thiết kế đồ họa và xây dựng giao diện web mượt mà."
+                   data-en="Hello! I'm h2rhenry, a passionate developer and digital creator. I focus on developing Minecraft server systems, script optimization, graphic design, and building smooth web interfaces.">
+                   Xin chào! Tôi là h2rhenry, một người yêu thích lập trình và sáng tạo nội dung số. Tôi tập trung phát triển các hệ thống server Minecraft, tối ưu hóa script, thiết kế đồ họa và xây dựng giao diện web mượt mà.
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <i class="fa-solid fa-eye"></i>
+                        <span id="visit-count">---</span>
+                        <label data-vi="Lượt ghé thăm" data-en="Total Visits">Lượt ghé thăm</label>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fa-solid fa-code"></i>
+                        <span>100%</span>
+                        <label data-vi="Đam mê" data-en="Passion">Đam mê</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section fade-in-up">
+            <h2 class="section-title" data-vi="Kỹ Năng" data-en="Skills">Kỹ Năng</h2>
+            <div class="skills-grid">
+                <div class="glass-card skill-item">
+                    <div class="skill-info">
+                        <span>Minecraft Skript & Config</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-bar-progress" data-width="90%"></div></div>
+                </div>
+                <div class="glass-card skill-item">
+                    <div class="skill-info">
+                        <span>HTML / CSS / JavaScript</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-bar-progress" data-width="80%"></div></div>
+                </div>
+                <div class="glass-card skill-item">
+                    <div class="skill-info">
+                        <span>Graphic & Logo Design</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-bar-progress" data-width="75%"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section fade-in-up">
+            <h2 class="section-title" data-vi="Dự Án" data-en="Projects">Dự Án</h2>
+            <div class="projects-grid">
+                <div class="glass-card project-card">
+                    <div class="project-icon"><i class="fa-solid fa-cubes"></i></div>
+                    <h3>Minecraft KOTH & Spawn Skript</h3>
+                    <p data-vi="Hệ thống Skript tùy chỉnh nâng cao cho server Minecraft, tối ưu hiệu năng cho số lượng người chơi lớn."
+                       data-en="Advanced custom Skript system for Minecraft servers, optimized for high player counts.">
+                       Hệ thống Skript tùy chỉnh nâng cao cho server Minecraft, tối ưu hiệu năng cho số lượng người chơi lớn.
+                    </p>
+                </div>
+                <div class="glass-card project-card">
+                    <div class="project-icon"><i class="fa-solid fa-globe"></i></div>
+                    <h3>Personal Portfolio Web</h3>
+                    <p data-vi="Trang web cá nhân thiết kế chuẩn glassmorphism tích hợp Discord & Spotify live activity."
+                       data-en="Personal glassmorphism portfolio featuring real-time Discord & Spotify integrations.">
+                       Trang web cá nhân thiết kế chuẩn glassmorphism tích hợp Discord & Spotify live activity.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section fade-in-up">
+            <h2 class="section-title" data-vi="Liên Hệ" data-en="Contact">Liên Hệ</h2>
+            <div class="glass-card contact-card">
+                <p data-vi="Bạn muốn hợp tác hoặc trao đổi công việc? Hãy gửi tin nhắn cho tôi!"
+                   data-en="Want to collaborate or discuss a project? Drop me a message!">
+                   Bạn muốn hợp tác hoặc trao đổi công việc? Hãy gửi tin nhắn cho tôi!
+                </p>
+                <a href="https://discord.com" target="_blank" class="btn-primary">
+                    <i class="fa-brands fa-discord"></i> Connect via Discord
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ʜ2ʀʜᴇɴʀʏ.</p>
+    </footer>
 </body>
 </html>

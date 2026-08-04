@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v5';
 const CACHE_NAME = 'henry-portfolio-' + CACHE_VERSION;
 
 self.addEventListener('install', () => {

@@ -12,7 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Thư viện hỗ trợ hiển thị Readme từ Markdown -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <meta name="theme-color" content="#00d2ff">
@@ -20,7 +19,6 @@
     <link rel="apple-touch-icon" href="https://i.postimg.cc/9MjPYrYr/IMG-20260217-140516-842.webp">
     <link rel="manifest" href="../manifest.json">
     
-    <!-- Tái sử dụng CSS gốc từ trang chính -->
     <link rel="stylesheet" href="../css/style.css?v=5">
 </head>
 <body>
@@ -66,10 +64,13 @@
     </header>
 
     <section id="projects" class="fade-in-up" style="padding-top: 20px;">
-        <div class="projects-icon" style="align-items: start;">
-            <div class="project-gird">
+
+        <div class="projects-grid" style="align-items: start;">
+            
+            <div class="project-card">
                 <div>
                     <div class="project-top">
+                        <div class="project-icon"><i class="fas fa-server"></i></div>
                         <div class="project-links">
                             <a href="resource/Better_World_Regen_Script.zip" 
                                download 
@@ -107,12 +108,10 @@
                 </div>
             </div>
 
-            <div class="project-icon">
+            <div class="project-card">
                 <div>
                     <div class="project-top">
                         <div class="project-icon"><i class="fas fa-sliders-h"></i></div>
-                        <div class="project-top">
-                        <div class="project-icon"><i class="fas fa-server"></i></div> 
                         <div class="project-links">
                             <a href="resource/Chat_Manager_Script.zip" 
                                download 
@@ -124,7 +123,6 @@
                                 <i class="fas fa-download"></i>
                             </a>
                         </div>
-                    </div>
                     </div>
                     <h3>Chat Manager Script</h3>
                     <p data-vi="Quản lý tin nhắn: @mentions (@player / @all); Lọc tin nhắn chứa từ ngữ vi phạm, chống spam chat. Tự động Ban/Mute theo mốc vi phạm." data-en="Message management: @mentions (@player / @all); filters messages containing prohibited words, prevents chat spam, and automatically bans/mutes based on violation thresholds.">
@@ -161,10 +159,8 @@
         </div>
     </footer>
 
-    <!-- Tái sử dụng JavaScript gốc từ trang chính -->
-    <script src="../js/main.js?v=" defer></script>
+    <script src="../js/main.js?v=1" defer></script>
 
-    <!-- Script nhỏ tự động render thẻ Markdown thành HTML -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.readme-content').forEach(el => {

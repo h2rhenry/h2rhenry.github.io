@@ -20,6 +20,28 @@
     <link rel="manifest" href="../manifest.json">
     
     <link rel="stylesheet" href="../css/style.css?v=5">
+
+    <style>
+        .projects-grid {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 25px !important;
+            align-items: stretch !important;
+        }
+
+        .project-card {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            height: 100% !important;
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="scroll-progress"></div>
@@ -73,7 +95,7 @@
 
     <section id="projects" class="fade-in-up" style="padding-top: 20px;">
 
-        <div class="projects-grid" style="align-items: start;">
+        <div class="projects-grid">
             
             <div class="project-card">
                 <div>
@@ -97,21 +119,23 @@
                     </p>
                 </div>
                 
-                <div class="project-tech">
-                    <span class="tech-badge">Skript</span>
-                    <span class="tech-badge">SkBee</span>
-                    <span class="tech-badge">EzCountDown</span>
-                </div>
+                <div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Skript</span>
+                        <span class="tech-badge">SkBee</span>
+                        <span class="tech-badge">EzCountDown</span>
+                    </div>
 
-                <div class="readme-box" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; text-align: left;">
-                    <details>
-                        <summary style="cursor: pointer; color: #00d2ff; font-weight: 500;"><i class="fas fa-book-open"></i> <span data-vi=" README" data-en=" README">README</span></summary>
-                        <div class="readme-content" style="margin-top: 10px; color: #a3b3cc; line-height: 1.6;" data-markdown="
+                    <div class="readme-box" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; text-align: left;">
+                        <details>
+                            <summary style="cursor: pointer; color: #00d2ff; font-weight: 500;"><i class="fas fa-book-open"></i> <span data-vi=" README" data-en=" README">README</span></summary>
+                            <div class="readme-content" style="margin-top: 10px; color: #a3b3cc; line-height: 1.6;" data-markdown="
 ### 📌 Hướng dẫn sử dụng | Usage Guide
 * **Cài đặt:** Tải file về máy, giải nén file ra sẽ có file `README.md` hướng dẫn chi tiết.
 * **Installation:** Download the file and extract it; you will find a `README.md` file containing detailed instructions.
 "></div>
-                    </details>
+                        </details>
+                    </div>
                 </div>
             </div>
 
@@ -137,20 +161,22 @@
                     </p>
                 </div>
 
-                <div class="project-tech">
-                    <span class="tech-badge">Skript</span>
-                    <span class="tech-badge">SkBee</span>
-                </div>
+                <div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Skript</span>
+                        <span class="tech-badge">SkBee</span>
+                    </div>
 
-                <div class="readme-box" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; text-align: left;">
-                    <details>
-                        <summary style="cursor: pointer; color: #00d2ff; font-weight: 500;"><i class="fas fa-book-open"></i> <span data-vi=" README" data-en=" README">Xem README / Hướng dẫn</span></summary>
-                        <div class="readme-content" style="margin-top: 10px; color: #a3b3cc; line-height: 1.6;" data-markdown="
+                    <div class="readme-box" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; text-align: left;">
+                        <details>
+                            <summary style="cursor: pointer; color: #00d2ff; font-weight: 500;"><i class="fas fa-book-open"></i> <span data-vi=" README" data-en=" README">Xem README / Hướng dẫn</span></summary>
+                            <div class="readme-content" style="margin-top: 10px; color: #a3b3cc; line-height: 1.6;" data-markdown="
 ### 📌 Hướng dẫn sử dụng | Usage Guide
 * **Cài đặt:** Tải file về máy, giải nén file ra sẽ có file `README.md` hướng dẫn chi tiết.
 * **Installation:** Download the file and extract it; you will find a `README.md` file containing detailed instructions.
 "></div>
-                    </details>
+                        </details>
+                    </div>
                 </div>
             </div>
 
@@ -176,21 +202,23 @@
                     </p>
                 </div>
 
-                <div class="project-tech">
-                    <span class="tech-badge">Skript</span>
-                    <span class="tech-badge">Skript-reflect</span>
-                    <span class="tech-badge">Protocollib</span>
-                </div>
+                <div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Skript</span>
+                        <span class="tech-badge">Skript-reflect</span>
+                        <span class="tech-badge">Protocollib</span>
+                    </div>
 
-                <div class="readme-box" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; text-align: left;">
-                    <details>
-                        <summary style="cursor: pointer; color: #00d2ff; font-weight: 500;"><i class="fas fa-book-open"></i> <span data-vi=" README" data-en=" README">Xem README / Hướng dẫn</span></summary>
-                        <div class="readme-content" style="margin-top: 10px; color: #a3b3cc; line-height: 1.6;" data-markdown="
+                    <div class="readme-box" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; text-align: left;">
+                        <details>
+                            <summary style="cursor: pointer; color: #00d2ff; font-weight: 500;"><i class="fas fa-book-open"></i> <span data-vi=" README" data-en=" README">Xem README / Hướng dẫn</span></summary>
+                            <div class="readme-content" style="margin-top: 10px; color: #a3b3cc; line-height: 1.6;" data-markdown="
 ### 📌 Hướng dẫn sử dụng | Usage Guide
 * **Cài đặt:** Tải file về máy, giải nén file ra sẽ có file `README.md` hướng dẫn chi tiết.
 * **Installation:** Download the file and extract it; you will find a `README.md` file containing detailed instructions.
 "></div>
-                    </details>
+                        </details>
+                    </div>
                 </div>
             </div>
 
@@ -210,27 +238,29 @@
                             </a>
                         </div>
                     </div>
-                    <h3>Settings Script</h3>
+                    <h3>Recon Bow Script</h3>
                     <p data-vi="Rảnh rỗi sinh nông nỗi, tôi nấu cây cung do thám trong DeltaForce cho Minecraft Server." data-en="With time on my hands and nothing better to do, I coded the Delta Force recon bow for a Minecraft Server.">
                         Rảnh rỗi sinh nông nỗi, tôi nấu cây cung do thám trong DeltaForce cho Minecraft Server.
                     </p>
                 </div>
 
-                <div class="project-tech">
-                    <span class="tech-badge">Skript</span>
-                    <span class="tech-badge">Skript-reflect</span>
-                    <span class="tech-badge">Protocollib</span>
-                </div>
+                <div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Skript</span>
+                        <span class="tech-badge">Skript-reflect</span>
+                        <span class="tech-badge">Protocollib</span>
+                    </div>
 
-                <div class="readme-box" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; text-align: left;">
-                    <details>
-                        <summary style="cursor: pointer; color: #00d2ff; font-weight: 500;"><i class="fas fa-book-open"></i> <span data-vi=" README" data-en=" README">Xem README / Hướng dẫn</span></summary>
-                        <div class="readme-content" style="margin-top: 10px; color: #a3b3cc; line-height: 1.6;" data-markdown="
+                    <div class="readme-box" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; text-align: left;">
+                        <details>
+                            <summary style="cursor: pointer; color: #00d2ff; font-weight: 500;"><i class="fas fa-book-open"></i> <span data-vi=" README" data-en=" README">Xem README / Hướng dẫn</span></summary>
+                            <div class="readme-content" style="margin-top: 10px; color: #a3b3cc; line-height: 1.6;" data-markdown="
 ### 📌 Hướng dẫn sử dụng | Usage Guide
 * **Cài đặt:** Tải file về máy, giải nén file ra sẽ có file `README.md` hướng dẫn chi tiết.
 * **Installation:** Download the file and extract it; you will find a `README.md` file containing detailed instructions.
 "></div>
-                    </details>
+                        </details>
+                    </div>
                 </div>
             </div>
 

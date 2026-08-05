@@ -3,19 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects — ʜ2ʀʜᴇɴʀʏ</title>
-    <meta name="title" content="Projects — ʜ2rhenry">
-    <meta name="description" content="Danh sách dự án chi tiết của Hoàng Hải (h2rhenry).">
+    <title>ʜ2ʀʜᴇɴʀʏ | ᴘʀᴏᴊᴇᴄᴛs & ʀᴇsᴏᴜʀᴄᴇs</title>
+    <meta name="title" content="ʜ2ʀʜᴇɴʀʏ | ᴘʀᴏᴊᴇᴄᴛs & ʀᴇsᴏᴜʀᴄᴇs">
+    <meta name="description" content="Danh sách các dự án Skript, Cấu hình Minecraft và Công cụ phát triển bởi h2rhenry. Tải xuống trực tiếp và xem tài liệu Readme.">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Thư viện hỗ trợ hiển thị Readme từ Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
     <meta name="theme-color" content="#00d2ff">
     <link rel="icon" href="https://i.postimg.cc/9MjPYrYr/IMG-20260217-140516-842.webp" type="image/webp">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="stylesheet" href="/css/style.css?v=4">
+    <link rel="apple-touch-icon" href="https://i.postimg.cc/9MjPYrYr/IMG-20260217-140516-842.webp">
+    <link rel="manifest" href="../manifest.json">
+    
+    <!-- Tái sử dụng CSS gốc từ trang chính -->
+    <link rel="stylesheet" href="../css/style.css?v=5">
 </head>
 <body>
+    <div id="scroll-progress"></div>
+    
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="loader-logo">HENRY TRAN</div>
+            <div class="loader-bar-bg">
+                <div class="loader-bar" id="loader-bar"></div>
+            </div>
+            <div class="loader-status" id="loader-status">LOADING PROJECTS... 0%</div>
+        </div>
+    </div>
+
+    <canvas id="particles-bg"></canvas>
+
     <div class="menu-backdrop" id="menu-backdrop"></div>
 
     <nav class="navbar">
@@ -23,11 +45,11 @@
             <div class="logo">HENRY TRAN</div>
 
             <ul class="nav-links" id="nav-links">
-                <li><a href="/" ><i class="fas fa-house"></i> <span data-vi="Trang chủ" data-en="Home">Trang chủ</span></a></li>
-                <li><a href="/#about"><i class="fas fa-user"></i> <span data-vi="Giới thiệu" data-en="About">Giới thiệu</span></a></li>
-                <li><a href="/#experience"><i class="fas fa-briefcase"></i> <span data-vi="Kinh nghiệm" data-en="Experience">Kinh nghiệm</span></a></li>
-                <li><a href="/projects" class="active"><i class="fas fa-code"></i> <span data-vi="Dự án" data-en="Projects">Dự án</span></a></li>
-                <li><a href="/#hobbies"><i class="fas fa-heart"></i> <span data-vi="Sở thích" data-en="Hobbies">Sở thích</span></a></li>
+                <li><a href="../#home"><i class="fas fa-house"></i> <span data-vi="Trang chủ" data-en="Home">Trang chủ</span></a></li>
+                <li><a href="../#about"><i class="fas fa-user"></i> <span data-vi="Giới thiệu" data-en="About">Giới thiệu</span></a></li>
+                <li><a href="../#experience"><i class="fas fa-briefcase"></i> <span data-vi="Kinh nghiệm" data-en="Experience">Kinh nghiệm</span></a></li>
+                <li><a href="#" class="active"><i class="fas fa-code"></i> <span data-vi="Dự án" data-en="Projects">Dự án</span></a></li>
+                <li><a href="../#hobbies"><i class="fas fa-heart"></i> <span data-vi="Sở thích" data-en="Hobbies">Sở thích</span></a></li>
             </ul>
 
             <div class="nav-controls">
@@ -47,63 +69,89 @@
         </div>
     </nav>
 
-    <header id="projects" class="fade-in-up">
-        <h1 style="text-align:center; margin-top:120px;" data-vi="Dự án của tôi" data-en="My Projects">Dự án của tôi</h1>
-        <p style="text-align:center; max-width:900px; margin:12px auto 36px;" data-vi="Danh sách dự án chi tiết hơn, có hướng dẫn & README cho từng project." data-en="A detailed list of projects with readmes and usage notes.">Danh sách dự án chi tiết hơn, có hướng dẫn & README cho từng project.</p>
+    <header id="home" class="hero fade-in-up" style="min-height: auto; padding-top: 130px; padding-bottom: 20px;">
+        <h1 data-vi="Danh Sách <span>Dự Án & Tài Nguyên</span>" data-en="All <span>Projects & Resources</span>">
+            Danh Sách <span>Dự Án & Tài Nguyên</span>
+        </h1>
+        <p class="description" data-vi="Tổng hợp các dự án Skripts, file cấu hình và tài nguyên máy chủ Minecraft. Bạn có thể tải xuống file trực tiếp hoặc xem Readme hướng dẫn bên dưới." data-en="A collection of Skripts, config files, and Minecraft server resources. Download files directly or view the detailed Readme below.">
+            Tổng hợp các dự án Skripts, file cấu hình và tài nguyên máy chủ Minecraft. Bạn có thể tải xuống file trực tiếp hoặc xem Readme hướng dẫn bên dưới.
+        </p>
     </header>
 
-    <section class="fade-in-up" style="max-width:1200px; margin: 0 auto 80px;">
+    <section id="projects" class="fade-in-up" style="padding-top: 20px;">
         <div class="projects-grid">
-            <div class="project-card fade-in-up">
+
+            <!-- PROJECT ITEM 1 -->
+            <div class="project-card">
                 <div>
                     <div class="project-top">
                         <div class="project-icon"><i class="fas fa-server"></i></div>
                         <div class="project-links">
-                            <a href="https://github.com/h2rhenry/Better-World-Regen-Skript" target="_blank" rel="noopener noreferrer" data-aria-vi="Xem Source Code" data-aria-en="View Source Code" aria-label="Xem Source Code"><i class="fas fa-code"></i></a>
-                            <a href="https://github.com/h2rhenry/h2rhenry.github.io/blob/main/projects/README.md#better-world-regen-script" target="_blank" rel="noopener noreferrer" data-aria-vi="Xem Chi Tiết" data-aria-en="View Details" aria-label="Xem Chi Tiết"><i class="fas fa-external-link-alt"></i></a>
+                            <!-- Nút Tải xuống file trên GitHub -->
+                            <a href="https://raw.githubusercontent.com/h2rhenry/better-world-regen/main/better_regen.sk" download title="Tải xuống file (.sk)" aria-label="Tải xuống file"><i class="fas fa-download"></i></a>
+                            <!-- Nút Xem Source trên GitHub -->
+                            <a href="https://github.com/h2rhenry" target="_blank" rel="noopener noreferrer" title="Xem Source Code" aria-label="Xem Source Code"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
-                    <h3 data-vi="Better World Regen Script" data-en="Better World Regen Script">Better World Regen Script</h3>
-                    <p data-vi="Script Skript tự động tái tạo thế giới được chỉ định, kèm bossbar & placeholder, hỗ trợ Multiworld." data-en="A Skript that smoothly regenerates a specified Minecraft world with bossbar & placeholders, Multiworld support.">Script Skript tự động tái tạo thế giới được chỉ định, kèm bossbar & placeholder, hỗ trợ Multiworld.</p>
-                    <p style="font-size:0.9rem; color:var(--text-main);">Tags: <span class="tech-badge">Skript</span> <span class="tech-badge">SkBee</span> <span class="tech-badge">Multiverse-Core</span></p>
+                    <h3>Better World Regen Script</h3>
+                    <p data-vi="Tự động tái tạo thế giới Minecraft chỉ định một cách trơn tru. Tích hợp BossBar đếm ngược, hiển thị PlaceholderAPI và tự động dịch chuyển người chơi an toàn." data-en="Smoothly and automatically regenerates specified Minecraft worlds. Features countdown BossBar, PlaceholderAPI, and safe player teleportation.">
+                        Tự động tái tạo thế giới Minecraft chỉ định một cách trơn tru. Tích hợp BossBar đếm ngược, hiển thị PlaceholderAPI và tự động dịch chuyển người chơi an toàn.
+                    </p>
+                </div>
+                
+                <div class="project-tech">
+                    <span class="tech-badge">Skript</span>
+                    <span class="tech-badge">SkBee</span>
+                    <span class="tech-badge">EzCountDown</span>
+                    <span class="tech-badge">Multiverse-Core</span>
+                </div>
+
+                <!-- Phần README tùy chỉnh bên dưới mỗi dự án -->
+                <div class="readme-box" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; text-align: left;">
+                    <details>
+                        <summary style="cursor: pointer; color: #00d2ff; font-weight: 500;"><i class="fas fa-book-open"></i> <span data-vi="Xem README / Hướng dẫn" data-en="View README / Documentation">Xem README / Hướng dẫn</span></summary>
+                        <div class="readme-content" style="margin-top: 10px; color: #a3b3cc; line-height: 1.6;" data-markdown="
+### 📌 Hướng dẫn sử dụng
+* **Cài đặt:** Thả file `.sk` vào thư mục `plugins/Skript/scripts/` và gõ `/sk reload better_regen`.
+* **Tính năng:** Tự động reload world định kỳ, hiển thị BossBar thời gian thực.
+"></div>
+                    </details>
                 </div>
             </div>
 
-            <div class="project-card fade-in-up">
+            <!-- PROJECT ITEM 2 -->
+            <div class="project-card">
                 <div>
                     <div class="project-top">
                         <div class="project-icon"><i class="fas fa-sliders-h"></i></div>
                         <div class="project-links">
-                            <a href="https://github.com/h2rhenry/Chat-Manager-Skript" target="_blank" rel="noopener noreferrer" data-aria-vi="Xem Source Code" data-aria-en="View Source Code" aria-label="Xem Source Code"><i class="fas fa-code"></i></a>
-                            <a href="https://github.com/h2rhenry/h2rhenry.github.io/blob/main/projects/README.md#chat-manager-script" target="_blank" rel="noopener noreferrer" data-aria-vi="Xem Chi Tiết" data-aria-en="View Details" aria-label="Xem Chi Tiết"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://raw.githubusercontent.com/h2rhenry/chat-manager/main/chat_manager.sk" download title="Tải xuống file (.sk)" aria-label="Tải xuống file"><i class="fas fa-download"></i></a>
+                            <a href="https://github.com/h2rhenry" target="_blank" rel="noopener noreferrer" title="Xem Source Code" aria-label="Xem Source Code"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
-                    <h3 data-vi="Chat Manager Script" data-en="Chat Manager Script">Chat Manager Script</h3>
-                    <p data-vi="Quản lý mentions, lọc từ ngữ, chống spam, tự động ban/mute theo mức vi phạm. Có cấu hình dễ tuỳ chỉnh." data-en="Handles mentions, profanity filters, anti-spam; auto-ban/mute with configurable thresholds.">Quản lý mentions, lọc từ ngữ, chống spam, tự động ban/mute theo mức vi phạm. Có cấu hình dễ tuỳ chỉnh.</p>
-                    <p style="font-size:0.9rem; color:var(--text-main);">Tags: <span class="tech-badge">Skript</span> <span class="tech-badge">SkBee</span></p>
+                    <h3>Chat Manager Script</h3>
+                    <p data-vi="Quản lý tin nhắn: @mentions (@player / @all); Lọc tin nhắn chứa từ ngữ vi phạm, chống spam chat. Tự động Ban/Mute theo mốc vi phạm." data-en="Message management: @mentions (@player / @all); filters messages containing prohibited words, prevents chat spam, and automatically bans/mutes based on violation thresholds.">
+                        Quản lý tin nhắn: @mentions (@player / @all); Lọc tin nhắn chứa từ ngữ vi phạm, chống spam chat. Tự động Ban/Mute theo mốc vi phạm.
+                    </p>
+                </div>
+
+                <div class="project-tech">
+                    <span class="tech-badge">Skript</span>
+                    <span class="tech-badge">SkBee</span>
+                </div>
+
+                <div class="readme-box" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; text-align: left;">
+                    <details>
+                        <summary style="cursor: pointer; color: #00d2ff; font-weight: 500;"><i class="fas fa-book-open"></i> <span data-vi="Xem README / Hướng dẫn" data-en="View README / Documentation">Xem README / Hướng dẫn</span></summary>
+                        <div class="readme-content" style="margin-top: 10px; color: #a3b3cc; line-height: 1.6;" data-markdown="
+### 🛠️ Các lệnh khả dụng
+* `/chat clear` - Xóa nhanh lịch sử chat.
+* `/chat toggle` - Khóa / Mở kênh chat máy chủ.
+"></div>
+                    </details>
                 </div>
             </div>
 
-            <div class="project-card fade-in-up">
-                <div>
-                    <div class="project-top">
-                        <div class="project-icon"><i class="fas fa-cogs"></i></div>
-                        <div class="project-links">
-                            <a href="https://github.com/h2rhenry/Server-Optimization-Configs" target="_blank" rel="noopener noreferrer" data-aria-vi="Xem Source Code" data-aria-en="View Source Code" aria-label="Xem Source Code"><i class="fas fa-code"></i></a>
-                            <a href="https://github.com/h2rhenry/h2rhenry.github.io/blob/main/projects/README.md#server-optimization-configs" target="_blank" rel="noopener noreferrer" data-aria-vi="Xem Chi Tiết" data-aria-en="View Details" aria-label="Xem Chi Tiết"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <h3 data-vi="Server Optimization Configs" data-en="Server Optimization Configs">Server Optimization Configs</h3>
-                    <p data-vi="Bộ cấu hình tối ưu cho Paper/Purpur để giảm lag, tối ưu tick và memory usage; kèm hướng dẫn deploy." data-en="A set of Paper/Purpur configs to reduce lag and optimize ticks/memory, including deployment notes.">Bộ cấu hình tối ưu cho Paper/Purpur để giảm lag, tối ưu tick và memory usage; kèm hướng dẫn deploy.</p>
-                    <p style="font-size:0.9rem; color:var(--text-main);">Tags: <span class="tech-badge">Paper</span> <span class="tech-badge">Optimization</span> <span class="tech-badge">AntiCheat</span></p>
-                </div>
-            </div>
-        </div>
-
-        <div style="text-align:center; margin-top:36px;">
-            <a href="/" class="icon-btn" style="padding:10px 20px;">&larr; <span data-vi="Quay lại" data-en="Back">Quay lại</span></a>
-            &nbsp;&nbsp;
-            <a href="https://github.com/h2rhenry/h2rhenry.github.io/blob/main/projects/README.md" target="_blank" class="icon-btn" style="padding:10px 20px;">View README</a>
         </div>
     </section>
 
@@ -116,6 +164,19 @@
         </div>
     </footer>
 
-    <script src="/js/main.js?v=1" defer></script>
+    <!-- Tái sử dụng JavaScript gốc từ trang chính -->
+    <script src="../js/main.js?v=" defer></script>
+
+    <!-- Script nhỏ tự động render thẻ Markdown thành HTML -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.readme-content').forEach(el => {
+                const rawMd = el.getAttribute('data-markdown');
+                if (rawMd && typeof marked !== 'undefined') {
+                    el.innerHTML = marked.parse(rawMd);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

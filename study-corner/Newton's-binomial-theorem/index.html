@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khám Phá Tam Giác Pascal & Nhị Thức Newton</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border: #e2e8f0;
+            --highlight: #fef08a;
+            --highlight-border: #eab308;
+            --accent-bg: #eff6ff;
+            --accent-text: #1e40af;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+            padding: 20px 0;
+        }
+
+        h1 {
+            color: #1e293b;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .controls-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #334155;
+            min-width: 120px;
+        }
+
+        input[type="range"] {
+            flex: 1;
+            min-width: 200px;
+            height: 8px;
+            border-radius: 4px;
+            background: #cbd5e1;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .badge {
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .input-text-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .input-field {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .input-field input {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            width: 80px;
+            font-size: 1rem;
+        }
+
+        .pascal-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
+            overflow-x: auto;
+        }
+
+        .pascal-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pascal-triangle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 0;
+            min-width: max-content;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .cell {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 38px;
+            height: 38px;
+            padding: 0 6px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #334155;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .cell:hover {
+            transform: scale(1.15);
+            z-index: 10;
+            background: #cbd5e1;
+        }
+
+        .cell.active-row {
+            background: var(--highlight);
+            border: 1px solid var(--highlight-border);
+            color: #854d0e;
+            font-weight: bold;
+        }
+
+        .row-label {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            width: 55px;
+            justify-content: flex-end;
+        }
+
+        .row-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .expansion-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .formula-box {
+            background: var(--accent-bg);
+            border: 1px solid #bfdbfe;
+            color: var(--accent-text);
+            padding: 16px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            margin-top: 12px;
+            word-break: break-all;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .steps-list {
+            margin-top: 16px;
+            padding-left: 20px;
+            color: var(--text-muted);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .steps-list li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .view-mode-notice {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .cell { min-width: 32px; height: 32px; font-size: 0.75rem; }
+            h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Tam Giác Pascal & Nhị Thức Newton</h1>
+        <p class="subtitle">Mô phỏng hệ số nhị thức tới n = 50 (Sử dụng tính toán BigInt chuẩn xác)</p>
+        <p class="subtitle">Build by Gemini - https://h2rhenry.is-a.dev</p>
+    </header>
+
+    <div class="controls-card">
+        <div class="control-group">
+            <label for="nValue">Số mũ (n):</label>
+            <input type="range" id="nValue" min="0" max="50" value="5" oninput="updateAll()">
+            <span id="nDisplay" class="badge">n = 5</span>
+        </div>
+
+        <div class="input-text-group">
+            <div class="input-field">
+                <label for="aTerm" style="min-width: auto;">Biểu thức a:</label>
+                <input type="text" id="aTerm" value="x" oninput="updateExpansion()">
+            </div>
+            <div class="input-field">
+                <label for="bTerm" style="min-width: auto;">Biểu thức b:</label>
+                <input type="text" id="bTerm" value="y" oninput="updateExpansion()">
+            </div>
+        </div>
+    </div>
+
+    <div class="pascal-card">
+        <div class="pascal-title">
+            <span>Hiển thị Tam Giác Pascal</span>
+            <span style="font-size: 0.85rem; font-weight: normal; color: var(--text-muted);" id="pascalStatus"></span>
+        </div>
+        <div id="pascalTriangle" class="pascal-triangle"></div>
+    </div>
+
+    <div class="expansion-card">
+        <div class="pascal-title">Khai Triển Nhị Thức Newton Tương Ứng</div>
+        <p>Khai triển cho biểu thức: <strong id="exprTitle">(a + b)<sup>n</sup></strong></p>
+        
+        <div id="formulaDisplay" class="formula-box"></div>
+
+        <ul class="steps-list" id="explanationSteps"></ul>
+    </div>
+</div>
+
+<script>
+    // Memoized Combination C(n, k) with BigInt support
+    const combinationCache = {};
+
+    function C(n, k) {
+        if (k < 0 || k > n) return 0n;
+        if (k === 0 || k === n) return 1n;
+        const key = `${n},${k}`;
+        if (combinationCache[key]) return combinationCache[key];
+        combinationCache[key] = C(n - 1, k - 1) + C(n - 1, k);
+        return combinationCache[key];
+    }
+
+    function formatNumberDisplay(val) {
+        const valStr = val.toString();
+        if (valStr.length > 7) {
+            // Display scientific-like shorthand or truncated version
+            const exponent = valStr.length - 1;
+            return valStr.substring(0, 3) + 'e' + exponent;
+        }
+        return valStr;
+    }
+
+    function generateTriangle(selectedN) {
+        const container = document.getElementById('pascalTriangle');
+        const statusSpan = document.getElementById('pascalStatus');
+        container.innerHTML = '';
+
+        // Optimization: For n <= 12, show full triangle. For n > 12, show dynamic window around selectedN to prevent UI lag.
+        let startN = 0;
+        let endN = selectedN;
+
+        if (selectedN <= 12) {
+            startN = 0;
+            endN = Math.max(selectedN, 8); // Keep at least 8 rows for visual aesthetics
+            statusSpan.innerText = "(Đang hiển thị toàn bộ tam giác)";
+        } else {
+            // Show a window of rows around selectedN to maintain performance
+            startN = Math.max(0, selectedN - 4);
+            endN = selectedN;
+            statusSpan.innerText = `(Để tối ưu tốc độ, chỉ hiển thị từ hàng n = ${startN} đến n = ${endN})`;
+        }
+
+        for (let n = startN; n <= endN; n++) {
+            const rowDiv = document.createElement('div');
+            rowDiv.className = 'row-container';
+
+            const labelDiv = document.createElement('div');
+            labelDiv.className = 'row-label';
+            labelDiv.innerText = `n = ${n}`;
+            rowDiv.appendChild(labelDiv);
+
+            const rowContentDiv = document.createElement('div');
+            rowContentDiv.className = 'row';
+
+            for (let k = 0; k <= n; k++) {
+                const val = C(n, k);
+                const cell = document.createElement('div');
+                cell.className = 'cell';
+                if (n === selectedN) {
+                    cell.classList.add('active-row');
+                }
+                
+                const valStr = val.toString();
+                cell.innerText = formatNumberDisplay(val);
+                cell.title = `C(${n}, ${k}) = ${valStr}`; // Full exact value on hover tooltip
+
+                rowContentDiv.appendChild(cell);
+            }
+
+            rowDiv.appendChild(rowContentDiv);
+            container.appendChild(rowDiv);
+        }
+    }
+
+    function updateExpansion() {
+        const n = parseInt(document.getElementById('nValue').value);
+        const a = document.getElementById('aTerm').value.trim() || 'a';
+        const b = document.getElementById('bTerm').value.trim() || 'b';
+
+        document.getElementById('exprTitle').innerHTML = `(${a} + ${b})<sup>${n}</sup>`;
+
+        let terms = [];
+        let stepsHtml = [];
+
+        for (let k = 0; k <= n; k++) {
+            const coeff = C(n, k);
+            const aPow = n - k;
+            const bPow = k;
+
+            let termStr = '';
+            
+            // Coefficient part
+            if (coeff !== 1n || (aPow === 0 && bPow === 0)) {
+                termStr += coeff.toString();
+            }
+
+            // 'a' part
+            if (aPow > 0) {
+                termStr += (termStr ? '·' : '') + a + (aPow > 1 ? `<sup>${aPow}</sup>` : '');
+            }
+
+            // 'b' part
+            if (bPow > 0) {
+                termStr += (termStr ? '·' : '') + b + (bPow > 1 ? `<sup>${bPow}</sup>` : '');
+            }
+
+            if (!termStr) termStr = '1';
+
+            terms.push(termStr);
+            stepsHtml.push(`<li><strong>Số hạng thứ ${k + 1} (k = ${k}):</strong> C(${n}, ${k}) · (${a})<sup>${aPow}</sup> · (${b})<sup>${bPow}</sup> = <strong>${termStr}</strong></li>`);
+        }
+
+        document.getElementById('formulaDisplay').innerHTML = `(${a} + ${b})<sup>${n}</sup> = <br>` + terms.join(' + ');
+        document.getElementById('explanationSteps').innerHTML = stepsHtml.join('');
+    }
+
+    function updateAll() {
+        const n = parseInt(document.getElementById('nValue').value);
+        document.getElementById('nDisplay').innerText = `n = ${n}`;
+        generateTriangle(n);
+        updateExpansion();
+    }
+
+    // Initial load
+    updateAll();
+</script>
+
+</body>
+</html>

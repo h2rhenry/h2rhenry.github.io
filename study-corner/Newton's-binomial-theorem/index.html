@@ -319,8 +319,8 @@
         <h1 data-vi="Tam Giác Pascal & <span>Nhị Thức Newton</span>" data-en="Pascal's Triangle & <span>Newton's Binomial</span>">
             Tam Giác Pascal & <span>Nhị Thức Newton</span>
         </h1>
-        <p class="description" data-vi="Mô phỏng hệ số nhị thức tới n = 50 với độ chính xác tuyệt đối nhờ tính toán BigInt. Kéo thanh trượt để khám phá." data-en="A binomial coefficient simulator up to n = 50, using BigInt for exact precision. Drag the slider to explore.">
-            Mô phỏng hệ số nhị thức tới n = 50 với độ chính xác tuyệt đối nhờ tính toán BigInt. Kéo thanh trượt để khám phá.
+        <p class="description" data-vi="Mô phỏng hệ số nhị thức với độ chính xác tuyệt đối nhờ tính toán BigInt." data-en="A binomial coefficient simulator, using BigInt for exact precision.">
+            Mô phỏng hệ số nhị thức với độ chính xác tuyệt đối nhờ tính toán BigInt.
         </p>
     </header>
 
@@ -381,7 +381,7 @@
     <script src="../../js/main.js?v=1" defer></script>
 
     <script>
-        // Memoized Combination C(n, k) with BigInt support
+
         const combinationCache = {};
 
         function C(n, k) {
@@ -506,7 +506,6 @@
 
         document.addEventListener('DOMContentLoaded', updateAll);
 
-        // Cập nhật lại ngôn ngữ hiển thị trong bảng khi người dùng đổi VI/EN
         document.addEventListener('click', (e) => {
             if (e.target.closest('#lang-toggle')) {
                 setTimeout(updateAll, 0);

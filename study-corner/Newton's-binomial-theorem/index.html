@@ -191,14 +191,15 @@
             min-width: 38px;
             height: 38px;
             padding: 0 6px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 8px;
             font-weight: 600;
             font-size: 0.8rem;
             color: var(--text-main);
             transition: all 0.2s ease;
             cursor: default;
+            position: relative;
         }
 
         .newton-cell:hover {
@@ -206,6 +207,7 @@
             z-index: 10;
             border-color: rgba(0, 210, 255, 0.4);
             color: var(--text-bright);
+            background: rgba(0, 210, 255, 0.08);
         }
 
         .newton-cell.active-row {
@@ -214,6 +216,49 @@
             color: var(--text-bright);
             box-shadow: 0 0 10px rgba(0, 210, 255, 0.25);
             font-weight: 700;
+        }
+
+        /* Tooltip tự thiết kế thay cho tooltip mặc định của trình duyệt (lệch theme) */
+        .newton-cell::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 9px);
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 210, 255, 0.35);
+            color: var(--text-bright);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.72rem;
+            font-weight: 600;
+            white-space: nowrap;
+            padding: 6px 10px;
+            border-radius: 6px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 210, 255, 0.15);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.15s ease, transform 0.15s ease;
+            z-index: 21;
+        }
+
+        .newton-cell::before {
+            content: '';
+            position: absolute;
+            bottom: calc(100% + 4px);
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: var(--bg-card);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.15s ease;
+            z-index: 21;
+        }
+
+        .newton-cell:hover::after,
+        .newton-cell:hover::before {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
 
         .newton-expr-title {
@@ -319,8 +364,8 @@
         <h1 data-vi="Tam Giác Pascal & <span>Nhị Thức Newton</span>" data-en="Pascal's Triangle & <span>Newton's Binomial</span>">
             Tam Giác Pascal & <span>Nhị Thức Newton</span>
         </h1>
-        <p class="description" data-vi="Mô phỏng hệ số nhị thức với độ chính xác tuyệt đối nhờ tính toán BigInt." data-en="A binomial coefficient simulator, using BigInt for exact precision.">
-            Mô phỏng hệ số nhị thức với độ chính xác tuyệt đối nhờ tính toán BigInt.
+        <p class="description" data-vi="Mô phỏng hệ số nhị thức tới n = 50 với độ chính xác tuyệt đối nhờ tính toán BigInt. Kéo thanh trượt để khám phá." data-en="A binomial coefficient simulator up to n = 50, using BigInt for exact precision. Drag the slider to explore.">
+            Mô phỏng hệ số nhị thức tới n = 50 với độ chính xác tuyệt đối nhờ tính toán BigInt. Kéo thanh trượt để khám phá.
         </p>
     </header>
 
@@ -381,7 +426,7 @@
     <script src="../../js/main.js?v=1" defer></script>
 
     <script>
-
+        // Memoized Combination C(n, k) with BigInt support
         const combinationCache = {};
 
         function C(n, k) {
@@ -445,7 +490,8 @@
 
                     const valStr = val.toString();
                     cell.innerText = formatNumberDisplay(val);
-                    cell.title = `C(${n}, ${k}) = ${valStr}`;
+                    cell.setAttribute('data-tooltip', `C(${n}, ${k}) = ${valStr}`);
+                    cell.setAttribute('aria-label', `C(${n}, ${k}) = ${valStr}`);
 
                     rowContentDiv.appendChild(cell);
                 }
@@ -506,6 +552,7 @@
 
         document.addEventListener('DOMContentLoaded', updateAll);
 
+        // Cập nhật lại ngôn ngữ hiển thị trong bảng khi người dùng đổi VI/EN
         document.addEventListener('click', (e) => {
             if (e.target.closest('#lang-toggle')) {
                 setTimeout(updateAll, 0);

@@ -507,6 +507,139 @@
                 particle.addEventListener('animationend', () => particle.remove());
             });
         }
+
+        // ============================================================
+        // Secret Hidden-Pages Menu
+        // Kích hoạt: giữ tổ hợp phím Ctrl + Alt + Shift (Desktop)
+        //            hoặc chạm nút chấm ẩn ở cuối trang (Mobile)
+        // Muốn thêm trang ẩn mới? Chỉ cần thêm 1 object vào mảng bên dưới.
+        // ============================================================
+        const HIDDEN_PAGES = [
+            {
+                icon: 'fas fa-square-root-variable',
+                url: "/study-corner/Newton's-binomial-theorem/",
+                titleVi: 'Tam Giác Pascal & Nhị Thức Newton',
+                titleEn: "Pascal's Triangle & Newton's Binomial",
+                descVi: 'Mô phỏng hệ số nhị thức & khai triển Newton tới n = 50.',
+                descEn: 'Binomial coefficient simulator & Newton expansion up to n = 50.'
+            }
+            // Thêm trang ẩn khác tại đây...
+        ];
+
+        let secretMenuBackdropEl = null;
+        let secretMenuLastFocus = null;
+
+        function buildSecretMenu() {
+            if (secretMenuBackdropEl) return;
+
+            const backdrop = document.createElement('div');
+            backdrop.className = 'secret-menu-backdrop';
+            backdrop.id = 'secret-menu-backdrop';
+
+            const cardsHtml = HIDDEN_PAGES.map(page => `
+                <a class="secret-menu-card" href="${page.url}">
+                    <div class="secret-menu-card-icon"><i class="${page.icon}"></i></div>
+                    <div class="secret-menu-card-text">
+                        <h3 data-vi="${page.titleVi}" data-en="${page.titleEn}">${page.titleVi}</h3>
+                        <p data-vi="${page.descVi}" data-en="${page.descEn}">${page.descVi}</p>
+                    </div>
+                    <i class="fas fa-arrow-right secret-menu-card-arrow"></i>
+                </a>
+            `).join('');
+
+            backdrop.innerHTML = `
+                <div class="secret-menu" role="dialog" aria-modal="true" aria-labelledby="secret-menu-title">
+                    <button class="secret-menu-close" id="secret-menu-close" aria-label="Đóng" data-aria-vi="Đóng" data-aria-en="Close">
+                        <i class="fas fa-xmark"></i>
+                    </button>
+                    <div class="secret-menu-header">
+                        <div class="secret-menu-tag">// SYSTEM.ACCESS_GRANTED</div>
+                        <h2 id="secret-menu-title" data-vi="Trang Ẩn" data-en="Hidden Pages">Trang Ẩn</h2>
+                        <p data-vi="Khu vực riêng tư, không xuất hiện trong menu chính." data-en="A private area, not listed in the main menu.">Khu vực riêng tư, không xuất hiện trong menu chính.</p>
+                    </div>
+                    <div class="secret-menu-grid">${cardsHtml}</div>
+                </div>
+            `;
+
+            document.body.appendChild(backdrop);
+            secretMenuBackdropEl = backdrop;
+
+            backdrop.addEventListener('click', (e) => {
+                if (e.target === backdrop) closeSecretMenu();
+            });
+            backdrop.querySelector('#secret-menu-close').addEventListener('click', closeSecretMenu);
+
+            applyLanguage(getCurrentLang());
+        }
+
+        function openSecretMenu() {
+            buildSecretMenu();
+            secretMenuLastFocus = document.activeElement;
+            secretMenuBackdropEl.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            const closeBtn = secretMenuBackdropEl.querySelector('#secret-menu-close');
+            if (closeBtn) closeBtn.focus();
+        }
+
+        function closeSecretMenu() {
+            if (!secretMenuBackdropEl || !secretMenuBackdropEl.classList.contains('active')) return;
+            secretMenuBackdropEl.classList.remove('active');
+            document.body.style.overflow = '';
+            if (secretMenuLastFocus && typeof secretMenuLastFocus.focus === 'function') {
+                secretMenuLastFocus.focus();
+            }
+        }
+
+        function toggleSecretMenu() {
+            if (secretMenuBackdropEl && secretMenuBackdropEl.classList.contains('active')) {
+                closeSecretMenu();
+            } else {
+                openSecretMenu();
+            }
+        }
+
+        // Bắt tổ hợp phím Ctrl + Alt + Shift: chỉ kích hoạt khi CẢ BA cùng
+        // chuyển sang trạng thái được giữ (tránh việc lặp lại do giữ phím lâu)
+        const secretModState = { ctrl: false, alt: false, shift: false };
+        let secretComboArmed = false;
+
+        function evaluateSecretCombo() {
+            const allDown = secretModState.ctrl && secretModState.alt && secretModState.shift;
+            if (allDown && !secretComboArmed) {
+                secretComboArmed = true;
+                toggleSecretMenu();
+            } else if (!allDown) {
+                secretComboArmed = false;
+            }
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Control') secretModState.ctrl = true;
+            else if (e.key === 'Alt') secretModState.alt = true;
+            else if (e.key === 'Shift') secretModState.shift = true;
+            else return;
+            evaluateSecretCombo();
+        });
+
+        window.addEventListener('keyup', (e) => {
+            if (e.key === 'Control') secretModState.ctrl = false;
+            else if (e.key === 'Alt') secretModState.alt = false;
+            else if (e.key === 'Shift') secretModState.shift = false;
+        });
+
+        window.addEventListener('blur', () => {
+            secretModState.ctrl = secretModState.alt = secretModState.shift = false;
+            secretComboArmed = false;
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeSecretMenu();
+        });
+
+        const secretAccessDot = document.getElementById('secret-access-dot');
+        if (secretAccessDot) {
+            secretAccessDot.addEventListener('click', toggleSecretMenu);
+        }
     });
 
     // Service Worker Registration

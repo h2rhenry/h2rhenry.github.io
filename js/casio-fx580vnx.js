@@ -76,6 +76,23 @@
     return s;
   }
 
+  /** Xóa thông minh: nếu cuối biểu thức là hàm (sin(, cos(, …) thì xóa cả cụm */
+  function smartDelete(s) {
+    if (!s) return '';
+    // Danh sách token hàm (ưu tiên dài trước để khớp asin trước sin)
+    const fnTokens = [
+      'asin(', 'acos(', 'atan(', 'arcsin(', 'arccos(', 'arctan(',
+      'sqrt(', 'exp(', 'log(', 'ln(', 'abs(', 'fact(',
+      'sin(', 'cos(', 'tan(', '10^(',
+      '×10^', 'Ans', 'pi', 'π'
+    ];
+    for (const tok of fnTokens) {
+      if (s.endsWith(tok)) return s.slice(0, -tok.length);
+    }
+    // Xóa cả cụm số (vd: 3.14) nếu muốn — tạm thời chỉ 1 ký tự cho số/toán tử
+    return s.slice(0, -1);
+  }
+
   // ---------- Complex arithmetic ----------
   const C = {
     of(re, im = 0) { return { re: +re || 0, im: +im || 0 }; },
@@ -304,12 +321,20 @@
     });
     while (c.length > 1 && Math.abs(c[0]) < 1e-14) c.shift();
     const deg = c.length - 1;
-    if (deg < 1) return ['Not an equation'];
+
+    // Phương trình hằng số: 0 = 0 → vô số nghiệm; c = 0 (c≠0) → vô nghiệm
+    if (deg < 1) {
+      if (Math.abs(c[0] || 0) < 1e-14) return [{ type: 'infinite' }];
+      return [{ type: 'none' }];
+    }
 
     if (deg === 1) {
       // a x + b = 0
       const [a, b] = c;
-      if (Math.abs(a) < 1e-14) return ['No solution / Infinite'];
+      if (Math.abs(a) < 1e-14) {
+        if (Math.abs(b) < 1e-14) return [{ type: 'infinite' }];
+        return [{ type: 'none' }];
+      }
       return [-b / a];
     }
     if (deg === 2) {
@@ -400,23 +425,37 @@
   function solveSystem(A, b) {
     const n = A.length;
     const M = A.map((row, i) => [...row.map(Number), Number(b[i])]);
+    let rank = 0;
+
     for (let col = 0; col < n; col++) {
-      // pivot
-      let maxRow = col;
-      for (let r = col + 1; r < n; r++) {
+      // pivot: tìm hàng có |phần tử| lớn nhất từ rank trở xuống
+      let maxRow = rank;
+      for (let r = rank + 1; r < n; r++) {
         if (Math.abs(M[r][col]) > Math.abs(M[maxRow][col])) maxRow = r;
       }
-      [M[col], M[maxRow]] = [M[maxRow], M[col]];
-      if (Math.abs(M[col][col]) < 1e-12) return { error: 'Singular / No unique solution' };
-      const pivot = M[col][col];
-      for (let j = col; j <= n; j++) M[col][j] /= pivot;
+      if (Math.abs(M[maxRow][col]) < 1e-12) continue; // cột này không có pivot
+
+      [M[rank], M[maxRow]] = [M[maxRow], M[rank]];
+      const pivot = M[rank][col];
+      for (let j = col; j <= n; j++) M[rank][j] /= pivot;
       for (let r = 0; r < n; r++) {
-        if (r === col) continue;
+        if (r === rank) continue;
         const factor = M[r][col];
-        for (let j = col; j <= n; j++) M[r][j] -= factor * M[col][j];
+        for (let j = col; j <= n; j++) M[r][j] -= factor * M[rank][j];
+      }
+      rank++;
+    }
+
+    // Kiểm tra hàng toàn 0: 0 = b?
+    for (let r = rank; r < n; r++) {
+      if (Math.abs(M[r][n]) > 1e-10) {
+        return { type: 'none' }; // 0 = số khác 0 → vô nghiệm
       }
     }
-    return M.map(row => row[n]);
+    if (rank < n) {
+      return { type: 'infinite' }; // còn biến tự do → vô số nghiệm
+    }
+    return { type: 'unique', values: M.map(row => row[n]) };
   }
 
   // ---------- Matrix ops ----------
@@ -740,6 +779,16 @@
     ov.querySelectorAll('#casio-mode-bar span[data-m]').forEach(sp => {
       sp.addEventListener('click', () => setMode(sp.dataset.m));
     });
+    // Click DEG/RAD badge to toggle
+    const angBtn = ov.querySelector('#casio-ang');
+    if (angBtn) {
+      angBtn.style.cursor = 'pointer';
+      angBtn.title = 'Bấm để đổi DEG ↔ RAD';
+      angBtn.addEventListener('click', () => {
+        angleMode = angleMode === 'DEG' ? 'RAD' : 'DEG';
+        updateScreen();
+      });
+    }
   }
 
   function updateScreen() {
@@ -868,11 +917,15 @@
           const inputs = [...panel.querySelectorAll('#poly-coeffs input')];
           const coeffs = inputs.map(i => parseFloat(i.value) || 0);
           const roots = solvePoly(coeffs);
-          if (roots[0] && typeof roots[0] === 'string') {
+          if (roots[0] && roots[0].type === 'none') {
+            out.textContent = 'Vô nghiệm';
+          } else if (roots[0] && roots[0].type === 'infinite') {
+            out.textContent = 'Vô số nghiệm';
+          } else if (roots[0] && typeof roots[0] === 'string') {
             out.textContent = roots[0];
           } else {
             out.textContent = roots.map((r, i) => {
-              if (typeof r === 'object') return `x${i + 1} = ${fmt(r)}`;
+              if (typeof r === 'object' && r !== null && 're' in r) return `x${i + 1} = ${fmt(r)}`;
               return `x${i + 1} = ${fmt(r)}`;
             }).join('\n');
           }
@@ -885,8 +938,15 @@
             else A[+inp.dataset.r][+inp.dataset.c] = parseFloat(inp.value) || 0;
           });
           const sol = solveSystem(A, b);
-          if (sol.error) out.textContent = sol.error;
-          else out.textContent = sol.map((v, i) => `x${i + 1} = ${fmt(v)}`).join('\n');
+          if (sol.type === 'none') {
+            out.textContent = 'Vô nghiệm';
+          } else if (sol.type === 'infinite') {
+            out.textContent = 'Vô số nghiệm';
+          } else if (sol.type === 'unique') {
+            out.textContent = sol.values.map((v, i) => `x${i + 1} = ${fmt(v)}`).join('\n');
+          } else {
+            out.textContent = 'Không xác định được nghiệm';
+          }
         }
       } catch (e) {
         out.textContent = 'Error: ' + e.message;
@@ -1025,7 +1085,13 @@
       return;
     }
     if (kb.id === 'mode') {
-      // cycle modes
+      // SHIFT + MODE → đổi DEG/RAD; MODE thường → đổi chế độ tính
+      if (shift) {
+        shift = false;
+        angleMode = angleMode === 'DEG' ? 'RAD' : 'DEG';
+        updateScreen();
+        return;
+      }
       const modes = ['COMP', 'EQN', 'MATRIX', 'COMPLEX', 'DERIV'];
       const idx = modes.indexOf(mode);
       setMode(modes[(idx + 1) % modes.length]);
@@ -1039,7 +1105,7 @@
       return;
     }
     if (kb.id === 'del') {
-      expr = expr.slice(0, -1);
+      expr = smartDelete(expr);
       updateScreen();
       return;
     }
@@ -1134,7 +1200,7 @@
     if (e.key in map) {
       e.preventDefault();
       if (map[e.key] === '=') doCalc();
-      else if (map[e.key] === 'DEL') { expr = expr.slice(0, -1); updateScreen(); }
+      else if (map[e.key] === 'DEL') { expr = smartDelete(expr); updateScreen(); }
       else if (map[e.key] === 'AC') { expr = ''; result = '0'; updateScreen(); }
       else { expr += map[e.key]; updateScreen(); }
     }

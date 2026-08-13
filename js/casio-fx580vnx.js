@@ -102,7 +102,12 @@
 
   // ---------- Complex arithmetic ----------
   const C = {
-    of(re, im = 0) { return { re: +re || 0, im: +im || 0 }; },
+    of(re, im = 0) {
+      // Không dùng `|| 0` — NaN/Infinity sẽ bị biến thành 0
+      const r = (re === undefined || re === null || re === '') ? 0 : +re;
+      const i = (im === undefined || im === null || im === '') ? 0 : +im;
+      return { re: r, im: i };
+    },
     add(a, b) { return C.of(a.re + b.re, a.im + b.im); },
     sub(a, b) { return C.of(a.re - b.re, a.im - b.im); },
     mul(a, b) {

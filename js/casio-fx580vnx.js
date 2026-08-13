@@ -60,12 +60,14 @@
   }
   function fmt(n) {
     if (typeof n === 'object' && n !== null && 're' in n) {
+      if (Number.isNaN(n.re) || Number.isNaN(n.im)) return 'Math ERROR';
       const re = fmt(n.re);
       const im = fmt(Math.abs(n.im));
       if (Math.abs(n.im) < 1e-12) return re;
       if (Math.abs(n.re) < 1e-12) return (n.im < 0 ? '-' : '') + im + 'i';
       return re + (n.im < 0 ? ' - ' : ' + ') + im + 'i';
     }
+    if (Number.isNaN(n)) return 'Math ERROR';
     if (!isFinite(n)) return n > 0 ? 'Infinity' : '-Infinity';
     if (Math.abs(n) < 1e-12) return '0';
     if (Math.abs(n) >= 1e10 || (Math.abs(n) < 1e-6 && n !== 0)) {
@@ -76,11 +78,16 @@
     return s;
   }
 
+  function isReal(a) {
+    return a && typeof a === 'object' && Math.abs(a.im || 0) < 1e-12;
+  }
+
   /** Xóa thông minh: nếu cuối biểu thức là hàm (sin(, cos(, …) thì xóa cả cụm */
   function smartDelete(s) {
     if (!s) return '';
     // Danh sách token hàm (ưu tiên dài trước để khớp asin trước sin)
     const fnTokens = [
+      'sin⁻¹(', 'cos⁻¹(', 'tan⁻¹(',
       'asin(', 'acos(', 'atan(', 'arcsin(', 'arccos(', 'arctan(',
       'sqrt(', 'exp(', 'log(', 'ln(', 'abs(', 'fact(',
       'sin(', 'cos(', 'tan(', '10^(',
@@ -220,20 +227,22 @@
     function callFn(name, args) {
       const a = args[0] || C.of(0);
       switch (name) {
-        case 'sin': return angleMode === 'DEG' && a.im === 0 ? C.of(Math.sin(toRad(a.re))) : C.sin(a);
-        case 'cos': return angleMode === 'DEG' && a.im === 0 ? C.of(Math.cos(toRad(a.re))) : C.cos(a);
-        case 'tan': return angleMode === 'DEG' && a.im === 0 ? C.of(Math.tan(toRad(a.re))) : C.tan(a);
-        case 'asin': case 'arcsin': {
-          const v = a.im === 0 ? Math.asin(a.re) : null;
-          return v !== null ? C.of(fromRad(v)) : C.of(NaN);
+        case 'sin': return isReal(a) && angleMode === 'DEG' ? C.of(Math.sin(toRad(a.re))) : C.sin(a);
+        case 'cos': return isReal(a) && angleMode === 'DEG' ? C.of(Math.cos(toRad(a.re))) : C.cos(a);
+        case 'tan': return isReal(a) && angleMode === 'DEG' ? C.of(Math.tan(toRad(a.re))) : C.tan(a);
+        case 'asin': case 'arcsin': case 'sin⁻¹': case 'sin-1': {
+          if (!isReal(a)) return C.of(NaN);
+          if (a.re < -1 || a.re > 1) return C.of(NaN); // domain
+          return C.of(fromRad(Math.asin(a.re)));
         }
-        case 'acos': case 'arccos': {
-          const v = a.im === 0 ? Math.acos(a.re) : null;
-          return v !== null ? C.of(fromRad(v)) : C.of(NaN);
+        case 'acos': case 'arccos': case 'cos⁻¹': case 'cos-1': {
+          if (!isReal(a)) return C.of(NaN);
+          if (a.re < -1 || a.re > 1) return C.of(NaN);
+          return C.of(fromRad(Math.acos(a.re)));
         }
-        case 'atan': case 'arctan': {
-          const v = a.im === 0 ? Math.atan(a.re) : null;
-          return v !== null ? C.of(fromRad(v)) : C.of(NaN);
+        case 'atan': case 'arctan': case 'tan⁻¹': case 'tan-1': {
+          if (!isReal(a)) return C.of(NaN);
+          return C.of(fromRad(Math.atan(a.re)));
         }
         case 'log': case 'log10': return a.im === 0 ? C.of(Math.log10(a.re)) : C.div(C.log(a), C.of(Math.LN10));
         case 'ln': case 'log_e': return C.log(a);
@@ -299,12 +308,31 @@
   function evaluate(str) {
     try {
       if (!str.trim()) return C.of(0);
-      // replace some Casio-like tokens
+      // Chuẩn hóa ký hiệu Casio / Unicode → tên hàm parser hiểu được
       str = str
         .replace(/Ans/gi, '(' + (history.length ? history[history.length - 1] : 0) + ')')
         .replace(/×10\^/g, '*10^')
         .replace(/(\d)π/g, '$1*pi')
-        .replace(/π(\d)/g, 'pi*$1');
+        .replace(/π(\d)/g, 'pi*$1')
+        // sin⁻¹ / cos⁻¹ / tan⁻¹ (và dạng sin-1)
+        .replace(/sin\s*⁻\s*¹/gi, 'asin')
+        .replace(/cos\s*⁻\s*¹/gi, 'acos')
+        .replace(/tan\s*⁻\s*¹/gi, 'atan')
+        .replace(/sin\s*-\s*1/gi, 'asin')
+        .replace(/cos\s*-\s*1/gi, 'acos')
+        .replace(/tan\s*-\s*1/gi, 'atan')
+        .replace(/arcsin/gi, 'asin')
+        .replace(/arccos/gi, 'acos')
+        .replace(/arctan/gi, 'atan');
+
+      // Tự đóng ngoặc còn thiếu (vd: asin(0.5  → asin(0.5))
+      let open = 0;
+      for (const ch of str) {
+        if (ch === '(') open++;
+        else if (ch === ')') open--;
+      }
+      if (open > 0) str += ')'.repeat(open);
+
       const tokens = tokenize(str);
       return parseExpr(tokens);
     } catch (e) {
@@ -1118,9 +1146,9 @@
     if (shift) {
       shift = false;
       const map = {
-        'sin(': 'asin(',
-        'cos(': 'acos(',
-        'tan(': 'atan(',
+        'sin(': 'sin⁻¹(',
+        'cos(': 'cos⁻¹(',
+        'tan(': 'tan⁻¹(',
         'log(': '10^(',
         'ln(': 'exp(',
         '^2': '^3',

@@ -150,6 +150,14 @@
         const spotifyTimeCurrent = document.getElementById('spotify-time-current');
         const spotifyTimeTotal = document.getElementById('spotify-time-total');
         const spotifyWaveform = document.getElementById('spotify-waveform');
+        const discordCustomStatus = document.getElementById('discord-custom-status');
+        const gameCard = document.getElementById('discord-game-card');
+        const gameIcon = document.getElementById('discord-game-icon');
+        const gameBadge = document.getElementById('discord-game-badge');
+        const gameName = document.getElementById('discord-game-name');
+        const gameDetails = document.getElementById('discord-game-details');
+        const gameState = document.getElementById('discord-game-state');
+        const gameElapsed = document.getElementById('discord-game-elapsed');
 
         let lastDiscordData = null;
 
@@ -171,6 +179,28 @@
             return minutes + ':' + String(seconds).padStart(2, '0');
         }
 
+        function formatElapsed(ms) {
+            const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+            const h = Math.floor(totalSeconds / 3600);
+            const m = Math.floor((totalSeconds % 3600) / 60);
+            const s = totalSeconds % 60;
+            if (h > 0) return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+            return `${m}:${String(s).padStart(2, '0')}`;
+        }
+
+        // Ảnh Rich Presence có thể là ID app-asset của Discord, hoặc bắt đầu bằng
+        // "mp:" (external media proxy) — cần dựng URL khác nhau cho từng trường hợp.
+        function discordAssetUrl(applicationId, assetKey, size = 128) {
+            if (!assetKey) return null;
+            if (assetKey.startsWith('mp:')) {
+                return `https://media.discordapp.net/${assetKey.slice(3)}`;
+            }
+            if (assetKey.startsWith('spotify:')) {
+                return `https://i.scdn.co/image/${assetKey.slice(8)}`;
+            }
+            return `https://cdn.discordapp.com/app-assets/${applicationId}/${assetKey}.png?size=${size}`;
+        }
+
         function updateSpotifyProgress() {
             if (!lastDiscordData || !lastDiscordData.spotify || !lastDiscordData.spotify.timestamps) return;
             const { start, end } = lastDiscordData.spotify.timestamps;
@@ -182,6 +212,17 @@
             if (spotifyProgressFill) spotifyProgressFill.style.width = (elapsed / total * 100) + '%';
             if (spotifyTimeCurrent) spotifyTimeCurrent.textContent = formatMs(elapsed);
             if (spotifyTimeTotal) spotifyTimeTotal.textContent = formatMs(total);
+        }
+
+        function updateGameElapsed() {
+            if (!lastDiscordData) return;
+            const activity = (lastDiscordData.activities || []).find(a => a.type === 0);
+            if (!activity || !activity.timestamps || !activity.timestamps.start || !gameElapsed) return;
+            const lang = getCurrentLang();
+            const elapsed = Date.now() - activity.timestamps.start;
+            if (elapsed < 0) return;
+            gameElapsed.style.display = 'block';
+            gameElapsed.textContent = (lang === 'en' ? '⏱ ' : '⏱ Đã chơi ') + formatElapsed(elapsed);
         }
 
         function renderDiscordStatus(data) {
@@ -199,11 +240,45 @@
             const status = data.discord_status || 'offline';
             if (discordDot) discordDot.className = 'discord-status-dot ' + status;
 
+            const activities = data.activities || [];
             const spotify = data.spotify;
-            const activity = (data.activities || []).find(a => a.type === 0);
+            const gameActivity = activities.find(a => a.type === 0);
+            const customStatus = activities.find(a => a.type === 4);
 
+            // --- Custom status (dòng chữ trạng thái tự đặt, có thể kèm emoji) ---
+            if (discordCustomStatus) {
+                if (customStatus && (customStatus.state || customStatus.emoji)) {
+                    let html = '';
+                    if (customStatus.emoji) {
+                        if (customStatus.emoji.id) {
+                            const ext = customStatus.emoji.animated ? 'gif' : 'png';
+                            html += `<img class="emoji" src="https://cdn.discordapp.com/emojis/${customStatus.emoji.id}.${ext}" alt="">`;
+                        } else if (customStatus.emoji.name) {
+                            html += customStatus.emoji.name + ' ';
+                        }
+                    }
+                    html += (customStatus.state || '');
+                    discordCustomStatus.innerHTML = html;
+                    discordCustomStatus.style.display = 'block';
+                } else {
+                    discordCustomStatus.style.display = 'none';
+                }
+            }
+
+            // --- Trạng thái chữ ngắn gọn cạnh avatar ---
+            if (discordActivity) {
+                if (spotify) {
+                    discordActivity.textContent = lang === 'en' ? '🎧 Listening to Spotify' : '🎧 Đang nghe Spotify';
+                } else if (gameActivity) {
+                    discordActivity.textContent = (lang === 'en' ? '🎮 Playing ' : '🎮 Đang chơi ') + gameActivity.name;
+                } else {
+                    const label = statusLabels[status] || statusLabels.offline;
+                    discordActivity.textContent = label[lang];
+                }
+            }
+
+            // --- Spotify player ---
             if (spotify && spotifyPlayer) {
-                if (discordActivity) discordActivity.textContent = lang === 'en' ? '🎧 Listening to Spotify' : '🎧 Đang nghe Spotify';
                 if (spotifyArt) spotifyArt.src = spotify.album_art_url || '';
                 if (spotifyTrack) spotifyTrack.textContent = spotify.song || '';
                 if (spotifyArtist) spotifyArtist.textContent = spotify.artist || '';
@@ -213,15 +288,49 @@
             } else {
                 if (spotifyWaveform) spotifyWaveform.classList.remove('playing');
                 if (spotifyPlayer) spotifyPlayer.style.display = 'none';
+            }
 
-                if (discordActivity) {
-                    if (activity) {
-                        discordActivity.textContent = (lang === 'en' ? '🎮 Playing ' : '🎮 Đang chơi ') + activity.name;
+            // --- Game Rich Presence card (đầy đủ như popup Discord: icon, badge, details, state, thời gian) ---
+            if (gameActivity && gameCard) {
+                const appId = gameActivity.application_id;
+                const assets = gameActivity.assets || {};
+                const largeUrl = discordAssetUrl(appId, assets.large_image);
+                const smallUrl = discordAssetUrl(appId, assets.small_image);
+
+                if (gameIcon) {
+                    if (largeUrl) {
+                        gameIcon.src = largeUrl;
+                        gameIcon.alt = assets.large_text || gameActivity.name;
+                        gameIcon.style.display = 'block';
                     } else {
-                        const label = statusLabels[status] || statusLabels.offline;
-                        discordActivity.textContent = label[lang];
+                        // Không có icon rich presence -> icon mặc định (controller)
+                        gameIcon.src = 'https://cdn.discordapp.com/embed/avatars/0.png';
+                        gameIcon.alt = gameActivity.name;
                     }
                 }
+                if (gameBadge) {
+                    if (smallUrl) {
+                        gameBadge.src = smallUrl;
+                        gameBadge.alt = assets.small_text || '';
+                        gameBadge.style.display = 'block';
+                    } else {
+                        gameBadge.style.display = 'none';
+                    }
+                }
+                if (gameName) gameName.textContent = gameActivity.name || '';
+                if (gameDetails) {
+                    if (gameActivity.details) { gameDetails.textContent = gameActivity.details; gameDetails.style.display = 'block'; }
+                    else gameDetails.style.display = 'none';
+                }
+                if (gameState) {
+                    if (gameActivity.state) { gameState.textContent = gameActivity.state; gameState.style.display = 'block'; }
+                    else gameState.style.display = 'none';
+                }
+                gameCard.style.display = 'flex';
+                updateGameElapsed();
+            } else if (gameCard) {
+                gameCard.style.display = 'none';
+                if (gameElapsed) gameElapsed.style.display = 'none';
             }
         }
 
@@ -244,6 +353,7 @@
         fetchDiscordStatus();
         setInterval(fetchDiscordStatus, 20000);
         setInterval(updateSpotifyProgress, 1000);
+        setInterval(updateGameElapsed, 1000);
 
         // Smooth Scroll To Section Without Leaving #hash In The URL
         const navbarEl = document.querySelector('.navbar');

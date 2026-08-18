@@ -225,6 +225,27 @@
             gameElapsed.textContent = (lang === 'en' ? '⏱ ' : '⏱ Đã chơi ') + formatElapsed(elapsed);
         }
 
+        // Bản đồ icon dự phòng cho các game KHÔNG có Rich Presence assets thật từ
+        // Discord (ví dụ Minecraft bản vanilla: Discord chỉ tự nhận diện tên tiến
+        // trình đang chạy trên máy, không gửi kèm ảnh qua API cho bên thứ ba).
+        // Icon đó Henry thấy trong app Discord là do chính app tra cứu ngầm từ một
+        // danh sách nội bộ, không public qua Lanyard/API nên không thể lấy tự động.
+        //
+        // Cách thêm game mới: lưu 1 ảnh vuông (khuyên dùng 128x128, do Henry tự
+        // chuẩn bị/có quyền sử dụng) vào thư mục assets/game-icons/ trong repo,
+        // rồi thêm 1 dòng vào bảng dưới — key là TÊN GAME viết thường, đúng như
+        // Discord hiển thị (activity.name).
+        const GAME_ICON_OVERRIDES = {
+            'minecraft': '/assets/game-icons/minecraft.png',
+        };
+
+        function resolveGameIconUrl(activity) {
+            const richUrl = discordAssetUrl(activity.application_id, (activity.assets || {}).large_image);
+            if (richUrl) return richUrl;
+            const key = (activity.name || '').trim().toLowerCase();
+            return GAME_ICON_OVERRIDES[key] || null;
+        }
+
         function renderDiscordStatus(data) {
             if (!data) return;
             const lang = getCurrentLang();
@@ -294,16 +315,21 @@
             if (gameActivity && gameCard) {
                 const appId = gameActivity.application_id;
                 const assets = gameActivity.assets || {};
-                const largeUrl = discordAssetUrl(appId, assets.large_image);
                 const smallUrl = discordAssetUrl(appId, assets.small_image);
+                const iconUrl = resolveGameIconUrl(gameActivity);
 
                 if (gameIcon) {
-                    if (largeUrl) {
-                        gameIcon.src = largeUrl;
+                    gameIcon.onerror = null;
+                    if (iconUrl) {
+                        gameIcon.src = iconUrl;
                         gameIcon.alt = assets.large_text || gameActivity.name;
-                        gameIcon.style.display = 'block';
+                        // Nếu icon (rich presence hoặc file tự host) lỗi/thiếu -> rơi về icon mặc định
+                        gameIcon.onerror = () => {
+                            gameIcon.onerror = null;
+                            gameIcon.src = 'https://cdn.discordapp.com/embed/avatars/0.png';
+                        };
                     } else {
-                        // Không có icon rich presence -> icon mặc định (controller)
+                        // Không có icon rich presence lẫn icon dự phòng -> icon mặc định
                         gameIcon.src = 'https://cdn.discordapp.com/embed/avatars/0.png';
                         gameIcon.alt = gameActivity.name;
                     }

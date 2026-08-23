@@ -652,14 +652,20 @@
         //    rồi bỏ các file .mp3 vào đó.
         // 2. Đổi giá trị MUSIC_FOLDER bên dưới thành đường dẫn thư mục đó
         //    (luôn kết thúc bằng dấu "/").
-        // 3. Thêm mỗi bài hát vào mảng PLAYLIST theo mẫu:
+        // 3. (Tuỳ chọn) Nếu muốn để ảnh bìa trong MỘT thư mục riêng, ví dụ
+        //    assets/music/covers/, đổi MUSIC_COVER_FOLDER thành đường dẫn đó.
+        // 4. Thêm mỗi bài hát vào mảng PLAYLIST theo mẫu:
         //      {
         //          title: 'Tên bài hát',
         //          artist: 'Tên ca sĩ / nguồn',
         //          src: 'ten-file.mp3',      // tên file trong MUSIC_FOLDER
-        //          cover: ''                 // (tuỳ chọn) URL ảnh bìa, để trống sẽ dùng icon đĩa nhạc mặc định
+        //          cover: 'ten-anh-bia.jpg'  // (tuỳ chọn) tên file trong MUSIC_COVER_FOLDER
         //      }
-        // 4. Có thể để "cover" trỏ tới ảnh trong assets/ hoặc link ảnh online.
+        //    Với "cover", có 3 cách dùng:
+        //      - Để trống ''            -> dùng icon đĩa nhạc mặc định.
+        //      - Chỉ tên file, ví dụ 'bia1.jpg' -> tự động ghép với MUSIC_COVER_FOLDER.
+        //      - Dán thẳng link ảnh online (bắt đầu bằng "http") -> dùng nguyên link đó,
+        //        KHÔNG ghép với MUSIC_COVER_FOLDER.
         // Danh sách để trống -> khung nghe nhạc vẫn hiển thị nhưng ở trạng thái
         // "Chưa có bài hát", không có gì phát cho tới khi bạn điền dữ liệu.
         // ============================================================
@@ -669,6 +675,12 @@
             { title: 'Nevada', artist: 'Vicetone', src: 'Nevada.mp3', cover: '1.webp' },
             // { title: 'Tên bài hát 2', artist: 'Nghệ sĩ', src: 'bai-hat-2.mp3', cover: '' },
         ];
+
+        function resolveMusicCoverUrl(cover) {
+            if (!cover) return '';
+            if (/^https?:\/\//i.test(cover)) return cover;
+            return MUSIC_COVER_FOLDER + cover;
+        }
 
         (function initMusicPlayer() {
             const player = document.getElementById('music-player');
@@ -751,7 +763,7 @@
                 artistEl.textContent = track.artist || '';
 
                 if (track.cover) {
-                    artImg.src = track.cover;
+                    artImg.src = resolveMusicCoverUrl(track.cover);
                     artImg.style.display = 'block';
                     artFallback.style.display = 'none';
                 } else {

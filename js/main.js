@@ -664,8 +664,9 @@
         // "Chưa có bài hát", không có gì phát cho tới khi bạn điền dữ liệu.
         // ============================================================
         const MUSIC_FOLDER = 'assets/music/';
+        const MUSIC_COVER_FOLDER = 'assets/music/covers/';
         const PLAYLIST = [
-            // { title: 'Tên bài hát', artist: 'Nghệ sĩ', src: 'bai-hat-1.mp3', cover: '' },
+            { title: 'Nevada', artist: 'Vicetone', src: 'Nevada.mp3', cover: '1.webp' },
             // { title: 'Tên bài hát 2', artist: 'Nghệ sĩ', src: 'bai-hat-2.mp3', cover: '' },
         ];
 

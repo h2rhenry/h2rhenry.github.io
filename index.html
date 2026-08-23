@@ -24,7 +24,7 @@
     <link rel="icon" href="https://i.postimg.cc/9MjPYrYr/IMG-20260217-140516-842.webp" type="image/webp">
     <link rel="apple-touch-icon" href="https://i.postimg.cc/9MjPYrYr/IMG-20260217-140516-842.webp">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="css/style.css?v=5">
+    <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
     <div id="scroll-progress"></div>
@@ -72,61 +72,115 @@
     </nav>
 
     <header id="home" class="hero fade-in-up">
-        <div class="avatar-wrapper">
-            <img src="https://i.postimg.cc/9MjPYrYr/IMG-20260217-140516-842.webp" alt="Avatar Hoàng Hải" class="avatar">
-        </div>
-        <h1 data-vi="Hi! Tôi là <span>Hoàng Hải (h2rhenry)</span>" data-en="Hi! I'm <span>Hoàng Hải (h2rhenry)</span>">Hi! Tôi là <span>Hoàng Hải (h2rhenry)</span></h1>
-        <div class="tagline">Vibe coder & Minecraft Server Dev</div>
-        <p class="description" data-vi="Đam mê tối ưu hóa hệ thống, phát triển các tính năng máy chủ tùy biến bằng ngôn ngữ cấu trúc logic và tạo dựng trải nghiệm visual ấn tượng thông qua nghệ thuật kỹ thuật số." data-en="Passionate about system optimization, building custom server features with logic-based scripting languages, and crafting striking visual experiences through digital art.">
-            Đam mê tối ưu hóa hệ thống, phát triển các tính năng máy chủ tùy biến bằng ngôn ngữ cấu trúc logic và tạo dựng trải nghiệm visual ấn tượng thông qua nghệ thuật kỹ thuật số.
-        </p>
-        <div class="social-icons">
-            <a href="https://github.com/h2rhenry" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Github"><i class="fab fa-github"></i></a>
-            <a href="https://www.facebook.com/h2r.henry/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://discord.gg/6araPUDjE2" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Discord"><i class="fab fa-discord"></i></a>
-        </div>
-
-        <div class="discord-status" id="discord-status">
-            <div class="discord-status-avatar-wrap">
-                <img id="discord-avatar" class="discord-status-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Discord avatar">
-                <span class="discord-status-dot" id="discord-status-dot"></span>
+        <div class="hero-top">
+            <div class="hero-left">
+                <div class="avatar-wrapper">
+                    <img src="https://i.postimg.cc/9MjPYrYr/IMG-20260217-140516-842.webp" alt="Avatar Hoàng Hải" class="avatar">
+                </div>
+                <h1 data-vi="Hi! Tôi là <span>Hoàng Hải (h2rhenry)</span>" data-en="Hi! I'm <span>Hoàng Hải (h2rhenry)</span>">Hi! Tôi là <span>Hoàng Hải (h2rhenry)</span></h1>
+                <div class="tagline">Vibe coder & Minecraft Server Dev</div>
             </div>
-            <div class="discord-status-text">
-                <div class="discord-status-name" id="discord-username">Discord</div>
-                <div class="discord-status-activity" id="discord-activity">Đang tải trạng thái...</div>
-                <div class="discord-custom-status" id="discord-custom-status" style="display:none;"></div>
-            </div>
-        </div>
 
-        <div class="spotify-player" id="spotify-player" style="display:none;">
-            <img class="spotify-art" id="spotify-art" src="" alt="Album art">
-            <div class="spotify-info">
-                <div class="spotify-track" id="spotify-track"></div>
-                <div class="spotify-artist" id="spotify-artist"></div>
-                <div class="spotify-progress-row">
-                    <span class="spotify-time" id="spotify-time-current">0:00</span>
-                    <div class="spotify-progress-bg">
-                        <div class="spotify-progress-fill" id="spotify-progress-fill"></div>
+            <div class="hero-right">
+                <p class="description" data-vi="Đam mê tối ưu hóa hệ thống, phát triển các tính năng máy chủ tùy biến bằng ngôn ngữ cấu trúc logic và tạo dựng trải nghiệm visual ấn tượng thông qua nghệ thuật kỹ thuật số." data-en="Passionate about system optimization, building custom server features with logic-based scripting languages, and crafting striking visual experiences through digital art.">
+                    Đam mê tối ưu hóa hệ thống, phát triển các tính năng máy chủ tùy biến bằng ngôn ngữ cấu trúc logic và tạo dựng trải nghiệm visual ấn tượng thông qua nghệ thuật kỹ thuật số.
+                </p>
+                <div class="social-icons">
+                    <a href="https://github.com/h2rhenry" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Github"><i class="fab fa-github"></i></a>
+                    <a href="https://www.facebook.com/h2r.henry/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://discord.gg/6araPUDjE2" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                </div>
+
+                <div class="discord-status" id="discord-status">
+                    <div class="discord-status-avatar-wrap">
+                        <img id="discord-avatar" class="discord-status-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Discord avatar">
+                        <span class="discord-status-dot" id="discord-status-dot"></span>
                     </div>
-                    <span class="spotify-time" id="spotify-time-total">0:00</span>
+                    <div class="discord-status-text">
+                        <div class="discord-status-name" id="discord-username">Discord</div>
+                        <div class="discord-status-activity" id="discord-activity">Đang tải trạng thái...</div>
+                        <div class="discord-custom-status" id="discord-custom-status" style="display:none;"></div>
+                    </div>
                 </div>
-                <div class="spotify-waveform" id="spotify-waveform">
-                    <span></span><span></span><span></span><span></span><span></span>
+
+                <div class="spotify-player" id="spotify-player" style="display:none;">
+                    <img class="spotify-art" id="spotify-art" src="" alt="Album art">
+                    <div class="spotify-info">
+                        <div class="spotify-track" id="spotify-track"></div>
+                        <div class="spotify-artist" id="spotify-artist"></div>
+                        <div class="spotify-progress-row">
+                            <span class="spotify-time" id="spotify-time-current">0:00</span>
+                            <div class="spotify-progress-bg">
+                                <div class="spotify-progress-fill" id="spotify-progress-fill"></div>
+                            </div>
+                            <span class="spotify-time" id="spotify-time-total">0:00</span>
+                        </div>
+                        <div class="spotify-waveform" id="spotify-waveform">
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="discord-game-card" id="discord-game-card" style="display:none;">
+                    <div class="discord-game-icon-wrap">
+                        <img class="discord-game-icon" id="discord-game-icon" src="" alt="">
+                        <img class="discord-game-badge" id="discord-game-badge" src="" alt="" style="display:none;">
+                    </div>
+                    <div class="discord-game-info">
+                        <div class="discord-game-name" id="discord-game-name"></div>
+                        <div class="discord-game-details" id="discord-game-details" style="display:none;"></div>
+                        <div class="discord-game-state" id="discord-game-state" style="display:none;"></div>
+                        <div class="discord-game-elapsed" id="discord-game-elapsed" style="display:none;"></div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="discord-game-card" id="discord-game-card" style="display:none;">
-            <div class="discord-game-icon-wrap">
-                <img class="discord-game-icon" id="discord-game-icon" src="" alt="">
-                <img class="discord-game-badge" id="discord-game-badge" src="" alt="" style="display:none;">
+        <!-- ============================================================
+             Music Player — nhạc nền của trang
+             Đường dẫn thư mục & danh sách bài hát cấu hình trong js/main.js,
+             tìm hằng số MUSIC_FOLDER và mảng PLAYLIST (có chú thích chi tiết).
+             ============================================================ -->
+        <div class="music-player" id="music-player">
+            <div class="music-player-top">
+                <div class="music-art-wrap" id="music-art-wrap">
+                    <img class="music-art" id="music-art" src="" alt="" style="display:none;">
+                    <i class="fas fa-compact-disc music-art-fallback" id="music-art-fallback"></i>
+                    <div class="music-eq" id="music-eq">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+
+                <div class="music-info">
+                    <div class="music-track" id="music-track" data-vi="Chưa có bài hát" data-en="No track loaded">Chưa có bài hát</div>
+                    <div class="music-artist" id="music-artist" data-vi="Thêm nhạc vào thư mục & cập nhật js/main.js" data-en="Add tracks to the folder & update js/main.js">Thêm nhạc vào thư mục & cập nhật js/main.js</div>
+
+                    <div class="music-progress-row">
+                        <span class="music-time" id="music-time-current">0:00</span>
+                        <div class="music-progress-bg" id="music-progress-bg">
+                            <div class="music-progress-fill" id="music-progress-fill"></div>
+                        </div>
+                        <span class="music-time" id="music-time-total">0:00</span>
+                    </div>
+                </div>
             </div>
-            <div class="discord-game-info">
-                <div class="discord-game-name" id="discord-game-name"></div>
-                <div class="discord-game-details" id="discord-game-details" style="display:none;"></div>
-                <div class="discord-game-state" id="discord-game-state" style="display:none;"></div>
-                <div class="discord-game-elapsed" id="discord-game-elapsed" style="display:none;"></div>
+
+            <div class="music-controls">
+                <button class="music-btn" id="music-shuffle" data-aria-vi="Phát ngẫu nhiên" data-aria-en="Shuffle" aria-label="Phát ngẫu nhiên"><i class="fas fa-shuffle"></i></button>
+                <button class="music-btn" id="music-prev" data-aria-vi="Bài trước" data-aria-en="Previous track" aria-label="Bài trước"><i class="fas fa-backward-step"></i></button>
+                <button class="music-btn music-btn-play" id="music-play" data-aria-vi="Phát / Tạm dừng" data-aria-en="Play / Pause" aria-label="Phát / Tạm dừng"><i class="fas fa-play" id="music-play-icon"></i></button>
+                <button class="music-btn" id="music-next" data-aria-vi="Bài kế tiếp" data-aria-en="Next track" aria-label="Bài kế tiếp"><i class="fas fa-forward-step"></i></button>
+                <button class="music-btn" id="music-repeat" data-aria-vi="Lặp lại" data-aria-en="Repeat" aria-label="Lặp lại"><i class="fas fa-repeat"></i></button>
+
+                <div class="music-volume">
+                    <i class="fas fa-volume-high"></i>
+                    <input type="range" id="music-volume-slider" min="0" max="100" value="70" data-aria-vi="Âm lượng" data-aria-en="Volume" aria-label="Âm lượng">
+                </div>
+
+                <button class="music-btn music-playlist-toggle" id="music-playlist-toggle" data-aria-vi="Danh sách phát" data-aria-en="Playlist" aria-label="Danh sách phát"><i class="fas fa-list-ul"></i></button>
             </div>
+
+            <div class="music-playlist" id="music-playlist"></div>
         </div>
     </header>
 
@@ -335,6 +389,6 @@
         <button class="secret-access-dot" id="secret-access-dot" aria-label="."></button>
     </footer>
 
-    <script src="js/main.js?v=1" defer></script>
+    <script src="js/main.js?v=2" defer></script>
 </body>
 </html>

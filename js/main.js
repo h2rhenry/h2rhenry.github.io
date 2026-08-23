@@ -673,7 +673,7 @@
         const MUSIC_COVER_FOLDER = 'assets/music/covers/';
         const PLAYLIST = [
             { title: 'Nevada', artist: 'Vicetone', src: 'Nevada.mp3', cover: '1.webp' },
-            // { title: 'Tên bài hát 2', artist: 'Nghệ sĩ', src: 'bai-hat-2.mp3', cover: '' },
+            { title: 'Never Be Alone', artist: 'TheFatRat', src: 'NBA.mp3', cover: '2.webp' },
         ];
 
         function resolveMusicCoverUrl(cover) {

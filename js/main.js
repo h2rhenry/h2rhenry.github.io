@@ -645,6 +645,219 @@
         }
 
         // ============================================================
+        // Music Player (nhạc nền website)
+        //
+        // HƯỚNG DẪN THÊM NHẠC:
+        // 1. Tạo thư mục chứa file nhạc trong repo, ví dụ: assets/music/
+        //    rồi bỏ các file .mp3 vào đó.
+        // 2. Đổi giá trị MUSIC_FOLDER bên dưới thành đường dẫn thư mục đó
+        //    (luôn kết thúc bằng dấu "/").
+        // 3. Thêm mỗi bài hát vào mảng PLAYLIST theo mẫu:
+        //      {
+        //          title: 'Tên bài hát',
+        //          artist: 'Tên ca sĩ / nguồn',
+        //          src: 'ten-file.mp3',      // tên file trong MUSIC_FOLDER
+        //          cover: ''                 // (tuỳ chọn) URL ảnh bìa, để trống sẽ dùng icon đĩa nhạc mặc định
+        //      }
+        // 4. Có thể để "cover" trỏ tới ảnh trong assets/ hoặc link ảnh online.
+        // Danh sách để trống -> khung nghe nhạc vẫn hiển thị nhưng ở trạng thái
+        // "Chưa có bài hát", không có gì phát cho tới khi bạn điền dữ liệu.
+        // ============================================================
+        const MUSIC_FOLDER = 'assets/music/';
+        const PLAYLIST = [
+            // { title: 'Tên bài hát', artist: 'Nghệ sĩ', src: 'bai-hat-1.mp3', cover: '' },
+            // { title: 'Tên bài hát 2', artist: 'Nghệ sĩ', src: 'bai-hat-2.mp3', cover: '' },
+        ];
+
+        (function initMusicPlayer() {
+            const player = document.getElementById('music-player');
+            if (!player) return;
+
+            const audio = new Audio();
+            audio.preload = 'metadata';
+
+            const artWrap = document.getElementById('music-art-wrap');
+            const artImg = document.getElementById('music-art');
+            const artFallback = document.getElementById('music-art-fallback');
+            const eq = document.getElementById('music-eq');
+            const trackEl = document.getElementById('music-track');
+            const artistEl = document.getElementById('music-artist');
+            const timeCurrentEl = document.getElementById('music-time-current');
+            const timeTotalEl = document.getElementById('music-time-total');
+            const progressBg = document.getElementById('music-progress-bg');
+            const progressFill = document.getElementById('music-progress-fill');
+            const playBtn = document.getElementById('music-play');
+            const playIcon = document.getElementById('music-play-icon');
+            const prevBtn = document.getElementById('music-prev');
+            const nextBtn = document.getElementById('music-next');
+            const shuffleBtn = document.getElementById('music-shuffle');
+            const repeatBtn = document.getElementById('music-repeat');
+            const volumeSlider = document.getElementById('music-volume-slider');
+            const playlistToggle = document.getElementById('music-playlist-toggle');
+            const playlistEl = document.getElementById('music-playlist');
+
+            let currentIndex = -1;
+            let isShuffle = false;
+            let isRepeat = false;
+
+            function formatTime(sec) {
+                if (!isFinite(sec) || sec < 0) sec = 0;
+                const m = Math.floor(sec / 60);
+                const s = Math.floor(sec % 60);
+                return `${m}:${s.toString().padStart(2, '0')}`;
+            }
+
+            function renderEmptyPlaylist() {
+                const lang = getCurrentLang();
+                playlistEl.innerHTML = `<div class="music-playlist-empty" data-vi="Chưa có bài hát nào trong danh sách phát." data-en="No tracks in the playlist yet.">${lang === 'en' ? 'No tracks in the playlist yet.' : 'Chưa có bài hát nào trong danh sách phát.'}</div>`;
+            }
+
+            function renderPlaylist() {
+                if (!PLAYLIST.length) {
+                    renderEmptyPlaylist();
+                    return;
+                }
+                playlistEl.innerHTML = PLAYLIST.map((track, i) => `
+                    <button type="button" class="music-playlist-item${i === currentIndex ? ' active' : ''}" data-index="${i}">
+                        <i class="fas ${i === currentIndex ? 'fa-volume-high' : 'fa-music'}"></i>
+                        <span class="music-playlist-item-title">${track.title}</span>
+                        <span class="music-playlist-item-artist">${track.artist || ''}</span>
+                    </button>
+                `).join('');
+
+                playlistEl.querySelectorAll('.music-playlist-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        loadTrack(parseInt(item.dataset.index, 10), true);
+                    });
+                });
+            }
+
+            function setPlayingVisual(playing) {
+                if (artWrap) artWrap.classList.toggle('playing', playing);
+                if (eq) eq.classList.toggle('playing', playing);
+                if (playIcon) playIcon.className = playing ? 'fas fa-pause' : 'fas fa-play';
+            }
+
+            function loadTrack(index, autoplay) {
+                if (!PLAYLIST.length) return;
+                if (index < 0) index = PLAYLIST.length - 1;
+                if (index >= PLAYLIST.length) index = 0;
+                currentIndex = index;
+
+                const track = PLAYLIST[currentIndex];
+                audio.src = MUSIC_FOLDER + track.src;
+                trackEl.textContent = track.title;
+                artistEl.textContent = track.artist || '';
+
+                if (track.cover) {
+                    artImg.src = track.cover;
+                    artImg.style.display = 'block';
+                    artFallback.style.display = 'none';
+                } else {
+                    artImg.style.display = 'none';
+                    artFallback.style.display = 'flex';
+                }
+
+                renderPlaylist();
+
+                if (autoplay) {
+                    audio.play().catch(() => setPlayingVisual(false));
+                }
+            }
+
+            function togglePlay() {
+                if (!PLAYLIST.length) return;
+                if (currentIndex === -1) {
+                    loadTrack(isShuffle ? Math.floor(Math.random() * PLAYLIST.length) : 0, true);
+                    return;
+                }
+                if (audio.paused) {
+                    audio.play().catch(() => {});
+                } else {
+                    audio.pause();
+                }
+            }
+
+            function playNext(manual) {
+                if (!PLAYLIST.length) return;
+                if (isShuffle && PLAYLIST.length > 1) {
+                    let next = currentIndex;
+                    while (next === currentIndex) next = Math.floor(Math.random() * PLAYLIST.length);
+                    loadTrack(next, true);
+                } else {
+                    loadTrack(currentIndex + 1, true);
+                }
+            }
+
+            function playPrev() {
+                if (!PLAYLIST.length) return;
+                loadTrack(currentIndex - 1, true);
+            }
+
+            if (!PLAYLIST.length) {
+                renderEmptyPlaylist();
+            }
+
+            if (playBtn) playBtn.addEventListener('click', togglePlay);
+            if (nextBtn) nextBtn.addEventListener('click', () => playNext(true));
+            if (prevBtn) prevBtn.addEventListener('click', playPrev);
+
+            if (shuffleBtn) {
+                shuffleBtn.addEventListener('click', () => {
+                    isShuffle = !isShuffle;
+                    shuffleBtn.classList.toggle('active', isShuffle);
+                });
+            }
+
+            if (repeatBtn) {
+                repeatBtn.addEventListener('click', () => {
+                    isRepeat = !isRepeat;
+                    repeatBtn.classList.toggle('active', isRepeat);
+                    audio.loop = isRepeat;
+                });
+            }
+
+            if (volumeSlider) {
+                audio.volume = volumeSlider.value / 100;
+                volumeSlider.addEventListener('input', () => {
+                    audio.volume = volumeSlider.value / 100;
+                });
+            }
+
+            if (playlistToggle) {
+                playlistToggle.addEventListener('click', () => {
+                    const isOpen = playlistEl.classList.toggle('open');
+                    playlistToggle.classList.toggle('active', isOpen);
+                });
+            }
+
+            if (progressBg) {
+                progressBg.addEventListener('click', (e) => {
+                    if (!audio.duration) return;
+                    const rect = progressBg.getBoundingClientRect();
+                    const ratio = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
+                    audio.currentTime = ratio * audio.duration;
+                });
+            }
+
+            audio.addEventListener('play', () => setPlayingVisual(true));
+            audio.addEventListener('pause', () => setPlayingVisual(false));
+            audio.addEventListener('ended', () => {
+                if (!isRepeat) playNext(false);
+            });
+
+            audio.addEventListener('timeupdate', () => {
+                if (!audio.duration) return;
+                progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+                timeCurrentEl.textContent = formatTime(audio.currentTime);
+            });
+
+            audio.addEventListener('loadedmetadata', () => {
+                timeTotalEl.textContent = formatTime(audio.duration);
+            });
+        })();
+
+        // ============================================================
         // Secret Hidden-Pages Menu
         // Kích hoạt: giữ tổ hợp phím Ctrl + Alt + Shift (Desktop)
         //            hoặc chạm nút chấm ẩn ở cuối trang (Mobile)

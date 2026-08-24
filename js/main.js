@@ -809,6 +809,10 @@
 
             if (!PLAYLIST.length) {
                 renderEmptyPlaylist();
+            } else {
+                // Hiển thị sẵn bài hát đầu tiên (không tự phát) ngay khi tải trang,
+                // để không còn hiện dòng chữ hướng dẫn "Thêm nhạc vào thư mục..."
+                loadTrack(0, false);
             }
 
             if (playBtn) playBtn.addEventListener('click', togglePlay);
@@ -857,6 +861,23 @@
             audio.addEventListener('pause', () => setPlayingVisual(false));
             audio.addEventListener('ended', () => {
                 if (!isRepeat) playNext(false);
+            });
+
+            // Nếu 1 file nhạc bị lỗi (sai tên file / chưa upload lên đúng thư mục),
+            // tự động chuyển sang bài kế tiếp thay vì im lặng "đứng yên".
+            let consecutiveErrors = 0;
+            audio.addEventListener('error', () => {
+                if (currentIndex === -1) return;
+                consecutiveErrors++;
+                console.warn('[music-player] Không tải được file:', audio.src);
+                if (consecutiveErrors < PLAYLIST.length) {
+                    playNext(false);
+                } else {
+                    setPlayingVisual(false);
+                }
+            });
+            audio.addEventListener('playing', () => {
+                consecutiveErrors = 0;
             });
 
             audio.addEventListener('timeupdate', () => {

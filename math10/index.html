@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luyện thi Trắc nghiệm Toán 10</title>
+<style>
+:root{
+  --primary:#4f46e5;
+  --primary-dark:#3730a3;
+  --primary-light:#eef2ff;
+  --green:#16a34a;
+  --green-light:#dcfce7;
+  --red:#dc2626;
+  --red-light:#fee2e2;
+  --gray:#64748b;
+  --bg:#f1f5f9;
+  --card:#ffffff;
+  --border:#e2e8f0;
+  --text:#1e293b;
+  --shadow:0 4px 16px rgba(15,23,42,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}
+.container{max-width:960px;margin:0 auto;padding:20px;}
+header.topbar{
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:#fff;
+  padding:22px 20px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+header.topbar h1{font-size:1.5rem;letter-spacing:.5px;}
+header.topbar p{opacity:.9;margin-top:4px;font-size:.9rem;}
+.screen{display:none;}
+.screen.active{display:block;}
+
+.select-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  margin-top:28px;
+}
+@media(max-width:640px){.select-grid{grid-template-columns:1fr;}}
+.exam-card{
+  background:var(--card);
+  border-radius:16px;
+  padding:28px 24px;
+  box-shadow:var(--shadow);
+  border:2px solid transparent;
+  text-align:center;
+  transition:.2s;
+}
+.exam-card:hover{border-color:var(--primary);transform:translateY(-3px);}
+.exam-card .icon{font-size:2.4rem;margin-bottom:10px;}
+.exam-card h2{font-size:1.25rem;color:var(--primary-dark);margin-bottom:8px;}
+.exam-card p{color:var(--gray);font-size:.9rem;margin-bottom:18px;line-height:1.5;}
+.badge-row{display:flex;gap:8px;justify-content:center;margin-bottom:18px;flex-wrap:wrap;}
+.badge{
+  background:var(--primary-light);
+  color:var(--primary-dark);
+  font-size:.75rem;
+  padding:4px 10px;
+  border-radius:999px;
+  font-weight:600;
+}
+.btn{
+  display:inline-block;
+  border:none;
+  cursor:pointer;
+  font-size:.95rem;
+  font-weight:600;
+  padding:12px 26px;
+  border-radius:10px;
+  background:var(--primary);
+  color:#fff;
+  transition:.2s;
+}
+.btn:hover{background:var(--primary-dark);}
+.btn.secondary{background:#fff;color:var(--primary);border:2px solid var(--primary);}
+.btn.secondary:hover{background:var(--primary-light);}
+.btn.block{width:100%;}
+.btn:disabled{opacity:.5;cursor:not-allowed;}
+
+.info-box{
+  background:var(--card);
+  border-radius:14px;
+  padding:18px 20px;
+  margin-top:24px;
+  box-shadow:var(--shadow);
+  font-size:.88rem;
+  color:var(--gray);
+  line-height:1.6;
+}
+.info-box b{color:var(--text);}
+
+.quiz-top{
+  background:var(--card);
+  border-radius:14px;
+  padding:14px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:var(--shadow);
+  margin-bottom:18px;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.quiz-top .exam-title{font-weight:700;color:var(--primary-dark);}
+.timer{
+  font-weight:700;
+  font-size:1.05rem;
+  background:var(--primary-light);
+  color:var(--primary-dark);
+  padding:8px 16px;
+  border-radius:10px;
+}
+.timer.warning{background:var(--red-light);color:var(--red);}
+
+.quiz-layout{
+  display:grid;
+  grid-template-columns:1fr 260px;
+  gap:20px;
+  align-items:start;
+}
+@media(max-width:800px){.quiz-layout{grid-template-columns:1fr;}}
+
+.question-card{
+  background:var(--card);
+  border-radius:16px;
+  padding:26px;
+  box-shadow:var(--shadow);
+}
+.q-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.q-number{
+  color:var(--primary);
+  font-weight:700;
+  font-size:.95rem;
+}
+.q-topic{
+  font-size:.75rem;
+  color:var(--gray);
+  background:var(--bg);
+  padding:3px 10px;
+  border-radius:999px;
+}
+.q-text{font-size:1.08rem;line-height:1.65;margin-bottom:20px;font-weight:500;}
+
+.options{display:flex;flex-direction:column;gap:10px;}
+.option{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border:2px solid var(--border);
+  border-radius:12px;
+  padding:13px 16px;
+  cursor:pointer;
+  transition:.15s;
+  font-size:.95rem;
+}
+.option:hover{border-color:var(--primary);background:var(--primary-light);}
+.option.selected{border-color:var(--primary);background:var(--primary-light);font-weight:600;}
+.option .letter{
+  width:28px;height:28px;
+  border-radius:50%;
+  background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;
+  font-size:.85rem;
+  flex-shrink:0;
+}
+.option.selected .letter{background:var(--primary);color:#fff;}
+
+.nav-buttons{
+  display:flex;
+  justify-content:space-between;
+  margin-top:22px;
+  gap:10px;
+}
+
+.side-panel{
+  background:var(--card);
+  border-radius:16px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+.side-panel h3{font-size:.9rem;margin-bottom:12px;color:var(--gray);}
+.qgrid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
+  margin-bottom:18px;
+}
+.qgrid button{
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius:8px;
+  padding:8px 0;
+  font-size:.8rem;
+  cursor:pointer;
+  font-weight:600;
+  color:var(--gray);
+}
+.qgrid button.answered{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.qgrid button.current{background:var(--primary);border-color:var(--primary);color:#fff;}
+.legend{font-size:.75rem;color:var(--gray);display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.legend span{display:inline-flex;align-items:center;gap:6px;}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+.dot.d1{background:var(--green);}
+.dot.d2{background:var(--primary);}
+.dot.d3{background:#fff;border:1px solid var(--border);}
+
+.result-summary{
+  background:var(--card);
+  border-radius:16px;
+  padding:32px;
+  text-align:center;
+  box-shadow:var(--shadow);
+  margin-bottom:20px;
+}
+.score-circle{
+  width:140px;height:140px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:#fff;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  margin:0 auto 18px;
+}
+.score-circle .num{font-size:2.4rem;font-weight:800;}
+.score-circle .den{font-size:.9rem;opacity:.85;}
+.result-stats{display:flex;justify-content:center;gap:26px;margin-top:14px;flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat .val{font-size:1.3rem;font-weight:700;}
+.stat .lbl{font-size:.78rem;color:var(--gray);}
+.stat.correct .val{color:var(--green);}
+.stat.wrong .val{color:var(--red);}
+
+.result-actions{display:flex;gap:12px;justify-content:center;margin-top:22px;flex-wrap:wrap;}
+
+.review-item{
+  background:var(--card);
+  border-radius:14px;
+  padding:18px 20px;
+  margin-bottom:12px;
+  box-shadow:var(--shadow);
+  border-left:5px solid var(--border);
+}
+.review-item.correct{border-left-color:var(--green);}
+.review-item.wrong{border-left-color:var(--red);}
+.review-item .rq{font-weight:600;margin-bottom:10px;}
+.review-item .ropt{
+  padding:8px 12px;
+  border-radius:8px;
+  font-size:.88rem;
+  margin-bottom:6px;
+}
+.review-item .ropt.correct-ans{background:var(--green-light);color:#166534;font-weight:600;}
+.review-item .ropt.wrong-ans{background:var(--red-light);color:#991b1b;font-weight:600;}
+.review-item .tag{
+  display:inline-block;
+  font-size:.72rem;
+  font-weight:700;
+  padding:2px 10px;
+  border-radius:999px;
+  margin-left:8px;
+}
+.review-item.correct .tag{background:var(--green-light);color:var(--green);}
+.review-item.wrong .tag{background:var(--red-light);color:var(--red);}
+
+#reviewList{margin-top:24px;display:none;}
+#reviewList.show{display:block;}
+
+footer{text-align:center;color:var(--gray);font-size:.8rem;padding:26px 10px;}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <h1>📐 Luyện thi Trắc nghiệm Toán 10</h1>
+  <p>Mệnh đề - Tập hợp | Bất phương trình bậc nhất hai ẩn | Hệ thức lượng trong tam giác</p>
+</header>
+
+<div class="container">
+
+  <section id="screen-select" class="screen active">
+    <div class="select-grid">
+      <div class="exam-card">
+        <div class="icon">🟢</div>
+        <h2>Đề Dễ</h2>
+        <div class="badge-row">
+          <span class="badge">50 câu</span>
+          <span class="badge">10 điểm</span>
+          <span class="badge">90 phút</span>
+        </div>
+        <p>Các câu hỏi cơ bản, áp dụng trực tiếp công thức, phù hợp ôn luyện nền tảng.</p>
+        <button class="btn block" onclick="startExam('de')">Bắt đầu làm bài</button>
+      </div>
+      <div class="exam-card">
+        <div class="icon">🔴</div>
+        <h2>Đề Khó</h2>
+        <div class="badge-row">
+          <span class="badge">50 câu</span>
+          <span class="badge">10 điểm</span>
+          <span class="badge">90 phút</span>
+        </div>
+        <p>Câu hỏi suy luận nhiều bước, có tham số và bài toán thực tế nâng cao.</p>
+        <button class="btn block" onclick="startExam('kho')">Bắt đầu làm bài</button>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <b>Hướng dẫn:</b> Mỗi đề gồm 50 câu trắc nghiệm 4 đáp án, mỗi câu đúng được 0,2 điểm.
+      Bạn có thể chuyển qua lại giữa các câu bằng bảng số ở bên phải màn hình làm bài.
+      Sau khi nộp bài, hệ thống sẽ chấm điểm và hiển thị lời giải đối chiếu cho từng câu.
+    </div>
+  </section>
+
+  <section id="screen-quiz" class="screen">
+    <div class="quiz-top">
+      <div class="exam-title" id="examTitleLabel">Đề Dễ</div>
+      <div class="timer" id="timerBox">90:00</div>
+    </div>
+
+    <div class="quiz-layout">
+      <div class="question-card">
+        <div class="q-header">
+          <span class="q-number" id="qNumberLabel">Câu 1/50</span>
+          <span class="q-topic" id="qTopicLabel">Mệnh đề - Tập hợp</span>
+        </div>
+        <div class="q-text" id="qTextLabel"></div>
+        <div class="options" id="optionsBox"></div>
+        <div class="nav-buttons">
+          <button class="btn secondary" id="btnPrev" onclick="prevQuestion()">← Câu trước</button>
+          <button class="btn secondary" id="btnNext" onclick="nextQuestion()">Câu sau →</button>
+        </div>
+      </div>
+
+      <div class="side-panel">
+        <h3>DANH SÁCH CÂU HỎI</h3>
+        <div class="legend">
+          <span><i class="dot d2"></i> Đang xem</span>
+          <span><i class="dot d1"></i> Đã trả lời</span>
+          <span><i class="dot d3"></i> Chưa trả lời</span>
+        </div>
+        <div class="qgrid" id="qGrid"></div>
+        <button class="btn block" onclick="confirmSubmit()">Nộp bài</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="screen-result" class="screen">
+    <div class="result-summary">
+      <div class="score-circle">
+        <div class="num" id="scoreNum">0</div>
+        <div class="den">/ 10 điểm</div>
+      </div>
+      <div id="examTitleResult" style="font-weight:700;color:var(--primary-dark);font-size:1.1rem;"></div>
+      <div class="result-stats">
+        <div class="stat correct"><div class="val" id="correctCount">0</div><div class="lbl">Câu đúng</div></div>
+        <div class="stat wrong"><div class="val" id="wrongCount">0</div><div class="lbl">Câu sai</div></div>
+        <div class="stat"><div class="val" id="blankCount">0</div><div class="lbl">Bỏ trống</div></div>
+        <div class="stat"><div class="val" id="timeUsed">0:00</div><div class="lbl">Thời gian làm</div></div>
+      </div>
+      <div class="result-actions">
+        <button class="btn secondary" onclick="toggleReview()">Xem lại đáp án</button>
+        <button class="btn" onclick="backToSelect()">Làm đề khác</button>
+      </div>
+    </div>
+    <div id="reviewList"></div>
+  </section>
+
+</div>
+
+<footer>Luyện thi Toán 10 - Bám sát chương trình GDPT 2018</footer>
+
+<script>
+const deThiDe = {
+  ten: "Đề Dễ",
+  cauHoi: [
+    {id:1,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho mệnh đề P: \"5 là số nguyên tố\". Mệnh đề phủ định của P là?",luaChon:["5 là số chẵn","5 không là số nguyên tố","5 là hợp số","5 là số tự nhiên"],dapAn:1},
+    {id:2,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho mệnh đề: \"Nếu tứ giác ABCD là hình vuông thì tứ giác ABCD là hình chữ nhật\". Mệnh đề đảo là?",luaChon:["Nếu ABCD là hình chữ nhật thì ABCD là hình vuông","Nếu ABCD không là hình vuông thì ABCD không là hình chữ nhật","Nếu ABCD là hình vuông thì ABCD không là hình chữ nhật","ABCD là hình chữ nhật và hình vuông"],dapAn:0},
+    {id:3,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = {1;2;3;4;5}, B = {3;4;5;6;7}. Tập hợp A &cap; B là?",luaChon:["{1;2}","{3;4;5}","{6;7}","{1;2;3;4;5;6;7}"],dapAn:1},
+    {id:4,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Với A = {1;2;3;4;5}, B = {3;4;5;6;7}, tập hợp A &cup; B là?",luaChon:["{1;2;3;4;5;6;7}","{3;4;5}","{1;2}","{6;7}"],dapAn:0},
+    {id:5,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Với A = {1;2;3;4;5}, B = {3;4;5;6;7}, tập hợp A \\ B (hiệu của A và B) là?",luaChon:["{6;7}","{3;4;5}","{1;2}","&empty;"],dapAn:2},
+    {id:6,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho tập hợp A = (-&infin;; 3]. Phần bù của A trong R là?",luaChon:["(3;+&infin;)","[3;+&infin;)","(-&infin;;3)","R"],dapAn:0},
+    {id:7,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Khoảng (a;b) là tập hợp các số thực x thỏa mãn?",luaChon:["a &le; x &le; b","a < x < b","a &le; x < b","a < x &le; b"],dapAn:1},
+    {id:8,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Đoạn [a;b] là tập hợp các số thực x thỏa mãn?",luaChon:["a < x < b","a &le; x < b","a &le; x &le; b","a < x &le; b"],dapAn:2},
+    {id:9,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Nửa khoảng [a;b) là tập hợp các số thực x thỏa mãn?",luaChon:["a &le; x < b","a < x &le; b","a &le; x &le; b","a < x < b"],dapAn:0},
+    {id:10,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = (-&infin;;3], B = [1;5). Tập hợp A &cap; B là?",luaChon:["[1;3]","(-&infin;;5)","[1;5)","(-&infin;;3]"],dapAn:0},
+    {id:11,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Mệnh đề \"&forall;x&isin;R, x&sup2; &ge; 0\" là mệnh đề đúng hay sai?",luaChon:["Đúng","Sai","Không xác định","Vừa đúng vừa sai"],dapAn:0},
+    {id:12,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Mệnh đề \"&exist;x&isin;R, x&sup2; = -1\" là mệnh đề đúng hay sai?",luaChon:["Đúng","Sai","Không xác định","Vừa đúng vừa sai"],dapAn:1},
+    {id:13,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho mệnh đề \"Nếu a = b thì a&sup2; = b&sup2;\". Đây là điều kiện gì của \"a&sup2; = b&sup2;\" đối với \"a = b\"?",luaChon:["Điều kiện cần","Điều kiện đủ","Điều kiện cần và đủ","Không phải điều kiện gì"],dapAn:1},
+    {id:14,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Tập hợp A = {x&isin;N | x < 5} có bao nhiêu phần tử?",luaChon:["4","5","6","Vô số"],dapAn:1},
+    {id:15,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = {1;2}. Tập hợp nào sau đây là tập con của A?",luaChon:["{1;3}","{1}","{0}","{1;2;3}"],dapAn:1},
+    {id:16,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Bất phương trình nào sau đây là bất phương trình bậc nhất hai ẩn?",luaChon:["x&sup2; + y > 0","2x - 3y &le; 6","xy > 1","x&sup2; + y&sup2; &le; 4"],dapAn:1},
+    {id:17,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Điểm nào sau đây thuộc miền nghiệm của bất phương trình x + y &le; 4?",luaChon:["(3;3)","(1;1)","(5;0)","(4;1)"],dapAn:1},
+    {id:18,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Miền nghiệm của bất phương trình x &ge; 0 là?",luaChon:["Nửa mặt phẳng bên phải trục Oy (kể cả trục Oy)","Nửa mặt phẳng bên trái trục Oy","Nửa mặt phẳng phía trên trục Ox","Toàn bộ mặt phẳng"],dapAn:0},
+    {id:19,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Đường thẳng nào là biên của miền nghiệm bất phương trình 2x + y < 5?",luaChon:["2x + y = 5","2x + y = 0","x + y = 5","2x - y = 5"],dapAn:0},
+    {id:20,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Cặp số (x;y) = (0;0) có là nghiệm của bất phương trình x - y > 1 không?",luaChon:["Có","Không","Không xác định","Là nghiệm biên"],dapAn:1},
+    {id:21,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Hệ bất phương trình x &ge; 0, y &ge; 0, x + y &le; 4 biểu diễn miền nghiệm là hình gì?",luaChon:["Một tam giác","Một hình vuông","Một đường thẳng","Toàn mặt phẳng"],dapAn:0},
+    {id:22,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Cho miền nghiệm là tam giác với các đỉnh O(0;0), A(4;0), B(0;4). Giá trị lớn nhất của F = x + y trên miền này là?",luaChon:["0","4","8","16"],dapAn:1},
+    {id:23,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Với miền nghiệm tam giác đỉnh O(0;0), A(4;0), B(0;4), giá trị nhỏ nhất của F = 2x + y là?",luaChon:["0","4","8","-4"],dapAn:0},
+    {id:24,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Cho hệ: x &ge; 0, y &ge; 0, x + y &le; 6, x &le; 4. Miền nghiệm của hệ trên là hình gì?",luaChon:["Tam giác","Tứ giác","Ngũ giác","Nửa mặt phẳng"],dapAn:1},
+    {id:25,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Với hệ ở câu trên (x&ge;0, y&ge;0, x+y&le;6, x&le;4), giá trị lớn nhất của F = x + 2y đạt tại đỉnh nào?",luaChon:["(0;0)","(4;0)","(4;2)","(0;6)"],dapAn:3},
+    {id:26,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Miền nghiệm của bất phương trình y &le; 2x + 1 nằm ở?",luaChon:["Phía trên đường thẳng y=2x+1 (kể cả đường thẳng)","Phía dưới đường thẳng y=2x+1 (kể cả đường thẳng)","Phía dưới đường thẳng, không kể đường thẳng","Phía trên, không kể đường thẳng"],dapAn:1},
+    {id:27,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Bài toán quy hoạch tuyến tính là bài toán tìm giá trị lớn nhất hoặc nhỏ nhất của biểu thức nào trên miền nghiệm của hệ bất phương trình bậc nhất?",luaChon:["F = ax&sup2; + by","F = ax + by","F = ax + by + c với x, y không ràng buộc","F = xy"],dapAn:1},
+    {id:28,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Trong bài toán quy hoạch tuyến tính, giá trị lớn nhất/nhỏ nhất của F = ax + by trên miền đa giác đạt được tại?",luaChon:["Một điểm bất kỳ trong miền","Một đỉnh của đa giác","Trung điểm một cạnh","Tâm của đa giác"],dapAn:1},
+    {id:29,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Cho miền nghiệm hệ: x &ge; 0, y &ge; 0, 2x + y &le; 4. Điểm nào sau đây thuộc miền nghiệm?",luaChon:["(2;1)","(3;0)","(0;5)","(1;1)"],dapAn:3},
+    {id:30,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Một xưởng sản xuất 2 loại sản phẩm A và B, số lượng x, y (x,y&ge;0) thỏa x + 2y &le; 10. Nếu x = 2, giá trị lớn nhất của y thỏa mãn là?",luaChon:["3","4","5","6"],dapAn:1},
+    {id:31,chuDe:"Hệ thức lượng",cauHoi:"Giá trị của sin90&deg; là?",luaChon:["0","1","-1","1/2"],dapAn:1},
+    {id:32,chuDe:"Hệ thức lượng",cauHoi:"Giá trị của cos180&deg; là?",luaChon:["1","0","-1","1/2"],dapAn:2},
+    {id:33,chuDe:"Hệ thức lượng",cauHoi:"Giá trị của sin30&deg; là?",luaChon:["1/2","&radic;2/2","&radic;3/2","1"],dapAn:0},
+    {id:34,chuDe:"Hệ thức lượng",cauHoi:"Giá trị của cos60&deg; là?",luaChon:["1/2","&radic;3/2","&radic;2/2","1"],dapAn:0},
+    {id:35,chuDe:"Hệ thức lượng",cauHoi:"Giá trị của tan45&deg; là?",luaChon:["0","1","&radic;3","Không xác định"],dapAn:1},
+    {id:36,chuDe:"Hệ thức lượng",cauHoi:"Cho góc &alpha; với 0&deg; &le; &alpha; &le; 180&deg;. Khẳng định nào đúng?",luaChon:["sin&alpha; luôn không âm","cos&alpha; luôn dương","sin&alpha; có thể âm","tan&alpha; luôn xác định"],dapAn:0},
+    {id:37,chuDe:"Hệ thức lượng",cauHoi:"Trong tam giác ABC, định lý côsin cho cạnh a là?",luaChon:["a&sup2; = b&sup2; + c&sup2; - 2bc.cosA","a&sup2; = b&sup2; + c&sup2; + 2bc.cosA","a&sup2; = b&sup2; + c&sup2; - 2bc.sinA","a = b + c - 2bc.cosA"],dapAn:0},
+    {id:38,chuDe:"Hệ thức lượng",cauHoi:"Định lý sin trong tam giác ABC là?",luaChon:["a/sinA = b/sinB = c/sinC = 2R","a/cosA = b/cosB = c/cosC","a.sinA = b.sinB = c.sinC","a/sinA = R"],dapAn:0},
+    {id:39,chuDe:"Hệ thức lượng",cauHoi:"Công thức tính diện tích tam giác theo 2 cạnh và góc xen giữa là?",luaChon:["S = (1/2)ab.sinC","S = (1/2)ab.cosC","S = ab.sinC","S = (1/2)(a+b).sinC"],dapAn:0},
+    {id:40,chuDe:"Hệ thức lượng",cauHoi:"Công thức Heron tính diện tích tam giác với p là nửa chu vi là?",luaChon:["S = &radic;(p(p-a)(p-b)(p-c))","S = p(p-a)(p-b)(p-c)","S = &radic;(p+a+b+c)","S = pabc"],dapAn:0},
+    {id:41,chuDe:"Hệ thức lượng",cauHoi:"Công thức liên hệ diện tích S với bán kính đường tròn ngoại tiếp R là?",luaChon:["S = abc/(4R)","S = abc.4R","S = abc/R","S = 4R/abc"],dapAn:0},
+    {id:42,chuDe:"Hệ thức lượng",cauHoi:"Công thức liên hệ diện tích S với bán kính đường tròn nội tiếp r là?",luaChon:["S = p.r","S = p/r","S = 2pr","S = r/p"],dapAn:0},
+    {id:43,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có a = 6, b = 8, góc C = 90&deg;. Cạnh c bằng?",luaChon:["10","14","48","100"],dapAn:0},
+    {id:44,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC vuông tại A, có AB = 3, AC = 4. Diện tích tam giác là?",luaChon:["6","12","7","3,5"],dapAn:0},
+    {id:45,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác đều cạnh a. Diện tích tam giác là?",luaChon:["a&sup2;&radic;3/4","a&sup2;/4","a&sup2;&radic;2/4","a&sup2;/2"],dapAn:0},
+    {id:46,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có a = 7, b = 8, c = 9. Nửa chu vi p bằng?",luaChon:["24","12","9","8"],dapAn:1},
+    {id:47,chuDe:"Hệ thức lượng",cauHoi:"Tam giác ABC có góc A = 60&deg;, b = 5, c = 8. Cạnh a bằng bao nhiêu?",luaChon:["7","6","8","9"],dapAn:0},
+    {id:48,chuDe:"Hệ thức lượng",cauHoi:"Một người đứng cách chân tháp 50m, nhìn thấy đỉnh tháp dưới góc nâng 30&deg; so với phương ngang. Chiều cao tháp gần đúng là?",luaChon:["&asymp; 28,9 m","&asymp; 50 m","&asymp; 100 m","&asymp; 43,3 m"],dapAn:0},
+    {id:49,chuDe:"Hệ thức lượng",cauHoi:"Hai điểm A, B ở hai bên bờ sông. Đứng tại C cách A 100m, đo được góc CAB = 40&deg;, góc ACB = 45&deg;. Theo định lý sin, khoảng cách AB tính bằng công thức nào?",luaChon:["AB = 100.sin45&deg;/sin95&deg;","AB = 100.sin40&deg;/sin45&deg;","AB = 100.sin95&deg;/sin45&deg;","AB = 100.sin45&deg;/sin40&deg;"],dapAn:0},
+    {id:50,chuDe:"Hệ thức lượng",cauHoi:"Trong tam giác ABC, nếu góc A tù (90&deg; < A < 180&deg;) thì giá trị cosA?",luaChon:["cosA > 0","cosA < 0","cosA = 0","cosA = 1"],dapAn:1}
+  ]
+};
+
+const deThiKho = {
+  ten: "Đề Khó",
+  cauHoi: [
+    {id:1,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho mệnh đề chứa biến P(x): \"x&sup2; - 3x + 2 = 0\". Mệnh đề \"&forall;x&isin;R, P(x)\" là đúng hay sai?",luaChon:["Đúng vì phương trình có nghiệm","Sai vì không phải mọi x đều thỏa mãn","Đúng vì x=1 thỏa mãn","Không xác định được"],dapAn:1},
+    {id:2,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho hai mệnh đề P: \"n chia hết cho 6\" và Q: \"n chia hết cho 2 và n chia hết cho 3\". Mệnh đề P &hArr; Q là?",luaChon:["Đúng, vì đây là điều kiện cần và đủ","Sai, vì P không suy ra Q","Sai, vì Q không suy ra P","Không xác định"],dapAn:0},
+    {id:3,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = {x&isin;R | x&sup2;-5x+6=0}, B = {x&isin;R | x&sup2;-4=0}. Tập A &cap; B là?",luaChon:["{2}","{2;3}","{-2;2;3}","&empty;"],dapAn:0},
+    {id:4,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = (m;5], B = [-1;7). Với giá trị nào của tham số m thì A &sub; B?",luaChon:["m &ge; -1","m > -1","m &le; -1","m < -1"],dapAn:0},
+    {id:5,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho tập hợp A = {x&isin;Z | -3 &le; x &le; 3}. Số tập con của A có đúng 2 phần tử là?",luaChon:["21","14","49","7"],dapAn:0},
+    {id:6,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = [1;2m-1], B = (0;3) với m là tham số, A khác rỗng. Tìm m để A &sub; B.",luaChon:["1 &le; m < 2","m < 2","m &ge; 1","1 < m < 2"],dapAn:0},
+    {id:7,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Mệnh đề chứa biến P(n): \"n&sup2;-1 chia hết cho 8\" với n là số nguyên lẻ. Mệnh đề này đúng với:",luaChon:["Mọi số nguyên lẻ n","Chỉ n = 1","Chỉ n = 3","Không có n nào"],dapAn:0},
+    {id:8,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Trong các mệnh đề kéo theo sau, mệnh đề nào là mệnh đề SAI?",luaChon:["Nếu 2>3 thì 4>5","Nếu 2<3 thì 4<5","Nếu 2<3 thì 4>5","Nếu 2>3 thì 4<5"],dapAn:2},
+    {id:9,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A, B là hai tập hợp bất kỳ. Khẳng định nào sau đây LUÔN đúng?",luaChon:["A &cap; B &sub; A &cup; B","A &cup; B &sub; A &cap; B","A \\ B = B \\ A","A &cap; B = A &cup; B"],dapAn:0},
+    {id:10,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Lớp 10A có 40 học sinh, trong đó 25 học sinh giỏi Toán, 20 học sinh giỏi Văn, 10 học sinh giỏi cả hai môn. Số học sinh không giỏi môn nào là?",luaChon:["5","10","15","35"],dapAn:0},
+    {id:11,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = [-2;5), B = (0;7], C = (3;+&infin;). Tập (A &cap; B) \\ C là?",luaChon:["(0;3]","(0;5)","(3;5)","[-2;3]"],dapAn:0},
+    {id:12,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho mệnh đề \"Với mọi số thực x, nếu x > 2 thì x&sup2; > 4\". Mệnh đề đảo của mệnh đề này là?",luaChon:["Với mọi số thực x, nếu x&sup2; > 4 thì x > 2","Với mọi số thực x, nếu x &le; 2 thì x&sup2; &le; 4","Với mọi số thực x, nếu x&sup2; &le; 4 thì x &le; 2","Với mọi số thực x, nếu x > 2 thì x&sup2; &le; 4"],dapAn:0},
+    {id:13,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Mệnh đề đảo ở câu trên (\"nếu x&sup2;>4 thì x>2\") đúng hay sai?",luaChon:["Đúng","Sai (ví dụ x=-3 có x&sup2;=9>4 nhưng x không lớn hơn 2)","Không xác định","Vừa đúng vừa sai"],dapAn:1},
+    {id:14,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A là tập nghiệm của bất phương trình x&sup2;-4 &le; 0, B là tập nghiệm bất phương trình x-1 > 0. Tập A &cap; B là?",luaChon:["(1;2]","[-2;2]","(1;+&infin;)","[-2;1)"],dapAn:0},
+    {id:15,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho tập hợp A có n phần tử (n&isin;N). Số tập con của A là?",luaChon:["n&sup2;","2n","2&#8319;","n!"],dapAn:2},
+    {id:16,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Một xưởng sản xuất bàn (x cái) và ghế (y cái), lãi 300 nghìn/bàn, 200 nghìn/ghế. Ràng buộc: x&ge;0, y&ge;0, 2x+y&le;10 (gỗ), x+2y&le;8 (giờ công). Miền nghiệm là đa giác có các đỉnh nào?",luaChon:["(0;0), (5;0), (4;2), (0;4)","(0;0), (4;0), (0;5)","(0;0), (5;0), (0;4)","(0;0), (2;4), (4;2)"],dapAn:0},
+    {id:17,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Với bài toán trên (F = 300x + 200y, các đỉnh (0;0),(5;0),(4;2),(0;4)), lợi nhuận lớn nhất (nghìn đồng) là?",luaChon:["1500","1600","1200","800"],dapAn:1},
+    {id:18,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Cho hệ bất phương trình: x&ge;0, y&ge;0, x+y&le;5, x-y&le;1. Điểm nào sau đây KHÔNG thuộc miền nghiệm?",luaChon:["(2;2)","(1;0)","(0;4)","(3;3)"],dapAn:3},
+    {id:19,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Cho miền nghiệm là tứ giác có các đỉnh (0;0), (4;0), (3;2), (0;3). Giá trị nhỏ nhất của F = x - 2y trên miền này là?",luaChon:["-6","-1","0","4"],dapAn:0},
+    {id:20,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Với miền nghiệm ở câu trên, giá trị lớn nhất của F = x - 2y là?",luaChon:["0","-1","4","-6"],dapAn:2},
+    {id:21,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Trong các điểm sau, điểm nào thỏa mãn đồng thời cả hai bất phương trình x+y&le;10 và x&ge;2y?",luaChon:["(6;2)","(2;5)","(1;1)","(8;5)"],dapAn:0},
+    {id:22,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Một cửa hàng bán nước ép cam (x chai, vốn 20 nghìn/chai) và táo (y chai, vốn 15 nghìn/chai), tổng vốn không quá 1.500 nghìn đồng. Ràng buộc vốn được biểu diễn bởi bất phương trình nào?",luaChon:["20x + 15y &le; 1500","20x + 15y &ge; 1500","15x + 20y &le; 1500","20x + 15y &le; 150"],dapAn:0},
+    {id:23,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Với bài toán trên, nếu lãi mỗi chai cam là 8 nghìn, mỗi chai táo là 5 nghìn, hàm mục tiêu lợi nhuận cần tối đa hóa là?",luaChon:["F = 8x + 5y","F = 5x + 8y","F = 8x + 5y + 1500","F = 20x + 15y"],dapAn:0},
+    {id:24,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Hệ bất phương trình bậc nhất hai ẩn có miền nghiệm là tập rỗng khi nào? (ví dụ hệ chứa đồng thời x&ge;5 và x&le;2)",luaChon:["Khi các miền nghiệm riêng không có điểm chung","Khi hệ chỉ có 1 bất phương trình","Khi các hệ số đều dương","Không thể xảy ra trường hợp này"],dapAn:0},
+    {id:25,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Xét hệ: x&ge;0, y&ge;0, x+2y&le;12, 3x+y&le;15. Tọa độ giao điểm của hai đường thẳng x+2y=12 và 3x+y=15 là?",luaChon:["(3,6; 4,2)","(4;4)","(6;3)","(3;3)"],dapAn:0},
+    {id:26,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Với hệ ở câu trên, các đỉnh miền nghiệm là (0;0), (5;0), (3,6;4,2), (0;6). Giá trị lớn nhất của F = 2x+3y là?",luaChon:["19,8","18","10","0"],dapAn:0},
+    {id:27,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Miền nghiệm của hệ |x| &le; 3, y &ge; 0, y &le; 5 trên mặt phẳng Oxy là hình gì?",luaChon:["Hình chữ nhật","Hình tam giác","Hình tròn","Nửa mặt phẳng"],dapAn:0},
+    {id:28,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Cho hệ bất phương trình x-y&ge;-2, x+y&le;4, x&ge;0. Giao điểm của hai đường biên x-y=-2 và x+y=4 là?",luaChon:["(1;3)","(3;1)","(2;2)","(0;2)"],dapAn:0},
+    {id:29,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Một công ty vận chuyển bằng xe tải (x xe, chở 5 tấn/xe, chi phí 2 triệu/xe) và xe ba gác (y xe, chở 2 tấn/xe, chi phí 0,8 triệu/xe), cần chở tối thiểu 40 tấn (5x+2y&ge;40). Hàm chi phí cần tối thiểu hóa là?",luaChon:["F = 2x + 0,8y","F = 5x + 2y","F = 0,8x + 2y","F = 2x + 0,8y &ge; 40"],dapAn:0},
+    {id:30,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Miền nghiệm của một hệ bất phương trình bậc nhất hai ẩn là một ngũ giác lồi. Để tìm giá trị lớn nhất của F=ax+by trên miền này, ta cần làm gì?",luaChon:["Tính giá trị F tại cả 5 đỉnh rồi so sánh","Chỉ cần tính F tại tâm ngũ giác","Tính F tại một điểm bất kỳ trong miền","Không thể tìm được giá trị lớn nhất"],dapAn:0},
+    {id:31,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có a=5, b=7, c=8. Giá trị cosA gần đúng bằng?",luaChon:["&asymp; 0,786","&asymp; 0,5","&asymp; 0,25","&asymp; -0,786"],dapAn:0},
+    {id:32,chuDe:"Hệ thức lượng",cauHoi:"Với tam giác ở câu trên, số đo góc A gần đúng bằng?",luaChon:["&asymp; 38,2&deg;","&asymp; 51,8&deg;","&asymp; 60&deg;","&asymp; 45&deg;"],dapAn:0},
+    {id:33,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có b=10, c=12, góc A=60&deg;. Diện tích tam giác là?",luaChon:["30&radic;3 (&asymp;51,96)","60","120","60&radic;3"],dapAn:0},
+    {id:34,chuDe:"Hệ thức lượng",cauHoi:"Với tam giác ở câu trên (b=10, c=12, góc A=60&deg;), cạnh a gần đúng bằng?",luaChon:["&radic;124 (&asymp;11,14)","22","2","124"],dapAn:0},
+    {id:35,chuDe:"Hệ thức lượng",cauHoi:"Tam giác ABC nội tiếp đường tròn bán kính R=5, góc A=30&deg;. Cạnh a bằng?",luaChon:["5","10","2,5","15"],dapAn:0},
+    {id:36,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có a=13, b=14, c=15. Nửa chu vi p và diện tích S (theo Heron) lần lượt là?",luaChon:["p=21, S=84","p=42, S=84","p=21, S=168","p=14, S=84"],dapAn:0},
+    {id:37,chuDe:"Hệ thức lượng",cauHoi:"Với tam giác ở câu trên (a=13,b=14,c=15, S=84), bán kính đường tròn nội tiếp r là?",luaChon:["4","8","2","21"],dapAn:0},
+    {id:38,chuDe:"Hệ thức lượng",cauHoi:"Với tam giác ở câu trên (a=13,b=14,c=15,S=84), bán kính đường tròn ngoại tiếp R gần đúng bằng?",luaChon:["&asymp; 8,125","&asymp; 4","&asymp; 16,25","&asymp; 2,17"],dapAn:0},
+    {id:39,chuDe:"Hệ thức lượng",cauHoi:"Hai người đứng tại A và B cách nhau 60m để đo chiều rộng khúc sông, quan sát điểm C bên kia sông với góc CAB=45&deg;, góc CBA=60&deg;. Khoảng cách AC gần đúng bằng?",luaChon:["&asymp; 53,8 m","&asymp; 60 m","&asymp; 45 m","&asymp; 69,3 m"],dapAn:0},
+    {id:40,chuDe:"Hệ thức lượng",cauHoi:"Một người đứng ở A cách chân tháp một khoảng d, nhìn đỉnh tháp góc nâng 40&deg;. Đi thêm 20m ra xa (đến B) thì góc nâng còn 25&deg;. Chiều cao tháp h thỏa mãn hệ thức nào?",luaChon:["h(cot25&deg; - cot40&deg;) = 20","h(cot40&deg; - cot25&deg;) = 20","h(tan25&deg; - tan40&deg;) = 20","h = 20/(tan40&deg; - tan25&deg;)"],dapAn:0},
+    {id:41,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có góc A=120&deg;, b=6, c=4. Cạnh a gần đúng bằng?",luaChon:["&radic;76 (&asymp;8,72)","2","&radic;28","76"],dapAn:0},
+    {id:42,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC vuông cân tại A, cạnh góc vuông bằng a. Bán kính đường tròn ngoại tiếp R bằng?",luaChon:["a&radic;2/2","a/2","a&radic;3/2","a"],dapAn:0},
+    {id:43,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có a=8, b=5, diện tích S=12. Giá trị sinC bằng?",luaChon:["0,6","0,8","0,5","1,2"],dapAn:0},
+    {id:44,chuDe:"Hệ thức lượng",cauHoi:"Với a=8, b=5, sinC=0,6 (câu trên), nếu góc C là góc tù thì cosC bằng?",luaChon:["-0,8","0,8","-0,6","0,6"],dapAn:0},
+    {id:45,chuDe:"Hệ thức lượng",cauHoi:"Với a=8, b=5, cosC=-0,8 (câu trên), cạnh c gần đúng bằng?",luaChon:["&radic;153 (&asymp;12,37)","5","&radic;89","153"],dapAn:0},
+    {id:46,chuDe:"Hệ thức lượng",cauHoi:"Một cột đèn cao 8m đứng thẳng, một sợi dây căng từ đỉnh cột xuống mặt đất tạo với mặt đất góc 50&deg;. Chiều dài sợi dây gần đúng bằng?",luaChon:["&asymp; 10,44 m","&asymp; 6,13 m","&asymp; 8 m","&asymp; 12,45 m"],dapAn:0},
+    {id:47,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có các cạnh a=6, b=8, c=10. Tam giác này là tam giác gì?",luaChon:["Tam giác vuông tại C","Tam giác đều","Tam giác tù","Tam giác cân tại A"],dapAn:0},
+    {id:48,chuDe:"Hệ thức lượng",cauHoi:"Với tam giác ở câu trên (a=6,b=8,c=10, vuông tại C), diện tích tam giác là?",luaChon:["24","48","30","40"],dapAn:0},
+    {id:49,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC nội tiếp đường tròn (O;R), biết a = 2R.sin35&deg;. Góc A bằng bao nhiêu?",luaChon:["35&deg;","55&deg;","70&deg;","145&deg;"],dapAn:0},
+    {id:50,chuDe:"Hệ thức lượng",cauHoi:"Từ hai vị trí A, B thẳng hàng theo phương ngang với chân núi, người ta quan sát đỉnh C của một ngọn núi. Góc nâng từ A là 30&deg;, từ B (gần núi hơn) là 40&deg;, khoảng cách AB=1km. Công thức đúng để tính chiều cao ngọn núi h là?",luaChon:["h = AB.sin30&deg;.sin40&deg;/sin10&deg;","h = AB.sin40&deg;/sin30&deg;","h = AB.sin10&deg;/(sin30&deg;.sin40&deg;)","h = AB.(sin40&deg; - sin30&deg;)"],dapAn:0}
+  ]
+};
+
+let currentExam = null;
+let currentIndex = 0;
+let answers = {};
+let timerInterval = null;
+let secondsLeft = 5400;
+let totalSeconds = 5400;
+let examStartLabel = "";
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function startExam(type){
+  currentExam = type === 'de' ? deThiDe : deThiKho;
+  examStartLabel = currentExam.ten;
+  currentIndex = 0;
+  answers = {};
+  secondsLeft = 5400;
+  totalSeconds = 5400;
+  document.getElementById('examTitleLabel').textContent = currentExam.ten;
+  buildGrid();
+  renderQuestion();
+  startTimer();
+  showScreen('screen-quiz');
+}
+
+function startTimer(){
+  clearInterval(timerInterval);
+  updateTimerDisplay();
+  timerInterval = setInterval(()=>{
+    secondsLeft--;
+    updateTimerDisplay();
+    if(secondsLeft <= 0){
+      clearInterval(timerInterval);
+      submitExam();
+    }
+  },1000);
+}
+
+function updateTimerDisplay(){
+  const m = Math.floor(secondsLeft/60);
+  const s = secondsLeft%60;
+  const box = document.getElementById('timerBox');
+  box.textContent = m + ":" + (s<10 ? "0"+s : s);
+  if(secondsLeft <= 300){
+    box.classList.add('warning');
+  } else {
+    box.classList.remove('warning');
+  }
+}
+
+function renderQuestion(){
+  const q = currentExam.cauHoi[currentIndex];
+  document.getElementById('qNumberLabel').textContent = "Câu " + (currentIndex+1) + "/" + currentExam.cauHoi.length;
+  document.getElementById('qTopicLabel').textContent = q.chuDe;
+  document.getElementById('qTextLabel').innerHTML = q.cauHoi;
+
+  const letters = ['A','B','C','D'];
+  const box = document.getElementById('optionsBox');
+  box.innerHTML = "";
+  q.luaChon.forEach((opt,idx)=>{
+    const div = document.createElement('div');
+    div.className = 'option' + (answers[q.id]===idx ? ' selected' : '');
+    div.innerHTML = '<span class="letter">'+letters[idx]+'</span><span>'+opt+'</span>';
+    div.onclick = ()=>selectAnswer(q.id, idx);
+    box.appendChild(div);
+  });
+
+  document.getElementById('btnPrev').disabled = currentIndex === 0;
+  document.getElementById('btnNext').textContent = currentIndex === currentExam.cauHoi.length-1 ? "Câu cuối" : "Câu sau →";
+  document.getElementById('btnNext').disabled = currentIndex === currentExam.cauHoi.length-1;
+
+  updateGrid();
+}
+
+function selectAnswer(qid, idx){
+  answers[qid] = idx;
+  renderQuestion();
+}
+
+function prevQuestion(){
+  if(currentIndex>0){
+    currentIndex--;
+    renderQuestion();
+  }
+}
+function nextQuestion(){
+  if(currentIndex < currentExam.cauHoi.length-1){
+    currentIndex++;
+    renderQuestion();
+  }
+}
+
+function buildGrid(){
+  const grid = document.getElementById('qGrid');
+  grid.innerHTML = "";
+  currentExam.cauHoi.forEach((q,idx)=>{
+    const btn = document.createElement('button');
+    btn.textContent = idx+1;
+    btn.onclick = ()=>{ currentIndex = idx; renderQuestion(); };
+    grid.appendChild(btn);
+  });
+}
+
+function updateGrid(){
+  const grid = document.getElementById('qGrid');
+  Array.from(grid.children).forEach((btn,idx)=>{
+    btn.classList.remove('answered','current');
+    const q = currentExam.cauHoi[idx];
+    if(idx === currentIndex){
+      btn.classList.add('current');
+    } else if(answers[q.id] !== undefined){
+      btn.classList.add('answered');
+    }
+  });
+}
+
+function confirmSubmit(){
+  const total = currentExam.cauHoi.length;
+  const answered = Object.keys(answers).length;
+  if(answered < total){
+    const ok = confirm("Bạn còn " + (total-answered) + " câu chưa trả lời. Bạn có chắc muốn nộp bài không?");
+    if(!ok) return;
+  }
+  clearInterval(timerInterval);
+  submitExam();
+}
+
+function submitExam(){
+  clearInterval(timerInterval);
+  let correct = 0, wrong = 0, blank = 0;
+  currentExam.cauHoi.forEach(q=>{
+    if(answers[q.id] === undefined) blank++;
+    else if(answers[q.id] === q.dapAn) correct++;
+    else wrong++;
+  });
+  const score = (correct * 0.2).toFixed(1);
+  document.getElementById('scoreNum').textContent = score;
+  document.getElementById('examTitleResult').textContent = examStartLabel;
+  document.getElementById('correctCount').textContent = correct;
+  document.getElementById('wrongCount').textContent = wrong;
+  document.getElementById('blankCount').textContent = blank;
+
+  const used = totalSeconds - secondsLeft;
+  const um = Math.floor(used/60), us = used%60;
+  document.getElementById('timeUsed').textContent = um + ":" + (us<10?"0"+us:us);
+
+  buildReview();
+  document.getElementById('reviewList').classList.remove('show');
+  showScreen('screen-result');
+}
+
+function buildReview(){
+  const letters = ['A','B','C','D'];
+  const list = document.getElementById('reviewList');
+  list.innerHTML = "";
+  currentExam.cauHoi.forEach((q,idx)=>{
+    const userAns = answers[q.id];
+    const isCorrect = userAns === q.dapAn;
+    const item = document.createElement('div');
+    item.className = 'review-item ' + (isCorrect ? 'correct' : 'wrong');
+    let html = '<div class="rq">Câu '+(idx+1)+'. '+q.cauHoi+
+      '<span class="tag">'+(userAns===undefined ? 'Bỏ trống' : (isCorrect ? 'Đúng' : 'Sai'))+'</span></div>';
+    q.luaChon.forEach((opt,oidx)=>{
+      let cls = '';
+      if(oidx === q.dapAn) cls = 'correct-ans';
+      else if(oidx === userAns && !isCorrect) cls = 'wrong-ans';
+      if(cls){
+        html += '<div class="ropt '+cls+'">'+letters[oidx]+'. '+opt+'</div>';
+      }
+    });
+    item.innerHTML = html;
+    list.appendChild(item);
+  });
+}
+
+function toggleReview(){
+  document.getElementById('reviewList').classList.toggle('show');
+}
+
+function backToSelect(){
+  currentExam = null;
+  answers = {};
+  showScreen('screen-select');
+}
+</script>
+</body>
+</html>

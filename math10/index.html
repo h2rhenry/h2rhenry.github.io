@@ -342,7 +342,7 @@ footer{text-align:center;color:var(--gray);font-size:.8rem;padding:26px 10px;}
         <div class="icon">🟢</div>
         <h2>Đề Dễ</h2>
         <div class="badge-row">
-          <span class="badge">2 mã đề</span>
+          <span class="badge">3 mã đề</span>
           <span class="badge">50 câu/đề</span>
           <span class="badge">10 điểm</span>
         </div>
@@ -353,7 +353,7 @@ footer{text-align:center;color:var(--gray);font-size:.8rem;padding:26px 10px;}
         <div class="icon">🔴</div>
         <h2>Đề Khó</h2>
         <div class="badge-row">
-          <span class="badge">2 mã đề</span>
+          <span class="badge">3 mã đề</span>
           <span class="badge">50 câu/đề</span>
           <span class="badge">10 điểm</span>
         </div>
@@ -660,14 +660,128 @@ const deThiKho002 = {
   ]
 };
 
+const deThiDe003 = {
+  ten: "Đề Dễ 003",
+  cauHoi: [
+    {id:1,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Trong các phát biểu sau, phát biểu nào là một mệnh đề?",luaChon:["Hôm nay trời đẹp quá!","Bạn có thích môn Toán không?","Số 15 là số nguyên tố.","Hãy làm bài tập này."],dapAn:2},
+    {id:2,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Mệnh đề \"5&sup2; = 25\" có giá trị chân lý là?",luaChon:["Đúng","Sai","Không xác định","Không phải mệnh đề"],dapAn:0},
+    {id:3,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Phủ định của mệnh đề \"7 > 3\" là?",luaChon:["7 < 3","7 &le; 3","7 &ge; 3","7 = 3"],dapAn:1},
+    {id:4,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Mệnh đề kéo theo \"Nếu a>0 thì a&sup2;>0\" được viết là?",luaChon:["a>0 &rArr; a&sup2;>0","a&sup2;>0 &rArr; a>0","a>0 &hArr; a&sup2;>0","a&sup2;<0 &rArr; a>0"],dapAn:0},
+    {id:5,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho mệnh đề P: \"x chia hết cho 6\". Mệnh đề phủ định của P là?",luaChon:["x không chia hết cho 6","x chia hết cho 3","x chia hết cho 2","x không chia hết cho 3"],dapAn:0},
+    {id:6,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = {1;2;3;4}. Khẳng định nào sau đây đúng?",luaChon:["5 &isin; A","2 &notin; A","3 &isin; A","{2} &isin; A"],dapAn:2},
+    {id:7,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = {1;2;3} và B = {3;4;5}. Khi đó A &cap; B bằng?",luaChon:["{1;2;3;4;5}","{3}","{1;2}","&empty;"],dapAn:1},
+    {id:8,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Với hai tập hợp A và B, A &cup; B là?",luaChon:["Tập hợp gồm các phần tử thuộc A nhưng không thuộc B","Tập hợp gồm các phần tử thuộc cả A và B","Tập hợp gồm các phần tử thuộc A hoặc thuộc B","Tập hợp gồm các phần tử không thuộc A và B"],dapAn:2},
+    {id:9,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = {1;2;3;4} và B = {2;4}. Khi đó A \\ B bằng?",luaChon:["{2;4}","{1;3}","{1;2;3;4}","&empty;"],dapAn:1},
+    {id:10,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Tập hợp A = (-2;3) có thể viết dưới dạng điều kiện là?",luaChon:["-2 < x < 3","-2 &le; x < 3","-2 < x &le; 3","-2 &le; x &le; 3"],dapAn:0},
+    {id:11,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = (1;6). Số nào sau đây thuộc A?",luaChon:["1","5","6","0"],dapAn:1},
+    {id:12,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = [-3;3). Số nào sau đây không thuộc A?",luaChon:["-3","0","2","3"],dapAn:3},
+    {id:13,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = {x&isin;R | x&sup2;=4}. Khi đó A bằng?",luaChon:["{2}","{-2}","{-2;2}","{4}"],dapAn:2},
+    {id:14,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = [1;4), B = [3;6). Khi đó A &cap; B bằng?",luaChon:["[1;6)","[1;3)","[3;4)","(3;4)"],dapAn:2},
+    {id:15,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = [1;4), B = [3;6). Khi đó A &cup; B bằng?",luaChon:["[1;6)","[3;4)","[1;3)","[4;6)"],dapAn:0},
+    {id:16,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Điểm nào sau đây thuộc miền nghiệm của bất phương trình x+y &le; 5?",luaChon:["(2;2)","(3;3)","(5;2)","(6;0)"],dapAn:0},
+    {id:17,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Đường thẳng có phương trình x+y=4 đi qua điểm nào sau đây?",luaChon:["(1;1)","(2;2)","(3;2)","(4;1)"],dapAn:1},
+    {id:18,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Miền nghiệm của bất phương trình x>2 nằm về phía nào của đường thẳng x=2?",luaChon:["Bên trái","Bên phải","Phía trên","Phía dưới"],dapAn:1},
+    {id:19,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Điểm M(1;2) có thuộc miền nghiệm của 2x - y < 1 không?",luaChon:["Có","Không","Chỉ khi x>0","Không xác định"],dapAn:0},
+    {id:20,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Bất phương trình nào sau đây là bất phương trình bậc nhất hai ẩn?",luaChon:["x&sup2;+y &le; 1","xy > 2","2x-3y+1 &ge; 0","x&sup2;+y&sup2; < 4"],dapAn:2},
+    {id:21,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Điểm O(0;0) thuộc miền nghiệm của bất phương trình nào?",luaChon:["x+y<0","x-y>1","2x+y &le; 3","x>2"],dapAn:2},
+    {id:22,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Miền nghiệm của hệ x &ge; 0, y &ge; 0 là?",luaChon:["Góc phần tư thứ nhất kể cả hai trục tọa độ","Góc phần tư thứ hai","Nửa mặt phẳng phía trên trục Ox","Nửa mặt phẳng phía bên phải trục Oy"],dapAn:0},
+    {id:23,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Điểm nào sau đây là nghiệm của hệ x+y &le; 4, x &ge; 0, y &ge; 0?",luaChon:["(1;2)","(3;2)","(-1;1)","(5;0)"],dapAn:0},
+    {id:24,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Trong mặt phẳng tọa độ, đường thẳng 2x+y=6 cắt trục Ox tại điểm?",luaChon:["(0;6)","(3;0)","(6;0)","(0;3)"],dapAn:1},
+    {id:25,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Đường thẳng x-2y=4 cắt trục Oy tại điểm?",luaChon:["(4;0)","(-4;0)","(0;2)","(0;-2)"],dapAn:3},
+    {id:26,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Điểm (2;1) có thuộc đường thẳng 3x-y=5 không?",luaChon:["Có","Không","Chỉ thuộc khi x>0","Không thể xác định"],dapAn:0},
+    {id:27,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Hệ bất phương trình x+y &le; 6, x &ge; 1 có nghiệm là?",luaChon:["(0;0)","(1;2)","(7;0)","(-1;5)"],dapAn:1},
+    {id:28,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Cho miền nghiệm của hệ gồm các điểm thỏa mãn x &ge; 0, y &ge; 0, x+y &le; 4. Điểm nào sau đây là một đỉnh của miền nghiệm?",luaChon:["(1;1)","(0;4)","(2;3)","(4;4)"],dapAn:1},
+    {id:29,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Một cửa hàng bán hai loại sản phẩm A và B. Gọi x, y lần lượt là số sản phẩm loại A, B bán ra. Điều kiện tổng số sản phẩm không vượt quá 100 được biểu diễn bởi?",luaChon:["x+y<100","x+y &le; 100","x-y &le; 100","xy &le; 100"],dapAn:1},
+    {id:30,chuDe:"Hệ thức lượng",cauHoi:"Trong tam giác ABC, định lý côsin cho cạnh a là?",luaChon:["a&sup2;=b&sup2;+c&sup2;+2bc.cosA","a&sup2;=b&sup2;+c&sup2;-2bc.cosA","a=b+c-2bc.cosA","a&sup2;=b&sup2;-c&sup2;-2bc.cosA"],dapAn:1},
+    {id:31,chuDe:"Hệ thức lượng",cauHoi:"Trong tam giác ABC, nếu A=90&deg; thì?",luaChon:["a&sup2;=b&sup2;+c&sup2;","b&sup2;=a&sup2;+c&sup2;","c&sup2;=a&sup2;+b&sup2;","a=b+c"],dapAn:0},
+    {id:32,chuDe:"Hệ thức lượng",cauHoi:"Giá trị của sin30&deg; bằng?",luaChon:["1/2","&radic;2/2","&radic;3/2","1"],dapAn:0},
+    {id:33,chuDe:"Hệ thức lượng",cauHoi:"Giá trị của cos60&deg; bằng?",luaChon:["0","1/2","&radic;2/2","&radic;3/2"],dapAn:1},
+    {id:34,chuDe:"Hệ thức lượng",cauHoi:"Giá trị của tan45&deg; bằng?",luaChon:["0","1/2","1","&radic;3"],dapAn:2},
+    {id:35,chuDe:"Hệ thức lượng",cauHoi:"Trong tam giác ABC, hệ thức đúng theo định lý sin là?",luaChon:["a/sinA = b/sinB = c/sinC","a/cosA = b/cosB = c/cosC","a.sinA = b.sinB = c.sinC","a.cosA = b.cosB = c.cosC"],dapAn:0},
+    {id:36,chuDe:"Hệ thức lượng",cauHoi:"Diện tích tam giác có hai cạnh b, c và góc xen giữa A được tính bởi?",luaChon:["S = bc.cosA","S = (1/2)bc.sinA","S = bc.sinA","S = (1/2)bc.cosA"],dapAn:1},
+    {id:37,chuDe:"Hệ thức lượng",cauHoi:"Một tam giác có hai cạnh bằng 3 và 4, góc xen giữa bằng 90&deg;. Diện tích tam giác là?",luaChon:["6","7","12","24"],dapAn:0},
+    {id:38,chuDe:"Hệ thức lượng",cauHoi:"Tam giác ABC có AB=3, AC=4, góc A=60&deg;. Độ dài BC bằng?",luaChon:["&radic;7","&radic;13","5","7"],dapAn:1},
+    {id:39,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có a=5, b=6, C=60&deg;. Khi đó c&sup2; bằng?",luaChon:["31","61","91","11"],dapAn:0},
+    {id:40,chuDe:"Hệ thức lượng",cauHoi:"Trong tam giác ABC, nếu A>B thì?",luaChon:["a<b","a=b","a>b","a+c<b"],dapAn:2},
+    {id:41,chuDe:"Hệ thức lượng",cauHoi:"Một tam giác có ba cạnh 3, 4, 5. Tam giác đó là?",luaChon:["Tam giác nhọn","Tam giác vuông","Tam giác tù","Tam giác đều"],dapAn:1},
+    {id:42,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có AB=AC. Khi đó?",luaChon:["A=B","B=C","A=C","A+B=C"],dapAn:1},
+    {id:43,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có A=60&deg;, B=80&deg;. Khi đó C bằng?",luaChon:["20&deg;","30&deg;","40&deg;","50&deg;"],dapAn:2},
+    {id:44,chuDe:"Hệ thức lượng",cauHoi:"Trong tam giác ABC, nếu a=2sinA và b=2sinB thì theo định lý sin, hai cạnh a, b?",luaChon:["Luôn bằng nhau","Có cùng tỉ số với sinA, sinB","Luôn vuông góc","Không có quan hệ"],dapAn:1},
+    {id:45,chuDe:"Hệ thức lượng",cauHoi:"Một tam giác có hai cạnh 5 và 7, góc xen giữa 30&deg;. Diện tích của tam giác là?",luaChon:["35/2","35/4","(35&radic;3)/4","(35&radic;3)/2"],dapAn:1},
+    {id:46,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có a=6, b=8, C=90&deg;. Cạnh c bằng?",luaChon:["2","10","14","48"],dapAn:1},
+    {id:47,chuDe:"Hệ thức lượng",cauHoi:"Trong tam giác ABC, nếu A=120&deg; thì?",luaChon:["B+C=60&deg;","B+C=120&deg;","B+C=180&deg;","B+C=240&deg;"],dapAn:0},
+    {id:48,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có a=4, b=5, c=6. Góc A là góc đối diện cạnh?",luaChon:["4","5","6","a+b"],dapAn:0},
+    {id:49,chuDe:"Hệ thức lượng",cauHoi:"Một tam giác có diện tích 20 cm&sup2;, hai cạnh kề nhau dài 5 cm và 8 cm. Giá trị sin của góc xen giữa hai cạnh đó là?",luaChon:["1","1/2","4/5","2/5"],dapAn:0},
+    {id:50,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Miền nghiệm của bất phương trình y &ge; 1 nằm ở phía nào so với đường thẳng y=1?",luaChon:["Phía trên (kể cả đường thẳng)","Phía dưới (kể cả đường thẳng)","Bên trái","Bên phải"],dapAn:0}
+  ]
+};
+
+const deThiKho003 = {
+  ten: "Đề Khó 003",
+  cauHoi: [
+    {id:1,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho mệnh đề P: \"Với mọi số thực x, x&sup2;+1>0\". Phủ định của P là?",luaChon:["Với mọi x&isin;R, x&sup2;+1 &le; 0","Tồn tại x&isin;R sao cho x&sup2;+1 &le; 0","Tồn tại x&isin;R sao cho x&sup2;+1>0","Với mọi x&isin;R, x&sup2;+1<0"],dapAn:1},
+    {id:2,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Mệnh đề \"x&sup2;=4 &rArr; x=2\" là?",luaChon:["Đúng với mọi x&isin;R","Sai với mọi x&isin;R","Sai vì x=-2 là một phản ví dụ","Đúng vì x&sup2;=4 nên x=2"],dapAn:2},
+    {id:3,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho P: \"x là số nguyên chia hết cho 6\" và Q: \"x chia hết cho 3\". Quan hệ đúng là?",luaChon:["P là điều kiện cần của Q","P là điều kiện đủ của Q","P tương đương với Q","Q là điều kiện đủ của P"],dapAn:1},
+    {id:4,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Mệnh đề nào sau đây tương đương với mệnh đề \"x&sup2;=1\"?",luaChon:["x=1","x=-1","x=1 hoặc x=-1","x>0"],dapAn:2},
+    {id:5,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = {x&isin;R | -2<x &le; 3}. Viết A dưới dạng khoảng là?",luaChon:["[-2;3)","(-2;3)","(-2;3]","[-2;3]"],dapAn:2},
+    {id:6,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = (-3;4), B = [1;6). Khi đó A &cap; B bằng?",luaChon:["(-3;6)","[1;4)","(1;4)","[-3;4)"],dapAn:1},
+    {id:7,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Với A = (-3;4), B = [1;6) như câu trên. Khi đó A &cup; B bằng?",luaChon:["(-3;6)","[-3;6)","(-3;4)","[1;6)"],dapAn:0},
+    {id:8,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Tập nghiệm của bất phương trình x&sup2;-5x+6 &le; 0 là?",luaChon:["[2;3]","[2;3)","(2;3)","(-&infin;;2) &cup; (3;+&infin;)"],dapAn:0},
+    {id:9,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = {x&isin;R | x&sup2;<9}. Khi đó A bằng?",luaChon:["[-3;3)","(-3;3)","(-&infin;;-3) &cup; (3;+&infin;)","[-3;3]"],dapAn:1},
+    {id:10,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = [-1;5), B = (-3;2). Khi đó A &cap; B bằng?",luaChon:["[-1;2)","(-1;2)","[-1;2]","(-3;5)"],dapAn:0},
+    {id:11,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Số phần tử của tập A = {x&isin;Z | -3 &le; x < 4} là?",luaChon:["6","7","8","9"],dapAn:1},
+    {id:12,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = {1;2;3;4;5} và B = {2;4;6}. Số phần tử của A &cup; B là?",luaChon:["5","6","7","8"],dapAn:1},
+    {id:13,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho A = [-2;5), B = (1;+&infin;). Khi đó A &cap; B là?",luaChon:["(1;5)","[1;5]","[1;5)","(1;+&infin;)"],dapAn:0},
+    {id:14,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Tập nghiệm của |x-2| &le; 3 là?",luaChon:["[-1;5]","(-1;5)","[-5;1)","(-5;1)"],dapAn:0},
+    {id:15,chuDe:"Mệnh đề - Tập hợp",cauHoi:"Cho P: \"x&sup2;-4=0\". Mệnh đề phủ định của P là?",luaChon:["x&sup2;-4>0","x&sup2;-4<0","x&sup2;-4&ne;0","x&sup2;-4&ge;0"],dapAn:2},
+    {id:16,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Điểm nào sau đây KHÔNG thuộc miền nghiệm của bất phương trình 2x-3y+6 &ge; 0?",luaChon:["(0;0)","(3;0)","(0;3)","(-3;0)"],dapAn:2},
+    {id:17,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Miền nghiệm của bất phương trình x+2y<4 là nửa mặt phẳng?",luaChon:["Có bờ là đường thẳng x+2y=4 và chứa điểm (0;0)","Có bờ là đường thẳng x+2y=4 và không chứa điểm (0;0)","Có bờ là đường thẳng x+2y=0","Không có đường biên"],dapAn:0},
+    {id:18,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Điểm M(2;-1) thuộc miền nghiệm của hệ x+y &le; 2, 2x-y &ge; 4 hay không?",luaChon:["Có","Không","Chỉ thỏa mãn bất phương trình thứ nhất","Chỉ thỏa mãn bất phương trình thứ hai"],dapAn:0},
+    {id:19,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Miền nghiệm của hệ x &ge; 0, y &ge; 0, x+y &le; 6 là một tam giác có các đỉnh?",luaChon:["(0;0), (6;0), (0;6)","(0;0), (3;3), (6;6)","(0;6), (6;0), (6;6)","(1;0), (0;1), (6;6)"],dapAn:0},
+    {id:20,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Giá trị lớn nhất của F=2x+y trên miền nghiệm x &ge; 0, y &ge; 0, x+y &le; 4 là?",luaChon:["4","6","8","10"],dapAn:2},
+    {id:21,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Giá trị nhỏ nhất của F=3x+2y trên miền nghiệm x &ge; 0, y &ge; 0, x+y &ge; 4 là?",luaChon:["6","8","10","12"],dapAn:1},
+    {id:22,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Trên miền nghiệm x &ge; 0, y &ge; 0, 2x+y &le; 8, x+2y &le; 8, giá trị lớn nhất của x+y là?",luaChon:["4","16/3","6","8"],dapAn:1},
+    {id:23,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Một cơ sở sản xuất hai sản phẩm A, B. Mỗi sản phẩm A cần 2 giờ lao động, mỗi sản phẩm B cần 3 giờ. Tổng thời gian lao động không quá 60 giờ. Nếu x, y lần lượt là số sản phẩm A, B thì điều kiện về thời gian là?",luaChon:["2x+3y<60","2x+3y &le; 60","3x+2y &le; 60","xy &le; 60"],dapAn:1},
+    {id:24,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Miền nghiệm của hệ x+y &le; 5, x-y &ge; 1, y &ge; 0 có điểm nào sau đây?",luaChon:["(2;1)","(1;2)","(4;2)","(0;3)"],dapAn:0},
+    {id:25,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Đường thẳng 3x+2y=12 cắt hai trục tọa độ tại A, B. Độ dài đoạn AB bằng?",luaChon:["&radic;13","2&radic;13","5","6"],dapAn:1},
+    {id:26,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Hai đường thẳng x+y=5 và 2x-y=1 cắt nhau tại điểm?",luaChon:["(1;4)","(2;3)","(3;2)","(4;1)"],dapAn:1},
+    {id:27,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Miền nghiệm của hệ x-y &le; 2, x+y &le; 6, x &ge; 1, y &ge; 0 có đỉnh nào sau đây?",luaChon:["(4;2)","(2;4)","(5;3)","(0;6)"],dapAn:0},
+    {id:28,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Giá trị lớn nhất của F=x+2y trên miền nghiệm x &ge; 0, y &ge; 0, x+y &le; 6, x &le; 4 là?",luaChon:["6","8","10","12"],dapAn:3},
+    {id:29,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Cho hệ x+y &le; 10, 2x+y &le; 14, x &ge; 0, y &ge; 0. Điểm giao của hai đường thẳng biên là?",luaChon:["(2;8)","(4;6)","(6;4)","(8;2)"],dapAn:1},
+    {id:30,chuDe:"Hệ thức lượng",cauHoi:"Trong tam giác ABC, biết b=5, c=7, A=60&deg;. Giá trị a&sup2; bằng?",luaChon:["39","49","74","109"],dapAn:0},
+    {id:31,chuDe:"Hệ thức lượng",cauHoi:"Tam giác ABC có a=5, b=6, c=7. Giá trị cosA bằng?",luaChon:["1/2","3/5","11/14","5/7"],dapAn:3},
+    {id:32,chuDe:"Hệ thức lượng",cauHoi:"Tam giác ABC có a=8, b=6, C=60&deg;. Giá trị c&sup2; bằng?",luaChon:["28","52","76","100"],dapAn:1},
+    {id:33,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có A=30&deg;, B=45&deg;, a=4. Độ dài b bằng?",luaChon:["2&radic;2","4&radic;2","4","8"],dapAn:1},
+    {id:34,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có A=60&deg;, B=90&deg;, c=6. Độ dài a bằng?",luaChon:["3&radic;2","3&radic;3","6&radic;2","6&radic;3"],dapAn:3},
+    {id:35,chuDe:"Hệ thức lượng",cauHoi:"Một tam giác có hai cạnh 6 và 8, góc xen giữa bằng 120&deg;. Cạnh đối diện góc 120&deg; bằng?",luaChon:["2&radic;7","2&radic;37","&radic;52","10"],dapAn:1},
+    {id:36,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có a=7, b=8, C=60&deg;. Diện tích tam giác bằng?",luaChon:["14","14&radic;3","28&radic;3","56"],dapAn:1},
+    {id:37,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có diện tích S=12, b=6, c=8. Giá trị sinA bằng?",luaChon:["1/2","&radic;3/2","3/4","1"],dapAn:0},
+    {id:38,chuDe:"Hệ thức lượng",cauHoi:"Một tam giác có ba cạnh 5, 5, 6. Diện tích tam giác bằng?",luaChon:["12","12&radic;2","8&radic;2","15"],dapAn:0},
+    {id:39,chuDe:"Hệ thức lượng",cauHoi:"Tam giác ABC có a=10, b=8, c=6. Góc A bằng?",luaChon:["30&deg;","60&deg;","90&deg;","120&deg;"],dapAn:2},
+    {id:40,chuDe:"Hệ thức lượng",cauHoi:"Trong tam giác ABC, biết a=2, b=3, C=120&deg;. Giá trị c bằng?",luaChon:["&radic;7","&radic;19","5","7"],dapAn:1},
+    {id:41,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có A=45&deg;, B=60&deg;, a=4. Khi đó b bằng?",luaChon:["2&radic;2","2&radic;3","2&radic;6","4&radic;3"],dapAn:2},
+    {id:42,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có a=4, b=5, c=6. Giá trị cosA bằng?",luaChon:["1/4","3/8","5/8","3/4"],dapAn:3},
+    {id:43,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có a=13, b=14, c=15. Diện tích tam giác bằng?",luaChon:["42","84","91","105"],dapAn:1},
+    {id:44,chuDe:"Hệ thức lượng",cauHoi:"Một tam giác có hai cạnh 10 và 12, diện tích bằng 30. Giá trị sin của góc xen giữa hai cạnh đó bằng?",luaChon:["1/2","3/5","2/3","1"],dapAn:0},
+    {id:45,chuDe:"Hệ thức lượng",cauHoi:"Trong tam giác ABC, biết a=6, A=30&deg;, B=60&deg;. Độ dài b bằng?",luaChon:["3","6","6&radic;3","12"],dapAn:2},
+    {id:46,chuDe:"Hệ thức lượng",cauHoi:"Tam giác ABC có a=5, b=5, C=60&deg;. Độ dài c bằng?",luaChon:["5","5&radic;2","5&radic;3","10"],dapAn:0},
+    {id:47,chuDe:"Hệ thức lượng",cauHoi:"Một tam giác có hai cạnh 4 và 6, góc xen giữa là 60&deg;. Diện tích tam giác bằng?",luaChon:["6","6&radic;3","12&radic;3","24"],dapAn:1},
+    {id:48,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có a=3, b=4, c=5. Giá trị cosC bằng?",luaChon:["0","3/5","4/5","1"],dapAn:0},
+    {id:49,chuDe:"Hệ thức lượng",cauHoi:"Cho tam giác ABC có A=120&deg;, B=30&deg;, a=4&radic;3. Độ dài b bằng?",luaChon:["2","4","2&radic;3","4&radic;3"],dapAn:1},
+    {id:50,chuDe:"BPT bậc nhất hai ẩn",cauHoi:"Một xưởng sản xuất hai loại sản phẩm A, B với lãi lần lượt 4 và 6 (triệu đồng/sản phẩm). Biết x, y (x,y &ge; 0) thỏa mãn hệ x+y &le; 10, x+3y &le; 18. Giá trị lớn nhất của lợi nhuận F=4x+6y là?",luaChon:["40","48","36","44"],dapAn:1}
+  ]
+};
+
 const examBank = {
   de: [
     {ma:"DỄ 001", data: deThiDe001, level:"easy"},
-    {ma:"DỄ 002", data: deThiDe002, level:"easy"}
+    {ma:"DỄ 002", data: deThiDe002, level:"easy"},
+    {ma:"DỄ 003", data: deThiDe003, level:"easy"}
   ],
   kho: [
     {ma:"KHÓ 001", data: deThiKho001, level:"hard"},
-    {ma:"KHÓ 002", data: deThiKho002, level:"hard"}
+    {ma:"KHÓ 002", data: deThiKho002, level:"hard"},
+    {ma:"KHÓ 003", data: deThiKho003, level:"hard"}
   ]
 };
 
@@ -695,15 +809,27 @@ function showCodeScreen(category){
     card.onclick = ()=>startExam(item);
     card.innerHTML =
       '<span class="code-tag '+(isEasy ? 'easy' : 'hard')+'">'+item.ma+'</span>'+
-      '<p>50 câu trắc nghiệm - Thang điểm 10 - Thời gian 90 phút</p>'+
+      '<p>50 câu trắc nghiệm - Thang điểm 10 - Thời gian 90 phút - Thứ tự câu được xáo trộn mỗi lần làm</p>'+
       '<button class="btn block">Bắt đầu làm bài</button>';
     grid.appendChild(card);
   });
   showScreen('screen-code');
 }
 
+function shuffleArray(arr){
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 function startExam(item){
-  currentExam = item.data;
+  currentExam = {
+    ten: item.data.ten,
+    cauHoi: shuffleArray(item.data.cauHoi)
+  };
   examStartLabel = currentExam.ten;
   currentIndex = 0;
   answers = {};

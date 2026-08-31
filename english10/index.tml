@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luyện thi Trắc nghiệm Tiếng Anh</title>
+<style>
+:root{
+  --primary:#0891b2;
+  --primary-dark:#0e7490;
+  --primary-light:#ecfeff;
+  --green:#16a34a;
+  --green-light:#dcfce7;
+  --red:#dc2626;
+  --red-light:#fee2e2;
+  --gray:#64748b;
+  --bg:#f1f5f9;
+  --card:#ffffff;
+  --border:#e2e8f0;
+  --text:#1e293b;
+  --shadow:0 4px 16px rgba(15,23,42,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}
+.container{max-width:960px;margin:0 auto;padding:20px;}
+header.topbar{
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:#fff;
+  padding:22px 20px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+header.topbar h1{font-size:1.5rem;letter-spacing:.5px;}
+header.topbar p{opacity:.9;margin-top:4px;font-size:.9rem;}
+.screen{display:none;}
+.screen.active{display:block;}
+
+.select-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  margin-top:28px;
+}
+@media(max-width:640px){.select-grid{grid-template-columns:1fr;}}
+.exam-card{
+  background:var(--card);
+  border-radius:16px;
+  padding:28px 24px;
+  box-shadow:var(--shadow);
+  border:2px solid transparent;
+  text-align:center;
+  transition:.2s;
+  cursor:pointer;
+}
+.exam-card:hover{border-color:var(--primary);transform:translateY(-3px);}
+.exam-card .icon{font-size:2.4rem;margin-bottom:10px;}
+.exam-card h2{font-size:1.25rem;color:var(--primary-dark);margin-bottom:8px;}
+.exam-card p{color:var(--gray);font-size:.9rem;margin-bottom:18px;line-height:1.5;}
+.badge-row{display:flex;gap:8px;justify-content:center;margin-bottom:18px;flex-wrap:wrap;}
+.badge{
+  background:var(--primary-light);
+  color:var(--primary-dark);
+  font-size:.75rem;
+  padding:4px 10px;
+  border-radius:999px;
+  font-weight:600;
+}
+.btn{
+  display:inline-block;
+  border:none;
+  cursor:pointer;
+  font-size:.95rem;
+  font-weight:600;
+  padding:12px 26px;
+  border-radius:10px;
+  background:var(--primary);
+  color:#fff;
+  transition:.2s;
+}
+.btn:hover{background:var(--primary-dark);}
+.btn.secondary{background:#fff;color:var(--primary);border:2px solid var(--primary);}
+.btn.secondary:hover{background:var(--primary-light);}
+.btn.block{width:100%;}
+.btn:disabled{opacity:.5;cursor:not-allowed;}
+
+.info-box{
+  background:var(--card);
+  border-radius:14px;
+  padding:18px 20px;
+  margin-top:24px;
+  box-shadow:var(--shadow);
+  font-size:.88rem;
+  color:var(--gray);
+  line-height:1.6;
+}
+.info-box b{color:var(--text);}
+
+.back-row{margin-bottom:18px;}
+.back-link{
+  background:none;
+  border:none;
+  color:var(--primary);
+  font-weight:600;
+  cursor:pointer;
+  font-size:.9rem;
+  padding:6px 0;
+}
+.back-link:hover{text-decoration:underline;}
+
+.category-title{
+  font-size:1.2rem;
+  font-weight:700;
+  color:var(--primary-dark);
+  margin-bottom:18px;
+}
+
+.code-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+.code-card{
+  background:var(--card);
+  border-radius:16px;
+  padding:24px;
+  box-shadow:var(--shadow);
+  border:2px solid transparent;
+  cursor:pointer;
+  transition:.2s;
+}
+.code-card:hover{border-color:var(--primary);transform:translateY(-3px);}
+.code-card .code-tag{
+  display:inline-block;
+  font-weight:800;
+  font-size:1.05rem;
+  letter-spacing:1px;
+  padding:5px 14px;
+  border-radius:999px;
+  margin-bottom:12px;
+}
+.code-tag.easy{background:var(--green-light);color:var(--green);}
+.code-tag.hard{background:var(--red-light);color:var(--red);}
+.code-card p{color:var(--gray);font-size:.85rem;margin-bottom:16px;}
+
+.quiz-top{
+  background:var(--card);
+  border-radius:14px;
+  padding:14px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:var(--shadow);
+  margin-bottom:18px;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.quiz-top .exam-title{font-weight:700;color:var(--primary-dark);}
+.timer{
+  font-weight:700;
+  font-size:1.05rem;
+  background:var(--primary-light);
+  color:var(--primary-dark);
+  padding:8px 16px;
+  border-radius:10px;
+}
+.timer.warning{background:var(--red-light);color:var(--red);}
+
+.quiz-layout{
+  display:grid;
+  grid-template-columns:1fr 260px;
+  gap:20px;
+  align-items:start;
+}
+@media(max-width:800px){.quiz-layout{grid-template-columns:1fr;}}
+
+.question-card{
+  background:var(--card);
+  border-radius:16px;
+  padding:26px;
+  box-shadow:var(--shadow);
+}
+.q-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.q-number{
+  color:var(--primary);
+  font-weight:700;
+  font-size:.95rem;
+}
+.q-topic{
+  font-size:.75rem;
+  color:var(--gray);
+  background:var(--bg);
+  padding:3px 10px;
+  border-radius:999px;
+}
+.q-text{font-size:1.08rem;line-height:1.65;margin-bottom:20px;font-weight:500;}
+
+.options{display:flex;flex-direction:column;gap:10px;}
+.option{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border:2px solid var(--border);
+  border-radius:12px;
+  padding:13px 16px;
+  cursor:pointer;
+  transition:.15s;
+  font-size:.95rem;
+}
+.option:hover{border-color:var(--primary);background:var(--primary-light);}
+.option.selected{border-color:var(--primary);background:var(--primary-light);font-weight:600;}
+.option .letter{
+  width:28px;height:28px;
+  border-radius:50%;
+  background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;
+  font-size:.85rem;
+  flex-shrink:0;
+}
+.option.selected .letter{background:var(--primary);color:#fff;}
+
+.nav-buttons{
+  display:flex;
+  justify-content:space-between;
+  margin-top:22px;
+  gap:10px;
+}
+
+.side-panel{
+  background:var(--card);
+  border-radius:16px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+.side-panel h3{font-size:.9rem;margin-bottom:12px;color:var(--gray);}
+.qgrid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
+  margin-bottom:18px;
+}
+.qgrid button{
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius:8px;
+  padding:8px 0;
+  font-size:.8rem;
+  cursor:pointer;
+  font-weight:600;
+  color:var(--gray);
+}
+.qgrid button.answered{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.qgrid button.current{background:var(--primary);border-color:var(--primary);color:#fff;}
+.legend{font-size:.75rem;color:var(--gray);display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.legend span{display:inline-flex;align-items:center;gap:6px;}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+.dot.d1{background:var(--green);}
+.dot.d2{background:var(--primary);}
+.dot.d3{background:#fff;border:1px solid var(--border);}
+
+.result-summary{
+  background:var(--card);
+  border-radius:16px;
+  padding:32px;
+  text-align:center;
+  box-shadow:var(--shadow);
+  margin-bottom:20px;
+}
+.score-circle{
+  width:140px;height:140px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:#fff;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  margin:0 auto 18px;
+}
+.score-circle .num{font-size:2.4rem;font-weight:800;}
+.score-circle .den{font-size:.9rem;opacity:.85;}
+.result-stats{display:flex;justify-content:center;gap:26px;margin-top:14px;flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat .val{font-size:1.3rem;font-weight:700;}
+.stat .lbl{font-size:.78rem;color:var(--gray);}
+.stat.correct .val{color:var(--green);}
+.stat.wrong .val{color:var(--red);}
+
+.result-actions{display:flex;gap:12px;justify-content:center;margin-top:22px;flex-wrap:wrap;}
+
+.review-item{
+  background:var(--card);
+  border-radius:14px;
+  padding:18px 20px;
+  margin-bottom:12px;
+  box-shadow:var(--shadow);
+  border-left:5px solid var(--border);
+}
+.review-item.correct{border-left-color:var(--green);}
+.review-item.wrong{border-left-color:var(--red);}
+.review-item .rq{font-weight:600;margin-bottom:10px;}
+.review-item .ropt{
+  padding:8px 12px;
+  border-radius:8px;
+  font-size:.88rem;
+  margin-bottom:6px;
+}
+.review-item .ropt.correct-ans{background:var(--green-light);color:#166534;font-weight:600;}
+.review-item .ropt.wrong-ans{background:var(--red-light);color:#991b1b;font-weight:600;}
+.review-item .tag{
+  display:inline-block;
+  font-size:.72rem;
+  font-weight:700;
+  padding:2px 10px;
+  border-radius:999px;
+  margin-left:8px;
+}
+.review-item.correct .tag{background:var(--green-light);color:var(--green);}
+.review-item.wrong .tag{background:var(--red-light);color:var(--red);}
+
+#reviewList{margin-top:24px;display:none;}
+#reviewList.show{display:block;}
+
+footer{text-align:center;color:var(--gray);font-size:.8rem;padding:26px 10px;}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <h1>🇬🇧 Luyện thi Trắc nghiệm Tiếng Anh</h1>
+  <p>Unit 1: Family Life | Unit 2: Humans and the Environment | Unit 3: Music</p>
+</header>
+
+<div class="container">
+
+  <section id="screen-select" class="screen active">
+    <div class="select-grid">
+      <div class="exam-card" onclick="showCodeScreen('de')">
+        <div class="icon">🟢</div>
+        <h2>Đề Dễ</h2>
+        <div class="badge-row">
+          <span class="badge">2 mã đề</span>
+          <span class="badge">50 câu/đề</span>
+          <span class="badge">10 điểm</span>
+        </div>
+        <p>Từ vựng và ngữ pháp cơ bản, áp dụng trực tiếp theo nội dung 3 Unit.</p>
+        <button class="btn block">Chọn mã đề</button>
+      </div>
+      <div class="exam-card" onclick="showCodeScreen('kho')">
+        <div class="icon">🔴</div>
+        <h2>Đề Khó</h2>
+        <div class="badge-row">
+          <span class="badge">2 mã đề</span>
+          <span class="badge">50 câu/đề</span>
+          <span class="badge">10 điểm</span>
+        </div>
+        <p>Tìm lỗi sai, đọc hiểu đoạn văn ngắn, vận dụng ngữ pháp nâng cao.</p>
+        <button class="btn block">Chọn mã đề</button>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <b>Hướng dẫn:</b> Chọn mức độ Dễ hoặc Khó, sau đó chọn mã đề (001, 002...) để bắt đầu.
+      Mỗi đề gồm 50 câu trắc nghiệm 4 đáp án, mỗi câu đúng được 0,2 điểm.
+      Thứ tự câu hỏi sẽ được xáo trộn ngẫu nhiên mỗi lần bạn bắt đầu làm bài.
+      Sau khi nộp bài, hệ thống sẽ chấm điểm và hiển thị đáp án đối chiếu cho từng câu.
+    </div>
+  </section>
+
+  <section id="screen-code" class="screen">
+    <div class="back-row">
+      <button class="back-link" onclick="backToSelect()">← Quay lại chọn mức độ</button>
+    </div>
+    <div class="category-title" id="codeCategoryTitle">Chọn mã đề - Đề Dễ</div>
+    <div class="code-grid" id="codeGrid"></div>
+  </section>
+
+  <section id="screen-quiz" class="screen">
+    <div class="quiz-top">
+      <div class="exam-title" id="examTitleLabel">Đề Dễ 001</div>
+      <div class="timer" id="timerBox">90:00</div>
+    </div>
+
+    <div class="quiz-layout">
+      <div class="question-card">
+        <div class="q-header">
+          <span class="q-number" id="qNumberLabel">Câu 1/50</span>
+          <span class="q-topic" id="qTopicLabel">Unit 1: Family Life</span>
+        </div>
+        <div class="q-text" id="qTextLabel"></div>
+        <div class="options" id="optionsBox"></div>
+        <div class="nav-buttons">
+          <button class="btn secondary" id="btnPrev" onclick="prevQuestion()">← Câu trước</button>
+          <button class="btn secondary" id="btnNext" onclick="nextQuestion()">Câu sau →</button>
+        </div>
+      </div>
+
+      <div class="side-panel">
+        <h3>DANH SÁCH CÂU HỎI</h3>
+        <div class="legend">
+          <span><i class="dot d2"></i> Đang xem</span>
+          <span><i class="dot d1"></i> Đã trả lời</span>
+          <span><i class="dot d3"></i> Chưa trả lời</span>
+        </div>
+        <div class="qgrid" id="qGrid"></div>
+        <button class="btn block" onclick="confirmSubmit()">Nộp bài</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="screen-result" class="screen">
+    <div class="result-summary">
+      <div class="score-circle">
+        <div class="num" id="scoreNum">0</div>
+        <div class="den">/ 10 điểm</div>
+      </div>
+      <div id="examTitleResult" style="font-weight:700;color:var(--primary-dark);font-size:1.1rem;"></div>
+      <div class="result-stats">
+        <div class="stat correct"><div class="val" id="correctCount">0</div><div class="lbl">Câu đúng</div></div>
+        <div class="stat wrong"><div class="val" id="wrongCount">0</div><div class="lbl">Câu sai</div></div>
+        <div class="stat"><div class="val" id="blankCount">0</div><div class="lbl">Bỏ trống</div></div>
+        <div class="stat"><div class="val" id="timeUsed">0:00</div><div class="lbl">Thời gian làm</div></div>
+      </div>
+      <div class="result-actions">
+        <button class="btn secondary" onclick="toggleReview()">Xem lại đáp án</button>
+        <button class="btn" onclick="backToSelect()">Làm đề khác</button>
+      </div>
+    </div>
+    <div id="reviewList"></div>
+  </section>
+
+</div>
+
+<footer>Luyện thi Tiếng Anh - Unit 1, 2, 3 - Chương trình Toàn cầu</footer>
+
+<script>
+const deThiDe001 = {
+  ten: "Đề Dễ 001",
+  cauHoi: [
+    {id:1,chuDe:"Unit 1: Family Life",cauHoi:"Every morning, my mother _____ breakfast for the whole family.",luaChon:["cook","cooks","is cooking","cooking"],dapAn:1},
+    {id:2,chuDe:"Unit 1: Family Life",cauHoi:"Look! The children _____ in the garden now.",luaChon:["play","plays","are playing","played"],dapAn:2},
+    {id:3,chuDe:"Unit 1: Family Life",cauHoi:"To _____ the dishes means to wash them after a meal.",luaChon:["do","make","take","have"],dapAn:0},
+    {id:4,chuDe:"Unit 1: Family Life",cauHoi:"My father usually _____ the car on Sundays.",luaChon:["wash","washes","is washing","washing"],dapAn:1},
+    {id:5,chuDe:"Unit 1: Family Life",cauHoi:"Choose the word that is NOT a household chore.",luaChon:["sweep the floor","water the plants","play football","do the laundry"],dapAn:2},
+    {id:6,chuDe:"Unit 1: Family Life",cauHoi:"We _____ a family picnic every summer.",luaChon:["have","has","having","are have"],dapAn:0},
+    {id:7,chuDe:"Unit 1: Family Life",cauHoi:"The Present Simple tense is mainly used to talk about?",luaChon:["actions happening right now","habits and routines","future plans only","past events"],dapAn:1},
+    {id:8,chuDe:"Unit 1: Family Life",cauHoi:"At the moment, my sister _____ her homework.",luaChon:["does","do","is doing","did"],dapAn:2},
+    {id:9,chuDe:"Unit 1: Family Life",cauHoi:"A person who takes care of children in the family is usually called a _____.",luaChon:["teacher","parent","neighbor","stranger"],dapAn:1},
+    {id:10,chuDe:"Unit 1: Family Life",cauHoi:"She always _____ the bed before going to school.",luaChon:["make","makes","is making","made"],dapAn:1},
+    {id:11,chuDe:"Unit 1: Family Life",cauHoi:"Which word is a signal word for Present Continuous?",luaChon:["usually","every day","right now","often"],dapAn:2},
+    {id:12,chuDe:"Unit 1: Family Life",cauHoi:"They _____ TV together every evening.",luaChon:["watch","watches","is watching","watching"],dapAn:0},
+    {id:13,chuDe:"Unit 1: Family Life",cauHoi:"To tidy up a room means to _____.",luaChon:["make it messy","make it clean and organized","paint it","sell it"],dapAn:1},
+    {id:14,chuDe:"Unit 1: Family Life",cauHoi:"Listen! Someone _____ at the door.",luaChon:["knocks","knock","is knocking","knocked"],dapAn:2},
+    {id:15,chuDe:"Unit 1: Family Life",cauHoi:"My grandparents _____ with us during the holidays.",luaChon:["usually stay","usually stays","are usually stay","usually staying"],dapAn:0},
+    {id:16,chuDe:"Unit 1: Family Life",cauHoi:"Taking the dog for a walk is also called _____ the dog.",luaChon:["walking","washing","feeding","training"],dapAn:0},
+    {id:17,chuDe:"Unit 2: Humans and the Environment",cauHoi:"If we don't act now, more forests _____ disappear.",luaChon:["will","are going to","going to","is going to"],dapAn:0},
+    {id:18,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Look at those dark clouds! It _____ rain soon.",luaChon:["will","is going to","would","is"],dapAn:1},
+    {id:19,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Cutting down trees in large numbers is called _____.",luaChon:["recycling","deforestation","pollution","conservation"],dapAn:1},
+    {id:20,chuDe:"Unit 2: Humans and the Environment",cauHoi:"You _____ turn off the lights when you leave the room.",luaChon:["should","shouldn't","will","are going to"],dapAn:0},
+    {id:21,chuDe:"Unit 2: Humans and the Environment",cauHoi:"_____ energy comes from sources like the sun and wind.",luaChon:["Fossil","Renewable","Nuclear","Limited"],dapAn:1},
+    {id:22,chuDe:"Unit 2: Humans and the Environment",cauHoi:"We _____ plant more trees next month; we already have the plan ready.",luaChon:["will","are going to","would","shall"],dapAn:1},
+    {id:23,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Throwing rubbish on the street is called _____.",luaChon:["recycling","littering","planting","saving"],dapAn:1},
+    {id:24,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Why don't you _____ public transport instead of driving?",luaChon:["use","to use","using","used"],dapAn:0},
+    {id:25,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Animals that are close to disappearing forever are called _____.",luaChon:["common","endangered","domestic","wild"],dapAn:1},
+    {id:26,chuDe:"Unit 2: Humans and the Environment",cauHoi:"I think people _____ use more solar energy in the future.",luaChon:["will","are going to","going to","is"],dapAn:0},
+    {id:27,chuDe:"Unit 2: Humans and the Environment",cauHoi:"The three R's for protecting the environment are Reduce, Reuse and _____.",luaChon:["Repair","Recycle","Remove","Replace"],dapAn:1},
+    {id:28,chuDe:"Unit 2: Humans and the Environment",cauHoi:"If I were you, I _____ recycle plastic bottles.",luaChon:["will","would","am going to","shall"],dapAn:1},
+    {id:29,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Air pollution is mainly caused by _____ from factories and vehicles.",luaChon:["water","smoke","sunlight","wind"],dapAn:1},
+    {id:30,chuDe:"Unit 2: Humans and the Environment",cauHoi:"She has already bought seeds; she _____ plant trees this weekend.",luaChon:["will","is going to","would","shall"],dapAn:1},
+    {id:31,chuDe:"Unit 2: Humans and the Environment",cauHoi:"The gradual increase in the Earth's temperature is called _____.",luaChon:["global warming","global cooling","acid rain","greenhouse gas"],dapAn:0},
+    {id:32,chuDe:"Unit 2: Humans and the Environment",cauHoi:"You _____ waste water. It's a precious resource.",luaChon:["should","shouldn't","will","are going to"],dapAn:1},
+    {id:33,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Using something again instead of throwing it away is called _____.",luaChon:["reducing","reusing","recycling","wasting"],dapAn:1},
+    {id:34,chuDe:"Unit 3: Music",cauHoi:"A device used to play recorded music is called a music _____.",luaChon:["player","book","car","plate"],dapAn:0},
+    {id:35,chuDe:"Unit 3: Music",cauHoi:"My brother enjoys _____ the guitar every afternoon.",luaChon:["play","to play","playing","plays"],dapAn:2},
+    {id:36,chuDe:"Unit 3: Music",cauHoi:"A person who writes songs is called a _____.",luaChon:["singer","songwriter","dancer","audience"],dapAn:1},
+    {id:37,chuDe:"Unit 3: Music",cauHoi:"She wants _____ a famous singer one day.",luaChon:["become","becoming","to become","becomes"],dapAn:2},
+    {id:38,chuDe:"Unit 3: Music",cauHoi:"A TV programme where people compete to show their talents is called a _____ show.",luaChon:["talent","music","game","cooking"],dapAn:0},
+    {id:39,chuDe:"Unit 3: Music",cauHoi:"A show where new singers are discovered is called a _____ show.",luaChon:["talent","cooking","weather","news"],dapAn:0},
+    {id:40,chuDe:"Unit 3: Music",cauHoi:"He avoids _____ loud music late at night.",luaChon:["play","to play","playing","plays"],dapAn:2},
+    {id:41,chuDe:"Unit 3: Music",cauHoi:"The words of a song are called the _____.",luaChon:["melody","lyrics","rhythm","beat"],dapAn:1},
+    {id:42,chuDe:"Unit 3: Music",cauHoi:"They practice _____ the piano every day after school.",luaChon:["play","playing","to play","plays"],dapAn:1},
+    {id:43,chuDe:"Unit 3: Music",cauHoi:"A type of music with a strong beat, often played with electric guitars, is called _____.",luaChon:["rock","classical","jazz","folk"],dapAn:0},
+    {id:44,chuDe:"Unit 3: Music",cauHoi:"My friend decided _____ a new band with his classmates.",luaChon:["form","forming","to form","forms"],dapAn:2},
+    {id:45,chuDe:"Unit 3: Music",cauHoi:"A song that is very popular is often called a hit _____.",luaChon:["song","book","car","paper"],dapAn:0},
+    {id:46,chuDe:"Unit 3: Music",cauHoi:"A large group of people who play music together is called a _____.",luaChon:["band","audience","crowd","team"],dapAn:0},
+    {id:47,chuDe:"Unit 3: Music",cauHoi:"I love _____ to music while doing homework.",luaChon:["listen","listening","to listen","listens"],dapAn:1},
+    {id:48,chuDe:"Unit 3: Music",cauHoi:"A place where people go to watch a live music performance is called a _____.",luaChon:["concert","library","classroom","hospital"],dapAn:0},
+    {id:49,chuDe:"Unit 3: Music",cauHoi:"She hopes _____ a music competition next year.",luaChon:["join","joining","to join","joins"],dapAn:2},
+    {id:50,chuDe:"Unit 3: Music",cauHoi:"An album is a collection of _____ by a singer or band.",luaChon:["songs","instruments","concerts","lyrics"],dapAn:0}
+  ]
+};
+
+const deThiDe002 = {
+  ten: "Đề Dễ 002",
+  cauHoi: [
+    {id:1,chuDe:"Unit 1: Family Life",cauHoi:"My mom _____ dinner every evening at 6 pm.",luaChon:["cook","cooks","is cooking","cooking"],dapAn:1},
+    {id:2,chuDe:"Unit 1: Family Life",cauHoi:"Right now, my dad _____ the car in the garage.",luaChon:["repairs","repair","is repairing","repaired"],dapAn:2},
+    {id:3,chuDe:"Unit 1: Family Life",cauHoi:"To _____ the floor means to clean it using a broom.",luaChon:["sweep","cook","water","wash"],dapAn:0},
+    {id:4,chuDe:"Unit 1: Family Life",cauHoi:"My little sister _____ her toys every night before bed.",luaChon:["put away","puts away","is putting away","putting away"],dapAn:1},
+    {id:5,chuDe:"Unit 1: Family Life",cauHoi:"Choose the word that is NOT a family activity.",luaChon:["have a picnic","go on a trip","repair a computer","celebrate a birthday"],dapAn:2},
+    {id:6,chuDe:"Unit 1: Family Life",cauHoi:"We _____ board games on weekends.",luaChon:["play","plays","is playing","played"],dapAn:0},
+    {id:7,chuDe:"Unit 1: Family Life",cauHoi:"The Present Continuous tense is mainly used to talk about?",luaChon:["permanent facts","actions happening at the moment of speaking","habits","general truths"],dapAn:1},
+    {id:8,chuDe:"Unit 1: Family Life",cauHoi:"At this moment, my brother _____ his room.",luaChon:["cleans","clean","is cleaning","cleaned"],dapAn:2},
+    {id:9,chuDe:"Unit 1: Family Life",cauHoi:"A member of the family who is the son of your uncle or aunt is your _____.",luaChon:["nephew","cousin","niece","sibling"],dapAn:1},
+    {id:10,chuDe:"Unit 1: Family Life",cauHoi:"My parents _____ up early every day.",luaChon:["get","gets","is getting","got"],dapAn:0},
+    {id:11,chuDe:"Unit 1: Family Life",cauHoi:"Which word is a signal word for Present Simple?",luaChon:["now","at the moment","usually","right now"],dapAn:2},
+    {id:12,chuDe:"Unit 1: Family Life",cauHoi:"She _____ her homework at the moment.",luaChon:["does","do","is doing","did"],dapAn:2},
+    {id:13,chuDe:"Unit 1: Family Life",cauHoi:"To water the plants means to _____.",luaChon:["cut them","give water to them","remove them","paint them"],dapAn:1},
+    {id:14,chuDe:"Unit 1: Family Life",cauHoi:"Look! My grandfather _____ in the garden.",luaChon:["works","work","is working","worked"],dapAn:2},
+    {id:15,chuDe:"Unit 1: Family Life",cauHoi:"My family _____ dinner together every night.",luaChon:["has","have","is having","having"],dapAn:0},
+    {id:16,chuDe:"Unit 1: Family Life",cauHoi:"Taking out the trash means to _____.",luaChon:["bring the trash bag outside for collection","buy new trash bags","clean the trash can","sell the trash"],dapAn:0},
+    {id:17,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Scientists say sea levels _____ rise if we don't reduce pollution.",luaChon:["will","are going to","going to","is"],dapAn:0},
+    {id:18,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Look at the smoke! The factory _____ cause pollution.",luaChon:["will","is going to","would","shall"],dapAn:1},
+    {id:19,chuDe:"Unit 2: Humans and the Environment",cauHoi:"The layer of gases that traps heat and warms the Earth is called the _____ effect.",luaChon:["greenhouse","rainbow","cooling","wind"],dapAn:0},
+    {id:20,chuDe:"Unit 2: Humans and the Environment",cauHoi:"You _____ throw plastic bags into the river.",luaChon:["should","shouldn't","will","are going to"],dapAn:1},
+    {id:21,chuDe:"Unit 2: Humans and the Environment",cauHoi:"A plant or animal species that no longer exists is _____.",luaChon:["endangered","extinct","wild","common"],dapAn:1},
+    {id:22,chuDe:"Unit 2: Humans and the Environment",cauHoi:"We've already booked the bus; we _____ visit the national park tomorrow.",luaChon:["will","are going to","would","shall"],dapAn:1},
+    {id:23,chuDe:"Unit 2: Humans and the Environment",cauHoi:"_____ resources, such as coal and oil, will eventually run out.",luaChon:["Renewable","Non-renewable","Unlimited","Solar"],dapAn:1},
+    {id:24,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Why don't you _____ your own shopping bag to reduce plastic waste?",luaChon:["bring","to bring","bringing","brought"],dapAn:0},
+    {id:25,chuDe:"Unit 2: Humans and the Environment",cauHoi:"The process of turning waste materials into new products is called _____.",luaChon:["recycling","littering","polluting","wasting"],dapAn:0},
+    {id:26,chuDe:"Unit 2: Humans and the Environment",cauHoi:"I believe people _____ live on other planets one day.",luaChon:["will","are going to","going to","is"],dapAn:0},
+    {id:27,chuDe:"Unit 2: Humans and the Environment",cauHoi:"_____ means using less of something, such as water or electricity.",luaChon:["Reducing","Wasting","Increasing","Ignoring"],dapAn:0},
+    {id:28,chuDe:"Unit 2: Humans and the Environment",cauHoi:"If I were you, I _____ walk to school instead of taking a car.",luaChon:["will","would","am going to","shall"],dapAn:1},
+    {id:29,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Chemicals released into rivers and seas cause _____ pollution.",luaChon:["air","water","noise","light"],dapAn:1},
+    {id:30,chuDe:"Unit 2: Humans and the Environment",cauHoi:"He has already packed his tools; he _____ fix the solar panel this afternoon.",luaChon:["will","is going to","would","shall"],dapAn:1},
+    {id:31,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Planting trees to replace those cut down is called _____.",luaChon:["deforestation","reforestation","pollution","extinction"],dapAn:1},
+    {id:32,chuDe:"Unit 2: Humans and the Environment",cauHoi:"You _____ leave the tap running while brushing your teeth.",luaChon:["should","shouldn't","will","are going to"],dapAn:1},
+    {id:33,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Using cloth bags instead of plastic ones is a good way to _____ waste.",luaChon:["increase","reduce","create","ignore"],dapAn:1},
+    {id:34,chuDe:"Unit 3: Music",cauHoi:"A person who sings professionally is called a _____.",luaChon:["songwriter","singer","listener","player"],dapAn:1},
+    {id:35,chuDe:"Unit 3: Music",cauHoi:"I really enjoy _____ pop songs on my way to school.",luaChon:["listen","to listen","listening","listens"],dapAn:2},
+    {id:36,chuDe:"Unit 3: Music",cauHoi:"A singer's assistant musicians are usually called the backing _____.",luaChon:["band","audience","fans","crew"],dapAn:0},
+    {id:37,chuDe:"Unit 3: Music",cauHoi:"He plans _____ a music album next year.",luaChon:["release","releasing","to release","releases"],dapAn:2},
+    {id:38,chuDe:"Unit 3: Music",cauHoi:"A song without any musical instruments, only voices, is called _____.",luaChon:["a cappella","instrumental","remix","karaoke"],dapAn:0},
+    {id:39,chuDe:"Unit 3: Music",cauHoi:"A show that broadcasts a singer's performance live is called a _____ show.",luaChon:["live","cooking","weather","game"],dapAn:0},
+    {id:40,chuDe:"Unit 3: Music",cauHoi:"She avoids _____ too loudly in public places.",luaChon:["sing","to sing","singing","sings"],dapAn:2},
+    {id:41,chuDe:"Unit 3: Music",cauHoi:"The speed or tempo of a piece of music is called its _____.",luaChon:["rhythm","lyrics","title","genre"],dapAn:0},
+    {id:42,chuDe:"Unit 3: Music",cauHoi:"They practice _____ new songs every weekend.",luaChon:["sing","singing","to sing","sings"],dapAn:1},
+    {id:43,chuDe:"Unit 3: Music",cauHoi:"A type of music that originated from African-American communities, often with rap, is called _____.",luaChon:["hip-hop","classical","jazz","folk"],dapAn:0},
+    {id:44,chuDe:"Unit 3: Music",cauHoi:"My cousin decided _____ singing lessons this summer.",luaChon:["take","taking","to take","takes"],dapAn:2},
+    {id:45,chuDe:"Unit 3: Music",cauHoi:"A person who writes the words of a song is a _____.",luaChon:["songwriter","song book","song car","song paper"],dapAn:0},
+    {id:46,chuDe:"Unit 3: Music",cauHoi:"The people who watch a concert are called the _____.",luaChon:["band","audience","crew","staff"],dapAn:1},
+    {id:47,chuDe:"Unit 3: Music",cauHoi:"I love _____ to my favorite band's concerts.",luaChon:["go","going","to go","goes"],dapAn:1},
+    {id:48,chuDe:"Unit 3: Music",cauHoi:"A collection of a singer's best songs is called a _____ album.",luaChon:["greatest hits","worst","random","blank"],dapAn:0},
+    {id:49,chuDe:"Unit 3: Music",cauHoi:"She hopes _____ her own songs on the radio someday.",luaChon:["hear","hearing","to hear","hears"],dapAn:2},
+    {id:50,chuDe:"Unit 3: Music",cauHoi:"The main tune of a song, without lyrics, is called the _____.",luaChon:["melody","audience","concert","album"],dapAn:0}
+  ]
+};
+
+const deThiKho001 = {
+  ten: "Đề Khó 001",
+  cauHoi: [
+    {id:1,chuDe:"Unit 1: Family Life",cauHoi:"Choose the sentence that correctly uses the Present Continuous.",luaChon:["She is knows how to cook.","She is cooking dinner right now.","She cook dinner now.","She cooking dinner now."],dapAn:1},
+    {id:2,chuDe:"Unit 1: Family Life",cauHoi:"Find the error: \"My father usually washing the car on Sunday mornings.\"",luaChon:["father","usually","washing","Sunday mornings"],dapAn:2},
+    {id:3,chuDe:"Unit 1: Family Life",cauHoi:"\"Every weekend, my family usually _____ (have) a big dinner together, but this weekend we _____ (celebrate) my grandmother's birthday instead.\"",luaChon:["has / celebrate","have / are celebrating","has / celebrating","have / celebrate"],dapAn:1},
+    {id:4,chuDe:"Unit 1: Family Life",cauHoi:"\"Since both parents work full-time, they share the household _____ equally.\"",luaChon:["chores","hobbies","holidays","salaries"],dapAn:0},
+    {id:5,chuDe:"Unit 1: Family Life",cauHoi:"Read: \"Lan's family has a rule: everyone must do one chore every day. Lan sweeps the floor, her brother washes the dishes, and her parents cook and do the laundry.\" Who washes the dishes?",luaChon:["Lan","Lan's brother","Lan's mother","Lan's father"],dapAn:1},
+    {id:6,chuDe:"Unit 1: Family Life",cauHoi:"From the passage above, what is Lan's daily chore?",luaChon:["Washing dishes","Sweeping the floor","Doing the laundry","Cooking"],dapAn:1},
+    {id:7,chuDe:"Unit 1: Family Life",cauHoi:"Choose the correct sentence.",luaChon:["She always make the bed before school.","She always makes the bed before school.","She always making the bed before school.","She always is making the bed before school."],dapAn:1},
+    {id:8,chuDe:"Unit 1: Family Life",cauHoi:"Which sentence describes a temporary action happening now?",luaChon:["My brother plays football every Saturday.","My brother is playing football at the moment.","My brother played football yesterday.","My brother will play football tomorrow."],dapAn:1},
+    {id:9,chuDe:"Unit 1: Family Life",cauHoi:"Choose the correct question: \"_____ your mother cook dinner every day?\"",luaChon:["Do","Does","Is","Are"],dapAn:1},
+    {id:10,chuDe:"Unit 1: Family Life",cauHoi:"Choose the correct question: \"_____ your sister doing her homework right now?\"",luaChon:["Do","Does","Is","Are"],dapAn:2},
+    {id:11,chuDe:"Unit 1: Family Life",cauHoi:"\"Because both parents were busy, the eldest daughter had to _____ her younger siblings after school.\"",luaChon:["take care of","take away","take off","take up"],dapAn:0},
+    {id:12,chuDe:"Unit 1: Family Life",cauHoi:"Find the error: \"At the moment, my grandparents is staying with us.\"",luaChon:["At the moment","my grandparents","is staying","with us"],dapAn:2},
+    {id:13,chuDe:"Unit 1: Family Life",cauHoi:"\"My uncle rarely _____ dinner with us because he works late.\"",luaChon:["have","has","is having","having"],dapAn:1},
+    {id:14,chuDe:"Unit 1: Family Life",cauHoi:"Choose the sentence closest in meaning to: \"My mother is very busy with housework every day.\"",luaChon:["My mother rarely does housework.","My mother has a lot of housework to do every day.","My mother never does housework.","My mother enjoys not doing housework."],dapAn:1},
+    {id:15,chuDe:"Unit 1: Family Life",cauHoi:"Choose the word that does NOT usually collocate with \"do\".",luaChon:["the dishes","the laundry","the bed","homework"],dapAn:2},
+    {id:16,chuDe:"Unit 1: Family Life",cauHoi:"Choose the best response to: \"What is your family doing this weekend?\"",luaChon:["We have a picnic every weekend.","We are having a picnic in the park.","We had a picnic last weekend.","We will had a picnic."],dapAn:1},
+    {id:17,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Find the error: \"I think it will to rain later this afternoon.\"",luaChon:["I think","it will","to rain","later this afternoon"],dapAn:2},
+    {id:18,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Based on storm clouds approaching, choose the best prediction.",luaChon:["It will rain.","It is going to rain.","It rains.","It rained."],dapAn:1},
+    {id:19,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Choose the sentence with correct use of \"be going to\" for a pre-made plan.",luaChon:["We will plant trees next Saturday because we decided yesterday.","We are going to plant trees next Saturday; we bought the seedlings already.","We plant trees next Saturday.","We planting trees next Saturday."],dapAn:1},
+    {id:20,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Read: \"Deforestation is one of the biggest threats to our planet. When forests are cut down, animals lose their homes, and the soil becomes weaker. Scientists say that if we don't stop cutting down trees, many species will become extinct.\" According to the passage, what happens to animals when forests are destroyed?",luaChon:["They find new homes easily.","They lose their homes.","They become stronger.","They move to the city."],dapAn:1},
+    {id:21,chuDe:"Unit 2: Humans and the Environment",cauHoi:"From the passage above, what does the writer predict will happen if deforestation continues?",luaChon:["More trees will grow.","Many species will become extinct.","The soil will become stronger.","Nothing will change."],dapAn:1},
+    {id:22,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Choose the correct sentence for giving strong advice.",luaChon:["You should to recycle more.","You should recycle more.","You should recycling more.","You are should recycle more."],dapAn:1},
+    {id:23,chuDe:"Unit 2: Humans and the Environment",cauHoi:"\"The government has introduced a new policy to _____ the amount of plastic waste produced each year.\"",luaChon:["increase","reduce","create","ignore"],dapAn:1},
+    {id:24,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Find the error: \"If I was you, I would use less water.\"",luaChon:["If I","was you","I would","use less water"],dapAn:1},
+    {id:25,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Choose the sentence closest in meaning to: \"It is important not to waste electricity.\"",luaChon:["We should waste more electricity.","We shouldn't waste electricity.","We must waste electricity.","Electricity cannot be wasted."],dapAn:1},
+    {id:26,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Which sentence uses \"will\" correctly for a spontaneous decision?",luaChon:["Look! I will help you carry that bag.","I've decided, I will help you carry that bag tomorrow.","I am going to help you carry that bag right now, I decided already.","I help you carry that bag."],dapAn:0},
+    {id:27,chuDe:"Unit 2: Humans and the Environment",cauHoi:"\"Many marine animals die every year after eating or getting trapped in _____ waste.\"",luaChon:["plastic","wooden","paper","glass"],dapAn:0},
+    {id:28,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Read: \"Solar panels convert sunlight into electricity without producing harmful gases. More families are now installing solar panels on their roofs to save money and protect the environment.\" Why are more families installing solar panels?",luaChon:["To waste more electricity","To save money and protect the environment","To increase pollution","Because it is required by law"],dapAn:1},
+    {id:29,chuDe:"Unit 2: Humans and the Environment",cauHoi:"From the passage above, solar panels are considered environmentally friendly because they _____.",luaChon:["produce harmful gases","don't produce harmful gases","destroy forests","use fossil fuels"],dapAn:1},
+    {id:30,chuDe:"Unit 2: Humans and the Environment",cauHoi:"\"The city has already planned to build more bicycle lanes to reduce traffic pollution.\" This best matches:",luaChon:["The city will build more bicycle lanes.","The city is going to build more bicycle lanes.","The city built more bicycle lanes.","The city builds more bicycle lanes."],dapAn:1},
+    {id:31,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Choose the word that means \"able to be used again and again without running out,\" like solar or wind power.",luaChon:["renewable","limited","extinct","polluted"],dapAn:0},
+    {id:32,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Find the error: \"We shouldn't to cut down so many trees.\"",luaChon:["We","shouldn't","to cut down","so many trees"],dapAn:2},
+    {id:33,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Choose the correct sentence: \"Scientists predict that global temperatures _____ continue to rise unless action is taken.\"",luaChon:["will","is going to","going to","are"],dapAn:0},
+    {id:34,chuDe:"Unit 3: Music",cauHoi:"Find the error: \"My sister enjoys to listen to classical music every evening.\"",luaChon:["enjoys","to listen","classical music","every evening"],dapAn:1},
+    {id:35,chuDe:"Unit 3: Music",cauHoi:"Choose the correct sentence: \"He decided _____ a musician after finishing school.\"",luaChon:["become","becoming","to become","becomes"],dapAn:2},
+    {id:36,chuDe:"Unit 3: Music",cauHoi:"Choose the correct sentence: \"She finished _____ the song before the concert started.\"",luaChon:["write","writing","to write","wrote"],dapAn:1},
+    {id:37,chuDe:"Unit 3: Music",cauHoi:"Read: \"A talent show is a TV programme where people show off their singing, dancing, or other skills in front of judges and an audience. The winner often receives a prize such as a recording contract or a large sum of money.\" What can the winner of a talent show often receive?",luaChon:["A trophy only","A recording contract or money","A trip abroad","A new house"],dapAn:1},
+    {id:38,chuDe:"Unit 3: Music",cauHoi:"From the passage above, who judges the performances?",luaChon:["The audience only","Judges","The winner","The singers themselves"],dapAn:1},
+    {id:39,chuDe:"Unit 3: Music",cauHoi:"Combine \"song\" and \"writer\" to form a word meaning \"a person who writes songs\":",luaChon:["songwriter","writersong","song-write","writingsong"],dapAn:0},
+    {id:40,chuDe:"Unit 3: Music",cauHoi:"Choose the correct sentence: \"They practice _____ every day before the big concert.\"",luaChon:["perform","performing","to perform","performs"],dapAn:1},
+    {id:41,chuDe:"Unit 3: Music",cauHoi:"Find the error: \"I look forward to meet my favorite singer next week.\"",luaChon:["look forward to","meet","my favorite singer","next week"],dapAn:1},
+    {id:42,chuDe:"Unit 3: Music",cauHoi:"\"The band spent months in the studio recording their new _____ before releasing it to the public.\"",luaChon:["album","audience","concert hall","instrument"],dapAn:0},
+    {id:43,chuDe:"Unit 3: Music",cauHoi:"Combine \"music\" and \"video\" to describe a short film made to accompany a song:",luaChon:["music video","video music","musicvid","videomusical"],dapAn:0},
+    {id:44,chuDe:"Unit 3: Music",cauHoi:"Choose the correct sentence: \"I would like _____ the guitar, but I've never had the time to learn.\"",luaChon:["play","playing","to play","played"],dapAn:2},
+    {id:45,chuDe:"Unit 3: Music",cauHoi:"Read: \"Jazz is a music genre that began in African-American communities in the late 19th century. It is known for its use of improvisation, meaning musicians often create music spontaneously rather than following a fixed score.\" What is a key feature of jazz mentioned in the passage?",luaChon:["Fixed, unchanging melodies","Improvisation","Only using drums","Being very slow"],dapAn:1},
+    {id:46,chuDe:"Unit 3: Music",cauHoi:"From the passage above, jazz began in:",luaChon:["European communities","African-American communities","Asian communities","South American communities"],dapAn:1},
+    {id:47,chuDe:"Unit 3: Music",cauHoi:"Choose the correct sentence: \"He avoids _____ music too loudly because it disturbs his neighbors.\"",luaChon:["play","playing","to play","plays"],dapAn:1},
+    {id:48,chuDe:"Unit 3: Music",cauHoi:"Combine \"talent\" and \"show\" to describe a competition where people display their skills:",luaChon:["talent show","show talent","talentshow","showing talent"],dapAn:0},
+    {id:49,chuDe:"Unit 3: Music",cauHoi:"Find the error: \"She suggested to form a school band with her classmates.\"",luaChon:["suggested","to form","a school band","with her classmates"],dapAn:1},
+    {id:50,chuDe:"Unit 3: Music",cauHoi:"Choose the correct sentence: \"After _____ the lyrics, the songwriter started composing the melody.\"",luaChon:["write","writing","to write","wrote"],dapAn:1}
+  ]
+};
+
+const deThiKho002 = {
+  ten: "Đề Khó 002",
+  cauHoi: [
+    {id:1,chuDe:"Unit 1: Family Life",cauHoi:"Find the error: \"My brother is usually helps mom with the cooking.\"",luaChon:["My brother","is usually helps","mom","with the cooking"],dapAn:1},
+    {id:2,chuDe:"Unit 1: Family Life",cauHoi:"Choose the correct sentence: \"Right now, everyone in my family _____ busy with different chores.\"",luaChon:["is","are","am","be"],dapAn:0},
+    {id:3,chuDe:"Unit 1: Family Life",cauHoi:"\"My parents have been married for twenty years, and they still _____ breakfast together every morning.\"",luaChon:["has","have","is having","having"],dapAn:1},
+    {id:4,chuDe:"Unit 1: Family Life",cauHoi:"Read: \"In many families today, both parents work, so children often help with chores like cooking, cleaning, and taking care of younger siblings. This teaches children responsibility from an early age.\" According to the passage, why do children often help with chores nowadays?",luaChon:["Because parents don't like children","Because both parents often work","Because chores are fun","Because it is required by school"],dapAn:1},
+    {id:5,chuDe:"Unit 1: Family Life",cauHoi:"From the passage above, what does helping with chores teach children?",luaChon:["Laziness","Responsibility","Cooking skills only","Nothing important"],dapAn:1},
+    {id:6,chuDe:"Unit 1: Family Life",cauHoi:"Find the error: \"She always are tidying up her room before guests arrive.\"",luaChon:["She always","are tidying","up her room","before guests arrive"],dapAn:1},
+    {id:7,chuDe:"Unit 1: Family Life",cauHoi:"Choose the correct sentence: \"While my mother _____ dinner, my father _____ the table.\"",luaChon:["cooks / sets","is cooking / is setting","cook / set","cooking / setting"],dapAn:1},
+    {id:8,chuDe:"Unit 1: Family Life",cauHoi:"\"After a long day at work, my parents like to _____ and watch a movie together.\"",luaChon:["relax","argue","clean","cook"],dapAn:0},
+    {id:9,chuDe:"Unit 1: Family Life",cauHoi:"Choose the correct question: \"What _____ your family usually do on Sunday afternoons?\"",luaChon:["do","does","is","are"],dapAn:0},
+    {id:10,chuDe:"Unit 1: Family Life",cauHoi:"Find the error: \"My grandmother don't like doing the laundry by hand.\"",luaChon:["My grandmother","don't like","doing","by hand"],dapAn:1},
+    {id:11,chuDe:"Unit 1: Family Life",cauHoi:"Choose the sentence closest in meaning to: \"My father never cooks on weekdays because he is too busy.\"",luaChon:["My father cooks every weekday.","My father usually doesn't cook on weekdays.","My father loves cooking on weekdays.","My father cooks only on weekdays."],dapAn:1},
+    {id:12,chuDe:"Unit 1: Family Life",cauHoi:"\"Because the house was very messy, they spent the whole afternoon _____ it up.\"",luaChon:["tidying","cooking","washing","watering"],dapAn:0},
+    {id:13,chuDe:"Unit 1: Family Life",cauHoi:"Choose the correct sentence: \"Every year, my extended family _____ together to celebrate Lunar New Year.\"",luaChon:["get","gets","is getting","getting"],dapAn:1},
+    {id:14,chuDe:"Unit 1: Family Life",cauHoi:"Find the error: \"At this moment, my little brother watch cartoons in the living room.\"",luaChon:["At this moment","my little brother","watch","in the living room"],dapAn:2},
+    {id:15,chuDe:"Unit 1: Family Life",cauHoi:"Choose the correct response to: \"Why is your sister cooking so early today?\"",luaChon:["Because she cooks every day.","Because we are having guests for lunch today.","Because she cooked yesterday.","Because she will cook tomorrow."],dapAn:1},
+    {id:16,chuDe:"Unit 1: Family Life",cauHoi:"A family gathering where everyone eats together to mark a special day is called a family _____.",luaChon:["celebration","argument","chore","schedule"],dapAn:0},
+    {id:17,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Choose the correct sentence: \"According to the latest report, sea temperatures _____ rise by two degrees over the next decade.\"",luaChon:["will","is going to","going to","are"],dapAn:0},
+    {id:18,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Find the error: \"Look at those clouds, it will definitely rains soon.\"",luaChon:["Look at those clouds","it will definitely","rains","soon"],dapAn:2},
+    {id:19,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Read: \"Climate change is causing more extreme weather events, such as stronger storms and longer droughts. Experts warn that without immediate action, these events will become more frequent and severe.\" According to the passage, what is climate change causing?",luaChon:["Milder weather","More extreme weather events","Less rainfall only","No change in weather"],dapAn:1},
+    {id:20,chuDe:"Unit 2: Humans and the Environment",cauHoi:"From the passage above, what do experts warn will happen without action?",luaChon:["Weather events will decrease","Weather events will become more frequent and severe","Nothing will change","The climate will cool down"],dapAn:1},
+    {id:21,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Choose the correct sentence: \"We've already bought the tickets; we _____ attend the environmental conference next week.\"",luaChon:["will","are going to","would","shall"],dapAn:1},
+    {id:22,chuDe:"Unit 2: Humans and the Environment",cauHoi:"\"Factories that release toxic chemicals into rivers are a major cause of _____ pollution.\"",luaChon:["noise","water","light","visual"],dapAn:1},
+    {id:23,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Find the error: \"You shouldn't leaving the tap running while you brush your teeth.\"",luaChon:["shouldn't","leaving","the tap running","while you brush your teeth"],dapAn:1},
+    {id:24,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Choose the sentence closest in meaning to: \"It's a good idea to use reusable bags instead of plastic ones.\"",luaChon:["You should use reusable bags instead of plastic ones.","You must never use plastic bags.","Reusable bags are illegal.","Plastic bags are better than reusable ones."],dapAn:0},
+    {id:25,chuDe:"Unit 2: Humans and the Environment",cauHoi:"The term for animals and plants that live naturally in a particular area is _____.",luaChon:["wildlife","livestock","pets","crops"],dapAn:0},
+    {id:26,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Choose the correct sentence: \"I promise I _____ turn off the lights whenever I leave a room.\"",luaChon:["will","am going to","going to","would"],dapAn:0},
+    {id:27,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Read: \"Many cities are now encouraging people to cycle instead of drive. Cycling reduces air pollution, eases traffic congestion, and improves public health.\" According to the passage, what is one benefit of cycling?",luaChon:["It increases air pollution","It reduces air pollution","It causes traffic jams","It has no health benefits"],dapAn:1},
+    {id:28,chuDe:"Unit 2: Humans and the Environment",cauHoi:"From the passage above, besides reducing pollution, cycling also improves _____.",luaChon:["traffic congestion only","public health","car sales","factory production"],dapAn:1},
+    {id:29,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Find the error: \"If I were you, I will plant more trees in my garden.\"",luaChon:["If I were you","I will","plant more trees","in my garden"],dapAn:1},
+    {id:30,chuDe:"Unit 2: Humans and the Environment",cauHoi:"\"Turning off electrical appliances when not in use helps to _____ energy.\"",luaChon:["waste","save","increase","destroy"],dapAn:1},
+    {id:31,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Choose the correct sentence for an evidence-based prediction: \"Look at the smoke coming from that factory - it _____ pollute the air.\"",luaChon:["will","is going to","would","shall"],dapAn:1},
+    {id:32,chuDe:"Unit 2: Humans and the Environment",cauHoi:"A source of energy that will eventually run out, like coal and oil, is called a _____ resource.",luaChon:["renewable","non-renewable","unlimited","clean"],dapAn:1},
+    {id:33,chuDe:"Unit 2: Humans and the Environment",cauHoi:"Choose the sentence closest in meaning to: \"It's necessary for everyone to protect endangered species.\"",luaChon:["Everyone should protect endangered species.","No one needs to protect endangered species.","Endangered species protect themselves.","Protecting endangered species is illegal."],dapAn:0},
+    {id:34,chuDe:"Unit 3: Music",cauHoi:"Find the error: \"My cousin is interested in play the violin.\"",luaChon:["My cousin","is interested in","play","the violin"],dapAn:2},
+    {id:35,chuDe:"Unit 3: Music",cauHoi:"Choose the correct sentence: \"The singer promised _____ a new album by the end of the year.\"",luaChon:["release","releasing","to release","released"],dapAn:2},
+    {id:36,chuDe:"Unit 3: Music",cauHoi:"Choose the correct sentence: \"After _____ the concert, the fans waited outside to meet the band.\"",luaChon:["attend","attending","to attend","attended"],dapAn:1},
+    {id:37,chuDe:"Unit 3: Music",cauHoi:"Read: \"A music festival is a large event where many bands and singers perform for a big audience over one or several days. Some famous festivals attract hundreds of thousands of visitors from around the world.\" According to the passage, how long can a music festival last?",luaChon:["Only one hour","One or several days","A whole year","Only a few minutes"],dapAn:1},
+    {id:38,chuDe:"Unit 3: Music",cauHoi:"From the passage above, some famous festivals attract _____.",luaChon:["only local people","hundreds of thousands of visitors","no visitors","only musicians"],dapAn:1},
+    {id:39,chuDe:"Unit 3: Music",cauHoi:"Combine \"record\" and \"label\" to describe a company that produces and sells music:",luaChon:["record label","label record","recordinglabel","labelrecord"],dapAn:0},
+    {id:40,chuDe:"Unit 3: Music",cauHoi:"Choose the correct sentence: \"She keeps _____ the same song over and over again.\"",luaChon:["play","playing","to play","plays"],dapAn:1},
+    {id:41,chuDe:"Unit 3: Music",cauHoi:"Find the error: \"He is good at to write song lyrics.\"",luaChon:["He is good at","to write","song lyrics","(no error)"],dapAn:1},
+    {id:42,chuDe:"Unit 3: Music",cauHoi:"\"The concert had to be cancelled because the main singer suddenly lost her _____.\"",luaChon:["voice","instrument","audience","lyrics"],dapAn:0},
+    {id:43,chuDe:"Unit 3: Music",cauHoi:"Combine \"sound\" and \"track\" to describe the music used in a film:",luaChon:["soundtrack","tracksound","sound-track-er","tracking sound"],dapAn:0},
+    {id:44,chuDe:"Unit 3: Music",cauHoi:"Choose the correct sentence: \"I can't afford _____ tickets to the concert this year.\"",luaChon:["buy","buying","to buy","bought"],dapAn:2},
+    {id:45,chuDe:"Unit 3: Music",cauHoi:"Read: \"Classical music includes works by composers such as Beethoven and Mozart, written mostly for orchestras and often without singing. It has influenced many modern music genres, including film soundtracks.\" According to the passage, classical music is usually written for _____.",luaChon:["solo singers only","orchestras","rock bands","rappers"],dapAn:1},
+    {id:46,chuDe:"Unit 3: Music",cauHoi:"From the passage above, classical music has influenced _____.",luaChon:["only classical composers","many modern music genres","no other genres","only opera"],dapAn:1},
+    {id:47,chuDe:"Unit 3: Music",cauHoi:"Choose the correct sentence: \"The band members don't mind _____ interviews after their shows.\"",luaChon:["give","giving","to give","gives"],dapAn:1},
+    {id:48,chuDe:"Unit 3: Music",cauHoi:"Combine \"drum\" and \"stick\" to describe the tool used to play the drums:",luaChon:["drumstick","stickdrum","drum-sticking","sticking drum"],dapAn:0},
+    {id:49,chuDe:"Unit 3: Music",cauHoi:"Find the error: \"They regret to sell their old piano last year.\"",luaChon:["They","regret","to sell","last year"],dapAn:2},
+    {id:50,chuDe:"Unit 3: Music",cauHoi:"Choose the correct sentence: \"After the band finished _____ their new single, they went on tour.\"",luaChon:["record","recording","to record","recorded"],dapAn:1}
+  ]
+};
+
+const examBank = {
+  de: [
+    {ma:"DỄ 001", data: deThiDe001, level:"easy"},
+    {ma:"DỄ 002", data: deThiDe002, level:"easy"}
+  ],
+  kho: [
+    {ma:"KHÓ 001", data: deThiKho001, level:"hard"},
+    {ma:"KHÓ 002", data: deThiKho002, level:"hard"}
+  ]
+};
+
+let currentExam = null;
+let currentIndex = 0;
+let answers = {};
+let timerInterval = null;
+let secondsLeft = 5400;
+let totalSeconds = 5400;
+let examStartLabel = "";
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function showCodeScreen(category){
+  const isEasy = category === 'de';
+  document.getElementById('codeCategoryTitle').textContent = "Chọn mã đề - " + (isEasy ? "Đề Dễ" : "Đề Khó");
+  const grid = document.getElementById('codeGrid');
+  grid.innerHTML = "";
+  examBank[category].forEach(item=>{
+    const card = document.createElement('div');
+    card.className = 'code-card';
+    card.onclick = ()=>startExam(item);
+    card.innerHTML =
+      '<span class="code-tag '+(isEasy ? 'easy' : 'hard')+'">'+item.ma+'</span>'+
+      '<p>50 câu trắc nghiệm - Thang điểm 10 - Thời gian 90 phút - Thứ tự câu được xáo trộn mỗi lần làm</p>'+
+      '<button class="btn block">Bắt đầu làm bài</button>';
+    grid.appendChild(card);
+  });
+  showScreen('screen-code');
+}
+
+function shuffleArray(arr){
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function startExam(item){
+  currentExam = {
+    ten: item.data.ten,
+    cauHoi: shuffleArray(item.data.cauHoi)
+  };
+  examStartLabel = currentExam.ten;
+  currentIndex = 0;
+  answers = {};
+  secondsLeft = 5400;
+  totalSeconds = 5400;
+  document.getElementById('examTitleLabel').textContent = currentExam.ten;
+  buildGrid();
+  renderQuestion();
+  startTimer();
+  showScreen('screen-quiz');
+}
+
+function startTimer(){
+  clearInterval(timerInterval);
+  updateTimerDisplay();
+  timerInterval = setInterval(()=>{
+    secondsLeft--;
+    updateTimerDisplay();
+    if(secondsLeft <= 0){
+      clearInterval(timerInterval);
+      submitExam();
+    }
+  },1000);
+}
+
+function updateTimerDisplay(){
+  const m = Math.floor(secondsLeft/60);
+  const s = secondsLeft%60;
+  const box = document.getElementById('timerBox');
+  box.textContent = m + ":" + (s<10 ? "0"+s : s);
+  if(secondsLeft <= 300){
+    box.classList.add('warning');
+  } else {
+    box.classList.remove('warning');
+  }
+}
+
+function renderQuestion(){
+  const q = currentExam.cauHoi[currentIndex];
+  document.getElementById('qNumberLabel').textContent = "Câu " + (currentIndex+1) + "/" + currentExam.cauHoi.length;
+  document.getElementById('qTopicLabel').textContent = q.chuDe;
+  document.getElementById('qTextLabel').innerHTML = q.cauHoi;
+
+  const letters = ['A','B','C','D'];
+  const box = document.getElementById('optionsBox');
+  box.innerHTML = "";
+  q.luaChon.forEach((opt,idx)=>{
+    const div = document.createElement('div');
+    div.className = 'option' + (answers[q.id]===idx ? ' selected' : '');
+    div.innerHTML = '<span class="letter">'+letters[idx]+'</span><span>'+opt+'</span>';
+    div.onclick = ()=>selectAnswer(q.id, idx);
+    box.appendChild(div);
+  });
+
+  document.getElementById('btnPrev').disabled = currentIndex === 0;
+  document.getElementById('btnNext').textContent = currentIndex === currentExam.cauHoi.length-1 ? "Câu cuối" : "Câu sau →";
+  document.getElementById('btnNext').disabled = currentIndex === currentExam.cauHoi.length-1;
+
+  updateGrid();
+}
+
+function selectAnswer(qid, idx){
+  answers[qid] = idx;
+  renderQuestion();
+}
+
+function prevQuestion(){
+  if(currentIndex>0){
+    currentIndex--;
+    renderQuestion();
+  }
+}
+function nextQuestion(){
+  if(currentIndex < currentExam.cauHoi.length-1){
+    currentIndex++;
+    renderQuestion();
+  }
+}
+
+function buildGrid(){
+  const grid = document.getElementById('qGrid');
+  grid.innerHTML = "";
+  currentExam.cauHoi.forEach((q,idx)=>{
+    const btn = document.createElement('button');
+    btn.textContent = idx+1;
+    btn.onclick = ()=>{ currentIndex = idx; renderQuestion(); };
+    grid.appendChild(btn);
+  });
+}
+
+function updateGrid(){
+  const grid = document.getElementById('qGrid');
+  Array.from(grid.children).forEach((btn,idx)=>{
+    btn.classList.remove('answered','current');
+    const q = currentExam.cauHoi[idx];
+    if(idx === currentIndex){
+      btn.classList.add('current');
+    } else if(answers[q.id] !== undefined){
+      btn.classList.add('answered');
+    }
+  });
+}
+
+function confirmSubmit(){
+  const total = currentExam.cauHoi.length;
+  const answered = Object.keys(answers).length;
+  if(answered < total){
+    const ok = confirm("Bạn còn " + (total-answered) + " câu chưa trả lời. Bạn có chắc muốn nộp bài không?");
+    if(!ok) return;
+  }
+  clearInterval(timerInterval);
+  submitExam();
+}
+
+function submitExam(){
+  clearInterval(timerInterval);
+  let correct = 0, wrong = 0, blank = 0;
+  currentExam.cauHoi.forEach(q=>{
+    if(answers[q.id] === undefined) blank++;
+    else if(answers[q.id] === q.dapAn) correct++;
+    else wrong++;
+  });
+  const score = (correct * 0.2).toFixed(1);
+  document.getElementById('scoreNum').textContent = score;
+  document.getElementById('examTitleResult').textContent = examStartLabel;
+  document.getElementById('correctCount').textContent = correct;
+  document.getElementById('wrongCount').textContent = wrong;
+  document.getElementById('blankCount').textContent = blank;
+
+  const used = totalSeconds - secondsLeft;
+  const um = Math.floor(used/60), us = used%60;
+  document.getElementById('timeUsed').textContent = um + ":" + (us<10?"0"+us:us);
+
+  buildReview();
+  document.getElementById('reviewList').classList.remove('show');
+  showScreen('screen-result');
+}
+
+function buildReview(){
+  const letters = ['A','B','C','D'];
+  const list = document.getElementById('reviewList');
+  list.innerHTML = "";
+  currentExam.cauHoi.forEach((q,idx)=>{
+    const userAns = answers[q.id];
+    const isCorrect = userAns === q.dapAn;
+    const item = document.createElement('div');
+    item.className = 'review-item ' + (isCorrect ? 'correct' : 'wrong');
+    let html = '<div class="rq">Câu '+(idx+1)+'. '+q.cauHoi+
+      '<span class="tag">'+(userAns===undefined ? 'Bỏ trống' : (isCorrect ? 'Đúng' : 'Sai'))+'</span></div>';
+    q.luaChon.forEach((opt,oidx)=>{
+      let cls = '';
+      if(oidx === q.dapAn) cls = 'correct-ans';
+      else if(oidx === userAns && !isCorrect) cls = 'wrong-ans';
+      if(cls){
+        html += '<div class="ropt '+cls+'">'+letters[oidx]+'. '+opt+'</div>';
+      }
+    });
+    item.innerHTML = html;
+    list.appendChild(item);
+  });
+}
+
+function toggleReview(){
+  document.getElementById('reviewList').classList.toggle('show');
+}
+
+function backToSelect(){
+  clearInterval(timerInterval);
+  currentExam = null;
+  answers = {};
+  showScreen('screen-select');
+}
+</script>
+</body>
+</html>

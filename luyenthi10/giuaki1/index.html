@@ -7,21 +7,22 @@
   <meta name="description" content="Luyện thi trắc nghiệm Giữa kỳ 1 Lớp 10 miễn phí: Tiếng Anh (Family Life, Environment, Music) và Toán (Mệnh đề - Tập hợp, Bất phương trình, Hệ thức lượng). Đề dễ &amp; khó, 50 câu, chấm điểm tự động.">
   <meta name="keywords" content="luyện thi giữa kỳ 1 lớp 10, trắc nghiệm tiếng anh 10, trắc nghiệm toán 10, đề thi giữa kỳ, ôn thi lớp 10">
   <meta name="author" content="h2rhenry">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="googlebot" content="index, follow">
   <link rel="canonical" href="https://h2rhenry.is-a.dev/luyenthi10/giuaki1/">
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://h2rhenry.is-a.dev/luyenthi10/giuaki1/">
   <meta property="og:title" content="Luyện thi Giữa kỳ 1 Lớp 10 | Tiếng Anh &amp; Toán">
   <meta property="og:description" content="Luyện thi trắc nghiệm Giữa kỳ 1 Lớp 10 miễn phí. Chọn môn Tiếng Anh hoặc Toán, đề dễ &amp; khó, 50 câu, chấm điểm tự động.">
   <meta property="og:locale" content="vi_VN">
   <meta property="og:site_name" content="h2rhenry">
+  <meta property="og:image" content="https://h2rhenry.is-a.dev/assets/og-luyenthi10.png">
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Luyện thi Giữa kỳ 1 Lớp 10 | Tiếng Anh &amp; Toán">
   <meta name="twitter:description" content="Luyện thi trắc nghiệm Giữa kỳ 1 Lớp 10 miễn phí. Chọn môn Tiếng Anh hoặc Toán, đề dễ &amp; khó, 50 câu.">
+  <meta name="twitter:image" content="https://h2rhenry.is-a.dev/assets/og-luyenthi10.png">
 
   <meta name="theme-color" content="#0891b2">
   <link rel="icon" href="/favicon.ico">
@@ -55,19 +56,18 @@
     }
     header.topbar h1 { font-size: 1.5rem; letter-spacing: .5px; font-weight: 700; }
     header.topbar p { opacity: .9; margin-top: 4px; font-size: .9rem; }
-    .back-row { margin-bottom: 18px; }
-    .back-link {
-      color: var(--primary);
-      font-weight: 600;
-      font-size: .9rem;
-      text-decoration: none;
+    .breadcrumb {
+      font-size: .85rem;
+      color: var(--gray);
+      margin-bottom: 16px;
     }
-    .back-link:hover { text-decoration: underline; }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 6px; opacity: .6; }
     .select-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
-      margin-top: 8px;
     }
     @media (max-width: 640px) {
       .select-grid { grid-template-columns: 1fr; }
@@ -168,6 +168,27 @@
     ]
   }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Trang chủ",
+        "item": "https://h2rhenry.is-a.dev/luyenthi10/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Giữa kỳ 1",
+        "item": "https://h2rhenry.is-a.dev/luyenthi10/giuaki1/"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header class="topbar">
@@ -176,8 +197,10 @@
   </header>
 
   <main class="container">
-    <nav class="back-row" aria-label="Điều hướng">
-      <a class="back-link" href="/luyenthi10/">← Về trang chủ</a>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/luyenthi10/">Trang chủ</a>
+      <span>/</span>
+      <span aria-current="page">Giữa kỳ 1</span>
     </nav>
 
     <section class="select-grid" aria-label="Chọn môn luyện thi">
@@ -214,7 +237,7 @@
   </main>
 
   <footer>
-    <p><a href="https://h2rhenry.is-a.dev/" style="color:inherit;text-decoration:none">h2rhenry.is-a.dev</a> · Luyện thi Giữa kỳ 1 Lớp 10</p>
+    <p>h2rhenry.is-a.dev/luyenthi10 · Giữa kỳ 1 Lớp 10</p>
   </footer>
 </body>
 </html>

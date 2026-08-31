@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luyện thi Lớp 10 | Chọn kỳ thi Giữa kỳ &amp; Học kỳ | h2rhenry</title>
+  <meta name="description" content="Luyện thi trắc nghiệm Lớp 10 miễn phí 2025–2026. Chọn kỳ: Giữa kỳ 1, Giữa kỳ 2, Học kỳ 1, Học kỳ 2. Tiếng Anh &amp; Toán, đề dễ/khó, 50 câu, chấm điểm tự động.">
+  <meta name="keywords" content="luyện thi lớp 10, trắc nghiệm lớp 10, giữa kỳ 1 lớp 10, giữa kỳ 2 lớp 10, học kỳ 1, học kỳ 2, ôn thi tiếng anh 10, ôn thi toán 10, đề thi trắc nghiệm">
+  <meta name="author" content="h2rhenry">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="googlebot" content="index, follow">
+  <link rel="canonical" href="https://h2rhenry.is-a.dev/luyenthi10/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://h2rhenry.is-a.dev/luyenthi10/">
+  <meta property="og:title" content="Luyện thi Lớp 10 | Chọn kỳ thi Giữa kỳ &amp; Học kỳ">
+  <meta property="og:description" content="Luyện thi trắc nghiệm Lớp 10 miễn phí. Chọn kỳ thi phù hợp: Giữa kỳ 1 (đã mở), Giữa kỳ 2, Học kỳ 1, Học kỳ 2. Tiếng Anh &amp; Toán.">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:site_name" content="h2rhenry">
+  <meta property="og:image" content="https://h2rhenry.is-a.dev/assets/og-luyenthi10.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Luyện thi Lớp 10 | Chọn kỳ thi">
+  <meta name="twitter:description" content="Luyện thi trắc nghiệm Lớp 10 miễn phí. Giữa kỳ 1 đã mở — Tiếng Anh &amp; Toán.">
+  <meta name="twitter:image" content="https://h2rhenry.is-a.dev/assets/og-luyenthi10.png">
+
+  <meta name="theme-color" content="#0891b2">
+  <link rel="icon" href="/favicon.ico">
+
+  <style>
+    :root {
+      --primary: #0891b2;
+      --primary-dark: #0e7490;
+      --primary-light: #ecfeff;
+      --gray: #64748b;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #1e293b;
+      --shadow: 0 4px 16px rgba(15, 23, 42, .08);
+      --amber: #b45309;
+      --amber-bg: #fef3c7;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+    header.topbar {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      padding: 22px 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    header.topbar h1 { font-size: 1.5rem; letter-spacing: .5px; font-weight: 700; }
+    header.topbar p { opacity: .9; margin-top: 4px; font-size: .9rem; }
+    .breadcrumb {
+      font-size: .85rem;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 6px; opacity: .6; }
+    .select-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 640px) {
+      .select-grid { grid-template-columns: 1fr; }
+    }
+    .exam-card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      border: 2px solid transparent;
+      text-align: center;
+      transition: border-color .2s, transform .2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      position: relative;
+    }
+    .exam-card:not(.locked):hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+    .exam-card.locked {
+      opacity: .7;
+      cursor: not-allowed;
+    }
+    .exam-card .icon { font-size: 2.4rem; margin-bottom: 10px; line-height: 1; }
+    .exam-card h2 {
+      font-size: 1.25rem;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .exam-card p {
+      color: var(--gray);
+      font-size: .9rem;
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+    .badge-row {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-size: .75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .badge.soon {
+      background: var(--amber-bg);
+      color: var(--amber);
+    }
+    .badge.open {
+      background: #dcfce7;
+      color: #16a34a;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      border: none;
+      font-size: .95rem;
+      font-weight: 600;
+      padding: 12px 26px;
+      border-radius: 10px;
+      background: var(--primary);
+      color: #fff;
+      transition: background .2s;
+      text-align: center;
+      cursor: pointer;
+    }
+    .exam-card:not(.locked):hover .btn { background: var(--primary-dark); }
+    .exam-card.locked .btn {
+      background: var(--gray);
+      cursor: not-allowed;
+    }
+    .info-box {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-top: 24px;
+      box-shadow: var(--shadow);
+      font-size: .88rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+    .info-box strong { color: var(--text); }
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, .45);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 28px 24px;
+      max-width: 380px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, .2);
+      text-align: center;
+    }
+    .modal h3 { font-size: 1.15rem; margin-bottom: 8px; color: var(--primary-dark); }
+    .modal p { font-size: .9rem; color: var(--gray); margin-bottom: 16px; }
+    .modal input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .modal input:focus { border-color: var(--primary); }
+    .modal .error { color: #dc2626; font-size: .85rem; margin-bottom: 10px; display: none; }
+    .modal .actions { display: flex; gap: 10px; }
+    .modal .actions .btn { flex: 1; }
+    .modal .actions .btn.secondary {
+      background: #fff;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    footer {
+      text-align: center;
+      color: var(--gray);
+      font-size: .8rem;
+      padding: 26px 10px;
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Luyện thi Lớp 10 - Chọn kỳ thi",
+    "description": "Luyện thi trắc nghiệm Lớp 10 miễn phí. Chọn kỳ thi: Giữa kỳ 1, Giữa kỳ 2, Học kỳ 1, Học kỳ 2.",
+    "url": "https://h2rhenry.is-a.dev/luyenthi10/",
+    "inLanguage": "vi",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "h2rhenry",
+      "url": "https://h2rhenry.is-a.dev/"
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Giữa kỳ 1 Lớp 10",
+          "url": "https://h2rhenry.is-a.dev/luyenthi10/giuaki1/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Giữa kỳ 2 Lớp 10"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Học kỳ 1 Lớp 10"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Học kỳ 2 Lớp 10"
+        }
+      ]
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Trang chủ",
+        "item": "https://h2rhenry.is-a.dev/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Luyện thi Lớp 10",
+        "item": "https://h2rhenry.is-a.dev/luyenthi10/"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <h1>📚 Luyện thi Lớp 10</h1>
+    <p>Chọn kỳ thi để bắt đầu ôn luyện trắc nghiệm</p>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Trang chủ</a>
+      <span>/</span>
+      <span aria-current="page">Luyện thi Lớp 10</span>
+    </nav>
+
+    <section class="select-grid" id="examGrid" aria-label="Danh sách kỳ thi">
+      <!-- Cards rendered by JS according to PERMISSIONS -->
+    </section>
+
+    <aside class="info-box">
+      <strong>Hướng dẫn:</strong> Chọn kỳ thi bạn đang ôn. Mỗi kỳ gồm các môn Tiếng Anh và Toán với đề Dễ / Khó, 50 câu trắc nghiệm, chấm điểm tự động.
+      Kỳ bị khóa có thể mở bằng mã truy cập (nếu được cấp). Các kỳ chưa công bố sẽ hiện “Sắp ra mắt”.
+    </aside>
+  </main>
+
+  <footer>
+    <p><a href="https://h2rhenry.is-a.dev/" style="color:inherit;text-decoration:none">h2rhenry.is-a.dev</a> · Luyện thi Lớp 10</p>
+  </footer>
+
+  <div class="modal-overlay" id="unlockModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <h3 id="modalTitle">Nhập mã truy cập</h3>
+      <p id="modalDesc">Kỳ thi này đang bị khóa. Nhập mã để mở.</p>
+      <div class="error" id="modalError">Mã không đúng. Thử lại.</div>
+      <input type="password" id="accessCode" placeholder="Mã truy cập" autocomplete="off" aria-label="Mã truy cập">
+      <div class="actions">
+        <button type="button" class="btn secondary" id="btnCancel">Hủy</button>
+        <button type="button" class="btn" id="btnUnlock">Mở khóa</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  /**
+   * HỆ THỐNG PHÂN QUYỀN (PERMISSIONS)
+   * status: "open" | "locked" | "soon"
+   * accessCode: mã mở khóa (chỉ dùng khi status = "locked")
+   */
+  const PERMISSIONS = {
+    giuaki1: {
+      id: "giuaki1",
+      title: "Giữa kỳ 1",
+      icon: "📝",
+      href: "/luyenthi10/giuaki1/",
+      status: "open",
+      accessCode: null,
+      badges: ["Tiếng Anh", "Toán", "Sẵn sàng"],
+      desc: "Unit 1–3 Tiếng Anh · Mệnh đề, Tập hợp, Bất phương trình, Hệ thức lượng Toán"
+    },
+    giuaki2: {
+      id: "giuaki2",
+      title: "Giữa kỳ 2",
+      icon: "📕",
+      href: "/luyenthi10/giuaki2/",
+      status: "soon",
+      accessCode: null,
+      badges: ["Sắp ra mắt"],
+      desc: "Nội dung sẽ được cập nhật trong thời gian tới. Hãy quay lại sau."
+    },
+    hocky1: {
+      id: "hocky1",
+      title: "Học kỳ 1",
+      icon: "📗",
+      href: "/luyenthi10/hocky1/",
+      status: "soon",
+      accessCode: null,
+      badges: ["Sắp ra mắt"],
+      desc: "Nội dung sẽ được cập nhật trong thời gian tới. Hãy quay lại sau."
+    },
+    hocky2: {
+      id: "hocky2",
+      title: "Học kỳ 2",
+      icon: "📘",
+      href: "/luyenthi10/hocky2/",
+      status: "soon",
+      accessCode: null,
+      badges: ["Sắp ra mắt"],
+      desc: "Nội dung sẽ được cập nhật trong thời gian tới. Hãy quay lại sau."
+    }
+  };
+
+  // Ví dụ mở khóa bằng mã:
+  // PERMISSIONS.giuaki2.status = "locked";
+  // PERMISSIONS.giuaki2.accessCode = "GK2-2026";
+  // PERMISSIONS.giuaki2.badges = ["Tiếng Anh", "Toán", "Cần mã"];
+
+  const STORAGE_PREFIX = "unlock_";
+
+  function isUnlocked(id) {
+    return localStorage.getItem(STORAGE_PREFIX + id) === "1";
+  }
+
+  function setUnlocked(id) {
+    localStorage.setItem(STORAGE_PREFIX + id, "1");
+  }
+
+  function getEffectiveStatus(exam) {
+    if (exam.status === "open") return "open";
+    if (exam.status === "locked" && isUnlocked(exam.id)) return "open";
+    return exam.status;
+  }
+
+  function renderBadges(exam, status) {
+    if (status === "open") {
+      return exam.badges.map(b => {
+        const cls = (b === "Sẵn sàng") ? " open" : "";
+        return `<span class="badge${cls}">${b}</span>`;
+      }).join("");
+    }
+    if (status === "locked") {
+      return `<span class="badge soon">Cần mã truy cập</span>`;
+    }
+    return `<span class="badge soon">Sắp ra mắt</span>`;
+  }
+
+  function renderGrid() {
+    const grid = document.getElementById("examGrid");
+    grid.innerHTML = "";
+
+    Object.values(PERMISSIONS).forEach(exam => {
+      const status = getEffectiveStatus(exam);
+      const locked = status !== "open";
+      const el = document.createElement(locked ? "div" : "a");
+      el.className = "exam-card" + (locked ? " locked" : "");
+      if (!locked) {
+        el.href = exam.href;
+        el.title = "Luyện thi " + exam.title + " Lớp 10";
+      } else {
+        el.title = status === "locked" ? "Cần mã truy cập" : "Sắp ra mắt";
+        if (status === "locked") {
+          el.style.cursor = "pointer";
+          el.style.opacity = "0.85";
+          el.addEventListener("click", () => openUnlockModal(exam));
+        }
+      }
+
+      el.innerHTML = `
+        <div class="icon" aria-hidden="true">${exam.icon}</div>
+        <h2>${exam.title}</h2>
+        <div class="badge-row">${renderBadges(exam, status)}</div>
+        <p>${exam.desc}</p>
+        <span class="btn">${status === "open" ? "Chọn kỳ này" : (status === "locked" ? "Nhập mã mở khóa" : "Chưa mở")}</span>
+      `;
+      grid.appendChild(el);
+    });
+  }
+
+  let pendingExam = null;
+
+  function openUnlockModal(exam) {
+    pendingExam = exam;
+    document.getElementById("modalTitle").textContent = "Mở khóa: " + exam.title;
+    document.getElementById("modalDesc").textContent = "Nhập mã truy cập để mở kỳ thi này.";
+    document.getElementById("modalError").style.display = "none";
+    document.getElementById("accessCode").value = "";
+    document.getElementById("unlockModal").classList.add("show");
+    document.getElementById("accessCode").focus();
+  }
+
+  function closeUnlockModal() {
+    document.getElementById("unlockModal").classList.remove("show");
+    pendingExam = null;
+  }
+
+  function tryUnlock() {
+    if (!pendingExam) return;
+    const code = document.getElementById("accessCode").value.trim();
+    if (code === pendingExam.accessCode) {
+      setUnlocked(pendingExam.id);
+      closeUnlockModal();
+      renderGrid();
+    } else {
+      document.getElementById("modalError").style.display = "block";
+    }
+  }
+
+  document.getElementById("btnCancel").addEventListener("click", closeUnlockModal);
+  document.getElementById("btnUnlock").addEventListener("click", tryUnlock);
+  document.getElementById("accessCode").addEventListener("keydown", e => {
+    if (e.key === "Enter") tryUnlock();
+  });
+  document.getElementById("unlockModal").addEventListener("click", e => {
+    if (e.target.id === "unlockModal") closeUnlockModal();
+  });
+
+  renderGrid();
+  </script>
+</body>
+</html>

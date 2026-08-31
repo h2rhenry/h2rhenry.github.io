@@ -11,16 +11,14 @@
   <meta name="googlebot" content="index, follow">
   <link rel="canonical" href="https://h2rhenry.is-a.dev/luyenthi10/">
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://h2rhenry.is-a.dev/luyenthi10/">
   <meta property="og:title" content="Luyện thi Lớp 10 | Chọn kỳ thi Giữa kỳ &amp; Học kỳ">
-  <meta property="og:description" content="Luyện thi trắc nghiệm Lớp 10 miễn phí. Chọn kỳ thi phù hợp: Giữa kỳ 1 (đã mở), Giữa kỳ 2, Học kỳ 1, Học kỳ 2. Tiếng Anh &amp; Toán.">
+  <meta property="og:description" content="Luyện thi trắc nghiệm Lớp 10 miễn phí. Chọn kỳ thi: Giữa kỳ 1 (đã mở), Giữa kỳ 2, Học kỳ 1, Học kỳ 2. Tiếng Anh &amp; Toán.">
   <meta property="og:locale" content="vi_VN">
   <meta property="og:site_name" content="h2rhenry">
   <meta property="og:image" content="https://h2rhenry.is-a.dev/assets/og-luyenthi10.png">
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Luyện thi Lớp 10 | Chọn kỳ thi">
   <meta name="twitter:description" content="Luyện thi trắc nghiệm Lớp 10 miễn phí. Giữa kỳ 1 đã mở — Tiếng Anh &amp; Toán.">
@@ -60,18 +58,11 @@
     }
     header.topbar h1 { font-size: 1.5rem; letter-spacing: .5px; font-weight: 700; }
     header.topbar p { opacity: .9; margin-top: 4px; font-size: .9rem; }
-    .breadcrumb {
-      font-size: .85rem;
-      color: var(--gray);
-      margin-bottom: 16px;
-    }
-    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 600; }
-    .breadcrumb a:hover { text-decoration: underline; }
-    .breadcrumb span { margin: 0 6px; opacity: .6; }
     .select-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
+      margin-top: 8px;
     }
     @media (max-width: 640px) {
       .select-grid { grid-template-columns: 1fr; }
@@ -93,10 +84,7 @@
       border-color: var(--primary);
       transform: translateY(-3px);
     }
-    .exam-card.locked {
-      opacity: .7;
-      cursor: not-allowed;
-    }
+    .exam-card.locked { opacity: .7; cursor: not-allowed; }
     .exam-card .icon { font-size: 2.4rem; margin-bottom: 10px; line-height: 1; }
     .exam-card h2 {
       font-size: 1.25rem;
@@ -125,14 +113,8 @@
       border-radius: 999px;
       font-weight: 600;
     }
-    .badge.soon {
-      background: var(--amber-bg);
-      color: var(--amber);
-    }
-    .badge.open {
-      background: #dcfce7;
-      color: #16a34a;
-    }
+    .badge.soon { background: var(--amber-bg); color: var(--amber); }
+    .badge.open { background: #dcfce7; color: #16a34a; }
     .btn {
       display: block;
       width: 100%;
@@ -148,10 +130,7 @@
       cursor: pointer;
     }
     .exam-card:not(.locked):hover .btn { background: var(--primary-dark); }
-    .exam-card.locked .btn {
-      background: var(--gray);
-      cursor: not-allowed;
-    }
+    .exam-card.locked .btn { background: var(--gray); cursor: not-allowed; }
     .info-box {
       background: var(--card);
       border-radius: 14px;
@@ -228,27 +207,10 @@
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Giữa kỳ 1 Lớp 10",
-          "url": "https://h2rhenry.is-a.dev/luyenthi10/giuaki1/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Giữa kỳ 2 Lớp 10"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Học kỳ 1 Lớp 10"
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "Học kỳ 2 Lớp 10"
-        }
+        { "@type": "ListItem", "position": 1, "name": "Giữa kỳ 1 Lớp 10", "url": "https://h2rhenry.is-a.dev/luyenthi10/giuaki1/" },
+        { "@type": "ListItem", "position": 2, "name": "Giữa kỳ 2 Lớp 10" },
+        { "@type": "ListItem", "position": 3, "name": "Học kỳ 1 Lớp 10" },
+        { "@type": "ListItem", "position": 4, "name": "Học kỳ 2 Lớp 10" }
       ]
     }
   }
@@ -263,12 +225,6 @@
         "@type": "ListItem",
         "position": 1,
         "name": "Trang chủ",
-        "item": "https://h2rhenry.is-a.dev/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Luyện thi Lớp 10",
         "item": "https://h2rhenry.is-a.dev/luyenthi10/"
       }
     ]
@@ -282,15 +238,7 @@
   </header>
 
   <main class="container">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Trang chủ</a>
-      <span>/</span>
-      <span aria-current="page">Luyện thi Lớp 10</span>
-    </nav>
-
-    <section class="select-grid" id="examGrid" aria-label="Danh sách kỳ thi">
-      <!-- Cards rendered by JS according to PERMISSIONS -->
-    </section>
+    <section class="select-grid" id="examGrid" aria-label="Danh sách kỳ thi"></section>
 
     <aside class="info-box">
       <strong>Hướng dẫn:</strong> Chọn kỳ thi bạn đang ôn. Mỗi kỳ gồm các môn Tiếng Anh và Toán với đề Dễ / Khó, 50 câu trắc nghiệm, chấm điểm tự động.
@@ -299,7 +247,7 @@
   </main>
 
   <footer>
-    <p><a href="https://h2rhenry.is-a.dev/" style="color:inherit;text-decoration:none">h2rhenry.is-a.dev</a> · Luyện thi Lớp 10</p>
+    <p>h2rhenry.is-a.dev/luyenthi10 · Luyện thi Lớp 10</p>
   </footer>
 
   <div class="modal-overlay" id="unlockModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
@@ -316,122 +264,74 @@
   </div>
 
   <script>
-  /**
-   * HỆ THỐNG PHÂN QUYỀN (PERMISSIONS)
-   * status: "open" | "locked" | "soon"
-   * accessCode: mã mở khóa (chỉ dùng khi status = "locked")
-   */
   const PERMISSIONS = {
     giuaki1: {
-      id: "giuaki1",
-      title: "Giữa kỳ 1",
-      icon: "📝",
-      href: "/luyenthi10/giuaki1/",
-      status: "open",
-      accessCode: null,
+      id: "giuaki1", title: "Giữa kỳ 1", icon: "📝",
+      href: "/luyenthi10/giuaki1/", status: "open", accessCode: null,
       badges: ["Tiếng Anh", "Toán", "Sẵn sàng"],
       desc: "Unit 1–3 Tiếng Anh · Mệnh đề, Tập hợp, Bất phương trình, Hệ thức lượng Toán"
     },
     giuaki2: {
-      id: "giuaki2",
-      title: "Giữa kỳ 2",
-      icon: "📕",
-      href: "/luyenthi10/giuaki2/",
-      status: "soon",
-      accessCode: null,
+      id: "giuaki2", title: "Giữa kỳ 2", icon: "📕",
+      href: "/luyenthi10/giuaki2/", status: "soon", accessCode: null,
       badges: ["Sắp ra mắt"],
       desc: "Nội dung sẽ được cập nhật trong thời gian tới. Hãy quay lại sau."
     },
     hocky1: {
-      id: "hocky1",
-      title: "Học kỳ 1",
-      icon: "📗",
-      href: "/luyenthi10/hocky1/",
-      status: "soon",
-      accessCode: null,
+      id: "hocky1", title: "Học kỳ 1", icon: "📗",
+      href: "/luyenthi10/hocky1/", status: "soon", accessCode: null,
       badges: ["Sắp ra mắt"],
       desc: "Nội dung sẽ được cập nhật trong thời gian tới. Hãy quay lại sau."
     },
     hocky2: {
-      id: "hocky2",
-      title: "Học kỳ 2",
-      icon: "📘",
-      href: "/luyenthi10/hocky2/",
-      status: "soon",
-      accessCode: null,
+      id: "hocky2", title: "Học kỳ 2", icon: "📘",
+      href: "/luyenthi10/hocky2/", status: "soon", accessCode: null,
       badges: ["Sắp ra mắt"],
       desc: "Nội dung sẽ được cập nhật trong thời gian tới. Hãy quay lại sau."
     }
   };
 
-  // Ví dụ mở khóa bằng mã:
-  // PERMISSIONS.giuaki2.status = "locked";
-  // PERMISSIONS.giuaki2.accessCode = "GK2-2026";
-  // PERMISSIONS.giuaki2.badges = ["Tiếng Anh", "Toán", "Cần mã"];
-
   const STORAGE_PREFIX = "unlock_";
-
-  function isUnlocked(id) {
-    return localStorage.getItem(STORAGE_PREFIX + id) === "1";
-  }
-
-  function setUnlocked(id) {
-    localStorage.setItem(STORAGE_PREFIX + id, "1");
-  }
-
+  function isUnlocked(id) { return localStorage.getItem(STORAGE_PREFIX + id) === "1"; }
+  function setUnlocked(id) { localStorage.setItem(STORAGE_PREFIX + id, "1"); }
   function getEffectiveStatus(exam) {
     if (exam.status === "open") return "open";
     if (exam.status === "locked" && isUnlocked(exam.id)) return "open";
     return exam.status;
   }
-
   function renderBadges(exam, status) {
     if (status === "open") {
-      return exam.badges.map(b => {
-        const cls = (b === "Sẵn sàng") ? " open" : "";
-        return `<span class="badge${cls}">${b}</span>`;
-      }).join("");
+      return exam.badges.map(b => `<span class="badge${b === "Sẵn sàng" ? " open" : ""}">${b}</span>`).join("");
     }
-    if (status === "locked") {
-      return `<span class="badge soon">Cần mã truy cập</span>`;
-    }
+    if (status === "locked") return `<span class="badge soon">Cần mã truy cập</span>`;
     return `<span class="badge soon">Sắp ra mắt</span>`;
   }
-
   function renderGrid() {
     const grid = document.getElementById("examGrid");
     grid.innerHTML = "";
-
     Object.values(PERMISSIONS).forEach(exam => {
       const status = getEffectiveStatus(exam);
       const locked = status !== "open";
       const el = document.createElement(locked ? "div" : "a");
       el.className = "exam-card" + (locked ? " locked" : "");
-      if (!locked) {
-        el.href = exam.href;
-        el.title = "Luyện thi " + exam.title + " Lớp 10";
-      } else {
+      if (!locked) { el.href = exam.href; el.title = "Luyện thi " + exam.title + " Lớp 10"; }
+      else {
         el.title = status === "locked" ? "Cần mã truy cập" : "Sắp ra mắt";
         if (status === "locked") {
-          el.style.cursor = "pointer";
-          el.style.opacity = "0.85";
+          el.style.cursor = "pointer"; el.style.opacity = "0.85";
           el.addEventListener("click", () => openUnlockModal(exam));
         }
       }
-
       el.innerHTML = `
         <div class="icon" aria-hidden="true">${exam.icon}</div>
         <h2>${exam.title}</h2>
         <div class="badge-row">${renderBadges(exam, status)}</div>
         <p>${exam.desc}</p>
-        <span class="btn">${status === "open" ? "Chọn kỳ này" : (status === "locked" ? "Nhập mã mở khóa" : "Chưa mở")}</span>
-      `;
+        <span class="btn">${status === "open" ? "Chọn kỳ này" : (status === "locked" ? "Nhập mã mở khóa" : "Chưa mở")}</span>`;
       grid.appendChild(el);
     });
   }
-
   let pendingExam = null;
-
   function openUnlockModal(exam) {
     pendingExam = exam;
     document.getElementById("modalTitle").textContent = "Mở khóa: " + exam.title;
@@ -441,33 +341,22 @@
     document.getElementById("unlockModal").classList.add("show");
     document.getElementById("accessCode").focus();
   }
-
   function closeUnlockModal() {
     document.getElementById("unlockModal").classList.remove("show");
     pendingExam = null;
   }
-
   function tryUnlock() {
     if (!pendingExam) return;
-    const code = document.getElementById("accessCode").value.trim();
-    if (code === pendingExam.accessCode) {
-      setUnlocked(pendingExam.id);
-      closeUnlockModal();
-      renderGrid();
+    if (document.getElementById("accessCode").value.trim() === pendingExam.accessCode) {
+      setUnlocked(pendingExam.id); closeUnlockModal(); renderGrid();
     } else {
       document.getElementById("modalError").style.display = "block";
     }
   }
-
   document.getElementById("btnCancel").addEventListener("click", closeUnlockModal);
   document.getElementById("btnUnlock").addEventListener("click", tryUnlock);
-  document.getElementById("accessCode").addEventListener("keydown", e => {
-    if (e.key === "Enter") tryUnlock();
-  });
-  document.getElementById("unlockModal").addEventListener("click", e => {
-    if (e.target.id === "unlockModal") closeUnlockModal();
-  });
-
+  document.getElementById("accessCode").addEventListener("keydown", e => { if (e.key === "Enter") tryUnlock(); });
+  document.getElementById("unlockModal").addEventListener("click", e => { if (e.target.id === "unlockModal") closeUnlockModal(); });
   renderGrid();
   </script>
 </body>

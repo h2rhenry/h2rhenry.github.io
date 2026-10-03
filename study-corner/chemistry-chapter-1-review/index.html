@@ -1,1253 +1,303 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ôn tập Hóa 10 – Chương 1: Cấu tạo nguyên tử</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #f0f7fa;
-      --card: #ffffff;
-      --text: #1a2b3c;
-      --muted: #5a6a7a;
-      --primary: #0d9488;
-      --primary-dark: #0f766e;
-      --primary-light: #ccfbf1;
-      --accent: #0284c7;
-      --success: #16a34a;
-      --danger: #dc2626;
-      --warning: #d97706;
-      --border: #e2e8f0;
-      --shadow: 0 4px 20px rgba(13, 148, 136, 0.12);
-      --radius: 12px;
-      --timer-bg: #fef3c7;
-      --timer-text: #92400e;
-    }
-    [data-theme="dark"] {
-      --bg: #0f172a;
-      --card: #1e293b;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-      --primary: #2dd4bf;
-      --primary-dark: #14b8a6;
-      --primary-light: #134e4a;
-      --accent: #38bdf8;
-      --success: #4ade80;
-      --danger: #f87171;
-      --warning: #fbbf24;
-      --border: #334155;
-      --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-      --timer-bg: #422006;
-      --timer-text: #fde68a;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
-      transition: background 0.3s, color 0.3s;
-    }
-    .container { max-width: 860px; margin: 0 auto; padding: 16px; }
-    header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 12px 0; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;
-    }
-    .logo { font-weight: 700; font-size: 1.15rem; color: var(--primary); }
-    .theme-btn {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 50%; width: 40px; height: 40px; cursor: pointer;
-      font-size: 1.2rem; display: flex; align-items: center; justify-content: center;
-    }
-    .card {
-      background: var(--card); border-radius: var(--radius);
-      box-shadow: var(--shadow); padding: 24px; margin-bottom: 20px;
-      border: 1px solid var(--border);
-    }
-    h1 { font-size: 1.5rem; margin-bottom: 8px; color: var(--primary-dark); }
-    h2 { font-size: 1.2rem; margin: 16px 0 10px; color: var(--accent); }
-    h3 { font-size: 1.05rem; margin: 12px 0 8px; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-      padding: 10px 20px; border: none; border-radius: 8px; font-weight: 600;
-      font-size: 0.95rem; cursor: pointer; transition: all 0.2s;
-    }
-    .btn-primary { background: var(--primary); color: #fff; }
-    .btn-primary:hover { background: var(--primary-dark); }
-    .btn-outline {
-      background: transparent; border: 2px solid var(--primary); color: var(--primary);
-    }
-    .btn-outline:hover { background: var(--primary-light); }
-    .btn-danger { background: var(--danger); color: #fff; }
-    .btn-sm { padding: 6px 12px; font-size: 0.85rem; }
-    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-    .home-stats {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px; margin: 20px 0;
-    }
-    .stat {
-      background: var(--primary-light); border-radius: 10px; padding: 14px;
-      text-align: center;
-    }
-    .stat strong { display: block; font-size: 1.3rem; color: var(--primary-dark); }
-    .timer-bar {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--timer-bg); color: var(--timer-text);
-      padding: 10px 16px; border-radius: 0 0 12px 12px;
-      display: flex; justify-content: space-between; align-items: center;
-      box-shadow: var(--shadow); margin-bottom: 16px; font-weight: 600;
-    }
-    .timer-bar.warning { background: #fecaca; color: #991b1b; animation: pulse 1s infinite; }
-    @keyframes pulse { 50% { opacity: 0.85; } }
-    .progress-bar {
-      height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; margin: 8px 0 16px;
-    }
-    .progress-fill { height: 100%; background: var(--primary); transition: width 0.3s; }
-    .tabs {
-      display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px;
-    }
-    .tab {
-      padding: 8px 14px; border-radius: 8px; border: 1px solid var(--border);
-      background: var(--card); cursor: pointer; font-weight: 500; font-size: 0.9rem;
-    }
-    .tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-    .tab.done { border-color: var(--success); }
-    .question-block {
-      border: 1px solid var(--border); border-radius: 10px;
-      padding: 16px; margin-bottom: 16px; position: relative;
-    }
-    .question-block.flagged { border-color: var(--warning); background: color-mix(in srgb, var(--warning) 8%, var(--card)); }
-    .q-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 10px; }
-    .q-num { font-weight: 700; color: var(--primary); white-space: nowrap; }
-    .flag-btn {
-      background: none; border: 1px solid var(--border); border-radius: 6px;
-      padding: 4px 8px; cursor: pointer; font-size: 0.85rem; color: var(--muted);
-    }
-    .flag-btn.active { background: var(--warning); color: #fff; border-color: var(--warning); }
-    .options { display: flex; flex-direction: column; gap: 8px; }
-    .option {
-      display: flex; align-items: flex-start; gap: 10px;
-      padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px;
-      cursor: pointer; transition: border-color 0.2s, background 0.2s;
-    }
-    .option:hover { border-color: var(--primary); }
-    .option.selected { border-color: var(--primary); background: var(--primary-light); }
-    .option input { margin-top: 3px; accent-color: var(--primary); }
-    .tf-statements { display: flex; flex-direction: column; gap: 12px; }
-    .tf-item {
-      border: 1px solid var(--border); border-radius: 8px; padding: 12px;
-    }
-    .tf-text { margin-bottom: 8px; }
-    .tf-choices { display: flex; gap: 16px; }
-    .tf-choices label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
-    .short-input, .essay-input {
-      width: 100%; padding: 10px 12px; border: 1px solid var(--border);
-      border-radius: 8px; font-size: 1rem; background: var(--bg); color: var(--text);
-    }
-    .short-input:focus, .essay-input:focus { outline: 2px solid var(--primary); border-color: transparent; }
-    .essay-fields { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
-    .essay-field label { font-weight: 500; font-size: 0.9rem; display: block; margin-bottom: 4px; }
-    .nav-btns { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
-    .result-score {
-      text-align: center; padding: 24px; background: var(--primary-light);
-      border-radius: var(--radius); margin-bottom: 20px;
-    }
-    .result-score .big { font-size: 2.8rem; font-weight: 700; color: var(--primary-dark); }
-    .part-scores { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 16px 0; }
-    .part-score-item {
-      text-align: center; padding: 10px; background: var(--card);
-      border: 1px solid var(--border); border-radius: 8px;
-    }
-    .detail-item {
-      border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin-bottom: 12px;
-    }
-    .detail-item.correct { border-left: 4px solid var(--success); }
-    .detail-item.wrong { border-left: 4px solid var(--danger); }
-    .detail-item.partial { border-left: 4px solid var(--warning); }
-    .badge {
-      display: inline-block; padding: 2px 8px; border-radius: 4px;
-      font-size: 0.8rem; font-weight: 600;
-    }
-    .badge-ok { background: #dcfce7; color: #166534; }
-    .badge-err { background: #fee2e2; color: #991b1b; }
-    .badge-partial { background: #fef3c7; color: #92400e; }
-    [data-theme="dark"] .badge-ok { background: #14532d; color: #86efac; }
-    [data-theme="dark"] .badge-err { background: #7f1d1d; color: #fca5a5; }
-    [data-theme="dark"] .badge-partial { background: #78350f; color: #fde68a; }
-    .explanation { margin-top: 8px; padding: 10px; background: var(--bg); border-radius: 8px; font-size: 0.9rem; color: var(--muted); }
-    .rubric-list { margin-top: 12px; }
-    .rubric-item {
-      display: flex; align-items: flex-start; gap: 8px; padding: 8px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .rubric-item:last-child { border-bottom: none; }
-    .rubric-item input { margin-top: 3px; accent-color: var(--primary); }
-    .sample-sol {
-      background: var(--primary-light); padding: 12px; border-radius: 8px;
-      margin: 10px 0; font-size: 0.95rem; white-space: pre-wrap;
-    }
-    .history-list { list-style: none; }
-    .history-list li {
-      padding: 10px; border-bottom: 1px solid var(--border);
-      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
-    }
-    .hidden { display: none !important; }
-    .note { font-size: 0.85rem; color: var(--muted); margin-top: 6px; }
-    @media (max-width: 600px) {
-      .card { padding: 16px; }
-      h1 { font-size: 1.25rem; }
-      .timer-bar { font-size: 0.9rem; }
-      .options .option { padding: 8px 10px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ôn tập Hóa 10 – Chương 1: Cấu tạo nguyên tử</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef0f6;--sf:#fff;--ink:#151a33;--mute:#5d6485;--line:#d9dcea;--brand:#4f3df0;--soft:#e9e6ff;--ok:#0e9f6e;--bad:#d93a4a;--warn:#e39b0b}
+[data-theme=dark]{--bg:#0d1020;--sf:#161a31;--ink:#eceefb;--mute:#9aa1c7;--line:#2a3052;--brand:#9a8cff;--soft:#241f58;--ok:#34d399;--bad:#f87171;--warn:#fbbf24}
+*{box-sizing:border-box;margin:0}
+[hidden]{display:none!important}
+body{font:16px/1.65 'Be Vietnam Pro',system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+h1,h2,h3,.fx{font-family:'Bricolage Grotesque','Be Vietnam Pro',sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:16px 16px 64px}
+.bar{display:flex;justify-content:space-between;align-items:center;padding:8px 0 16px}
+.bar b{font-family:'Bricolage Grotesque',sans-serif;font-size:1.05rem}
+button{font:inherit;cursor:pointer}
+.btn{border:0;border-radius:10px;padding:11px 20px;font-weight:600;background:var(--brand);color:#fff}
+.btn.o{background:none;color:var(--brand);border:1.5px solid var(--brand)}
+.btn.d{background:var(--bad)}
+.btn:focus-visible,.in:focus-visible,.tile:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+.ico{background:var(--sf);border:1px solid var(--line);border-radius:50%;width:38px;height:38px;color:var(--ink)}
+.card{background:var(--sf);border:1px solid var(--line);border-radius:16px;padding:24px;margin-bottom:16px}
+.hero{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.el{width:116px;height:116px;border:2.5px solid var(--brand);border-radius:10px;padding:8px 10px;display:flex;flex-direction:column;justify-content:space-between;background:var(--soft);flex:none}
+.el small{font-weight:600;color:var(--brand)}.el b{font:800 1.9rem/1 'Bricolage Grotesque';color:var(--brand)}.el span{font-size:.7rem;line-height:1.2}
+h1{font-size:1.7rem;line-height:1.15}
+.mute{color:var(--mute)}.sm{font-size:.88rem}
+.rows{display:grid;gap:8px;margin:20px 0;padding:0;list-style:none}
+.rows li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.top{position:sticky;top:0;z-index:9;background:var(--sf);border:1px solid var(--line);border-radius:0 0 14px 14px;padding:10px 16px;margin-bottom:14px}
+.top>div{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.clock{font:800 1.5rem 'Bricolage Grotesque';font-variant-numeric:tabular-nums}
+.top.low .clock{color:var(--bad)}
+.pg{height:5px;background:var(--line);border-radius:3px;margin-top:8px;overflow:hidden}.pg i{display:block;height:100%;background:var(--brand);width:0;transition:width .3s}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(46px,1fr));gap:6px;margin-bottom:18px}
+.tile{aspect-ratio:1;border:1.5px solid var(--line);border-radius:8px;background:var(--sf);color:var(--ink);text-decoration:none;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1;position:relative}
+.tile b{font:800 1.05rem 'Bricolage Grotesque'}.tile small{font-size:.62rem;color:var(--mute)}
+.tile.on{background:var(--soft);border-color:var(--brand)}.tile.on b{color:var(--brand)}
+.tile.fl::after{content:"";position:absolute;top:4px;right:4px;width:8px;height:8px;border-radius:50%;background:var(--warn)}
+.ph{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap;margin:26px 0 10px;border-bottom:2px solid var(--brand);padding-bottom:6px}
+.ph h2{font-size:1.25rem}
+.q{background:var(--sf);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:12px;scroll-margin-top:90px}
+.q.fl{border-color:var(--warn)}
+.qh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.qn{font:800 .95rem 'Bricolage Grotesque';color:var(--brand);border:1.5px solid var(--brand);border-radius:6px;padding:0 10px}
+.flag{background:none;border:1px solid var(--line);border-radius:8px;color:var(--mute);padding:2px 10px;font-size:.82rem}
+.q.fl .flag{background:var(--warn);color:#000;border-color:var(--warn)}
+.opts{display:grid;gap:8px;margin-top:10px}
+.opt{display:flex;gap:10px;align-items:flex-start;border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;cursor:pointer}
+.opt:has(input:checked){border-color:var(--brand);background:var(--soft)}
+.opt input{accent-color:var(--brand);margin-top:6px}.opt b{color:var(--brand);min-width:1ch}
+.st{display:flex;justify-content:space-between;gap:12px;align-items:center;border-top:1px solid var(--line);padding:10px 0;flex-wrap:wrap}
+.tf{display:flex;gap:8px}.tf .opt{padding:5px 12px}
+.in{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;font:inherit;background:var(--bg);color:var(--ink);margin-top:8px}
+.fs{display:grid;gap:8px;margin-top:8px}.fs label{font-size:.9rem;font-weight:500}
+.nuc{display:inline-flex;flex-direction:column;font-size:.68em;line-height:1;vertical-align:middle;text-align:right;margin-right:1px}.nuc sup,.nuc sub{vertical-align:baseline;line-height:1}
+.score{text-align:center;background:var(--soft);border-radius:14px;padding:24px;margin-bottom:16px}
+.score .fx{font-size:3.4rem;font-weight:800;color:var(--brand);line-height:1}
+.ps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}.ps div{background:var(--sf);border-radius:10px;padding:8px;font-size:.85rem}.ps b{display:block;font-size:1.15rem}
+.dt{border-left:4px solid var(--line);background:var(--sf);border-radius:10px;padding:14px;margin-bottom:10px}
+.dt.ok{border-color:var(--ok)}.dt.no{border-color:var(--bad)}.dt.pa{border-color:var(--warn)}
+.ex{margin-top:8px;padding:10px;background:var(--bg);border-radius:8px;font-size:.9rem;color:var(--mute)}
+.g{color:var(--ok);font-weight:600}.r{color:var(--bad);font-weight:600}
+.sol{background:var(--soft);padding:10px;border-radius:8px;margin:8px 0;font-size:.92rem}
+.rb{display:flex;gap:8px;align-items:flex-start;padding:4px 0;font-size:.92rem}.rb input{accent-color:var(--brand);margin-top:6px}
+.hl{list-style:none;padding:0}.hl li{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:8px 0}
+@media(max-width:560px){.card{padding:16px}h1{font-size:1.4rem}.ps{grid-template-columns:repeat(2,1fr)}}
+</style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="logo">⚛️ Hóa 10 – Chương 1</div>
-      <button class="theme-btn" id="themeBtn" title="Đổi giao diện">🌙</button>
-    </header>
+<div class="wrap">
+<div class="bar"><b>Hóa 10 · Chương 1</b><button class="ico" id="theme" aria-label="Đổi giao diện">☾</button></div>
 
-    <!-- ========== TRANG CHỦ ========== -->
-    <section id="homeScreen" class="card">
-      <h1>Đề kiểm tra thường xuyên<br>Chương 1 – Cấu tạo nguyên tử</h1>
-      <p style="color:var(--muted);margin:8px 0 16px">Chương trình GDPT 2018 · Hóa học 10</p>
-      <div class="home-stats">
-        <div class="stat"><strong>45 phút</strong>Thời gian</div>
-        <div class="stat"><strong>10 điểm</strong>Thang điểm</div>
-        <div class="stat"><strong>4 phần</strong>Cấu trúc đề</div>
-        <div class="stat"><strong>16 câu</strong>Tổng số câu</div>
-      </div>
-      <h3>Cấu trúc đề</h3>
-      <ul style="margin:8px 0 16px 20px;color:var(--muted)">
-        <li><strong>Phần I</strong> – Trắc nghiệm nhiều lựa chọn: 8 câu (4 điểm)</li>
-        <li><strong>Phần II</strong> – Đúng/Sai: 2 câu × 4 ý (2 điểm)</li>
-        <li><strong>Phần III</strong> – Trả lời ngắn: 4 câu (2 điểm)</li>
-        <li><strong>Phần IV</strong> – Tự luận: 2 câu (2 điểm)</li>
-      </ul>
-      <p class="note">Tiến trình được lưu tự động. Hết giờ hệ thống sẽ nộp bài.</p>
-      <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
-        <button class="btn btn-primary" id="startBtn">Bắt đầu làm bài</button>
-        <button class="btn btn-outline" id="historyBtn">Lịch sử làm bài</button>
-      </div>
-    </section>
-
-    <!-- ========== LỊCH SỬ ========== -->
-    <section id="historyScreen" class="card hidden">
-      <h2>Lịch sử 5 lần làm gần nhất</h2>
-      <ul class="history-list" id="historyList"></ul>
-      <button class="btn btn-outline" id="backHomeFromHistory" style="margin-top:16px">← Về trang chủ</button>
-    </section>
-
-    <!-- ========== LÀM BÀI ========== -->
-    <section id="examScreen" class="hidden">
-      <div class="timer-bar" id="timerBar">
-        <span>⏱ Thời gian còn lại: <span id="timerDisplay">45:00</span></span>
-        <span id="progressText">0/16 câu</span>
-      </div>
-      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
-
-      <div class="tabs" id="partTabs">
-        <button class="tab active" data-part="1">Phần I (TN)</button>
-        <button class="tab" data-part="2">Phần II (Đ/S)</button>
-        <button class="tab" data-part="3">Phần III (Ngắn)</button>
-        <button class="tab" data-part="4">Phần IV (TL)</button>
-      </div>
-
-      <div id="part1Container"></div>
-      <div id="part2Container" class="hidden"></div>
-      <div id="part3Container" class="hidden"></div>
-      <div id="part4Container" class="hidden"></div>
-
-      <div class="nav-btns">
-        <button class="btn btn-outline" id="prevPartBtn">← Phần trước</button>
-        <button class="btn btn-primary" id="nextPartBtn">Phần sau →</button>
-        <button class="btn btn-danger" id="submitBtn">Nộp bài</button>
-      </div>
-    </section>
-
-    <!-- ========== KẾT QUẢ ========== -->
-    <section id="resultScreen" class="hidden">
-      <div class="card">
-        <div class="result-score">
-          <div class="big" id="totalScore">0.00</div>
-          <div>/ 10 điểm</div>
-          <div style="margin-top:8px;font-size:0.95rem" id="timeTaken"></div>
-        </div>
-        <div class="part-scores" id="partScores"></div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin:16px 0">
-          <button class="btn btn-primary" id="retryBtn">Làm lại (xáo trộn)</button>
-          <button class="btn btn-outline" id="reviewBtn">Xem lại bài làm</button>
-          <button class="btn btn-outline" id="homeFromResult">Về trang chủ</button>
-        </div>
-      </div>
-      <div id="detailContainer"></div>
-    </section>
+<section id="home">
+  <div class="card">
+    <div class="hero">
+      <div class="el"><small>1</small><b>Hóa 10</b><span>Cấu tạo nguyên tử</span></div>
+      <div><h1>Đề kiểm tra thường xuyên</h1><p class="mute">Mỗi lần làm là một đề mới: 20 câu được bốc ngẫu nhiên từ ngân hàng 48 câu của 3 bộ đề.</p></div>
+    </div>
+    <ul class="rows">
+      <li><span>Phần I · Trắc nghiệm</span><b>10 câu · 3 điểm</b></li>
+      <li><span>Phần II · Đúng/Sai (4 ý)</span><b>3 câu · 3 điểm</b></li>
+      <li><span>Phần III · Trả lời ngắn</span><b>5 câu · 2 điểm</b></li>
+      <li><span>Phần IV · Tự luận</span><b>2 câu · 2 điểm</b></li>
+      <li><span>Thời gian</span><b>45 phút</b></li>
+    </ul>
+    <p class="sm mute">Đề và bài làm được lưu trên trình duyệt: tải lại trang vẫn làm tiếp được, đồng hồ chạy theo giờ thật.</p>
+    <div class="acts"><button class="btn" id="newBtn">Tạo đề ngẫu nhiên</button></div>
   </div>
+  <div class="card" id="resume" hidden>
+    <h3>Bài đang làm dở</h3><p class="mute" id="resumeInfo"></p>
+    <div class="acts"><button class="btn" id="resBtn">Làm tiếp</button><button class="btn o" id="dropBtn">Bỏ bài này</button></div>
+  </div>
+  <div class="card"><h3>Các lần làm gần đây</h3><ul class="hl" id="hist"></ul></div>
+</section>
 
-  <script>
-/* ============================================================
-   NGÂN HÀNG CÂU HỎI – Chương 1: Cấu tạo nguyên tử (Hóa 10)
-   Dễ chỉnh sửa: chỉ cần sửa mảng QUESTIONS bên dưới.
-   ============================================================ */
-const QUESTIONS = {
-  /* ---------- Phần I: Trắc nghiệm nhiều lựa chọn (8 câu × 0.5đ) ---------- */
-  part1: [
-    {
-      id: 1,
-      type: "mcq",
-      question: "Hạt nào sau đây có khối lượng xấp xỉ 1 amu và mang điện tích dương?",
-      options: [
-        "A. Electron",
-        "B. Proton",
-        "C. Neutron",
-        "D. Positron"
-      ],
-      correct: 1,
-      explanation: "Proton có khối lượng ≈ 1 amu và điện tích +1. Electron rất nhẹ (~1/1836 amu), neutron trung hòa điện.",
-      difficulty: "nhan biet"
-    },
-    {
-      id: 2,
-      type: "mcq",
-      question: "Kích thước hạt nhân so với kích thước nguyên tử xấp xỉ bằng:",
-      options: [
-        "A. 1/10",
-        "B. 1/100",
-        "C. 1/1000",
-        "D. 1/10000 đến 1/100000"
-      ],
-      correct: 3,
-      explanation: "Bán kính hạt nhân khoảng 10⁻¹⁵ m, bán kính nguyên tử khoảng 10⁻¹⁰ m → tỉ lệ khoảng 1/10000 đến 1/100000.",
-      difficulty: "nhan biet"
-    },
-    {
-      id: 3,
-      type: "mcq",
-      question: "Nguyên tử X có kí hiệu ³⁵₁₇X. Số proton, neutron và electron lần lượt là:",
-      options: [
-        "A. 17, 18, 17",
-        "B. 17, 35, 17",
-        "C. 35, 17, 35",
-        "D. 18, 17, 18"
-      ],
-      correct: 0,
-      explanation: "Z = 17 → p = e = 17; A = 35 → n = A − Z = 18.",
-      difficulty: "thong hieu"
-    },
-    {
-      id: 4,
-      type: "mcq",
-      question: "Số orbital trong lớp n = 3 là:",
-      options: [
-        "A. 3",
-        "B. 6",
-        "C. 9",
-        "D. 18"
-      ],
-      correct: 2,
-      explanation: "Số orbital trong lớp n = n². Với n = 3: 3² = 9 (1s + 3p + 5d).",
-      difficulty: "thong hieu"
-    },
-    {
-      id: 5,
-      type: "mcq",
-      question: "Số electron tối đa trong phân lớp 3d là:",
-      options: [
-        "A. 2",
-        "B. 6",
-        "C. 10",
-        "D. 14"
-      ],
-      correct: 2,
-      explanation: "Phân lớp d có 5 orbital, mỗi orbital tối đa 2 electron → 10 electron.",
-      difficulty: "thong hieu"
-    },
-    {
-      id: 6,
-      type: "mcq",
-      question: "Nguyên tử có Z = 15. Cấu hình electron lớp ngoài cùng là:",
-      options: [
-        "A. 3s²3p³",
-        "B. 3s²3p⁵",
-        "C. 2s²2p³",
-        "D. 4s²4p³"
-      ],
-      correct: 0,
-      explanation: "P (Z=15): 1s²2s²2p⁶3s²3p³. Lớp ngoài cùng (n=3) là 3s²3p³.",
-      difficulty: "van dung"
-    },
-    {
-      id: 7,
-      type: "mcq",
-      question: "Nguyên tố có cấu hình electron lớp ngoài cùng 2s²2p⁴ thuộc nhóm:",
-      options: [
-        "A. Kim loại",
-        "B. Phi kim",
-        "C. Khí hiếm",
-        "D. Á kim"
-      ],
-      correct: 1,
-      explanation: "Cấu hình ns²np⁴ (6 electron lớp ngoài) → dễ nhận thêm 2e → phi kim (ví dụ O, S).",
-      difficulty: "van dung"
-    },
-    {
-      id: 8,
-      type: "mcq",
-      question: "Nguyên tử khối trung bình của nguyên tố X gồm hai đồng vị ¹⁰X (20%) và ¹¹X (80%) bằng:",
-      options: [
-        "A. 10,2",
-        "B. 10,8",
-        "C. 10,5",
-        "D. 11,0"
-      ],
-      correct: 1,
-      explanation: "A_tb = 10×0,20 + 11×0,80 = 2 + 8,8 = 10,8.",
-      difficulty: "van dung"
-    }
-  ],
+<section id="examS" hidden>
+  <div class="top" id="top">
+    <div><span class="clock" id="clock">45:00</span><span class="mute sm" id="cnt">0/20</span><button class="btn d" id="subBtn" style="padding:7px 16px">Nộp bài</button></div>
+    <div class="pg"><i id="bar"></i></div>
+  </div>
+  <div class="tiles" id="tiles"></div>
+  <div id="exam"></div>
+  <div class="acts"><button class="btn d" id="subBtn2">Nộp bài</button></div>
+</section>
 
-  /* ---------- Phần II: Đúng/Sai (2 câu × 1đ) ---------- */
-  part2: [
-    {
-      id: 1,
-      type: "truefalse",
-      question: "Cho các phát biểu về cấu tạo nguyên tử và đồng vị:",
-      statements: [
-        { text: "a) Số proton trong hạt nhân bằng số electron trong nguyên tử trung hòa.", correct: true },
-        { text: "b) Các đồng vị của cùng một nguyên tố có cùng số khối A.", correct: false },
-        { text: "c) Neutron không mang điện và có khối lượng xấp xỉ bằng proton.", correct: true },
-        { text: "d) Điện tích hạt nhân bằng số khối của nguyên tử.", correct: false }
-      ],
-      explanation: "a) Đúng (nguyên tử trung hòa). b) Sai – đồng vị cùng Z, khác A (khác n). c) Đúng. d) Sai – điện tích hạt nhân = Z, không phải A."
-    },
-    {
-      id: 2,
-      type: "truefalse",
-      question: "Cho các phát biểu về orbital và cấu hình electron:",
-      statements: [
-        { text: "a) Orbital s có hình cầu, orbital p có hình số 8 (quả tạ).", correct: true },
-        { text: "b) Theo nguyên lí Pauli, một orbital chứa tối đa 2 electron có spin ngược nhau.", correct: true },
-        { text: "c) Quy tắc Hund: các electron ưu tiên chiếm hết các orbital trống trong cùng phân lớp rồi mới ghép đôi.", correct: true },
-        { text: "d) Phân lớp 4p có số orbital bằng phân lớp 3d.", correct: false }
-      ],
-      explanation: "a,b,c đúng theo lí thuyết. d) Sai: 4p có 3 orbital, 3d có 5 orbital."
-    }
-  ],
+<section id="result" hidden>
+  <div class="score"><div class="fx" id="tot">0</div><div>/ 10 điểm</div><div class="sm mute" id="tt"></div>
+    <div class="ps" id="ps"></div></div>
+  <div class="acts" style="margin:0 0 16px"><button class="btn" id="againBtn">Tạo đề mới</button><button class="btn o" id="homeBtn">Về trang chủ</button></div>
+  <div id="det"></div>
+</section>
+</div>
 
-  /* ---------- Phần III: Trả lời ngắn (4 câu × 0.5đ) ---------- */
-  part3: [
-    {
-      id: 1,
-      type: "short",
-      question: "Nguyên tử X có Z = 17, số khối A = 35. Số neutron trong hạt nhân là bao nhiêu?",
-      acceptedAnswers: ["18"],
-      normalize: "number",
-      tolerance: 0,
-      explanation: "n = A − Z = 35 − 17 = 18."
-    },
-    {
-      id: 2,
-      type: "short",
-      question: "Viết cấu hình electron rút gọn (dạng [khí hiếm]ns…) của nguyên tử có Z = 19.",
-      acceptedAnswers: ["[Ar]4s1", "[Ar]4s¹", "[Ar] 4s1", "[Ar]4s^1", "1s2 2s2 2p6 3s2 3p6 4s1"],
-      normalize: "config",
-      explanation: "K (Z=19): [Ar] 4s¹."
-    },
-    {
-      id: 3,
-      type: "short",
-      question: "Nguyên tố X có cấu hình electron lớp ngoài cùng là 3s²3p⁵. X là kim loại, phi kim hay khí hiếm?",
-      acceptedAnswers: ["phi kim", "phikim", "phi-kim", "phi kim"],
-      normalize: "text",
-      explanation: "ns²np⁵ → 7 electron lớp ngoài → dễ nhận 1e → phi kim (Cl)."
-    },
-    {
-      id: 4,
-      type: "short",
-      question: "Nguyên tử khối trung bình của Clo là bao nhiêu nếu ³⁵Cl chiếm 75,77% và ³⁷Cl chiếm 24,23%? (làm tròn 2 chữ số thập phân)",
-      acceptedAnswers: ["35.48", "35,48", "35.5", "35,5"],
-      normalize: "number",
-      tolerance: 0.02,
-      explanation: "A_tb = 35×0,7577 + 37×0,2423 = 26,5195 + 8,9651 = 35,4846 ≈ 35,48."
-    }
-  ],
+<script>
+/* ===== NGÂN HÀNG CÂU HỎI (3 bộ đề) =====
+   Ký hiệu: {A|Z} = ký hiệu nguyên tử (số khối trên, số hiệu dưới); ^n = số mũ */
+const MC=[ // [câu hỏi, [4 đáp án], vị trí đáp án đúng, giải thích]
+["Hạt nhân nguyên tử được cấu tạo bởi các loại hạt nào?",["proton và electron","proton và neutron","neutron và electron","proton, neutron và electron"],1,"Hạt nhân gồm proton và neutron. Electron nằm ở vỏ nguyên tử."],
+["Trong kí hiệu nguyên tử {16|8}O, số 16 và số 8 lần lượt cho biết",["số hiệu nguyên tử và số khối","số khối và số hiệu nguyên tử (điện tích hạt nhân)","số neutron và số proton","số electron và số neutron"],1,"Số khối A ghi phía trên, số hiệu nguyên tử Z ghi phía dưới."],
+["Đường kính nguyên tử cỡ 10^-10 m, đường kính hạt nhân cỡ 10^-14 m. Nhận xét đúng là:",["Hạt nhân nhỏ hơn nguyên tử khoảng 10^4 lần, nguyên tử chủ yếu là khoảng không gian rỗng","Hạt nhân nhỏ hơn nguyên tử khoảng 10 lần","Hạt nhân lớn hơn nguyên tử khoảng 10^4 lần","Hạt nhân chiếm gần như toàn bộ thể tích nguyên tử"],0,"10^-10 : 10^-14 = 10^4. Hạt nhân rất nhỏ so với nguyên tử."],
+["Cho các nguyên tử: {12|6}X, {14|6}Y, {14|7}T, {16|8}U. Cặp nguyên tử là đồng vị của nhau là",["X và Y","Y và T","T và U","X và U"],0,"X và Y cùng Z = 6, khác A. Y và T chỉ cùng A nên không phải đồng vị."],
+["Phát biểu đúng về orbital nguyên tử (AO) là:",["Mỗi AO chứa tối đa 2 electron có chiều tự quay ngược nhau","Mỗi AO chứa tối đa 2 electron có chiều tự quay giống nhau","AO là quỹ đạo tròn cố định của electron quanh hạt nhân","Mỗi AO chứa tối đa 8 electron"],0,"Theo nguyên lí Pauli, mỗi AO tối đa 2 e có chiều tự quay ngược nhau."],
+["Nguyên tử Y có 15 electron và 16 neutron. Số khối của Y là",["15","16","31","46"],2,"Z = 15 nên A = Z + N = 15 + 16 = 31."],
+["Nguyên tố chlorine có hai đồng vị: ^35Cl chiếm 75% và ^37Cl chiếm 25% số nguyên tử. Nguyên tử khối trung bình của chlorine là",["35,5","36,0","36,5","71,0"],0,"35×0,75 + 37×0,25 = 35,5."],
+["Bán kính nguyên tử hydrogen khoảng 53 pm. Giá trị này bằng bao nhiêu Å? (1 Å = 10^-10 m, 1 pm = 10^-12 m)",["0,053","0,53","5,3","530"],1,"1 Å = 100 pm nên 53 pm = 0,53 Å."],
+["Trong nguyên tử, hạt nào không mang điện?",["proton","electron","neutron","proton và electron"],2,"Neutron không mang điện."],
+["Số hiệu nguyên tử (Z) của một nguyên tố bằng",["số khối","số proton trong hạt nhân","tổng số proton và neutron","số neutron"],1,"Z = số proton. Số khối A = Z + N là đại lượng khác."],
+["Biết m(proton) ≈ 1,6726×10^-27 kg và m(electron) ≈ 9,109×10^-31 kg. Khối lượng proton lớn hơn khối lượng electron khoảng",["18 lần","184 lần","1840 lần","18400 lần"],2,"1,6726×10^-27 : 9,109×10^-31 ≈ 1836 ≈ 1840."],
+["Phát biểu đúng về đồng vị là:",["Các nguyên tử có cùng số khối nhưng khác số proton","Các nguyên tử của cùng một nguyên tố, có cùng số proton nhưng khác số neutron","Các nguyên tử có cùng số neutron nhưng khác số proton","Các nguyên tử có cùng số electron nhưng khác số proton"],1,"Đồng vị cùng Z, khác N (nên khác A)."],
+["Phát biểu đúng về hình dạng orbital là:",["AO s có dạng hình cầu, AO p có dạng hình số 8 nổi","AO s có dạng hình số 8 nổi, AO p có dạng hình cầu","AO s và AO p đều có dạng hình cầu","AO s và AO p đều có dạng hình số 8 nổi"],0,"AO s hình cầu, AO p hình số 8 nổi."],
+["Nguyên tử X có số khối 19 và có 10 neutron. Số proton của X là",["9","10","19","29"],0,"Z = A − N = 19 − 10 = 9."],
+["Nguyên tố boron có hai đồng vị: ^10B chiếm 20% và ^11B chiếm 80% số nguyên tử. Nguyên tử khối trung bình của boron là",["10,5","10,8","10,2","21,0"],1,"10×0,2 + 11×0,8 = 10,8. Đáp án 10,5 là nhầm trung bình cộng."],
+["Tổng số orbital nguyên tử trong lớp N (n = 4) là",["8","16","32","9"],1,"n^2 = 16 (4s: 1, 4p: 3, 4d: 5, 4f: 7)."],
+["Theo định nghĩa, 1 amu bằng",["1/12 khối lượng của một nguyên tử ^12C","khối lượng của một nguyên tử hydrogen","12 lần khối lượng của một nguyên tử ^12C","khối lượng của một electron"],0,"1 amu = 1/12 khối lượng nguyên tử ^12C."],
+["Điện tích hạt nhân của nguyên tử {9|4}Be là",["+4","+5","+9","+13"],0,"Điện tích hạt nhân = +Z = +4."],
+["Coi khối lượng mỗi proton và mỗi neutron xấp xỉ 1 amu, bỏ qua khối lượng electron. Khối lượng nguyên tử {11|5}B xấp xỉ",["5 amu","6 amu","11 amu","16 amu"],2,"Khối lượng ≈ (5 + 6) amu = 11 amu. Đáp án 16 là cộng nhầm cả 5 electron."],
+["Nguyên tố hóa học là tập hợp các nguyên tử có cùng",["số khối","số neutron","điện tích hạt nhân","số khối và số neutron"],2,"Nguyên tố hóa học gồm các nguyên tử cùng số proton (điện tích hạt nhân)."],
+["Nguyên tử N (Z = 7). Theo quy tắc Hund, ba electron ở phân lớp 2p được phân bố như sau:",["Hai electron ở cùng một AO, electron còn lại ở AO thứ hai, AO thứ ba trống","Mỗi AO có 1 electron, các electron có chiều tự quay giống nhau","Mỗi AO có 1 electron, các electron có chiều tự quay ngược nhau","Cả ba electron cùng ở một AO"],1,"Theo Hund, các e độc thân chiếm các AO riêng lẻ, cùng chiều tự quay."],
+["Nguyên tử T có số khối 13 và số neutron nhiều hơn số proton 1 hạt. Số electron của T là",["6","7","13","19"],0,"2Z + 1 = 13 nên Z = 6, số e = 6. Đáp án 7 là số neutron, 13 là số khối."],
+["Nguyên tố neon có hai đồng vị: ^20Ne chiếm 90% và ^22Ne chiếm 10% số nguyên tử. Nguyên tử khối trung bình của neon là",["20,2","21,0","20,9","21,8"],0,"20×0,9 + 22×0,1 = 18 + 2,2 = 20,2."],
+["Một lớp electron có tổng 9 orbital nguyên tử. Số electron tối đa của lớp đó là",["9","18","8","32"],1,"9 AO ứng với n = 3, mỗi AO tối đa 2 e nên có 18 e."]
+];
+const TF=[ // [đề dẫn, [[phát biểu, đúng?] ×4], giải thích]
+["Về lớp và phân lớp electron:",[["Lớp M (n = 3) gồm 3 phân lớp: 3s, 3p, 3d.",1],["Phân lớp p có 5 orbital.",0],["Lớp L (n = 2) có tối đa 8 electron.",1],["Phân lớp d chứa tối đa 6 electron.",0]],"b) Sai: p có 3 AO (5 AO là của d). d) Sai: d có 5 AO nên chứa tối đa 10 e."],
+["Cho nguyên tử Mg (Z = 12):",[["Cấu hình electron là 1s^2 2s^2 2p^6 3s^2.",1],["Mg có 2 electron ở lớp ngoài cùng nên là kim loại.",1],["Lớp ngoài cùng của Mg là lớp L (n = 2).",0],["Mg có 2 electron ở lớp ngoài cùng nên là khí hiếm.",0]],"c) Sai: Mg có 3 lớp, lớp ngoài cùng là lớp M. d) Sai: Mg dễ nhường e nên là kim loại."],
+["Về orbital nguyên tử:",[["Mỗi AO chứa tối đa 2 electron.",1],["Phân lớp p có 3 AO, chứa tối đa 6 electron.",1],["Theo nguyên lí Pauli, 2 electron trong cùng một AO có chiều tự quay giống nhau.",0],["Lớp L có hai phân lớp 2s, 2p với tổng cộng 3 AO.",0]],"c) Sai: hai e trong cùng AO phải có chiều tự quay ngược nhau. d) Sai: lớp L có 1 + 3 = 4 AO."],
+["Cho nguyên tử Ca (Z = 20):",[["Cấu hình electron là 1s^2 2s^2 2p^6 3s^2 3p^6 4s^2.",1],["Cấu hình electron rút gọn là [Ne]4s^2.",0],["Ca có 2 electron lớp ngoài cùng nên là kim loại.",1],["Ca có 8 electron ở lớp ngoài cùng nên là khí hiếm.",0]],"b) Sai: khí hiếm đứng trước Ca là Ar nên viết [Ar]4s^2. d) Sai: lớp ngoài cùng của Ca chỉ có 2 e."],
+["Về orbital và lớp electron:",[["Mỗi AO p có dạng hình số 8 nổi, ba AO p định hướng theo ba trục x, y, z.",1],["Lớp electron thứ n (n ≤ 4) có n^2 orbital.",1],["Phân lớp 3d có 5 orbital và chứa tối đa 10 electron.",1],["Lớp N (n = 4) có 4 phân lớp với tổng số 14 orbital.",0]],"d) Sai: tổng số AO của lớp N là 1 + 3 + 5 + 7 = 16."],
+["Cho nguyên tử O (Z = 8):",[["Cấu hình electron là 1s^2 2s^2 2p^4.",1],["Ở phân lớp 2p, O có 4 electron độc thân.",0],["O có 6 electron ở lớp ngoài cùng nên dễ nhường 6 electron, là kim loại.",0],["Cấu hình electron rút gọn là [He]2s^2 2p^4.",1]],"b) Sai: 2p^4 gồm [↑↓][↑][↑] nên có 2 e độc thân. c) Sai: 6 e lớp ngoài cùng có xu hướng nhận 2 e, là phi kim."]
+];
+const SH=[ // [câu hỏi, kiểu chấm, đáp án chấp nhận, sai số, đáp án hiển thị, giải thích]
+["Nguyên tử sodium có Z = 11 và A = 23. Số neutron là bao nhiêu?","number",["12"],0,"12","N = A − Z = 23 − 11 = 12."],
+["Viết cấu hình electron rút gọn của nguyên tử P (Z = 15).","config",["[Ne]3s23p3"],0,"[Ne]3s^2 3p^3","1s^2 2s^2 2p^6 3s^2 3p^3, phần 1s^2 2s^2 2p^6 được thay bằng [Ne]."],
+["Nguyên tử X có 2 lớp electron, lớp ngoài cùng có cấu hình 2s^2 2p^6. X là kim loại, phi kim hay khí hiếm?","text",["khihiem","khitro","noblegas"],0,"khí hiếm","2s^2 2p^6 là lớp ngoài cùng đủ 8 e (nguyên tử Ne)."],
+["Lớp electron thứ 3 (n = 3) có tối đa bao nhiêu orbital nguyên tử?","number",["9"],0,"9","n^2 = 3^2 = 9 (3s: 1, 3p: 3, 3d: 5)."],
+["Magnesium có 3 đồng vị: ^24Mg (79%), ^25Mg (10%), ^26Mg (11%). Tính nguyên tử khối trung bình của Mg (làm tròn 2 chữ số thập phân).","number",["24.32"],0.01,"24,32","24×0,79 + 25×0,10 + 26×0,11 = 18,96 + 2,5 + 2,86 = 24,32."],
+["Viết cấu hình electron rút gọn của nguyên tử Si (Z = 14).","config",["[Ne]3s23p2"],0,"[Ne]3s^2 3p^2","1s^2 2s^2 2p^6 3s^2 3p^2, phần 1s^2 2s^2 2p^6 là [Ne]."],
+["Tính số neutron của nguyên tử {40|18}Ar.","number",["22"],0,"22","N = 40 − 18 = 22."],
+["Nguyên tử T có cấu hình electron 1s^2 2s^1. T là kim loại, phi kim hay khí hiếm?","text",["kimloai","metal"],0,"kim loại","Lớp ngoài cùng (lớp 2) có 1 e, nguyên tử dễ nhường e."],
+["Lithium có hai đồng vị: ^6Li (8%) và ^7Li (92%). Tính nguyên tử khối trung bình của Li (làm tròn 2 chữ số thập phân).","number",["6.92"],0.01,"6,92","6×0,08 + 7×0,92 = 0,48 + 6,44 = 6,92."],
+["Viết cấu hình electron rút gọn của nguyên tử Mg (Z = 12).","config",["[Ne]3s2"],0,"[Ne]3s^2","1s^2 2s^2 2p^6 3s^2 nên viết rút gọn là [Ne]3s^2."],
+["Nguyên tử R có 3 lớp electron, lớp ngoài cùng có 3 electron. R là kim loại, phi kim hay khí hiếm?","text",["kimloai","metal"],0,"kim loại","Lớp ngoài cùng có 3 e (nguyên tử Al)."],
+["Phân lớp 4f chứa tối đa bao nhiêu electron?","number",["14"],0,"14","Phân lớp f có 7 AO nên chứa tối đa 14 e."]
+];
+const PK=["phikim","phikimloai","nonmetal"], KL=["kimloai","metal"];
+const ES=[ // [đề, [[nhãn, kiểu, đáp án, điểm, hiển thị, sai số]], rubric [[nội dung, điểm]], lời giải]
+["Nguyên tử X có tổng số hạt (p, n, e) là 40. Số hạt mang điện nhiều hơn số hạt không mang điện là 12. Xác định Z, A và viết kí hiệu nguyên tử của X.",
+ [["Z =","number",["13"],.2,"13"],["A =","number",["27"],.2,"27"],["Kí hiệu nguyên tử (ví dụ: 23Na):","sym",["Al"],.2,"{27|13}Al"]],
+ [["Lập đúng hệ phương trình",.15],["Giải đúng Z và N",.15],["Tính đúng A = Z + N",.05],["Viết đúng kí hiệu nguyên tử",.05]],
+ "2Z + N = 40 (1) và 2Z − N = 12 (2).<br>Cộng (1) và (2): 4Z = 52 nên Z = 13; N = 40 − 26 = 14.<br>A = 13 + 14 = 27. Kí hiệu: {27|13}Al."],
+["Nguyên tử nguyên tố Y có Z = 16.<br>a) Viết cấu hình electron đầy đủ.<br>b) Biểu diễn cấu hình electron lớp ngoài cùng theo ô orbital.<br>c) Xác định số electron lớp ngoài cùng, số electron độc thân. Dự đoán Y là kim loại, phi kim hay khí hiếm và giải thích ngắn.",
+ [["Cấu hình electron:","config",["1s22s22p63s23p4"],.25,"1s^2 2s^2 2p^6 3s^2 3p^4"],["Số e lớp ngoài cùng:","number",["6"],.1,"6"],["Số e độc thân:","number",["2"],.1,"2"],["Loại nguyên tố:","text",PK,.15,"phi kim"]],
+ [["Điền electron đúng thứ tự mức năng lượng",.1],["Biểu diễn ô orbital đúng Pauli và Hund (3s: [↑↓]; 3p: [↑↓][↑][↑])",.1],["Xác định đúng lớp ngoài cùng",.05],["Giải thích được xu hướng nhận e nên là phi kim",.15]],
+ "a) 1s^2 2s^2 2p^6 3s^2 3p^4.<br>b) 3s: [↑↓]; 3p: [↑↓][↑][↑] (quy tắc Hund, 2 e độc thân).<br>c) Lớp ngoài cùng có 2 + 4 = 6 e, 2 e độc thân. Có 5 đến 7 e lớp ngoài cùng thường nhận thêm e để đạt 8 e bền, nên Y là phi kim."],
+["Đồng (copper) trong tự nhiên có hai đồng vị ^63Cu và ^65Cu, nguyên tử khối trung bình là 63,54.<br>a) Tính phần trăm số nguyên tử của mỗi đồng vị.<br>b) Trong 500 nguyên tử Cu thì có bao nhiêu nguyên tử ^65Cu? Đồng vị nào chiếm ưu thế?",
+ [["% ^63Cu =","number",["73"],.2,"73"],["% ^65Cu =","number",["27"],.2,"27"],["Số nguyên tử ^65Cu trong 500 nguyên tử Cu:","number",["135"],.1,"135"],["Đồng vị chiếm ưu thế (nhập số khối):","number",["63"],.1,"63"]],
+ [["Đặt ẩn và điều kiện tổng phần trăm bằng 100%",.1],["Lập đúng phương trình nguyên tử khối trung bình",.15],["Giải đúng phương trình",.1],["Kiểm tra lại nghiệm hoặc kết luận đúng",.05]],
+ "Gọi x% là phần trăm ^63Cu thì ^65Cu là (100 − x)%.<br>63x + 65(100 − x) = 63,54×100 nên 6500 − 2x = 6354, x = 73.<br>^63Cu chiếm 73%, ^65Cu chiếm 27%. Trong 500 nguyên tử có 500×27% = 135 nguyên tử ^65Cu. Đồng vị ưu thế là ^63Cu."],
+["Nguyên tử X có tổng số hạt (p, n, e) là 58, số hạt mang điện nhiều hơn số hạt không mang điện là 18.<br>a) Xác định Z, A và viết kí hiệu nguyên tử của X.<br>b) Viết cấu hình electron, cho biết X là kim loại, phi kim hay khí hiếm và giải thích.",
+ [["Z =","number",["19"],.15,"19"],["A =","number",["39"],.15,"39"],["Kí hiệu nguyên tử (ví dụ: 23Na):","sym",["K"],.1,"{39|19}K"],["Cấu hình electron:","config",["1s22s22p63s23p64s1"],.1,"1s^2 2s^2 2p^6 3s^2 3p^6 4s^1"],["Loại nguyên tố:","text",KL,.1,"kim loại"]],
+ [["Lập đúng hệ phương trình",.1],["Giải đúng Z và N, tính đúng A",.1],["Điền electron đúng thứ tự (4s trước 3d)",.1],["Giải thích đúng: 1 e lớp ngoài cùng nên dễ nhường e, là kim loại",.1]],
+ "2Z + N = 58 và 2Z − N = 18: 4Z = 76 nên Z = 19, N = 20, A = 39. Kí hiệu {39|19}K.<br>Cấu hình: 1s^2 2s^2 2p^6 3s^2 3p^6 4s^1. Lớp ngoài cùng (lớp 4) có 1 e nên K dễ nhường 1 e, là kim loại."],
+["Phổ khối lượng của silicon cho ba peak (m/z là nguyên tử khối của đồng vị): m/z 28, 29, 30 với cường độ tương đối lần lượt 92%, 5%, 3%.<br>a) Tính nguyên tử khối trung bình của Si (làm tròn 2 chữ số thập phân).<br>b) Xác định đồng vị chiếm ưu thế và tính số neutron của nó (Z của Si = 14).",
+ [["Nguyên tử khối trung bình:","number",["28.11"],.25,"28,11",.01],["Đồng vị chiếm ưu thế (nhập số khối):","number",["28"],.15,"28"],["Số neutron của đồng vị đó:","number",["14"],.2,"14"]],
+ [["Đọc đúng phần trăm số nguyên tử từ phổ khối lượng",.1],["Viết đúng công thức nguyên tử khối trung bình",.15],["Tính đúng kết quả",.1],["Nhận xét đúng đồng vị ưu thế",.05]],
+ "a) (28×92 + 29×5 + 30×3)/100 = (2576 + 145 + 90)/100 = 28,11.<br>b) Cường độ lớn nhất (92%) là ^28Si. Số neutron = 28 − 14 = 14."],
+["(Tổng hợp) Nguyên tử nguyên tố X có tổng số hạt (p, n, e) là 52, số hạt mang điện nhiều hơn số hạt không mang điện là 16.<br>a) Xác định Z, A và viết kí hiệu nguyên tử của X.<br>b) Viết cấu hình electron đầy đủ và biểu diễn cấu hình lớp ngoài cùng theo ô orbital.<br>c) Cho biết số electron lớp ngoài cùng, số electron độc thân. Dự đoán X là kim loại, phi kim hay khí hiếm và giải thích.",
+ [["Z =","number",["17"],.1,"17"],["A =","number",["35"],.1,"35"],["Kí hiệu nguyên tử (ví dụ: 23Na):","sym",["Cl"],.05,"{35|17}Cl"],["Cấu hình electron:","config",["1s22s22p63s23p5"],.15,"1s^2 2s^2 2p^6 3s^2 3p^5"],["Số e lớp ngoài cùng:","number",["7"],.05,"7"],["Số e độc thân:","number",["1"],.05,"1"],["Loại nguyên tố:","text",PK,.1,"phi kim"]],
+ [["Lập đúng hệ phương trình, giải đúng Z, N",.1],["Điền electron đúng thứ tự mức năng lượng",.1],["Ô orbital lớp ngoài cùng đúng Pauli và Hund (3s: [↑↓]; 3p: [↑↓][↑↓][↑])",.1],["Giải thích được xu hướng nhận 1 e nên là phi kim",.1]],
+ "a) 2Z + N = 52 và 2Z − N = 16: 4Z = 68 nên Z = 17, N = 18, A = 35. Kí hiệu {35|17}Cl.<br>b) 1s^2 2s^2 2p^6 3s^2 3p^5. Lớp ngoài cùng: 3s [↑↓]; 3p [↑↓][↑↓][↑].<br>c) 7 e lớp ngoài cùng, 1 e độc thân; nhận thêm 1 e để đạt 8 e bền nên X là phi kim."]
+];
 
-  /* ---------- Phần IV: Tự luận (2 câu × 1đ) ---------- */
-  part4: [
-    {
-      id: 1,
-      type: "essay",
-      question: "Nguyên tử X có tổng số hạt p, n, e là 34. Biết số hạt mang điện nhiều hơn số hạt không mang điện là 10. Xác định Z, A và viết kí hiệu nguyên tử X.",
-      finalAnswers: [
-        { label: "Z =", key: "Z", accepted: ["11"], type: "number" },
-        { label: "A =", key: "A", accepted: ["23"], type: "number" },
-        { label: "Kí hiệu nguyên tử:", key: "kyHieu", accepted: ["Na", "23Na", "Na-23", "^23_11Na", "23/11Na", "Na (A=23, Z=11)", "11Na23"], type: "regex" }
-      ],
-      /* Trọng số lớp 1 (auto) = 0.6; lớp 2 (rubric) = 0.4 */
-      autoWeight: 0.6,
-      rubric: [
-        { text: "Lập đúng hệ: 2p + n = 34 và 2p − n = 10 (hoặc tương đương)", weight: 0.15 },
-        { text: "Giải đúng p = 11, n = 12", weight: 0.15 },
-        { text: "Tính đúng A = 23 và viết đúng kí hiệu", weight: 0.10 }
-      ],
-      sampleSolution: "Gọi p = e = Z, n = số neutron.\nTổng hạt: p + n + e = 2p + n = 34  (1)\nHạt mang điện (p+e=2p) nhiều hơn hạt không mang điện (n) là 10:\n2p − n = 10  (2)\nCộng (1)+(2): 4p = 44 → p = 11 → Z = 11\nTừ (2): 22 − n = 10 → n = 12\nA = Z + n = 23\nKí hiệu: ²³₁₁Na (hoặc Na-23)."
-    },
-    {
-      id: 2,
-      type: "essay",
-      question: "Cho nguyên tố R có Z = 16. Viết cấu hình electron đầy đủ, cấu hình theo ô orbital (hoặc chỉ rõ số e ghép đôi/đơn), xác định số electron lớp ngoài cùng và dự đoán tính chất hóa học cơ bản của R (kim loại/phi kim/khí hiếm). Giải thích ngắn gọn.",
-      finalAnswers: [
-        { label: "Cấu hình electron đầy đủ:", key: "config", accepted: ["1s2 2s2 2p6 3s2 3p4", "1s²2s²2p⁶3s²3p⁴", "1s2 2s2 2p6 3s2 3p4"], type: "config" },
-        { label: "Số electron lớp ngoài cùng:", key: "outer", accepted: ["6"], type: "number" },
-        { label: "Tính chất (kim loại / phi kim / khí hiếm):", key: "tinhChat", accepted: ["phi kim", "phikim", "phi-kim"], type: "text" }
-      ],
-      autoWeight: 0.6,
-      rubric: [
-        { text: "Viết đúng cấu hình đầy đủ 1s²2s²2p⁶3s²3p⁴", weight: 0.12 },
-        { text: "Chỉ rõ phân bố electron lớp ngoài (hoặc ô orbital 3p⁴)", weight: 0.10 },
-        { text: "Xác định đúng 6e lớp ngoài và dự đoán phi kim + giải thích", weight: 0.18 }
-      ],
-      sampleSolution: "R (Z=16) là lưu huỳnh (S).\nCấu hình: 1s² 2s² 2p⁶ 3s² 3p⁴\nLớp ngoài cùng (n=3): 3s²3p⁴ → 6 electron.\nTheo quy tắc Hund, 3p⁴ có 2 electron ghép đôi và 2 electron độc thân.\nDễ nhận thêm 2 electron để đạt cấu hình khí hiếm → phi kim."
-    }
-  ]
-};
+/* ===== TIỆN ÍCH ===== */
+const $=s=>document.querySelector(s), KEY='hoa10c1_exam', HKEY='hoa10c1_hist', DUR=2700;
+const fmt=s=>String(s).replace(/\{(\d+)\|(\d+)\}/g,'<span class="nuc"><sup>$1</sup><sub>$2</sub></span>').replace(/\^(-?\d+)/g,'<sup>$1</sup>');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const mmss=n=>String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0');
+const vn=n=>n.toFixed(2).replace('.',',').replace(/,?0+$/,m=>m===',00'?'':m);
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const strip=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/gi,'d').toLowerCase();
+const SUP='⁰¹²³⁴⁵⁶⁷⁸⁹';
+const nrm={config:s=>strip(s).replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g,c=>SUP.indexOf(c)).replace(/[^a-z0-9\[\]]/g,''),text:s=>strip(s).replace(/[^a-z0-9]/g,''),sym:s=>strip(s).replace(/[^a-z]/g,'')};
+function check(v,type,acc,tol){v=String(v||'').trim();if(!v)return false;
+  if(type==='number'){const n=parseFloat(v.replace(',','.'));return !isNaN(n)&&acc.some(a=>Math.abs(n-parseFloat(a))<=(tol||0)+1e-9)}
+  const f=nrm[type],u=f(v);return acc.some(a=>f(a)===u)}
+const store=(k,v)=>{try{v==null?localStorage.removeItem(k):localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const read=k=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}};
+const hist=()=>read(HKEY)||[];
+const PART=[['Phần I · Trắc nghiệm','10 câu · 0,3 điểm/câu'],['Phần II · Đúng/Sai','3 câu · đúng 1/2/3/4 ý được 0,1/0,25/0,5/1 điểm'],['Phần III · Trả lời ngắn','5 câu · 0,4 điểm/câu · số thập phân sai số ±0,01'],['Phần IV · Tự luận','2 câu · 1 điểm/câu (0,6 tự động + 0,4 rubric tự đánh giá)']];
+const ABBR=['TN','Đ/S','KQ','TL'], MAXP=[3,3,2,2];
+let ex=null,tick=null,R=null;
+const save=()=>store(KEY,ex);
 
-/* ============================================================
-   HẰNG SỐ & TRẠNG THÁI
-   ============================================================ */
-const EXAM_DURATION = 45 * 60; // giây
-const STORAGE_KEY = "hoa10_chuong1_exam";
-const HISTORY_KEY = "hoa10_chuong1_history";
-
-let state = {
-  answers: {},          // { part1: {0: 1}, part2: {0: {0:true,1:false...}}, ... }
-  flags: {},            // { "1-0": true }
-  startTime: null,
-  remaining: EXAM_DURATION,
-  timerId: null,
-  submitted: false,
-  shuffled: null        // bản sao QUESTIONS đã xáo trộn option
-};
-
-/* ============================================================
-   TIỆN ÍCH
-   ============================================================ */
-function $(sel) { return document.querySelector(sel); }
-function $$(sel) { return document.querySelectorAll(sel); }
-
-function normalizeText(str) {
-  return (str || "").toString().trim().toLowerCase()
-    .replace(/\s+/g, " ")
-    .replace(/[–—]/g, "-")
-    .replace(/phi\s*kim|phi-kim/g, "phikim")
-    .replace(/kim\s*loại|kim-loai/g, "kimloai")
-    .replace(/khí\s*hiếm|khi\s*hiem/g, "khihiem");
+/* ===== TẠO ĐỀ NGẪU NHIÊN: 10 TN + 3 Đ/S + 5 trả lời ngắn + 2 tự luận ===== */
+const pick=(n,k)=>shuffle([...Array(n).keys()]).slice(0,k);
+function newExam(){
+  const q=[...pick(MC.length,10).map(i=>({t:0,i,o:shuffle([0,1,2,3])})),...pick(TF.length,3).map(i=>({t:1,i})),...pick(SH.length,5).map(i=>({t:2,i})),...pick(ES.length,2).map(i=>({t:3,i}))];
+  return {end:Date.now()+DUR*1000,q,a:{},fl:{}};
 }
+const ans=(x,k)=>{const a=ex.a[k];return x.t==0?a!==undefined:x.t==1?!!a&&Object.keys(a).length>0:x.t==2?!!(a||'').trim():!!a&&Object.values(a).some(v=>v.trim())};
+const answered=()=>ex.q.filter((x,k)=>ans(x,k)).length;
 
-function normalizeConfig(str) {
-  return (str || "").toString().toLowerCase()
-    .replace(/\s+/g, "")
-    .replace(/[¹²³⁴⁵⁶⁷⁸⁹⁰]/g, m => "0123456789"["¹²³⁴⁵⁶⁷⁸⁹⁰".indexOf(m)])
-    .replace(/\^(\d)/g, "$1")
-    .replace(/\[ar\]/g, "[ar]")
-    .replace(/1s2/g, "1s2");
-}
+/* ===== MÀN HÌNH ===== */
+function show(id){['home','examS','result'].forEach(s=>$('#'+s).hidden=s!==id);scrollTo(0,0)}
+function home(){
+  const s=read(KEY);$('#resume').hidden=!s;
+  if(s){ex=s;$('#resumeInfo').textContent='Còn '+mmss(Math.max(0,Math.round((s.end-Date.now())/1000)))+' · đã làm '+answered()+'/20 câu';ex=null}
+  const h=hist();$('#hist').innerHTML=h.length?h.map(x=>`<li><span class="mute">${new Date(x.d).toLocaleString('vi-VN')}</span><b>${vn(x.s)}/10 · ${mmss(x.t)}</b></li>`).join(''):'<li class="mute">Chưa có lần làm nào.</li>';
+  show('home')}
+function body(x,k){const L='ABCD',a=ex.a[k];
+  if(x.t==0){const d=MC[x.i];return `<p>${fmt(d[0])}</p><div class="opts">${x.o.map((oi,j)=>`<label class="opt"><input type="radio" name="q${k}" data-k="${k}" data-v="${j}" ${a===j?'checked':''}><b>${L[j]}</b><span>${fmt(d[1][oi])}</span></label>`).join('')}</div>`}
+  if(x.t==1){const d=TF[x.i],b=a||{};return `<p>${fmt(d[0])}</p>`+d[1].map((s,j)=>`<div class="st"><span>${'abcd'[j]}) ${fmt(s[0])}</span><span class="tf">${[['1','Đúng',true],['0','Sai',false]].map(o=>`<label class="opt"><input type="radio" name="q${k}_${j}" data-k="${k}" data-j="${j}" data-v="${o[0]}" ${b[j]===o[2]?'checked':''}>${o[1]}</label>`).join('')}</span></div>`).join('')}
+  if(x.t==2)return `<p>${fmt(SH[x.i][0])}</p><input class="in" data-k="${k}" value="${esc(a||'')}" placeholder="Nhập đáp án" autocomplete="off">`;
+  const d=ES[x.i],b=a||{};return `<p>${fmt(d[0])}</p><div class="fs">${d[1].map((f,j)=>`<label>${fmt(f[0])}<input class="in" data-k="${k}" data-f="${j}" value="${esc(b[j]||'')}" placeholder="Nhập kết quả" autocomplete="off"></label>`).join('')}</div>`}
+function open(){
+  let h='',last=-1;
+  ex.q.forEach((x,k)=>{if(x.t!==last){last=x.t;h+=`<div class="ph"><h2>${PART[x.t][0]}</h2><span class="sm mute">${PART[x.t][1]}</span></div>`}
+    h+=`<article class="q ${ex.fl[k]?'fl':''}" id="q${k}"><div class="qh"><span class="qn">Câu ${k+1}</span><button class="flag" data-flag="${k}">Đánh dấu</button></div>${body(x,k)}</article>`});
+  $('#exam').innerHTML=h;
+  $('#tiles').innerHTML=ex.q.map((x,k)=>`<a class="tile" id="t${k}" href="#q${k}"><b>${k+1}</b><small>${ABBR[x.t]}</small></a>`).join('');
+  upd();show('examS');clearInterval(tick);tick=setInterval(clock,1000);clock()}
+function upd(){let n=0;ex.q.forEach((x,k)=>{const d=ans(x,k);n+=d;$('#t'+k).classList.toggle('on',d);$('#t'+k).classList.toggle('fl',!!ex.fl[k])});$('#cnt').textContent=n+'/20 câu';$('#bar').style.width=n*5+'%'}
+function clock(){const r=Math.ceil((ex.end-Date.now())/1000);$('#clock').textContent=mmss(Math.max(0,r));$('#top').classList.toggle('low',r<=300);if(r<=0)submit(true)}
 
-function matchAnswer(userVal, accepted, type, tolerance = 0) {
-  if (userVal === undefined || userVal === null || userVal === "") return false;
-  const u = userVal.toString().trim();
-  if (!u) return false;
+/* ===== NHẬP LIỆU ===== */
+$('#exam').addEventListener('input',e=>{const t=e.target,k=+t.dataset.k;if(isNaN(k))return;
+  if(t.type==='radio'){if(t.dataset.j!==undefined)(ex.a[k]=ex.a[k]||{})[t.dataset.j]=t.dataset.v==='1';else ex.a[k]=+t.dataset.v}
+  else if(t.dataset.f!==undefined)(ex.a[k]=ex.a[k]||{})[t.dataset.f]=t.value;else ex.a[k]=t.value;
+  save();upd()});
+$('#exam').addEventListener('click',e=>{const k=e.target.dataset.flag;if(k===undefined)return;ex.fl[k]=!ex.fl[k];$('#q'+k).classList.toggle('fl',ex.fl[k]);save();upd()});
 
-  if (type === "number") {
-    const num = parseFloat(u.replace(",", "."));
-    if (isNaN(num)) return false;
-    return accepted.some(a => Math.abs(num - parseFloat(a.toString().replace(",", "."))) <= (tolerance || 0));
-  }
-  if (type === "config") {
-    const nu = normalizeConfig(u);
-    return accepted.some(a => normalizeConfig(a) === nu || nu.includes(normalizeConfig(a)));
-  }
-  if (type === "text") {
-    const nu = normalizeText(u);
-    return accepted.some(a => normalizeText(a) === nu || nu.includes(normalizeText(a)));
-  }
-  // regex / flexible
-  const nu = normalizeText(u).replace(/\s/g, "");
-  return accepted.some(a => {
-    const na = normalizeText(a).replace(/\s/g, "");
-    return nu === na || nu.includes(na) || na.includes(nu) || new RegExp(na.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i").test(u);
-  });
-}
+/* ===== CHẤM ĐIỂM & KẾT QUẢ ===== */
+function submit(auto){
+  if(!auto){const n=answered();if(!confirm(n<20?`Bạn mới làm ${n}/20 câu. Nộp bài?`:'Bạn có chắc muốn nộp bài?'))return}
+  clearInterval(tick);store(KEY,null);
+  const used=Math.min(DUR,DUR-Math.max(0,Math.round((ex.end-Date.now())/1000)));
+  R={p:[0,0,0,0],es:{},t:used};const TFS=[0,.1,.25,.5,1];let h=['','','',''];
+  ex.q.forEach((x,k)=>{const a=ex.a[k];let pts=0,max,inner,exp='';
+    if(x.t==0){const d=MC[x.i],c=x.o.indexOf(d[2]);max=.3;pts=a===c?.3:0;exp=d[3];
+      inner=`<div>Bạn chọn: <em>${a===undefined?'(bỏ trống)':fmt(d[1][x.o[a]])}</em></div><div>Đáp án: <b>${fmt(d[1][d[2]])}</b></div>`}
+    else if(x.t==1){const d=TF[x.i],b=a||{};let n=0;max=1;exp=d[2];
+      inner=d[1].map((s,j)=>{const ok=b[j]===!!s[1];n+=ok;return `<div class="sm">${'abcd'[j]}) ${fmt(s[0])}<br>Bạn: <em>${b[j]===undefined?'(chưa chọn)':b[j]?'Đúng':'Sai'}</em> · Đáp án: <b>${s[1]?'Đúng':'Sai'}</b> <span class="${ok?'g':'r'}">${ok?'✓':'✗'}</span></div>`}).join('');pts=TFS[n];inner=`<div class="sm mute">Đúng ${n}/4 ý</div>`+inner}
+    else if(x.t==2){const d=SH[x.i];max=.4;const ok=check(a,d[1],d[2],d[3]);pts=ok?.4:0;exp=d[5];
+      inner=`<div>Bạn trả lời: <em>${esc(a||'(trống)')}</em></div><div>Đáp án: <b>${fmt(d[4])}</b></div>`}
+    else{const d=ES[x.i],b=a||{};max=1;let au=0;
+      inner=d[1].map((f,j)=>{const ok=check(b[j],f[1],f[2],f[5]);au+=ok?f[3]:0;return `<div class="sm">${fmt(f[0])} <em>${esc(b[j]||'(trống)')}</em> <span class="${ok?'g':'r'}">${ok?'✓':'✗ đáp án: '+fmt(f[4])}</span></div>`}).join('')
+      +`<div class="sol"><b>Lời giải mẫu</b><br>${fmt(d[3])}</div><div><b>Rubric tự đánh giá</b> (tối đa 0,4 điểm)</div>`+d[2].map(r=>`<label class="rb"><input type="checkbox" data-rk="${k}" data-w="${r[1]}"><span>${fmt(r[0])} <em>(${vn(r[1])}đ)</em></span></label>`).join('')
+      +`<div class="sm" style="margin-top:6px">Điểm câu này: <b id="es${k}">${au.toFixed(2)}</b> / 1</div>`;
+      pts=au;R.es[k]={auto:au,rub:0}}
+    R.p[x.t]+=pts;
+    const cls=x.t==3?'pa':pts>=max-1e-9?'ok':pts>0?'pa':'no';
+    h[x.t]+=`<div class="dt ${cls}"><b>Câu ${k+1}.</b> ${x.t==3?'':fmt(x.t==0?MC[x.i][0]:x.t==1?TF[x.i][0]:SH[x.i][0])}${x.t==3?'':` <span class="sm mute">(+${vn(pts)})</span>`}${inner}${exp?`<div class="ex">${fmt(exp)}</div>`:''}</div>`});
+  $('#det').innerHTML=PART.map((p,i)=>`<div class="ph"><h2>${p[0]}</h2></div>${h[i]}`).join('');
+  $('#tt').textContent=(auto?'Hết giờ · ':'')+'Thời gian làm bài: '+mmss(used);
+  hs(true);paint();show('result');ex=null}
+function paint(){const s=R.p.reduce((a,b)=>a+b,0);$('#tot').textContent=vn(s)||'0';
+  $('#ps').innerHTML=R.p.map((v,i)=>`<div><b>${vn(v)||'0'}</b>Phần ${['I','II','III','IV'][i]} /${MAXP[i]}</div>`).join('');hs(false)}
+function hs(first){const h=hist(),s=R.p.reduce((a,b)=>a+b,0);if(first)h.unshift({d:Date.now(),s,t:R.t});else if(h[0])h[0].s=s;store(HKEY,h.slice(0,8))}
+$('#result').addEventListener('change',e=>{const t=e.target,k=t.dataset.rk;if(k===undefined)return;
+  const v=R.es[k];v.rub=Math.min(.4,[...document.querySelectorAll(`[data-rk="${k}"]:checked`)].reduce((s,c)=>s+ +c.dataset.w,0));
+  $('#es'+k).textContent=(v.auto+v.rub).toFixed(2);R.p[3]=Object.values(R.es).reduce((s,o)=>s+o.auto+o.rub,0);paint()});
 
-function shuffleArray(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-function formatTime(sec) {
-  const m = Math.floor(sec / 60);
-  const s = sec % 60;
-  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
-}
-
-/* ============================================================
-   LƯU / TẢI LOCALSTORAGE
-   ============================================================ */
-function saveProgress() {
-  if (state.submitted) return;
-  const data = {
-    answers: state.answers,
-    flags: state.flags,
-    remaining: state.remaining,
-    startTime: state.startTime,
-    shuffled: state.shuffled
-  };
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
-
-function loadProgress() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return false;
-    const data = JSON.parse(raw);
-    if (data.remaining <= 0) {
-      localStorage.removeItem(STORAGE_KEY);
-      return false;
-    }
-    state.answers = data.answers || {};
-    state.flags = data.flags || {};
-    state.remaining = data.remaining;
-    state.startTime = data.startTime;
-    state.shuffled = data.shuffled;
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function clearProgress() {
-  localStorage.removeItem(STORAGE_KEY);
-}
-
-function saveHistory(score, timeTaken) {
-  let hist = [];
-  try { hist = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]"); } catch (e) {}
-  hist.unshift({ score, timeTaken, date: new Date().toISOString() });
-  hist = hist.slice(0, 5);
-  localStorage.setItem(HISTORY_KEY, JSON.stringify(hist));
-}
-
-/* ============================================================
-   XÁO TRỘN OPTION MCQ
-   ============================================================ */
-function prepareQuestions(randomize = true) {
-  const q = JSON.parse(JSON.stringify(QUESTIONS));
-  if (randomize) {
-    q.part1.forEach(item => {
-      const correctText = item.options[item.correct];
-      item.options = shuffleArray(item.options);
-      item.correct = item.options.indexOf(correctText);
-    });
-  }
-  state.shuffled = q;
-  return q;
-}
-
-/* ============================================================
-   RENDER CÂU HỎI
-   ============================================================ */
-function renderPart1() {
-  const cont = $("#part1Container");
-  const qs = state.shuffled.part1;
-  let html = `<div class="card"><h2>Phần I – Trắc nghiệm nhiều lựa chọn (4 điểm)</h2>`;
-  qs.forEach((q, i) => {
-    const ans = state.answers.part1?.[i];
-    const flagged = state.flags[`1-${i}`];
-    html += `
-      <div class="question-block ${flagged ? "flagged" : ""}" data-qid="1-${i}">
-        <div class="q-header">
-          <span class="q-num">Câu ${i + 1}.</span>
-          <button class="flag-btn ${flagged ? "active" : ""}" onclick="toggleFlag('1-${i}')">🚩 Đánh dấu</button>
-        </div>
-        <p>${q.question}</p>
-        <div class="options">
-          ${q.options.map((opt, j) => `
-            <label class="option ${ans === j ? "selected" : ""}">
-              <input type="radio" name="p1_${i}" value="${j}" ${ans === j ? "checked" : ""}
-                onchange="setAnswer('part1', ${i}, ${j})">
-              <span>${opt}</span>
-            </label>`).join("")}
-        </div>
-      </div>`;
-  });
-  html += `</div>`;
-  cont.innerHTML = html;
-}
-
-function renderPart2() {
-  const cont = $("#part2Container");
-  const qs = state.shuffled.part2;
-  let html = `<div class="card"><h2>Phần II – Trắc nghiệm Đúng/Sai (2 điểm)</h2>
-    <p class="note">Mỗi câu có 4 phát biểu. Đúng 1 ý = 0,1đ; 2 ý = 0,25đ; 3 ý = 0,5đ; 4 ý = 1,0đ.</p>`;
-  qs.forEach((q, i) => {
-    const ans = state.answers.part2?.[i] || {};
-    const flagged = state.flags[`2-${i}`];
-    html += `
-      <div class="question-block ${flagged ? "flagged" : ""}" data-qid="2-${i}">
-        <div class="q-header">
-          <span class="q-num">Câu ${i + 1}.</span>
-          <button class="flag-btn ${flagged ? "active" : ""}" onclick="toggleFlag('2-${i}')">🚩 Đánh dấu</button>
-        </div>
-        <p>${q.question}</p>
-        <div class="tf-statements">
-          ${q.statements.map((st, j) => `
-            <div class="tf-item">
-              <div class="tf-text">${st.text}</div>
-              <div class="tf-choices">
-                <label><input type="radio" name="p2_${i}_${j}" value="true"
-                  ${ans[j] === true ? "checked" : ""} onchange="setTFAnswer(${i},${j},true)"> Đúng</label>
-                <label><input type="radio" name="p2_${i}_${j}" value="false"
-                  ${ans[j] === false ? "checked" : ""} onchange="setTFAnswer(${i},${j},false)"> Sai</label>
-              </div>
-            </div>`).join("")}
-        </div>
-      </div>`;
-  });
-  html += `</div>`;
-  cont.innerHTML = html;
-}
-
-function renderPart3() {
-  const cont = $("#part3Container");
-  const qs = state.shuffled.part3;
-  let html = `<div class="card"><h2>Phần III – Trả lời ngắn (2 điểm)</h2>`;
-  qs.forEach((q, i) => {
-    const ans = state.answers.part3?.[i] || "";
-    const flagged = state.flags[`3-${i}`];
-    html += `
-      <div class="question-block ${flagged ? "flagged" : ""}" data-qid="3-${i}">
-        <div class="q-header">
-          <span class="q-num">Câu ${i + 1}.</span>
-          <button class="flag-btn ${flagged ? "active" : ""}" onclick="toggleFlag('3-${i}')">🚩 Đánh dấu</button>
-        </div>
-        <p>${q.question}</p>
-        <input class="short-input" type="text" placeholder="Nhập đáp án..." value="${ans.replace(/"/g, "&quot;")}"
-          oninput="setAnswer('part3', ${i}, this.value)" />
-      </div>`;
-  });
-  html += `</div>`;
-  cont.innerHTML = html;
-}
-
-function renderPart4() {
-  const cont = $("#part4Container");
-  const qs = state.shuffled.part4;
-  let html = `<div class="card"><h2>Phần IV – Tự luận (2 điểm)</h2>
-    <p class="note">Nhập kết quả cuối vào các ô bên dưới. Sau khi nộp bài sẽ có rubric tự đánh giá phần lập luận.</p>`;
-  qs.forEach((q, i) => {
-    const ans = state.answers.part4?.[i] || {};
-    const flagged = state.flags[`4-${i}`];
-    html += `
-      <div class="question-block ${flagged ? "flagged" : ""}" data-qid="4-${i}">
-        <div class="q-header">
-          <span class="q-num">Câu ${i + 1}.</span>
-          <button class="flag-btn ${flagged ? "active" : ""}" onclick="toggleFlag('4-${i}')">🚩 Đánh dấu</button>
-        </div>
-        <p>${q.question}</p>
-        <div class="essay-fields">
-          ${q.finalAnswers.map((fa, j) => `
-            <div class="essay-field">
-              <label>${fa.label}</label>
-              <input class="essay-input" type="text" data-key="${fa.key}"
-                value="${(ans[fa.key] || "").replace(/"/g, "&quot;")}"
-                oninput="setEssayAnswer(${i}, '${fa.key}', this.value)"
-                placeholder="Nhập đáp án..." />
-            </div>`).join("")}
-        </div>
-      </div>`;
-  });
-  html += `</div>`;
-  cont.innerHTML = html;
-}
-
-function renderAllParts() {
-  renderPart1();
-  renderPart2();
-  renderPart3();
-  renderPart4();
-  updateProgress();
-}
-
-/* ============================================================
-   XỬ LÝ ĐÁP ÁN & CỜ
-   ============================================================ */
-function setAnswer(part, idx, val) {
-  if (!state.answers[part]) state.answers[part] = {};
-  state.answers[part][idx] = val;
-  saveProgress();
-  updateProgress();
-  // highlight selected option
-  if (part === "part1") {
-    const block = document.querySelector(`[data-qid="1-${idx}"]`);
-    if (block) {
-      block.querySelectorAll(".option").forEach((el, j) => {
-        el.classList.toggle("selected", j === val);
-      });
-    }
-  }
-}
-
-function setTFAnswer(qIdx, stIdx, val) {
-  if (!state.answers.part2) state.answers.part2 = {};
-  if (!state.answers.part2[qIdx]) state.answers.part2[qIdx] = {};
-  state.answers.part2[qIdx][stIdx] = val;
-  saveProgress();
-  updateProgress();
-}
-
-function setEssayAnswer(qIdx, key, val) {
-  if (!state.answers.part4) state.answers.part4 = {};
-  if (!state.answers.part4[qIdx]) state.answers.part4[qIdx] = {};
-  state.answers.part4[qIdx][key] = val;
-  saveProgress();
-  updateProgress();
-}
-
-function toggleFlag(qid) {
-  state.flags[qid] = !state.flags[qid];
-  const el = document.querySelector(`[data-qid="${qid}"]`);
-  if (el) {
-    el.classList.toggle("flagged", state.flags[qid]);
-    const btn = el.querySelector(".flag-btn");
-    if (btn) btn.classList.toggle("active", state.flags[qid]);
-  }
-  saveProgress();
-}
-
-function countAnswered() {
-  let n = 0;
-  // part1
-  const p1 = state.answers.part1 || {};
-  Object.keys(p1).forEach(k => { if (p1[k] !== undefined && p1[k] !== null) n++; });
-  // part2
-  const p2 = state.answers.part2 || {};
-  Object.keys(p2).forEach(qi => {
-    const st = p2[qi] || {};
-    if (Object.keys(st).length > 0) n++; // tính 1 câu nếu đã tick ít nhất 1 ý
-  });
-  // part3
-  const p3 = state.answers.part3 || {};
-  Object.keys(p3).forEach(k => { if (p3[k] && p3[k].toString().trim()) n++; });
-  // part4
-  const p4 = state.answers.part4 || {};
-  Object.keys(p4).forEach(qi => {
-    const fields = p4[qi] || {};
-    if (Object.values(fields).some(v => v && v.toString().trim())) n++;
-  });
-  return n;
-}
-
-function updateProgress() {
-  const total = 16;
-  const done = countAnswered();
-  $("#progressText").textContent = `${done}/${total} câu`;
-  $("#progressFill").style.width = `${(done / total) * 100}%`;
-}
-
-/* ============================================================
-   TIMER
-   ============================================================ */
-function startTimer() {
-  if (state.timerId) clearInterval(state.timerId);
-  state.timerId = setInterval(() => {
-    state.remaining--;
-    $("#timerDisplay").textContent = formatTime(Math.max(0, state.remaining));
-    if (state.remaining <= 300) {
-      $("#timerBar").classList.add("warning");
-    }
-    if (state.remaining <= 0) {
-      clearInterval(state.timerId);
-      submitExam(true);
-    }
-    if (state.remaining % 15 === 0) saveProgress();
-  }, 1000);
-  $("#timerDisplay").textContent = formatTime(state.remaining);
-  if (state.remaining <= 300) $("#timerBar").classList.add("warning");
-}
-
-/* ============================================================
-   CHẤM ĐIỂM
-   ============================================================ */
-function gradeExam() {
-  const qs = state.shuffled;
-  const result = {
-    part1: { score: 0, max: 4, details: [] },
-    part2: { score: 0, max: 2, details: [] },
-    part3: { score: 0, max: 2, details: [] },
-    part4: { score: 0, max: 2, details: [] },
-    total: 0
-  };
-
-  // Part 1
-  qs.part1.forEach((q, i) => {
-    const user = state.answers.part1?.[i];
-    const ok = user === q.correct;
-    const pts = ok ? 0.5 : 0;
-    result.part1.score += pts;
-    result.part1.details.push({
-      qIndex: i, user, correct: q.correct, ok, pts,
-      question: q.question, options: q.options, explanation: q.explanation
-    });
-  });
-
-  // Part 2 – scoring chuẩn
-  const tfScoreMap = { 0: 0, 1: 0.1, 2: 0.25, 3: 0.5, 4: 1.0 };
-  qs.part2.forEach((q, i) => {
-    const userSt = state.answers.part2?.[i] || {};
-    let correctCount = 0;
-    const stDetails = q.statements.map((st, j) => {
-      const u = userSt[j];
-      const isCorrect = u === st.correct;
-      if (isCorrect) correctCount++;
-      return { text: st.text, user: u, correct: st.correct, ok: isCorrect };
-    });
-    const pts = tfScoreMap[correctCount] || 0;
-    result.part2.score += pts;
-    result.part2.details.push({
-      qIndex: i, correctCount, pts, statements: stDetails,
-      question: q.question, explanation: q.explanation
-    });
-  });
-
-  // Part 3
-  qs.part3.forEach((q, i) => {
-    const user = state.answers.part3?.[i] || "";
-    const ok = matchAnswer(user, q.acceptedAnswers, q.normalize, q.tolerance || 0);
-    const pts = ok ? 0.5 : 0;
-    result.part3.score += pts;
-    result.part3.details.push({
-      qIndex: i, user, ok, pts, question: q.question,
-      accepted: q.acceptedAnswers, explanation: q.explanation
-    });
-  });
-
-  // Part 4 – lớp 1 auto (60%) + chỗ cho rubric (40%)
-  qs.part4.forEach((q, i) => {
-    const user = state.answers.part4?.[i] || {};
-    let autoPts = 0;
-    const fieldDetails = q.finalAnswers.map(fa => {
-      const u = user[fa.key] || "";
-      const ok = matchAnswer(u, fa.accepted, fa.type, fa.tolerance || 0);
-      return { label: fa.label, key: fa.key, user: u, ok, accepted: fa.accepted };
-    });
-    const correctFields = fieldDetails.filter(f => f.ok).length;
-    const totalFields = fieldDetails.length;
-    // phân bổ đều 0.6 điểm cho các trường
-    autoPts = totalFields ? (correctFields / totalFields) * (q.autoWeight || 0.6) : 0;
-
-    result.part4.details.push({
-      qIndex: i, autoPts, rubricPts: 0, totalPts: autoPts,
-      fields: fieldDetails, question: q.question,
-      rubric: q.rubric, sampleSolution: q.sampleSolution,
-      autoWeight: q.autoWeight || 0.6
-    });
-    result.part4.score += autoPts; // rubric sẽ cộng sau khi user tự tick
-  });
-
-  result.total = result.part1.score + result.part2.score + result.part3.score + result.part4.score;
-  return result;
-}
-
-/* ============================================================
-   HIỂN THỊ KẾT QUẢ
-   ============================================================ */
-function showResult(result, autoSubmit = false) {
-  state.submitted = true;
-  clearInterval(state.timerId);
-  clearProgress();
-
-  const timeTaken = EXAM_DURATION - Math.max(0, state.remaining);
-  saveHistory(result.total, timeTaken);
-
-  $("#examScreen").classList.add("hidden");
-  $("#resultScreen").classList.remove("hidden");
-
-  $("#totalScore").textContent = result.total.toFixed(2);
-  $("#timeTaken").textContent = autoSubmit
-    ? `Hết giờ – Thời gian làm bài: ${formatTime(timeTaken)}`
-    : `Thời gian hoàn thành: ${formatTime(timeTaken)}`;
-
-  $("#partScores").innerHTML = `
-    <div class="part-score-item"><strong>${result.part1.score.toFixed(2)}</strong><br>Phần I /4</div>
-    <div class="part-score-item"><strong>${result.part2.score.toFixed(2)}</strong><br>Phần II /2</div>
-    <div class="part-score-item"><strong>${result.part3.score.toFixed(2)}</strong><br>Phần III /2</div>
-    <div class="part-score-item"><strong>${result.part4.score.toFixed(2)}</strong><br>Phần IV /2</div>
-  `;
-
-  // Chi tiết
-  let detailHtml = "";
-
-  // Part 1
-  detailHtml += `<div class="card"><h2>Chi tiết Phần I – Trắc nghiệm</h2>`;
-  result.part1.details.forEach(d => {
-    const cls = d.ok ? "correct" : "wrong";
-    const badge = d.ok ? '<span class="badge badge-ok">Đúng (+0,5)</span>' : '<span class="badge badge-err">Sai (0)</span>';
-    detailHtml += `
-      <div class="detail-item ${cls}">
-        <div><strong>Câu ${d.qIndex + 1}.</strong> ${d.question} ${badge}</div>
-        <div style="margin-top:6px">Bạn chọn: <em>${d.user !== undefined ? d.options[d.user] : "(không chọn)"}</em></div>
-        <div>Đáp án đúng: <strong>${d.options[d.correct]}</strong></div>
-        <div class="explanation">${d.explanation}</div>
-      </div>`;
-  });
-  detailHtml += `</div>`;
-
-  // Part 2
-  detailHtml += `<div class="card"><h2>Chi tiết Phần II – Đúng/Sai</h2>`;
-  result.part2.details.forEach(d => {
-    const cls = d.pts === 1 ? "correct" : (d.pts > 0 ? "partial" : "wrong");
-    const badge = d.pts === 1 ? '<span class="badge badge-ok">Đúng cả 4 (+1,0)</span>'
-      : (d.pts > 0 ? `<span class="badge badge-partial">Đúng ${d.correctCount}/4 (+${d.pts})</span>`
-        : '<span class="badge badge-err">0 điểm</span>');
-    detailHtml += `
-      <div class="detail-item ${cls}">
-        <div><strong>Câu ${d.qIndex + 1}.</strong> ${d.question} ${badge}</div>
-        ${d.statements.map(st => `
-          <div style="margin:6px 0 0 8px">
-            ${st.text}<br>
-            Bạn: <em>${st.user === true ? "Đúng" : st.user === false ? "Sai" : "(chưa chọn)"}</em>
-            → ${st.ok ? '<span class="badge badge-ok">Khớp</span>' : '<span class="badge badge-err">Không khớp</span>'}
-            (Đáp án: ${st.correct ? "Đúng" : "Sai"})
-          </div>`).join("")}
-        <div class="explanation">${d.explanation}</div>
-      </div>`;
-  });
-  detailHtml += `</div>`;
-
-  // Part 3
-  detailHtml += `<div class="card"><h2>Chi tiết Phần III – Trả lời ngắn</h2>`;
-  result.part3.details.forEach(d => {
-    const cls = d.ok ? "correct" : "wrong";
-    const badge = d.ok ? '<span class="badge badge-ok">Đúng (+0,5)</span>' : '<span class="badge badge-err">Sai (0)</span>';
-    detailHtml += `
-      <div class="detail-item ${cls}">
-        <div><strong>Câu ${d.qIndex + 1}.</strong> ${d.question} ${badge}</div>
-        <div style="margin-top:6px">Bạn trả lời: <em>${d.user || "(trống)"}</em></div>
-        <div>Đáp án chấp nhận: <strong>${d.accepted.join(" / ")}</strong></div>
-        <div class="explanation">${d.explanation}</div>
-      </div>`;
-  });
-  detailHtml += `</div>`;
-
-  // Part 4
-  detailHtml += `<div class="card"><h2>Chi tiết Phần IV – Tự luận</h2>
-    <p class="note">Điểm tự động (lớp 1 – kết quả cuối) chiếm 60%. Phần rubric tự đánh giá (40%) chỉ mang tính tham khảo và rèn luyện tự học.</p>`;
-  result.part4.details.forEach((d, idx) => {
-    const autoBadge = `<span class="badge badge-partial">Tự động: ${d.autoPts.toFixed(2)}/${d.autoWeight}</span>`;
-    detailHtml += `
-      <div class="detail-item partial" id="essayDetail${idx}">
-        <div><strong>Câu ${d.qIndex + 1}.</strong> ${d.question} ${autoBadge}</div>
-        <div style="margin-top:10px"><strong>Kết quả bạn nhập:</strong></div>
-        ${d.fields.map(f => `
-          <div style="margin:4px 0 0 8px">
-            ${f.label} <em>${f.user || "(trống)"}</em>
-            ${f.ok ? '<span class="badge badge-ok">Đúng</span>' : '<span class="badge badge-err">Sai</span>'}
-            ${!f.ok ? `(chấp nhận: ${f.accepted.slice(0,3).join(", ")}…)` : ""}
-          </div>`).join("")}
-        <div class="sample-sol"><strong>Đáp án mẫu & lời giải:</strong><br>${d.sampleSolution}</div>
-        <div class="rubric-list">
-          <strong>Rubric tự đánh giá (tối đa ${(1 - d.autoWeight).toFixed(2)} điểm):</strong>
-          ${d.rubric.map((r, ri) => `
-            <label class="rubric-item">
-              <input type="checkbox" data-essay="${idx}" data-ri="${ri}" data-w="${r.weight}"
-                onchange="updateRubricScore(${idx})">
-              <span>${r.text} <em>(${r.weight}đ)</em></span>
-            </label>`).join("")}
-        </div>
-        <div style="margin-top:10px">
-          Điểm câu này (tự động + rubric): <strong id="essayTotal${idx}">${d.autoPts.toFixed(2)}</strong> / 1
-        </div>
-      </div>`;
-  });
-  detailHtml += `</div>`;
-
-  $("#detailContainer").innerHTML = detailHtml;
-  window._lastResult = result; // để cập nhật rubric
-}
-
-function updateRubricScore(essayIdx) {
-  const result = window._lastResult;
-  if (!result) return;
-  const d = result.part4.details[essayIdx];
-  let rubricPts = 0;
-  $$(`input[data-essay="${essayIdx}"]`).forEach(cb => {
-    if (cb.checked) rubricPts += parseFloat(cb.dataset.w);
-  });
-  // giới hạn phần rubric
-  const maxRubric = 1 - (d.autoWeight || 0.6);
-  rubricPts = Math.min(rubricPts, maxRubric);
-  d.rubricPts = rubricPts;
-  d.totalPts = Math.min(1, d.autoPts + rubricPts);
-
-  // cập nhật tổng phần 4 & tổng điểm
-  result.part4.score = result.part4.details.reduce((s, x) => s + x.totalPts, 0);
-  result.total = result.part1.score + result.part2.score + result.part3.score + result.part4.score;
-
-  $(`#essayTotal${essayIdx}`).textContent = d.totalPts.toFixed(2);
-  $("#totalScore").textContent = result.total.toFixed(2);
-  // cập nhật ô điểm phần IV
-  const partScoreEls = $("#partScores").children;
-  if (partScoreEls[3]) partScoreEls[3].innerHTML = `<strong>${result.part4.score.toFixed(2)}</strong><br>Phần IV /2`;
-}
-
-/* ============================================================
-   ĐIỀU HƯỚNG PHẦN
-   ============================================================ */
-let currentPart = 1;
-
-function showPart(n) {
-  currentPart = n;
-  for (let i = 1; i <= 4; i++) {
-    $(`#part${i}Container`).classList.toggle("hidden", i !== n);
-    $$(`.tab[data-part="${i}"]`).forEach(t => t.classList.toggle("active", i === n));
-  }
-  $("#prevPartBtn").disabled = n === 1;
-  $("#nextPartBtn").textContent = n === 4 ? "Nộp bài →" : "Phần sau →";
-}
-
-/* ============================================================
-   BẮT ĐẦU / NỘP / LÀM LẠI
-   ============================================================ */
-function startExam(resume = false) {
-  if (!resume) {
-    prepareQuestions(true);
-    state.answers = {};
-    state.flags = {};
-    state.remaining = EXAM_DURATION;
-    state.startTime = Date.now();
-    state.submitted = false;
-  } else if (!state.shuffled) {
-    prepareQuestions(false);
-  }
-
-  $("#homeScreen").classList.add("hidden");
-  $("#historyScreen").classList.add("hidden");
-  $("#resultScreen").classList.add("hidden");
-  $("#examScreen").classList.remove("hidden");
-
-  renderAllParts();
-  showPart(1);
-  startTimer();
-  saveProgress();
-}
-
-function submitExam(auto = false) {
-  if (!auto) {
-    const done = countAnswered();
-    if (done < 16) {
-      if (!confirm(`Bạn mới làm ${done}/16 câu. Bạn có chắc muốn nộp bài?`)) return;
-    } else {
-      if (!confirm("Bạn có chắc muốn nộp bài?")) return;
-    }
-  }
-  const result = gradeExam();
-  showResult(result, auto);
-}
-
-function retryExam() {
-  clearProgress();
-  state = {
-    answers: {}, flags: {}, startTime: null,
-    remaining: EXAM_DURATION, timerId: null, submitted: false, shuffled: null
-  };
-  startExam(false);
-}
-
-/* ============================================================
-   LỊCH SỬ
-   ============================================================ */
-function showHistory() {
-  let hist = [];
-  try { hist = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]"); } catch (e) {}
-  const list = $("#historyList");
-  if (!hist.length) {
-    list.innerHTML = "<li>Chưa có lần làm nào.</li>";
-  } else {
-    list.innerHTML = hist.map(h => `
-      <li>
-        <span>${new Date(h.date).toLocaleString("vi-VN")}</span>
-        <span><strong>${h.score.toFixed(2)}/10</strong> · ${formatTime(h.timeTaken)}</span>
-      </li>`).join("");
-  }
-  $("#homeScreen").classList.add("hidden");
-  $("#historyScreen").classList.remove("hidden");
-}
-
-/* ============================================================
-   THEME
-   ============================================================ */
-function toggleTheme() {
-  const html = document.documentElement;
-  const dark = html.getAttribute("data-theme") === "dark";
-  html.setAttribute("data-theme", dark ? "" : "dark");
-  $("#themeBtn").textContent = dark ? "🌙" : "☀️";
-  localStorage.setItem("hoa10_theme", dark ? "light" : "dark");
-}
-
-/* ============================================================
-   KHỞI TẠO
-   ============================================================ */
-document.addEventListener("DOMContentLoaded", () => {
-  // theme
-  const savedTheme = localStorage.getItem("hoa10_theme");
-  if (savedTheme === "dark") {
-    document.documentElement.setAttribute("data-theme", "dark");
-    $("#themeBtn").textContent = "☀️";
-  }
-
-  $("#themeBtn").addEventListener("click", toggleTheme);
-  $("#startBtn").addEventListener("click", () => {
-    if (loadProgress()) {
-      if (confirm("Có bài làm chưa hoàn thành. Bạn muốn tiếp tục?")) {
-        startExam(true);
-        return;
-      } else {
-        clearProgress();
-      }
-    }
-    startExam(false);
-  });
-  $("#historyBtn").addEventListener("click", showHistory);
-  $("#backHomeFromHistory").addEventListener("click", () => {
-    $("#historyScreen").classList.add("hidden");
-    $("#homeScreen").classList.remove("hidden");
-  });
-  $("#submitBtn").addEventListener("click", () => submitExam(false));
-  $("#prevPartBtn").addEventListener("click", () => { if (currentPart > 1) showPart(currentPart - 1); });
-  $("#nextPartBtn").addEventListener("click", () => {
-    if (currentPart < 4) showPart(currentPart + 1);
-    else submitExam(false);
-  });
-  $$(".tab").forEach(t => t.addEventListener("click", () => showPart(+t.dataset.part)));
-  $("#retryBtn").addEventListener("click", retryExam);
-  $("#reviewBtn").addEventListener("click", () => {
-    // cuộn lên đầu chi tiết
-    $("#detailContainer").scrollIntoView({ behavior: "smooth" });
-  });
-  $("#homeFromResult").addEventListener("click", () => {
-    $("#resultScreen").classList.add("hidden");
-    $("#homeScreen").classList.remove("hidden");
-  });
-});
-  </script>
+/* ===== KHỞI ĐỘNG ===== */
+function start(){ex=newExam();save();open()}
+$('#newBtn').onclick=()=>{if(read(KEY)&&!confirm('Đề đang làm dở sẽ bị thay bằng đề mới. Tiếp tục?'))return;start()};
+$('#againBtn').onclick=start;
+$('#homeBtn').onclick=home;
+$('#resBtn').onclick=()=>{ex=read(KEY);if(ex)open();else home()};
+$('#dropBtn').onclick=()=>{if(confirm('Bỏ bài đang làm dở?')){store(KEY,null);home()}};
+$('#subBtn').onclick=$('#subBtn2').onclick=()=>submit(false);
+const th=$('#theme'),setTh=d=>{document.documentElement.dataset.theme=d?'dark':'';th.textContent=d?'☀':'☾';try{localStorage.setItem('hoa10_theme',d?'dark':'light')}catch(e){}};
+th.onclick=()=>setTh(document.documentElement.dataset.theme!=='dark');
+setTh((localStorage.getItem('hoa10_theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))==='dark');
+home();
+</script>
 </body>
 </html>

@@ -61,7 +61,7 @@ h1{font-size:1.7rem;line-height:1.15}
 .nuc{display:inline-flex;flex-direction:column;font-size:.68em;line-height:1;vertical-align:middle;text-align:right;margin-right:1px}.nuc sup,.nuc sub{vertical-align:baseline;line-height:1}
 .score{text-align:center;background:var(--soft);border-radius:14px;padding:24px;margin-bottom:16px}
 .score .fx{font-size:3.4rem;font-weight:800;color:var(--brand);line-height:1}
-.ps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}.ps div{background:var(--sf);border-radius:10px;padding:8px;font-size:.85rem}.ps b{display:block;font-size:1.15rem}
+.ps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}.ps div{background:var(--sf);border-radius:10px;padding:8px;font-size:.85rem}.ps b{display:block;font-size:1.15rem}
 .dt{border-left:4px solid var(--line);background:var(--sf);border-radius:10px;padding:14px;margin-bottom:10px}
 .dt.ok{border-color:var(--ok)}.dt.no{border-color:var(--bad)}.dt.pa{border-color:var(--warn)}
 .ex{margin-top:8px;padding:10px;background:var(--bg);border-radius:8px;font-size:.9rem;color:var(--mute)}
@@ -69,7 +69,8 @@ h1{font-size:1.7rem;line-height:1.15}
 .sol{background:var(--soft);padding:10px;border-radius:8px;margin:8px 0;font-size:.92rem}
 .rb{display:flex;gap:8px;align-items:flex-start;padding:4px 0;font-size:.92rem}.rb input{accent-color:var(--brand);margin-top:6px}
 .hl{list-style:none;padding:0}.hl li{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:8px 0}
-@media(max-width:560px){.card{padding:16px}h1{font-size:1.4rem}.ps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.card{padding:16px}h1{font-size:1.4rem}}
+.lv{font-size:.72rem;font-weight:600;padding:1px 9px;border-radius:99px;background:var(--soft);color:var(--brand)}.lv.x1{background:var(--bad);color:#fff}
 </style>
 </head>
 <body>
@@ -80,14 +81,13 @@ h1{font-size:1.7rem;line-height:1.15}
   <div class="card">
     <div class="hero">
       <div class="el"><small>1</small><b>Hóa 10</b><span>Cấu tạo nguyên tử</span></div>
-      <div><h1>Đề kiểm tra thường xuyên</h1><p class="mute">Mỗi lần làm là một đề mới: 20 câu vận dụng cao với số liệu ngẫu nhiên. Mỗi dạng bài bốc đúng 1 câu nên cấu trúc và độ khó của mọi đề như nhau.</p></div>
+      <div><h1>Đề kiểm tra thường xuyên</h1><p class="mute">Mỗi lần làm là một đề mới gồm 20 câu: 14 câu vận dụng cao và 6 câu cực cao, số liệu ngẫu nhiên. Mỗi dạng bài bốc đúng 1 câu nên mọi đề khó như nhau.</p></div>
     </div>
     <ul class="rows">
-      <li><span>Phần I · Trắc nghiệm</span><b>10 câu · 3 điểm</b></li>
+      <li><span>Phần I · Trắc nghiệm</span><b>12 câu · 3 điểm</b></li>
       <li><span>Phần II · Đúng/Sai (4 ý)</span><b>3 câu · 3 điểm</b></li>
-      <li><span>Phần III · Trả lời ngắn</span><b>5 câu · 2 điểm</b></li>
-      <li><span>Phần IV · Tự luận</span><b>2 câu · 2 điểm</b></li>
-      <li><span>Mức độ</span><b>Vận dụng cao</b></li><li><span>Thời gian</span><b>45 phút</b></li>
+      <li><span>Phần III · Trả lời ngắn</span><b>5 câu · 4 điểm</b></li>
+      <li><span>Mức độ</span><b>Vận dụng cao và cực cao</b></li><li><span>Thời gian</span><b>45 phút</b></li>
     </ul>
     <p class="sm mute">Đề và bài làm được lưu trên trình duyệt: tải lại trang vẫn làm tiếp được, đồng hồ chạy theo giờ thật.</p>
     <div class="acts"><button class="btn" id="newBtn">Tạo đề ngẫu nhiên</button></div>
@@ -176,8 +176,8 @@ function gM1(){for(let t=0;t<80;t++){const Z=+pk(Object.keys(NUC)),N=NUC[Z],S=2*
    `Từ 3Z ≤ ${S} ≤ 3,52Z suy ra ${nf(S/3.52,2)} ≤ Z ≤ ${nf(S/3,2)}. Kết hợp điều kiện cấu hình: Z = ${Z} (${EL[Z]}), N = ${S} − 2×${Z} = ${N}, A = ${A}.`)}throw 0}
 function gM2(){const c=pk([['CaCl₂',40,2],['AlCl₃',27,3],['HClO₄',65,1],['KClO₃',87,1],['Mg(ClO₄)₂',152,2],['NaClO₄',87,1]]),h=pk([25,30,20]),Ab=35+2*h/100,n=c[2],M=c[1]+n*Ab;
   const r=n*37*h/100/M*100,W=[h,n*37/(c[1]+n*37)*100,n*35*(100-h)/100/M*100].map(x=>+x.toFixed(2));
-  return mk(`Chlorine tự nhiên gồm hai đồng vị ^35Cl và ^37Cl, trong đó ^37Cl chiếm ${h}% số nguyên tử. Coi nguyên tử khối mỗi đồng vị bằng số khối. Phần trăm khối lượng của ^37Cl trong ${c[0]} là (cho H = 1; O = 16; Na = 23; Mg = 24; Al = 27; K = 39; Ca = 40)`,+r.toFixed(2),W,
-   `Ā(Cl) = ${nf(Ab,2)}; M(${c[0]}) = ${c[1]} + ${n}×${nf(Ab,2)} = ${nf(M,2)}. Khối lượng ^37Cl trong 1 mol = ${n}×0,${h}×37 = ${nf(n*37*h/100,2)} g, nên % = ${nf(r,2)}%.`,2,.5)}
+  return mk(`Chlorine tự nhiên gồm hai đồng vị ^35Cl và ^37Cl, nguyên tử khối trung bình là ${nf(Ab,2)}. Coi nguyên tử khối mỗi đồng vị bằng số khối. Phần trăm khối lượng của ^37Cl trong ${c[0]} là (cho H = 1; O = 16; Na = 23; Mg = 24; Al = 27; K = 39; Ca = 40)`,+r.toFixed(2),W,
+   `Gọi x% là ^37Cl: 35 + 2x/100 = ${nf(Ab,2)} nên x = ${h}. M(${c[0]}) = ${c[1]} + ${n}×${nf(Ab,2)} = ${nf(M,2)}. Khối lượng ^37Cl trong 1 mol = ${n}×0,${h}×37 = ${nf(n*37*h/100,2)} g, nên % = ${nf(r,2)}%.`,2,.5)}
 const IS={H:['hydrogen',[1,2]],O:['oxygen',[16,17,18]],S:['sulfur',[32,33,34,36]],Cl:['chlorine',[35,37]],C:['carbon',[12,13]],Li:['lithium',[6,7]]};
 function gM3(){const [a,na,b,nb,f]=pk([['H',2,'O',1,'H₂O'],['H',2,'S',1,'H₂S'],['Cl',2,'O',1,'Cl₂O'],['Li',2,'O',1,'Li₂O'],['C',1,'O',2,'CO₂'],['C',1,'S',2,'CS₂']]);
   const pa=IS[a][1].length,pb=IS[b][1].length,cb=(p,n)=>n==2?p*(p+1)/2:p,r=cb(pa,na)*cb(pb,nb),ls=s=>IS[s][1].map(m=>'^'+m+s).join(', ');
@@ -199,13 +199,27 @@ function gM7(){const V=[[['Trong nguyên tử, số proton luôn bằng số ele
   v=pk(V),n=v.filter(x=>x[1]).length,bad=v.map((x,i)=>x[1]?'':i+1).filter(Boolean);
   return mk('Cho các phát biểu sau:<br>'+v.map((x,i)=>`(${i+1}) ${x[0]}`).join('<br>')+'<br>Số phát biểu đúng là',n,[1,2,3,4],`Các phát biểu sai: (${bad.join('), (')}). Phát biểu sai thường gặp: ^1H không có neutron; electron chuyển động trong orbital chứ không theo quỹ đạo; hai e cùng orbital phải ngược chiều tự quay; cùng số khối chưa chắc cùng số proton.`)}
 function gM8(){const g=pk(['Ar','Ne']),nz=g=='Ar'?18:10,[zm,x]=pk([[19,1],[20,2],[11,1],[12,2],[13,3]].filter(c=>c[0]-c[1]==nz)),[zx,y]=pk([[17,1],[16,2],[15,3],[9,1],[8,2],[7,3]].filter(c=>c[0]+c[1]==nz)),k=gcd(x,y),a=y/k,b=x/k,r=a*zm+b*zx;
-  return mk(`Cation M<sup>${ch(x)}+</sup> và anion X<sup>${ch(y)}−</sup> đều có cấu hình electron của khí hiếm ${g}. Nguyên tử M có ${x} electron ở lớp ngoài cùng, nguyên tử X có ${8-y} electron ở lớp ngoài cùng. Tổng số proton trong một đơn vị công thức của hợp chất ion tạo bởi M và X là`,r,[zm+zx,b*zm+a*zx,(a+b)*nz],
+  return mk(`Cation M<sup>${x}+</sup> và anion X<sup>${y}−</sup> đều có cấu hình electron của khí hiếm ${g}. Nguyên tử M có ${x} electron ở lớp ngoài cùng, nguyên tử X có ${8-y} electron ở lớp ngoài cùng. Tổng số proton trong một đơn vị công thức của hợp chất ion tạo bởi M và X là`,r,[zm+zx,b*zm+a*zx,(a+b)*nz],
    `M: Z = ${nz} + ${x} = ${zm} (${EL[zm]}); X: Z = ${nz} − ${y} = ${zx} (${EL[zx]}). Hợp chất ${EL[zm]}${sub(a)}${EL[zx]}${sub(b)}: ${a}×${zm} + ${b}×${zx} = ${r}.`)}
-function gM9(){const Z=pk(ZA),P=PP[Z],r=P.occ+P.unp+P.sub+P.outer;
-  return mk(`Nguyên tử X ở trạng thái cơ bản có Z = ${Z}. Gọi a là số orbital đã chứa electron, b là số electron độc thân, c là số phân lớp electron đã chứa electron và d là số electron ở lớp ngoài cùng. Giá trị của a + b + c + d là`,r,[P.sub*2+P.unp+P.outer,P.occ+P.unp+P.sub+P.L,P.occ+P.full+P.sub+P.outer],
-   `${EL[Z]}: ${cs(cfg(Z))}. a = ${P.occ}; b = ${P.unp}; c = ${P.sub}; d = ${P.outer}. Tổng = ${r}.`)}
+const LB={L:'số lớp electron',outer:'số electron ở lớp ngoài cùng',unp:'số electron độc thân',occ:'số orbital đã chứa electron',full:'số orbital chứa đủ 2 electron',pt:'số electron ở các phân lớp p',st:'số electron ở các phân lớp s',dt:'số electron ở phân lớp d',sub:'số phân lớp đã chứa electron'};
+function gM9(){const ZP=[];for(let z=3;z<36;z++)ZP.push(z);const sm=(z,q)=>PP[z][q]+PP[z+1][q];
+  for(let t=0;t<300;t++){const z=pk(ZP.filter(z=>![23,24,28,29].includes(z))),ks=shuffle(PK).slice(0,2);
+    if(ZP.filter(w=>ks.every(q=>sm(w,q)==sm(z,q))).length!=1)continue;
+    const near=ZP.filter(w=>w!=z&&ks.some(q=>sm(w,q)==sm(z,q))).map(w=>w+1);
+    return mk(`X và Y là hai nguyên tố ở hai ô liên tiếp trong bảng tuần hoàn (Z<sub>Y</sub> = Z<sub>X</sub> + 1). Ở trạng thái cơ bản, tổng ${LB[ks[0]]} của hai nguyên tử là ${sm(z,ks[0])} và tổng ${LB[ks[1]]} của hai nguyên tử là ${sm(z,ks[1])}. Số hiệu nguyên tử của Y là`,z+1,near,
+     `Chỉ cặp ${EL[z]} (${cs(cfg(z))}) và ${EL[z+1]} (${cs(cfg(z+1))}) thỏa mãn cả hai tổng. Vậy Z<sub>Y</sub> = ${z+1}.`)}throw 0}
+function gM11(){const [a,na,b,nb,f]=pk([['H',2,'O',1,'H₂O'],['H',2,'S',1,'H₂S'],['Cl',2,'O',1,'Cl₂O'],['Li',2,'O',1,'Li₂O'],['C',1,'O',2,'CO₂'],['C',1,'S',2,'CS₂']]);
+  const sums=(m,n)=>n==2?m.flatMap(x=>m.map(y=>x+y)):m,A=[...new Set(sums(IS[a][1],na))],B=[...new Set(sums(IS[b][1],nb))],S=[...new Set(A.flatMap(x=>B.map(y=>x+y)))].sort((x,y)=>x-y);
+  const pa=IS[a][1].length,pb=IS[b][1].length,cb=(p,n)=>n==2?p*(p+1)/2:p,ls=s=>IS[s][1].map(m=>'^'+m+s).join(', ');
+  return mk(`${IS[a][0]} có ${pa} đồng vị bền (${ls(a)}); ${IS[b][0]} có ${pb} đồng vị bền (${ls(b)}). Coi nguyên tử khối mỗi đồng vị bằng số khối. Các phân tử ${f} tạo từ những đồng vị này có tối đa bao nhiêu giá trị phân tử khối khác nhau?`,S.length,[cb(pa,na)*cb(pb,nb),A.length*B.length,S.length+2],
+   `Tổng khối lượng phần ${a}: ${A.join(', ')}; phần ${b}: ${B.join(', ')}. Các tổng khác nhau: ${S.join(', ')} nên có ${S.length} giá trị (nhiều phân tử khác nhau có thể trùng phân tử khối).`)}
+function gM11(){const [a,na,b,nb,f]=pk([['H',2,'O',1,'H₂O'],['H',2,'S',1,'H₂S'],['Cl',2,'O',1,'Cl₂O'],['Li',2,'O',1,'Li₂O'],['C',1,'O',2,'CO₂'],['C',1,'S',2,'CS₂']]);
+  const sums=(m,n)=>n==2?m.flatMap(x=>m.map(y=>x+y)):m,A=[...new Set(sums(IS[a][1],na))],B=[...new Set(sums(IS[b][1],nb))],S=[...new Set(A.flatMap(x=>B.map(y=>x+y)))].sort((x,y)=>x-y);
+  const pa=IS[a][1].length,pb=IS[b][1].length,cb=(p,n)=>n==2?p*(p+1)/2:p,ls=s=>IS[s][1].map(m=>'^'+m+s).join(', ');
+  return mk(`${IS[a][0]} có ${pa} đồng vị bền (${ls(a)}); ${IS[b][0]} có ${pb} đồng vị bền (${ls(b)}). Coi nguyên tử khối mỗi đồng vị bằng số khối. Các phân tử ${f} tạo từ những đồng vị này có tối đa bao nhiêu giá trị phân tử khối khác nhau?`,S.length,[cb(pa,na)*cb(pb,nb),A.length*B.length,S.length+2],
+   `Tổng khối lượng phần ${a}: ${A.join(', ')}; phần ${b}: ${B.join(', ')}. Các tổng khác nhau: ${S.join(', ')} nên có ${S.length} giá trị (nhiều phân tử khác nhau có thể trùng phân tử khối).`)}
 function gM10(){const [Z,N,q]=pk([[3,4,1],[11,12,1],[12,12,2],[13,14,3],[19,20,1],[20,20,2]]),e=Z-q,S=Z+N+e,D=Z+e-N,A=Z+N;
-  return mk(`Ion X<sup>${ch(q)}+</sup> có tổng số hạt (proton, neutron, electron) là ${S}, trong đó số hạt mang điện nhiều hơn số hạt không mang điện là ${D}. Số khối của X là`,A,[Z,(Z+e+q)/2+N,S-Z],
+  return mk(`Ion X<sup>${q}+</sup> có tổng số hạt (proton, neutron, electron) là ${S}, trong đó số hạt mang điện nhiều hơn số hạt không mang điện là ${D}. Số khối của X là`,A,[Z,(Z+e+q)/2+N,S-Z],
    `Hạt mang điện = (${S}+${D})/2 = ${Z+e} = Z + (Z − ${q}) nên Z = ${Z}; N = (${S}−${D})/2 = ${N}; A = ${A}.`)}
 
 /* ===== PHẦN II: 3 dạng Đúng/Sai (4 ý) ===== */
@@ -227,11 +241,11 @@ function gT2(){const [Z,a,d,p]=pk(ISO),b=a+d,A=a+d*(100-p)/100,T=truthVec();
     [`Trong 2000 nguyên tử Y có ${T[2]?2000*(100-p)/100:2000*p/100} nguyên tử ^${b}Y.`,T[2]],
     [`Tổng số hạt (p, n, e) của nguyên tử ^${a}Y là ${T[3]?a+Z:pk([a,b+Z,a+2*Z])}.`,T[3]]].map(x=>[x[0],+x[1]]),
    e:`Ā = ${a} + ${d}×${nf((100-p)/100,2)} = ${nf(A,2)}; số neutron ^${b}Y = ${b} − ${Z} = ${b-Z}; trong 2000 nguyên tử có ${2000*(100-p)/100} nguyên tử ^${b}Y; tổng số hạt của ^${a}Y = ${a} + ${Z} = ${a+Z}.`}}
-function gT3(){const V=[
-  [['Lớp N (n = 4) có 16 orbital, trong đó phân lớp 4f có 7 orbital.',1],['Electron cuối cùng của nguyên tử Fe (Z = 26) được điền vào phân lớp 4s.',0],['Ở trạng thái cơ bản, nguyên tử Fe có 4 electron độc thân.',1],['Ở trạng thái cơ bản, nguyên tử Cl (Z = 17) có 3 electron độc thân.',0],'Fe: [Ar] 3d^6 4s^2, electron cuối điền vào 3d; 3d^6 có 4 e độc thân. Cl: 3p^5 chỉ có 1 e độc thân.'],
-  [['Nguyên tử Ar có 8 electron ở lớp M dù lớp M chứa tối đa 18 electron.',1],['Ở trạng thái cơ bản, phân lớp 3d của nguyên tử Ca (Z = 20) chứa 2 electron.',0],['Phân lớp p chứa tối đa 6 electron, phân lớp f chứa tối đa 14 electron.',1],['Electron cuối cùng của nguyên tử K (Z = 19) được điền vào phân lớp 4s.',1],'Ca: [Ar] 4s^2 nên 3d trống. K: [Ar] 4s^1.'],
-  [['Ở trạng thái cơ bản, nguyên tử N có 3 electron độc thân ở phân lớp 2p.',1],['Ở trạng thái cơ bản, nguyên tử O có 2 electron độc thân.',1],['Nguyên tử C (2p^2) có hai electron ở cùng một orbital 2p.',0],['Ion Mg^2+ có cấu hình electron giống nguyên tử Ne.',1],'C: hai e 2p ở hai orbital riêng, cùng chiều tự quay (quy tắc Hund). O: 2p^4 = [↑↓][↑][↑].']],v=pk(V);
-  return {t:1,q:'Xét các phát biểu sau:',s:v.slice(0,4),e:v[4]}}
+function gT3(){const cnt=(q,v)=>ZALL.filter(z=>PP[z][q]==v);
+  const opts=PK.map(q=>[q,[...new Set(ZALL.map(z=>PP[z][q]))].filter(v=>{const n=cnt(q,v).length;return n>=2&&n<=9})]).filter(o=>o[1].length);
+  const c4=shuffle(opts).slice(0,4);if(c4.length<4)throw 0;const T=truthVec(),S=c4.map(([q,vs],i)=>{const v=pk(vs),l=cnt(q,v),n=l.length;
+    return [`Trong các nguyên tố có 3 ≤ Z ≤ 36, có đúng ${T[i]?n:alt(n,[-1,1,2],1)} nguyên tố mà nguyên tử ở trạng thái cơ bản ${PD[q](v)}.`,+T[i],`${PD[q](v)}: ${l.map(z=>EL[z]).join(', ')} (${n} nguyên tố)`]});
+  return {t:1,q:'Xét nguyên tử ở trạng thái cơ bản (Cr và Cu có cấu hình ngoại lệ: Cr 3d^5 4s^1, Cu 3d^10 4s^1). Xét các phát biểu sau:',s:S.map(x=>[x[0],x[1]]),e:S.map(x=>x[2]).join('; ')+'.'}}
 
 /* ===== PHẦN III: 5 dạng trả lời ngắn ===== */
 function gS1(){for(let t=0;t<80;t++){const Z=pk(ZA),p=idProps(Z,2);if(!p)continue;
@@ -240,36 +254,29 @@ function gS2(){const [el,m,P]=pk([['magnesium',[24,25,26],[79,10,11]],['silicon'
   return {t:2,q:`Phổ khối lượng của nguyên tố ${el} cho ba peak ứng với m/z = ${m.join(', ')} có cường độ tương đối lần lượt ${I.join(' : ')}. Tính nguyên tử khối trung bình của ${el} (làm tròn 2 chữ số thập phân).`,ty:'number',acc:[A.toFixed(2)],tol:.01,disp:nf(A,2),e:`Chuẩn hóa cường độ về tổng 100%: ${P.join('%, ')}%. Ā = (${m.map((x,i)=>x+'×'+P[i]).join(' + ')})/100 = ${nf(A,2)}.`}}
 function gS3(){for(let t=0;t<80;t++){const Z=+pk(Object.keys(NUC)),N=NUC[Z],p=idProps(Z,2);if(!p)continue;
   return {t:2,q:`Ở trạng thái cơ bản, nguyên tử X ${desc(p)} và có tổng số hạt (p, n, e) là ${2*Z+N}. Số neutron của X là bao nhiêu?`,ty:'number',acc:[String(N)],tol:0,disp:String(N),e:`Từ cấu hình xác định Z = ${Z} (${EL[Z]}). N = ${2*Z+N} − 2×${Z} = ${N}.`}}throw 0}
-function gS4(){const [el,R]=pk([['hydrogen',53],['carbon',77],['chlorine',99],['sulfur',104],['iron',126],['copper',128]]),n=500/R;
-  return {t:2,q:`Bán kính nguyên tử ${el} khoảng ${R} pm (1 pm = 10^-12 m). Nếu xếp các nguyên tử ${el} thành một hàng thẳng, sát nhau, thì hàng dài 1 mm chứa bao nhiêu triệu nguyên tử? (làm tròn 2 chữ số thập phân)`,ty:'number',acc:[n.toFixed(2)],tol:.01,disp:nf(n,2),e:`Đường kính = 2×${R} pm = ${2*R}×10^-12 m. Số nguyên tử = 10^-3 / (${2*R}×10^-12) = ${nf(n,2)} triệu.`}}
-function gS5(){const [Z,N,q]=pk([[8,8,2],[9,10,1],[16,16,2],[17,18,1],[7,7,3],[15,16,3]]),e=Z+q,S=Z+N+e,D=Z+e-N;
-  return {t:2,q:`Anion X<sup>${ch(q)}−</sup> có tổng số hạt (proton, neutron, electron) là ${S}, trong đó số hạt mang điện nhiều hơn số hạt không mang điện là ${D}. Số hiệu nguyên tử của X là bao nhiêu?`,ty:'number',acc:[String(Z)],tol:0,disp:String(Z),e:`Hạt mang điện = (${S}+${D})/2 = ${Z+e} = Z + (Z + ${q}) nên Z = ${Z}.`}}
-
-/* ===== PHẦN IV: 2 dạng tự luận ===== */
-const MT={Mg:[12,12,2],Ca:[20,20,2],Na:[11,12,1],K:[19,20,1],Al:[13,14,3]},XT={Cl:[17,18,1],S:[16,16,2],F:[9,10,1],O:[8,8,2]};
-function gE1(){const m=pk(Object.keys(MT)),x=pk(Object.keys(XT)),[zm,nm,q]=MT[m],[zx,nx,y]=XT[x],g=gcd(q,y),a=y/g,b=q/g,
-  T=a*(2*zm+nm)+b*(2*zx+nx),D=a*(2*zm-nm)+b*(2*zx-nx),k=zx+nx-zm-nm,v=2*zx+nx+y-2*zm-nm+q;if(!k||!v)throw 0;
-  const ion=zm-q,acc=[...cfgAcc(ion),`[${EL[ion]}]`];
-  return {t:3,q:`Hợp chất ion có công thức M${sub(a)}X${sub(b)} (M tạo cation M<sup>${ch(q)}+</sup>, X tạo anion X<sup>${ch(y)}−</sup>). Biết: (1) tổng số hạt p, n, e trong một đơn vị công thức là ${T}; (2) số hạt mang điện nhiều hơn số hạt không mang điện là ${D}; (3) số khối của X ${k>0?'lớn hơn':'nhỏ hơn'} số khối của M là ${Math.abs(k)}; (4) tổng số hạt trong ion X<sup>${ch(y)}−</sup> ${v>0?'nhiều hơn':'ít hơn'} tổng số hạt trong ion M<sup>${ch(q)}+</sup> là ${Math.abs(v)}. Xác định Z, A của M và X, công thức hợp chất và cấu hình electron của ion M<sup>${ch(q)}+</sup>.`,
-   f:[['Số hiệu nguyên tử của M:','number',[String(zm)],.1,String(zm)],['Số khối của M:','number',[String(zm+nm)],.1,String(zm+nm)],['Số hiệu nguyên tử của X:','number',[String(zx)],.1,String(zx)],['Số khối của X:','number',[String(zx+nx)],.1,String(zx+nx)],
-    ['Công thức hợp chất (ví dụ MgCl2):','text',[m+(a>1?a:'')+x+(b>1?b:'')],.1,m+sub(a)+x+sub(b)],[`Cấu hình electron của ion M<sup>${ch(q)}+</sup>:`,'config',acc,.1,short(ion)]],
-   r:[['Lập đúng hệ phương trình từ 4 dữ kiện',.1],['Giải đúng Z và N của M, X',.1],['Xác định đúng công thức hợp chất',.1],['Viết đúng cấu hình ion (số electron = Z − điện tích)',.1]],
-   sol:`Gọi Z, N của M và X. (1)+(2): 4(${a}Z<sub>M</sub> + ${b}Z<sub>X</sub>) = ${T+D} nên ${a}Z<sub>M</sub> + ${b}Z<sub>X</sub> = ${(T+D)/4}.<br>(4)−(3): Z<sub>X</sub> − Z<sub>M</sub> = ${v-k-y-q}. Giải: Z<sub>M</sub> = ${zm}, Z<sub>X</sub> = ${zx}.<br>(1)−(2): ${a}N<sub>M</sub> + ${b}N<sub>X</sub> = ${(T-D)/2}; N<sub>X</sub> − N<sub>M</sub> = ${k-(zx-zm)}. Giải: N<sub>M</sub> = ${nm}, N<sub>X</sub> = ${nx}.<br>M là ${m} (A = ${zm+nm}), X là ${x} (A = ${zx+nx}); hợp chất ${m}${sub(a)}${x}${sub(b)}. Ion M<sup>${ch(q)}+</sup> có ${ion} electron: ${cs(cfg(ion))}.`}}
-function gE2(){for(let t=0;t<80;t++){const [Z,a,d,p]=pk(ISO),pr=idProps(Z,2);if(!pr)continue;const A=a+d*(100-p)/100;
-  return {t:3,q:`Nguyên tố X ở trạng thái cơ bản ${desc(pr)}. X có hai đồng vị bền, đồng vị nặng hơn đồng vị nhẹ ${d} neutron. Tổng số hạt (p, n, e) trong nguyên tử đồng vị nhẹ là ${Z+a}. Nguyên tử khối trung bình của X là ${nf(A,2)}. Xác định Z, số neutron của đồng vị nhẹ, phần trăm số nguyên tử đồng vị nhẹ, số nguyên tử đồng vị nặng trong 2000 nguyên tử X và viết cấu hình electron rút gọn của X.`,
-   f:[['Số hiệu nguyên tử Z:','number',[String(Z)],.1,String(Z)],['Số neutron của đồng vị nhẹ:','number',[String(a-Z)],.1,String(a-Z)],['Phần trăm số nguyên tử đồng vị nhẹ:','number',[String(p)],.15,String(p)],['Số nguyên tử đồng vị nặng trong 2000 nguyên tử X:','number',[String(2000*(100-p)/100)],.1,String(2000*(100-p)/100)],['Cấu hình electron rút gọn của X:','config',cfgAcc(Z),.15,short(Z)]],
-   r:[['Biện luận đúng điều kiện cấu hình để tìm Z',.1],['Tính đúng số khối và số neutron đồng vị nhẹ',.1],['Lập và giải đúng phương trình nguyên tử khối trung bình',.15],['Viết đúng cấu hình electron',.05]],
-   sol:`Từ cấu hình: Z = ${Z} (${EL[Z]}). Đồng vị nhẹ: A = ${Z+a} − ${Z} = ${a}, N = ${a-Z}; đồng vị nặng: A = ${a+d}.<br>Gọi x% là đồng vị nhẹ: ${a}x + ${a+d}(100 − x) = ${nf(A,2)}×100 nên x = ${p}.<br>Đồng vị nặng chiếm ${100-p}%: 2000×${100-p}% = ${2000*(100-p)/100} nguyên tử. Cấu hình: ${short(Z)}.`}}throw 0}
+function gS4(){const [el,A,R]=pk([['carbon',12,77],['oxygen',16,66],['aluminium',27,143],['iron',56,126],['copper',64,128]]),rn=1.2*Math.cbrt(A),a=Math.pow(R*1e-12/(rn*1e-15),3)/1e13;
+  return {t:2,q:`Bán kính nguyên tử ${el} là ${R} pm. Coi hạt nhân là hình cầu có bán kính r = 1,2·A^(1/3) fm với A = ${A} (1 fm = 10^-15 m; 1 pm = 10^-12 m). Thể tích nguyên tử gấp a×10^13 lần thể tích hạt nhân. Nhập giá trị a (làm tròn 2 chữ số thập phân).`,ty:'number',acc:[a.toFixed(2)],tol:.02,disp:nf(a,2),e:`r hạt nhân = 1,2×${A}^(1/3) = ${nf(rn,3)} fm. Tỉ lệ thể tích = (R/r)^3 = (${R}×10^-12 / ${nf(rn,3)}×10^-15)^3 = ${nf(a,2)}×10^13.`}}
+function gS5(){const [x,zx,nx,n,m]=pk([['C',6,6,3,2],['N',7,7,3,1],['Si',14,14,3,2],['P',15,16,4,3],['S',16,16,4,2],['S',16,16,3,2],['Cl',17,18,3,1],['Cl',17,18,4,1]]),P=zx+8*n,E=P+m,N=nx+8*n,S=P+E+N,D=P+E-N;
+  return {t:2,q:`Ion X O<sub>${n}</sub><sup>${ch(m)}−</sup> có tổng số hạt (proton, neutron, electron) là ${S}, trong đó số hạt mang điện nhiều hơn số hạt không mang điện là ${D}. Biết oxygen có Z = 8 và A = 16. Số khối của X là bao nhiêu?`,ty:'number',acc:[String(zx+nx)],tol:0,disp:String(zx+nx),e:`Hạt mang điện = (${S}+${D})/2 = ${P+E} = 2P + ${m} nên P = ${P}, Z<sub>X</sub> = ${P} − 8×${n} = ${zx}. N = (${S}−${D})/2 = ${N}, N<sub>X</sub> = ${N} − 8×${n} = ${nx}. A = ${zx+nx}.`}}
 
 /* ===== BỐC ĐỀ: mỗi dạng bài đúng 1 câu nên mọi đề có cùng cấu trúc và độ khó ===== */
-const GEN=[[gM1,gM2,gM3,gM4,gM5,gM6,gM7,gM8,gM9,gM10],[gT1,gT2,gT3],[gS1,gS2,gS3,gS4,gS5],[gE1,gE2]];
-function newExam(){return {end:Date.now()+DUR*1000,q:GEN.flatMap(g=>shuffle(g).map(build)),a:{},fl:{}}}
+const MT={Mg:[12,12,2],Ca:[20,20,2],Na:[11,12,1],K:[19,20,1],Al:[13,14,3]},XT={Cl:[17,18,1],S:[16,16,2],F:[9,10,1],O:[8,8,2]};
+function cmp(m,x){const [zm,nm,q]=MT[m],[zx,nx,y]=XT[x],g=gcd(q,y),a=y/g,b=q/g;
+  return {m,x,zm,nm,q,zx,nx,y,a,b,F:m+sub(a)+x+sub(b),T:a*(2*zm+nm)+b*(2*zx+nx),D:a*(2*zm-nm)+b*(2*zx-nx),k:zx+nx-zm-nm,v:2*zx+nx+y-2*zm-nm+q}}
+function gM12(){const c=cmp(pk(Object.keys(MT)),pk(Object.keys(XT)));if(!c.k||!c.v)throw 0;const key=o=>[o.T,o.D,o.k,o.v].join();
+  const oth=shuffle(Object.keys(MT).flatMap(m=>Object.keys(XT).map(x=>cmp(m,x)))).filter(o=>o.F!==c.F&&key(o)!==key(c)).slice(0,3).map(o=>o.F);
+  return mk(`Một hợp chất ion được tạo bởi cation M<sup>${ch(c.q)}+</sup> và anion X<sup>${ch(c.y)}−</sup> (M là kim loại, X là phi kim). Trong một đơn vị công thức: (1) tổng số hạt p, n, e là ${c.T}; (2) số hạt mang điện nhiều hơn số hạt không mang điện là ${c.D}; (3) số khối của X ${c.k>0?'lớn hơn':'nhỏ hơn'} số khối của M là ${Math.abs(c.k)}; (4) tổng số hạt trong ion X<sup>${ch(c.y)}−</sup> ${c.v>0?'nhiều hơn':'ít hơn'} tổng số hạt trong ion M<sup>${ch(c.q)}+</sup> là ${Math.abs(c.v)}. Công thức của hợp chất là`,c.F,oth,
+   `(1)+(2): ${c.a}Z<sub>M</sub> + ${c.b}Z<sub>X</sub> = ${(c.T+c.D)/4}; (4)−(3): Z<sub>X</sub> − Z<sub>M</sub> = ${c.v-c.k-c.y-c.q}, suy ra Z<sub>M</sub> = ${c.zm} (${c.m}), Z<sub>X</sub> = ${c.zx} (${c.x}). (1)−(2) và (3) cho N<sub>M</sub> = ${c.nm}, N<sub>X</sub> = ${c.nx}. Hợp chất ${c.F}.`)}
 
-const PART=[['Phần I · Trắc nghiệm','10 câu · 0,3 điểm/câu'],['Phần II · Đúng/Sai','3 câu · đúng 1/2/3/4 ý được 0,1/0,25/0,5/1 điểm'],['Phần III · Trả lời ngắn','5 câu · 0,4 điểm/câu · số thập phân sai số ±0,01'],['Phần IV · Tự luận','2 câu · 1 điểm/câu (0,6 tự động + 0,4 rubric tự đánh giá)']];
-const ABBR=['TN','Đ/S','KQ','TL'], MAXP=[3,3,2,2];
+const GEN=[[[gM1,0],[gM2,0],[gM3,0],[gM4,0],[gM5,0],[gM6,0],[gM7,0],[gM8,0],[gM9,1],[gM10,0],[gM11,1],[gM12,1]],[[gT1,0],[gT2,0],[gT3,1]],[[gS1,0],[gS2,0],[gS3,0],[gS4,1],[gS5,1]]];
+const LV=['Vận dụng cao','Cực cao'];
+function newExam(){return {end:Date.now()+DUR*1000,q:GEN.flatMap(p=>shuffle(p).map(([f,l])=>({...build(f),lv:l})).sort((x,y)=>x.lv-y.lv)),a:{},fl:{}}}
+
+const PART=[['Phần I · Trắc nghiệm','12 câu · 0,25 điểm/câu'],['Phần II · Đúng/Sai','3 câu · đúng 1/2/3/4 ý được 0,1/0,25/0,5/1 điểm'],['Phần III · Trả lời ngắn','5 câu · 0,8 điểm/câu · làm tròn đúng yêu cầu đề']];
+const ABBR=['TN','Đ/S','KQ'], MAXP=[3,3,4];
 let ex=null,tick=null,R=null;
 const save=()=>store(KEY,ex);
-const ans=(d,k)=>{const a=ex.a[k];return d.t==0?a!==undefined:d.t==1?!!a&&Object.keys(a).length>0:d.t==2?!!(a||'').trim():!!a&&Object.values(a).some(v=>v.trim())};
+const ans=(d,k)=>{const a=ex.a[k];return d.t==0?a!==undefined:d.t==1?!!a&&Object.keys(a).length>0:!!(a||'').trim()};
 const answered=()=>ex.q.filter((d,k)=>ans(d,k)).length;
 function show(id){['home','examS','result'].forEach(s=>$('#'+s).hidden=s!==id);scrollTo(0,0)}
 function home(){
@@ -280,12 +287,11 @@ function home(){
 function body(d,k){const L='ABCD',a=ex.a[k];
   if(d.t==0)return `<p>${fmt(d.q)}</p><div class="opts">${d.o.map((o,j)=>`<label class="opt"><input type="radio" name="q${k}" data-k="${k}" data-v="${j}" ${a===j?'checked':''}><b>${L[j]}</b><span>${fmt(o)}</span></label>`).join('')}</div>`;
   if(d.t==1){const b=a||{};return `<p>${fmt(d.q)}</p>`+d.s.map((s,j)=>`<div class="st"><span>${'abcd'[j]}) ${fmt(s[0])}</span><span class="tf">${[['1','Đúng',true],['0','Sai',false]].map(o=>`<label class="opt"><input type="radio" name="q${k}_${j}" data-k="${k}" data-j="${j}" data-v="${o[0]}" ${b[j]===o[2]?'checked':''}>${o[1]}</label>`).join('')}</span></div>`).join('')}
-  if(d.t==2)return `<p>${fmt(d.q)}</p><input class="in" data-k="${k}" value="${esc(a||'')}" placeholder="Nhập đáp án" autocomplete="off">`;
-  const b=a||{};return `<p>${fmt(d.q)}</p><div class="fs">${d.f.map((f,j)=>`<label>${fmt(f[0])}<input class="in" data-k="${k}" data-f="${j}" value="${esc(b[j]||'')}" placeholder="Nhập kết quả" autocomplete="off"></label>`).join('')}</div>`}
+  return `<p>${fmt(d.q)}</p><input class="in" data-k="${k}" value="${esc(a||'')}" placeholder="Nhập đáp án" autocomplete="off">`}
 function openExam(){
   let h='',last=-1;
   ex.q.forEach((d,k)=>{if(d.t!==last){last=d.t;h+=`<div class="ph"><h2>${PART[d.t][0]}</h2><span class="sm mute">${PART[d.t][1]}</span></div>`}
-    h+=`<article class="q ${ex.fl[k]?'fl':''}" id="q${k}"><div class="qh"><span class="qn">Câu ${k+1}</span><button class="flag" data-flag="${k}">Đánh dấu</button></div>${body(d,k)}</article>`});
+    h+=`<article class="q ${ex.fl[k]?'fl':''}" id="q${k}"><div class="qh"><span><span class="qn">Câu ${k+1}</span> <span class="lv x${d.lv}">${LV[d.lv]}</span></span><button class="flag" data-flag="${k}">Đánh dấu</button></div>${body(d,k)}</article>`});
   $('#exam').innerHTML=h;
   $('#tiles').innerHTML=ex.q.map((d,k)=>`<a class="tile" id="t${k}" href="#q${k}"><b>${k+1}</b><small>${ABBR[d.t]}</small></a>`).join('');
   upd();show('examS');clearInterval(tick);tick=setInterval(clock,1000);clock()}
@@ -301,30 +307,21 @@ function submit(auto){
   if(!auto){const n=answered();if(!confirm(n<20?`Bạn mới làm ${n}/20 câu. Nộp bài?`:'Bạn có chắc muốn nộp bài?'))return}
   clearInterval(tick);store(KEY,null);
   const used=Math.min(DUR,DUR-Math.max(0,Math.round((ex.end-Date.now())/1000)));
-  R={p:[0,0,0,0],es:{},t:used};const TFS=[0,.1,.25,.5,1];const h=['','','',''];
+  R={p:[0,0,0],es:{},t:used};const TFS=[0,.1,.25,.5,1];const h=['','','',''];
   ex.q.forEach((d,k)=>{const a=ex.a[k];let pts=0,max,inner,exp=d.e||'';
-    if(d.t==0){max=.3;pts=a===d.a?.3:0;inner=`<div>Bạn chọn: <em>${a===undefined?'(bỏ trống)':fmt(d.o[a])}</em></div><div>Đáp án: <b>${fmt(d.o[d.a])}</b></div>`}
+    if(d.t==0){max=.25;pts=a===d.a?.25:0;inner=`<div>Bạn chọn: <em>${a===undefined?'(bỏ trống)':fmt(d.o[a])}</em></div><div>Đáp án: <b>${fmt(d.o[d.a])}</b></div>`}
     else if(d.t==1){const b=a||{};let n=0;max=1;
       inner=d.s.map((s,j)=>{const ok=b[j]===!!s[1];n+=ok;return `<div class="sm">${'abcd'[j]}) ${fmt(s[0])}<br>Bạn: <em>${b[j]===undefined?'(chưa chọn)':b[j]?'Đúng':'Sai'}</em> · Đáp án: <b>${s[1]?'Đúng':'Sai'}</b> <span class="${ok?'g':'r'}">${ok?'✓':'✗'}</span></div>`}).join('');pts=TFS[n];inner=`<div class="sm mute">Đúng ${n}/4 ý</div>`+inner}
-    else if(d.t==2){max=.4;pts=check(a,d.ty,d.acc,d.tol)?.4:0;inner=`<div>Bạn trả lời: <em>${esc(a||'(trống)')}</em></div><div>Đáp án: <b>${fmt(d.disp)}</b></div>`}
-    else{const b=a||{};max=1;let au=0;
-      inner=d.f.map((f,j)=>{const ok=check(b[j],f[1],f[2],f[5]);au+=ok?f[3]:0;return `<div class="sm">${fmt(f[0])} <em>${esc(b[j]||'(trống)')}</em> <span class="${ok?'g':'r'}">${ok?'✓':'✗ đáp án: '+fmt(f[4])}</span></div>`}).join('')
-      +`<div class="sol"><b>Lời giải mẫu</b><br>${fmt(d.sol)}</div><div><b>Rubric tự đánh giá</b> (tối đa 0,4 điểm)</div>`+d.r.map(r=>`<label class="rb"><input type="checkbox" data-rk="${k}" data-w="${r[1]}"><span>${fmt(r[0])} <em>(${vn(r[1])}đ)</em></span></label>`).join('')
-      +`<div class="sm" style="margin-top:6px">Điểm câu này: <b id="es${k}">${au.toFixed(2)}</b> / 1</div>`;
-      pts=au;R.es[k]={auto:au,rub:0};exp=''}
+    else if(d.t==2){max=.8;pts=check(a,d.ty,d.acc,d.tol)?.8:0;inner=`<div>Bạn trả lời: <em>${esc(a||'(trống)')}</em></div><div>Đáp án: <b>${fmt(d.disp)}</b></div>`}
     R.p[d.t]+=pts;
-    const cls=d.t==3?'pa':pts>=max-1e-9?'ok':pts>0?'pa':'no';
-    h[d.t]+=`<div class="dt ${cls}"><b>Câu ${k+1}.</b> ${d.t==3?'':fmt(d.q)+` <span class="sm mute">(+${vn(pts)||'0'})</span>`}${inner}${exp?`<div class="ex">${fmt(exp)}</div>`:''}</div>`});
+    const cls=pts>=max-1e-9?'ok':pts>0?'pa':'no';
+    h[d.t]+=`<div class="dt ${cls}"><b>Câu ${k+1}.</b> ${fmt(d.q)} <span class="sm mute">(+${vn(pts)||'0'})</span>${inner}${exp?`<div class="ex">${fmt(exp)}</div>`:''}</div>`});
   $('#det').innerHTML=PART.map((p,i)=>`<div class="ph"><h2>${p[0]}</h2></div>${h[i]}`).join('');
   $('#tt').textContent=(auto?'Hết giờ · ':'')+'Thời gian làm bài: '+mmss(used);
   hs(true);paint();show('result');ex=null}
 function paint(){const s=R.p.reduce((a,b)=>a+b,0);$('#tot').textContent=vn(s)||'0';
   $('#ps').innerHTML=R.p.map((v,i)=>`<div><b>${vn(v)||'0'}</b>Phần ${['I','II','III','IV'][i]} /${MAXP[i]}</div>`).join('');hs(false)}
 function hs(first){const h=hist(),s=R.p.reduce((a,b)=>a+b,0);if(first)h.unshift({d:Date.now(),s,t:R.t});else if(h[0])h[0].s=s;store(HKEY,h.slice(0,8))}
-$('#result').addEventListener('change',e=>{const t=e.target,k=t.dataset.rk;if(k===undefined)return;
-  const v=R.es[k];v.rub=Math.min(.4,[...document.querySelectorAll(`[data-rk="${k}"]:checked`)].reduce((s,c)=>s+ +c.dataset.w,0));
-  $('#es'+k).textContent=(v.auto+v.rub).toFixed(2);R.p[3]=Object.values(R.es).reduce((s,o)=>s+o.auto+o.rub,0);paint()});
-
 function start(){ex=newExam();save();openExam()}
 $('#newBtn').onclick=()=>{if(read(KEY)&&!confirm('Đề đang làm dở sẽ bị thay bằng đề mới. Tiếp tục?'))return;start()};
 $('#againBtn').onclick=start;

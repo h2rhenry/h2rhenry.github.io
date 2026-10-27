@@ -36,3 +36,365 @@ svg.i{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-widt
 .test-card b{font-size:1.25rem;color:var(--p)}.test-card span{color:var(--mu);font-size:.92rem}
 .hist{list-style:none;display:grid;gap:10px}
 .hi{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 16px;border:1px solid #e2e8f0;border-radius:12px;background:#f8fafc}
+.hi .meta{flex:1;min-width:160px}.hi .meta small{display:block;color:var(--mu)}
+.score{background:var(--grad);color:#fff;font-weight:800;padding:4px 14px;border-radius:999px;white-space:nowrap}
+.empty{text-align:center;color:var(--mu);padding:12px}
+/* quiz bar */
+.bar{position:sticky;top:max(8px,env(safe-area-inset-top));z-index:50;display:flex;align-items:center;gap:16px;padding:12px 18px;margin-bottom:20px;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border:1px solid #e2e8f0;border-radius:var(--r);box-shadow:var(--sh)}
+.timer{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:1.25rem;font-variant-numeric:tabular-nums;color:var(--p);background:#e0f2fe;padding:6px 14px;border-radius:999px}
+.timer.warn{color:var(--bad);background:var(--bad-bg)}
+.track{flex:1;height:10px;border-radius:99px;background:#e2e8f0;overflow:hidden}
+.fill{height:100%;width:0;background:var(--grad);transition:width .4s ease}
+.cnt{font-weight:700;color:var(--mu);white-space:nowrap}
+/* question */
+.q{scroll-margin-top:96px}
+.qh{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px;font-size:.85rem;font-weight:700}
+.chip{padding:2px 10px;border-radius:999px;background:#e0f2fe;color:var(--p)}
+.chip.pts{background:#f1f5f9;color:var(--mu);margin-left:auto}
+.chip.ok{background:var(--ok-bg);color:var(--ok)}.chip.bad{background:var(--bad-bg);color:var(--bad)}.chip.part,.chip.skip{background:var(--warn-bg);color:var(--warn)}
+.qt{font-size:1.15rem;font-weight:700;margin-bottom:16px}
+.opt{display:flex;align-items:center;gap:12px;min-height:52px;padding:12px 16px;margin-bottom:10px;background:#fff;border:2px solid var(--bd);border-radius:14px;cursor:pointer;font-weight:500;transition:border-color .2s,background .2s}
+.opt:hover{border-color:var(--p);background:#f0f9ff}
+.opt input,.seg input{position:absolute;opacity:0;pointer-events:none}
+.mk{width:22px;height:22px;flex:none;border:2px solid var(--mu);border-radius:50%;display:grid;place-items:center}
+.opt input:checked+.mk{border-color:var(--p)}.opt input:checked+.mk::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--p)}
+.opt:has(input:checked){border-color:var(--p);background:#e0f2fe}
+.opt:has(input:focus-visible),.seg:has(input:focus-visible){outline:3px solid #0ea5e9;outline-offset:2px}
+.opt.ok,.tf.ok{background:var(--ok-bg)!important;border-color:var(--ok)!important;color:#064e3b}
+.opt.bad,.tf.bad{background:var(--bad-bg)!important;border-color:var(--bad)!important;color:#7f1d1d}
+.note{display:inline-flex;align-items:center;gap:4px;margin-left:auto;font-size:.85rem;font-weight:700;white-space:nowrap}
+.tf{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 16px;margin-bottom:10px;background:#fff;border:2px solid var(--bd);border-radius:14px}
+.tf .tx{flex:1;font-weight:500}.tf .tx small{display:block;margin-top:4px;font-weight:700}
+.segs{display:flex;gap:8px}
+.seg{position:relative;min-width:72px;min-height:44px;display:grid;place-items:center;padding:0 16px;border:2px solid var(--bd);border-radius:12px;background:#f8fafc;font-weight:700;cursor:pointer;transition:background .2s,border-color .2s}
+.seg:hover{border-color:var(--p)}.seg:has(input:checked){background:var(--p);border-color:var(--p);color:#fff}
+.sa{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.sb{width:48px;height:48px;border-radius:12px;border:2px solid var(--bd);background:#f1f5f9;font-size:1.5rem;font-weight:700;cursor:pointer;color:var(--tx)}.sb:hover:not(:disabled){background:var(--p);color:#fff;border-color:var(--p)}
+.sin{width:130px;height:48px;border:2px solid var(--bd);border-radius:12px;text-align:center;font:700 1.2rem inherit}
+.sin:focus{outline:none;border-color:var(--p);box-shadow:0 0 0 3px rgba(14,165,233,.3)}
+.sin.ok{background:var(--ok-bg);border-color:var(--ok)}.sin.bad{background:var(--bad-bg);border-color:var(--bad)}
+.exp{margin-top:16px;padding:16px;background:#f8fafc;border-left:5px solid var(--p);border-radius:12px}
+/* result */
+.res{text-align:center}
+.big{font-size:clamp(4rem,16vw,6rem);font-weight:800;line-height:1.1;margin:8px 0;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.big small{font-size:.3em;-webkit-text-fill-color:var(--mu);color:var(--mu)}
+.stats{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0 20px;color:var(--mu);font-weight:600}
+.filters{display:flex;gap:8px;margin-bottom:16px}
+.fb{min-height:44px;padding:0 18px;border-radius:999px;border:2px solid var(--bd);background:#fff;font:600 .95rem inherit;cursor:pointer}.fb[aria-pressed=true]{background:var(--p);border-color:var(--p);color:#fff}
+.only-wrong .q[data-st=ok]{display:none}
+/* modal + toast */
+.overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(15,23,42,.6);backdrop-filter:blur(4px);z-index:1000;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.overlay.on{opacity:1;visibility:visible}
+.mbox{background:#fff;border-radius:24px;padding:32px 24px;max-width:440px;width:100%;text-align:center;box-shadow:0 25px 50px -12px rgba(0,0,0,.35)}
+.mbox h3{font-size:1.5rem;font-weight:800;margin-bottom:10px}.mbox p{color:var(--mu);margin-bottom:24px}
+.toast{position:fixed;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translate(-50%,24px);background:#0f172a;color:#fff;padding:12px 20px;border-radius:12px;opacity:0;pointer-events:none;transition:.3s;z-index:1100;max-width:90vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media(max-width:640px){body{padding-inline:12px}.card{padding:18px}.bar{flex-wrap:wrap;gap:10px}.track{order:3;flex-basis:100%}.cnt{margin-left:auto}.tf{flex-direction:column;align-items:stretch}.segs .seg{flex:1}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.btn:hover,.test-card:hover{transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Bỏ qua đến nội dung</a>
+<main id="main" class="container">
+  <section id="s-home">
+    <h1>Bảng Tuần Hoàn 10</h1>
+    <p class="sub">Ôn luyện trắc nghiệm, đúng/sai và trả lời ngắn môn Hóa học.</p>
+    <div class="tests" id="tests"></div>
+    <div class="card">
+      <div class="between"><h2 class="h2">Lịch sử làm bài</h2><button class="btn btn-d btn-sm" id="btn-clear">Xóa lịch sử</button></div>
+      <ul class="hist" id="hist"></ul>
+    </div>
+  </section>
+
+  <section id="s-quiz" class="hidden" aria-label="Làm bài">
+    <div class="bar">
+      <div class="timer" id="timer" role="timer" aria-label="Thời gian còn lại"></div>
+      <div class="track" role="progressbar" aria-label="Tiến độ" id="track" aria-valuemin="0" aria-valuemax="100"><div class="fill" id="fill"></div></div>
+      <div class="cnt"><span id="done">0</span>/<span id="total">0</span> câu</div>
+    </div>
+    <div id="quiz"></div>
+    <div class="row" style="margin:32px 0"><button class="btn" id="btn-submit">Nộp bài</button></div>
+  </section>
+
+  <section id="s-result" class="hidden" aria-label="Kết quả">
+    <div class="card res">
+      <p id="r-title" class="h2"></p>
+      <div class="big" id="r-score"></div>
+      <div class="stats" id="r-stats"></div>
+      <div class="row"><button class="btn btn-o" id="r-home">Trang chủ</button><button class="btn" id="r-retry">Làm lại đề này</button></div>
+    </div>
+    <div class="filters" role="group" aria-label="Lọc câu hỏi">
+      <button class="fb" data-f="all" aria-pressed="true">Tất cả</button>
+      <button class="fb" data-f="wrong" aria-pressed="false">Câu chưa đúng</button>
+    </div>
+    <div id="review"></div>
+  </section>
+</main>
+
+<div id="modal" class="overlay" role="dialog" aria-modal="true" aria-labelledby="m-title">
+  <div class="mbox"><h3 id="m-title"></h3><p id="m-msg"></p>
+    <div class="row"><button class="btn btn-o" id="m-no">Quay lại</button><button class="btn" id="m-yes">Đồng ý</button></div></div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script>
+    const tests = {
+        de1: [
+            { type: "mcq", q: "Mendeleev sắp xếp các nguyên tố hóa học vào bảng tuần hoàn dựa theo quy luật về", options: [ {text: "khối lượng nguyên tử.", correct: true}, {text: "cấu hình electron.", correct: false}, {text: "số hiệu nguyên tử.", correct: false}, {text: "số khối.", correct: false} ], exp: "Bảng tuần hoàn của Mendeleev được xây dựng dựa trên nguyên tắc sắp xếp theo chiều tăng dần khối lượng nguyên tử." },
+            { type: "mcq", q: "Bảng tuần hoàn hiện nay áp dụng nguyên tắc sắp xếp nào sau đây?", options: [ {text: "Mỗi nguyên tố hóa học được xếp vào một ô trong bảng tuần hoàn.", correct: true}, {text: "Các nguyên tố có cấu hình electron tương tự nhau được xếp cùng một hàng.", correct: false}, {text: "Các nguyên tố được sắp xếp theo chiều tăng dần khối lượng nguyên tử.", correct: false}, {text: "Các nguyên tố có cùng số lớp electron trong nguyên tử được xếp thành một nhóm.", correct: false} ], exp: "Nguyên tắc của BTH hiện đại là mỗi nguyên tố xếp vào 1 ô, xếp theo chiều tăng điện tích hạt nhân, cùng lớp e thì xếp vào cùng chu kì (hàng), cùng số e hóa trị thì xếp vào cùng nhóm (cột)." },
+            { type: "mcq", q: "Số hiệu nguyên tử của nguyên tố hóa học bằng", options: [ {text: "số thứ tự của ô nguyên tố.", correct: true}, {text: "số thứ tự của chu kì.", correct: false}, {text: "số thứ tự của nhóm.", correct: false}, {text: "số electron lớp ngoài cùng của nguyên tử.", correct: false} ], exp: "Trong bảng tuần hoàn, số hiệu nguyên tử (Z) chính là số thứ tự của ô nguyên tố." },
+            { type: "mcq", q: "Nhóm nguyên tố là", options: [ {text: "tập hợp các nguyên tố mà nguyên tử có cấu hình electron tương tự nhau, do đó có tính chất hóa học gần giống nhau và được xếp cùng một cột.", correct: true}, {text: "tập hợp các nguyên tố mà nguyên tử có cùng cấu hình electron giống nhau được xếp ở cùng một cột.", correct: false}, {text: "tập hợp các nguyên tố mà nguyên tử có tính chất hóa học giống nhau và được xếp cùng một cột.", correct: false}, {text: "tập hợp các nguyên tố mà nguyên tử có cấu hình electron gần giống nhau, được xếp thành một cột.", correct: false} ], exp: "Nhóm nguyên tố tập hợp các nguyên tố có cấu hình electron tương tự nhau, dẫn tới tính chất hoá học gần giống nhau và được xếp cùng một cột." },
+            { type: "mcq", q: "Nguyên tử của những nguyên tố trong một nhóm đều có cùng số", options: [ {text: "Electron hóa trị.", correct: true}, {text: "Proton.", correct: false}, {text: "Neutron.", correct: false}, {text: "Lớp electron.", correct: false} ], exp: "Đặc trưng của các nguyên tố trong cùng một nhóm là nguyên tử của chúng đều có cùng số electron hóa trị." },
+            { type: "mcq", q: "Chu kì là dãy các nguyên tố được sắp xếp theo chiều điện tích hạt nhân tăng dần, nguyên tử của chúng có cùng ?", options: [ {text: "Số lớp electron.", correct: true}, {text: "Số electron.", correct: false}, {text: "Số electron hóa trị.", correct: false}, {text: "Số electron ở lớp ngoài cùng.", correct: false} ], exp: "Chu kì là tập hợp các nguyên tố mà nguyên tử của chúng có cùng số lớp electron." },
+            { type: "mcq", q: "Ô nguyên tố không cho biết thông tin nào sau đây?", options: [ {text: "Số khối của hạt nhân", correct: true}, {text: "Kí hiệu nguyên tử", correct: false}, {text: "Tên nguyên tố", correct: false}, {text: "Số hiệu nguyên tử", correct: false} ], exp: "Ô nguyên tố cho biết khối lượng nguyên tử trung bình chứ không cho biết số khối (A) của một đồng vị cụ thể." },
+            { type: "mcq", q: "Nhóm A bao gồm các nguyên tố:", options: [ {text: "Nguyên tố s và nguyên tố p.", correct: true}, {text: "Nguyên tố s.", correct: false}, {text: "Nguyên tố p.", correct: false}, {text: "Nguyên tố d và nguyên tố f.", correct: false} ], exp: "Nhóm A chứa các nguyên tố họ s và p. Nhóm B chứa các nguyên tố họ d và f." },
+            { type: "mcq", q: "Số electron hóa trị trong nguyên tử chlorine (Z = 17) là:", options: [ {text: "7.", correct: true}, {text: "5.", correct: false}, {text: "3.", correct: false}, {text: "1.", correct: false} ], exp: "Cl (Z=17) có cấu hình e: [Ne] 3s² 3p⁵. Có 7 electron ở lớp ngoài cùng, đây cũng chính là số electron hóa trị." },
+            { type: "mcq", q: "Vị trí của nguyên tố có Z = 15 trong bảng tuần hoàn là", options: [ {text: "Chu kì 3, nhóm VA.", correct: true}, {text: "Chu kì 4, nhóm VIB.", correct: false}, {text: "Chu kì 4, nhóm IIA.", correct: false}, {text: "Chu kì 3, nhóm IIB.", correct: false} ], exp: "Cấu hình e (Z=15): 1s² 2s² 2p⁶ 3s² 3p³. Có 3 lớp e (Chu kì 3), 5e lớp ngoài cùng thuộc phân lớp s và p (Nhóm VA)." },
+            { type: "mcq", q: "Trong một chu kì, bán kính nguyên tử các nguyên tố", options: [ {text: "Giảm theo chiều tăng của điện tích hạt nhân.", correct: true}, {text: "Tăng theo chiều tăng của điện tích hạt nhân.", correct: false}, {text: "Tăng theo chiều tăng của tính phi kim.", correct: false}, {text: "Giảm theo chiều tăng của tính kim loại.", correct: false} ], exp: "Trong một chu kì, từ trái sang phải, điện tích hạt nhân tăng dần, lực hút giữa hạt nhân với vỏ e tăng làm vỏ nguyên tử co lại, dẫn đến bán kính giảm dần." },
+            { type: "mcq", q: "Độ âm điện đặc trưng cho khả năng", options: [ {text: "hút electron của nguyên tử.", correct: true}, {text: "nhường electron của nguyên tử.", correct: false}, {text: "tham gia phản ứng mạnh, yếu.", correct: false}, {text: "tính base của nguyên tử.", correct: false} ], exp: "Độ âm điện là đại lượng đặc trưng cho khả năng hút electron của nguyên tử khi hình thành liên kết hóa học." },
+            { type: "mcq", q: "Trong chu kì, từ trái sang phải, theo chiều điện tích hạt nhân tăng dần", options: [ {text: "Tính kim loại giảm, tính phi kim tăng.", correct: true}, {text: "Tính kim loại tăng, tính phi kim giảm.", correct: false}, {text: "Tính kim loại tăng, tính phi kim tăng.", correct: false}, {text: "Tính kim loại giảm, tính phi kim giảm.", correct: false} ], exp: "Do bán kính giảm, nguyên tử khó nhường e và dễ nhận e hơn, nên tính kim loại giảm và tính phi kim tăng dần." },
+            { type: "mcq", q: "Cho các nguyên tử 6C; 7N; 14Si; 15P. Nguyên tử có bán kính lớn nhất là", options: [ {text: "Si.", correct: true}, {text: "N.", correct: false}, {text: "P.", correct: false}, {text: "C.", correct: false} ], exp: "C và N thuộc chu kì 2; Si và P thuộc chu kì 3 (nhiều lớp e hơn nên bán kính lớn hơn). Trong chu kì 3, Z của Si (14) nhỏ hơn P (15) nên bán kính Si > P. Lớn nhất là Si." },
+            { type: "mcq", q: "Trong các chất dưới đây, chất nào có tính acid yếu nhất?", options: [ {text: "H2SiO3.", correct: true}, {text: "H2SO4.", correct: false}, {text: "HClO4.", correct: false}, {text: "H3PO4.", correct: false} ], exp: "Tính phi kim của Si là yếu nhất trong dãy Si, P, S, Cl nên hydroxide tương ứng H2SiO3 có tính acid yếu nhất." },
+            { type: "tf", q: "Cho cấu hình electron: X: 1s²2s²2p⁶3s²3p³; Y: 1s²2s²2p⁶3s²3p⁶3d³4s². Đánh giá tính Đúng/Sai:", statements: [ {text: "a. X và Y đều có 5 electron hóa trị.", correct: true}, {text: "b. X là nguyên tố s, X thuộc nhóm VA.", correct: false}, {text: "c. Y là nguyên tố p, Y thuộc nhóm VB.", correct: false}, {text: "d. X và Y đều là kim loại.", correct: false} ], exp: "a Đúng (X có 5e ngoài cùng, Y có 3e d + 2e s = 5e hoá trị). b Sai (X là nguyên tố p). c Sai (Y là nguyên tố d). d Sai (X thuộc nhóm VA, là phi kim P)." },
+            { type: "tf", q: "Borax (Na2B4O7.10H2O) chứa Sodium (11Na), boron (5B) và oxygen (8O). Đánh giá Đúng/Sai:", statements: [ {text: "a. Na thuộc chu kì 3, nhóm IA.", correct: true}, {text: "b. O thuộc chu kì 2, nhóm IVA.", correct: false}, {text: "c. Thứ tự bán kính nguyên tử tăng dần: O > B > Na.", correct: false}, {text: "d. Thứ tự độ âm điện giảm dần: O > B > Na.", correct: true} ], exp: "a Đúng (Na: [Ne] 3s¹). b Sai (O: [He] 2s²2p⁴ nhóm VIA). c Sai (Thứ tự đúng là O < B < Na). d Đúng (Tính phi kim O > B > Na nên độ âm điện O > B > Na)." },
+            { type: "sa", q: "Cho các nguyên tố A(Z=4), X(Z=8), Y(Z=9), M(Z=11), R(Z=12), T(Z=15). Có bao nhiêu nguyên tố là kim loại?", correct: 3, step: 1, exp: "Nguyên tố kim loại thường có 1, 2, 3 e ngoài cùng. Be(2e), Na(1e), Mg(2e) là kim loại. O, F, P là phi kim. Có 3 KL." },
+            { type: "sa", q: "3 quả cầu A, B, C tượng trưng nguyên tử helium, krypton, radon theo thứ tự tăng dần kích thước 1,2,3. Quả cầu krypton là số nào?", correct: 2, step: 1, exp: "He, Kr, Rn đều là khí hiếm nhóm VIIIA. Bán kính tăng từ trên xuống: He < Kr < Rn. Kr nằm giữa nên là số 2." },
+            { type: "sa", q: "Nguyên tố có X(Z=8), số electron hóa trị của nguyên tử nguyên tố X là bao nhiêu?", correct: 6, step: 1, exp: "X (Z=8) là Oxygen. Cấu hình 1s²2s²2p⁴. Lớp ngoài cùng có 6 electron, đây cũng là số e hoá trị." }
+        ],
+        de2: [
+            { type: "mcq", q: "Trong bảng tuần hoàn các nguyên tố, số chu kì nhỏ và chu kì lớn là", options: [ {text: "3 và 4.", correct: true}, {text: "3 và 3.", correct: false}, {text: "4 và 4.", correct: false}, {text: "4 và 3.", correct: false} ], exp: "Bảng tuần hoàn có 7 chu kì. Chu kì 1, 2, 3 là chu kì nhỏ. Chu kì 4, 5, 6, 7 là chu kì lớn." },
+            { type: "mcq", q: "Bảng tuần hoàn hiện nay có số cột, số nhóm A và số nhóm B lần lượt là", options: [ {text: "18, 8, 8.", correct: true}, {text: "18, 8, 10.", correct: false}, {text: "18, 10, 8.", correct: false}, {text: "16, 8, 8.", correct: false} ], exp: "Bảng tuần hoàn có 18 cột, chia thành 8 nhóm A (8 cột) và 8 nhóm B (10 cột)." },
+            { type: "mcq", q: "Số electron hóa trị trong nguyên tử chromium (Z = 24) là:", options: [ {text: "6.", correct: true}, {text: "1.", correct: false}, {text: "3.", correct: false}, {text: "4.", correct: false} ], exp: "Cr (Z=24) có cấu hình [Ar] 3d⁵ 4s¹. Số e hóa trị = 5+1 = 6." },
+            { type: "mcq", q: "Cấu hình electron của nguyên tử sắt là 1s²2s²2p⁶3s²3p⁶3d⁶4s². Vị trí của sắt trong bảng tuần hoàn là", options: [ {text: "ô số 26, chu kì 4, nhóm VIIIB.", correct: true}, {text: "ô số 26, chu kì 3, nhóm VIIIB.", correct: false}, {text: "ô số 26, chu kì 3, nhóm VIIIA.", correct: false}, {text: "ô số 26, chu kì 4, nhóm VIIIA.", correct: false} ], exp: "Z = 26. 4 lớp e (chu kì 4). Nhóm B, 6+2 = 8 e hóa trị -> Nhóm VIIIB." },
+            { type: "mcq", q: "Trong bảng tuần hoàn, nguyên tố thuộc nhóm IIA, chu kì 3 là", options: [ {text: "12Mg.", correct: true}, {text: "26Fe.", correct: false}, {text: "11Na.", correct: false}, {text: "13Al.", correct: false} ], exp: "Chu kì 3, Nhóm IIA. Cấu hình [Ne] 3s² -> Z=12 (Mg)." },
+            { type: "mcq", q: "Nguyên tử sulfur có phân lớp electron ngoài cùng là 3p⁴. Phát biểu nào sau đây là sai?", options: [ {text: "Hạt nhân nguyên tử sulfur có 16 electron.", correct: true}, {text: "Lớp ngoài cùng của sulfur có 6 electron.", correct: false}, {text: "Trong bảng tuần hoàn sulfur nằm ở chu kỳ 3.", correct: false}, {text: "Sulfur nằm ở nhóm VIA.", correct: false} ], exp: "Hạt nhân chứa proton và neutron. Electron nằm ở lớp vỏ nguyên tử. A sai." },
+            { type: "mcq", q: "Trong 20 nguyên tố đầu tiên của bảng tuần hoàn, đại lượng nào sau đây biến đổi tuần hoàn?", options: [ {text: "Số electron lớp ngoài cùng.", correct: true}, {text: "Khối lượng nguyên tử.", correct: false}, {text: "Số proton trong hạt nhân nguyên tử.", correct: false}, {text: "Số neutron trong hạt nhân nguyên tử.", correct: false} ], exp: "Chỉ có số electron lớp ngoài cùng lặp lại sau mỗi chu kì (biến đổi tuần hoàn)." },
+            { type: "mcq", q: "Trong một nhóm A (trừ nhóm VIIIA), theo chiều tăng của điện tích hạt nhân nguyên tử thì", options: [ {text: "tính phi kim giảm dần, bán kính nguyên tử tăng dần.", correct: true}, {text: "tính kim loại tăng dần, độ âm điện tăng dần.", correct: false}, {text: "độ âm điện giảm dần, tính phi kim tăng dần.", correct: false}, {text: "tính kim loại tăng dần, bán kính nguyên tử giảm dần.", correct: false} ], exp: "Trong 1 nhóm, từ trên xuống bán kính tăng, khả năng nhường e tăng nên tính kim loại tăng, tính phi kim giảm." },
+            { type: "mcq", q: "Độ âm điện của các nguyên tố: 9F, 17Cl, 35Br, 53I. Xếp theo chiều giảm dần là:", options: [ {text: "F > Cl > Br > I", correct: true}, {text: "I > Br > Cl > F", correct: false}, {text: "Cl > F > I > Br", correct: false}, {text: "I > Br > F > Cl", correct: false} ], exp: "Nhóm VIIA từ trên xuống dưới độ âm điện giảm dần." },
+            { type: "mcq", q: "Cho 11Na, 12Mg, 13Al, 19K. Dãy các nguyên tố xếp theo chiều tính kim loại tăng dần là", options: [ {text: "Al, Mg, Na, K.", correct: true}, {text: "Mg, Al, Na, K.", correct: false}, {text: "K, Na, Mg, Al.", correct: false}, {text: "Na, K, Mg, Al.", correct: false} ], exp: "Chu kì 3: Al < Mg < Na. Nhóm IA: Na < K. Kết hợp: Al < Mg < Na < K." },
+            { type: "mcq", q: "Chọn oxide có tính base mạnh nhất", options: [ {text: "BaO.", correct: true}, {text: "BeO.", correct: false}, {text: "CO2.", correct: false}, {text: "Al2O3.", correct: false} ], exp: "Tính base thuận chiều tính kim loại. Ba có tính kim loại mạnh nhất nên BaO có tính base mạnh nhất." },
+            { type: "mcq", q: "Thứ tự tăng dần tính base của các hydroxide Mg(OH)2, Ba(OH)2, Al(OH)3 là:", options: [ {text: "Al(OH)3 < Mg(OH)2 < Ba(OH)2.", correct: true}, {text: "Ba(OH)2 < Mg(OH)2 < Al(OH)3.", correct: false}, {text: "Mg(OH)2 < Ba(OH)2 < Al(OH)3.", correct: false}, {text: "Al(OH)3 < Ba(OH)2 < Mg(OH)2.", correct: false} ], exp: "Tính kim loại tăng dần Al < Mg < Ba nên tính base tăng dần Al(OH)3 < Mg(OH)2 < Ba(OH)2." },
+            { type: "mcq", q: "Dãy nào sau đây sắp xếp theo thứ tự tăng dần tính acid?", options: [ {text: "Al2O3; P2O5; SO3; Cl2O7.", correct: true}, {text: "Cl2O7; Al2O3; SO3; P2O5.", correct: false}, {text: "P2O5; SO3; Al2O3; Cl2O7.", correct: false}, {text: "Al2O3; SO3; P2O5; Cl2O7.", correct: false} ], exp: "Tính acid tăng dần theo tính phi kim: Al2O3 < P2O5 < SO3 < Cl2O7." },
+            { type: "mcq", q: "Nguyên tử của nguyên tố nào sau đây có bán kính nhỏ nhất?", options: [ {text: "P (Z=15)", correct: true}, {text: "Si (Z=14)", correct: false}, {text: "Ge (Z=32)", correct: false}, {text: "As (Z=33)", correct: false} ], exp: "Chu kì 3 (Si, P) nhỏ hơn chu kì 4. Trong chu kì 3, Z tăng thì R giảm nên P < Si." },
+            { type: "mcq", q: "Nguyên tố nào trong số các nguyên tố sau có độ âm điện nhỏ nhất?", options: [ {text: "19K.", correct: true}, {text: "12Mg.", correct: false}, {text: "20Ca.", correct: false}, {text: "13Al.", correct: false} ], exp: "K là kim loại điển hình mạnh nhất trong nhóm, nên có độ âm điện nhỏ nhất." },
+            { type: "tf", q: "So sánh Mg(Z=12), Be(Z=4), Ca(Z=20). Đánh giá Đúng/Sai:", statements: [ {text: "a. Be: 1s²2s², Mg: [Ne]3s², Ca: [Ar]4s².", correct: true}, {text: "b. Cả 3 nguyên tố đều thuộc nhóm IIIA.", correct: false}, {text: "c. Tính kim loại của Be < Mg < Ca.", correct: true}, {text: "d. Tính base của Be(OH)2 > Mg(OH)2 > Ca(OH)2.", correct: false} ], exp: "a Đúng. b Sai (Nhóm IIA). c Đúng (Cùng nhóm R tăng). d Sai (Tính base Be(OH)2 < Mg(OH)2 < Ca(OH)2)." },
+            { type: "tf", q: "Phosphorus (P) ở ô số 15, chu kì 3, nhóm VA. Đánh giá tính Đúng/Sai:", statements: [ {text: "a. Số electron lớp ngoài cùng của P là 5.", correct: true}, {text: "b. Oxide cao nhất là P2O3, có tính acidic.", correct: false}, {text: "c. Phosphorus có tính phi kim.", correct: true}, {text: "d. Hydroxide cao nhất là H3PO4 có tính acid.", correct: true} ], exp: "a Đúng. b Sai (Oxide cao nhất là P2O5). c Đúng. d Đúng." },
+            { type: "sa", q: "Cho X(Z=11), Y(Z=13), Z(Z=19) và độ âm điện 0,82; 1,31; 0,93. Độ âm điện của Y là bao nhiêu?", correct: 1.31, step: 0.01, exp: "X(Na), Y(Al), Z(K). Độ âm điện Al lớn nhất do tính phi kim trội hơn. Số lớn nhất là 1.31." },
+            { type: "sa", q: "Bán kính nguyên tử của Al, Mg, Si là các giá trị: 143; 118; 160 (pm). Bán kính nguyên tử của Al là bao nhiêu?", correct: 143, step: 1, exp: "Chu kì 3 Z tăng bán kính giảm (Mg > Al > Si). Al ở giữa ứng với 143 pm." },
+            { type: "sa", q: "Cho Mg: [Ne]3s²; Fe: [Ar]3d⁶4s²; Br: [Ar]3d¹⁰4s²4p⁵; N: 1s²2s²2p³; Cu: [Ar]3d¹⁰4s¹. Bao nhiêu nguyên tố thuộc khối d?", correct: 2, step: 1, exp: "Nguyên tố khối d có e cuối điền vào phân lớp d (Fe và Cu). Có 2 nguyên tố." }
+        ]
+    };
+
+    /* ===== CẤU HÌNH ===== */
+    const SCORE = { total: 10, mcq: 0.4, tf: 0.25 }; // mỗi ý Đúng/Sai = 0,25đ; Trả lời ngắn = phần điểm còn lại chia đều
+    const TIME_LIMIT = 20 * 60, KEY = 'chemHistory', MAX_KEEP = 30, SHOW = 10;
+    const TYPE_NAME = { mcq: 'Trắc nghiệm', tf: 'Đúng/Sai', sa: 'Trả lời ngắn' };
+
+    const $ = id => document.getElementById(id);
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const fmt = n => Number(n).toLocaleString('vi-VN', { maximumFractionDigits: 2 });
+    const ICON = {
+        clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+        check: '<path d="M5 12l5 5 9-10"/>',
+        x: '<path d="M6 6l12 12M18 6L6 18"/>',
+        eye: '<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>'
+    };
+    const ico = n => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${ICON[n]}</svg>`;
+
+    let S = { id: '', qs: [], end: 0, tick: null, quizOn: false };
+
+    /* ===== LƯU TRỮ (localStorage, có xử lý lỗi/đầy bộ nhớ) ===== */
+    function loadHist() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+    function saveHist(h) {
+        h = h.slice(-MAX_KEEP);
+        for (;;) {
+            try { localStorage.setItem(KEY, JSON.stringify(h)); return true; }
+            catch (e) { const x = h.find(r => r.review); if (!x) return false; delete x.review; }
+        }
+    }
+
+    /* ===== CHẤM ĐIỂM ===== */
+    const parseNum = s => { if (s == null || String(s).trim() === '') return null; const v = parseFloat(String(s).replace(',', '.')); return isNaN(v) ? null : v; };
+    function grade(qs, ans) {
+        let mcqN = 0, saN = 0, fixed = 0;
+        qs.forEach(q => { if (q.type === 'mcq') { mcqN++; fixed += SCORE.mcq; } else if (q.type === 'tf') fixed += q.statements.length * SCORE.tf; else saN++; });
+        const saPts = saN ? (SCORE.total - fixed) / saN : 0;
+        let total = 0, ok = 0;
+        const items = qs.map((q, i) => {
+            const a = ans[i]; let got = 0, max, st;
+            if (q.type === 'mcq') {
+                max = SCORE.mcq; const c = q.options.findIndex(o => o.correct);
+                st = a == null ? 'skip' : (a === c ? 'ok' : 'bad'); got = st === 'ok' ? max : 0;
+            } else if (q.type === 'tf') {
+                max = q.statements.length * SCORE.tf;
+                const hits = q.statements.filter((s, k) => a && a[k] === s.correct).length;
+                got = hits * SCORE.tf;
+                st = (!a || a.every(v => v == null)) ? 'skip' : hits === q.statements.length ? 'ok' : hits ? 'part' : 'bad';
+            } else {
+                max = saPts; const v = parseNum(a);
+                st = v == null ? 'skip' : (Math.abs(v - q.correct) < 1e-9 ? 'ok' : 'bad'); got = st === 'ok' ? max : 0;
+            }
+            total += got; if (st === 'ok') ok++;
+            return { got, max, st };
+        });
+        return { total: Math.round(total * 100) / 100, items, ok };
+    }
+
+    /* ===== HIỂN THỊ CÂU HỎI (dùng chung cho làm bài / kết quả / xem lại) ===== */
+    const STATUS = { ok: 'Đúng', bad: 'Sai', part: 'Đúng một phần', skip: 'Chưa trả lời' };
+    function cardHTML(q, i, review, a, g) {
+        const dis = review ? 'disabled' : '';
+        let h = `<article class="card q" id="q${i}" ${review ? `data-st="${g.st}"` : ''}><div class="qh"><span class="chip">Câu ${i + 1} · ${TYPE_NAME[q.type]}</span>`;
+        h += review ? `<span class="chip pts ${g.st}">${STATUS[g.st]} · ${fmt(g.got)}/${fmt(g.max)}đ</span>` : '';
+        h += `</div><h3 class="qt">${esc(q.q)}</h3>`;
+        if (q.type === 'mcq') {
+            const c = q.options.findIndex(o => o.correct);
+            q.options.forEach((o, k) => {
+                let cls = '', note = '';
+                if (review && k === c) { cls = 'ok'; note = `<span class="note">${ico('check')}Đáp án đúng</span>`; }
+                else if (review && a === k) { cls = 'bad'; note = `<span class="note">${ico('x')}Bạn đã chọn</span>`; }
+                h += `<label class="opt ${cls}"><input type="radio" name="q${i}" value="${k}" ${dis} ${a === k ? 'checked' : ''}><span class="mk"></span><span>${esc(o.text)}</span>${note}</label>`;
+            });
+        } else if (q.type === 'tf') {
+            q.statements.forEach((s, k) => {
+                const v = a ? a[k] : null; let cls = '', info = '';
+                if (review) {
+                    cls = v == null ? '' : (v === s.correct ? 'ok' : 'bad');
+                    info = `<small>Bạn chọn: ${v == null ? 'bỏ trống' : v ? 'Đúng' : 'Sai'} · Đáp án: ${s.correct ? 'Đúng' : 'Sai'}${v === s.correct ? ` · +${fmt(SCORE.tf)}đ` : ''}</small>`;
+                }
+                h += `<div class="tf ${cls}"><div class="tx">${esc(s.text)}${info}</div><div class="segs" role="radiogroup" aria-label="Đúng hoặc sai">
+                    <label class="seg"><input type="radio" name="q${i}s${k}" value="true" ${dis} ${v === true ? 'checked' : ''}>Đúng</label>
+                    <label class="seg"><input type="radio" name="q${i}s${k}" value="false" ${dis} ${v === false ? 'checked' : ''}>Sai</label></div></div>`;
+            });
+        } else {
+            const cls = review ? (g.st === 'ok' ? 'ok' : 'bad') : '';
+            h += `<div class="sa"><button type="button" class="sb" data-step="-1" data-i="${i}" ${dis} aria-label="Giảm">−</button>
+                <input class="sin ${cls}" id="sa${i}" type="text" inputmode="decimal" autocomplete="off" placeholder="Nhập" aria-label="Đáp án câu ${i + 1}" value="${review ? esc(a || '') : ''}" ${dis}>
+                <button type="button" class="sb" data-step="1" data-i="${i}" ${dis} aria-label="Tăng">+</button>
+                ${review && g.st !== 'ok' ? `<strong style="color:var(--ok);margin-left:8px">Đáp án đúng: ${fmt(q.correct)}</strong>` : ''}</div>`;
+        }
+        if (review) h += `<div class="exp"><strong>Lời giải:</strong> ${esc(q.exp)}</div>`;
+        return h + '</article>';
+    }
+    const renderList = (qs, review, ans, gr) => qs.map((q, i) => cardHTML(q, i, review, ans && ans[i], gr && gr.items[i])).join('');
+
+    /* ===== ĐIỀU HƯỚNG ===== */
+    function show(id) {
+        ['s-home', 's-quiz', 's-result'].forEach(s => $(s).classList.toggle('hidden', s !== id));
+        window.scrollTo(0, 0);
+    }
+    function toast(msg) { const t = $('toast'); t.textContent = msg; t.classList.add('on'); setTimeout(() => t.classList.remove('on'), 4000); }
+
+    let modalOk = null, lastFocus = null;
+    function ask(title, msg, yes, onOk, noLabel = 'Quay lại') {
+        lastFocus = document.activeElement; modalOk = onOk;
+        $('m-title').textContent = title; $('m-msg').innerHTML = msg; $('m-yes').textContent = yes; $('m-no').textContent = noLabel;
+        $('modal').classList.add('on'); $('m-no').focus();
+    }
+    function closeModal() { $('modal').classList.remove('on'); if (lastFocus) lastFocus.focus(); }
+    $('m-no').onclick = closeModal;
+    $('m-yes').onclick = () => { const f = modalOk; closeModal(); if (f) f(); };
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('modal').classList.contains('on')) closeModal(); });
+
+    /* ===== TRANG CHỦ + LỊCH SỬ ===== */
+    const testLabel = id => 'Đề ' + id.replace(/\D/g, '');
+    function renderHome() {
+        $('tests').innerHTML = Object.keys(tests).map(id => `<button class="test-card" data-start="${id}"><b>${testLabel(id)}</b><span>${tests[id].length} câu · ${TIME_LIMIT / 60} phút · thang điểm ${SCORE.total}</span><span>Bắt đầu làm bài →</span></button>`).join('');
+        const h = loadHist();
+        $('btn-clear').classList.toggle('hidden', !h.length);
+        $('hist').innerHTML = h.length ? h.slice().reverse().slice(0, SHOW).map(r => {
+            const when = r.ts ? new Date(r.ts).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : r.date;
+            return `<li class="hi"><div class="meta"><strong>${esc(r.testName)}</strong><small>${esc(when)}</small></div><span class="score">${typeof r.score === 'number' ? fmt(r.score) : esc(r.score)} / 10</span>
+                ${r.review ? `<button class="btn btn-o btn-sm" data-view="${r.id}">${ico('eye')}Xem lại bài làm</button>` : '<small style="color:var(--mu)">Không có dữ liệu bài làm</small>'}</li>`;
+        }).join('') : '<li class="empty">Chưa có lịch sử làm bài.</li>';
+    }
+    $('tests').onclick = e => { const b = e.target.closest('[data-start]'); if (b) startTest(b.dataset.start); };
+    $('hist').onclick = e => {
+        const b = e.target.closest('[data-view]'); if (!b) return;
+        const r = loadHist().find(x => String(x.id) === b.dataset.view); if (r && r.review) showResult(r.testId, r.review.qs, r.review.ans, r.ts, true);
+    };
+    $('btn-clear').onclick = () => ask('Xóa toàn bộ lịch sử?', 'Điểm số và bài làm đã lưu sẽ bị xóa vĩnh viễn trên trình duyệt này.', 'Xóa', () => { try { localStorage.removeItem(KEY); } catch (e) { } renderHome(); });
+
+    /* ===== LÀM BÀI ===== */
+    const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+    function startTest(id) {
+        S.id = id; S.qs = shuffle(JSON.parse(JSON.stringify(tests[id])));
+        S.qs.forEach(q => { if (q.type === 'mcq') shuffle(q.options); });
+        $('quiz').innerHTML = renderList(S.qs, false);
+        $('total').textContent = S.qs.length;
+        S.quizOn = true; S.end = Date.now() + TIME_LIMIT * 1000;
+        clearInterval(S.tick); S.tick = setInterval(tick, 500); tick(); update(); show('s-quiz');
+    }
+    function tick() {
+        const left = Math.max(0, Math.ceil((S.end - Date.now()) / 1000));
+        const t = $('timer'); t.innerHTML = `${ico('clock')}${String(Math.floor(left / 60)).padStart(2, '0')}:${String(left % 60).padStart(2, '0')}`;
+        t.classList.toggle('warn', left <= 60);
+        if (left === 300 || left === 60) toast(`Còn ${left / 60} phút!`);
+        if (left <= 0) finish(true);
+    }
+    function collect() {
+        return S.qs.map((q, i) => {
+            if (q.type === 'mcq') { const c = document.querySelector(`input[name="q${i}"]:checked`); return c ? +c.value : null; }
+            if (q.type === 'tf') return q.statements.map((_, k) => { const c = document.querySelector(`input[name="q${i}s${k}"]:checked`); return c ? c.value === 'true' : null; });
+            return $('sa' + i).value.trim();
+        });
+    }
+    function update() {
+        const ans = collect();
+        const n = S.qs.filter((q, i) => q.type === 'mcq' ? ans[i] != null : q.type === 'tf' ? ans[i].every(v => v != null) : parseNum(ans[i]) != null).length;
+        $('done').textContent = n; const p = Math.round(n / S.qs.length * 100);
+        $('fill').style.width = p + '%'; $('track').setAttribute('aria-valuenow', p);
+        return n;
+    }
+    $('quiz').addEventListener('change', update);
+    $('quiz').addEventListener('input', update);
+    $('quiz').addEventListener('click', e => {
+        const b = e.target.closest('.sb'); if (!b) return;
+        const q = S.qs[b.dataset.i], inp = $('sa' + b.dataset.i);
+        const step = q.correct % 1 !== 0 ? 0.01 : 1, v = parseNum(inp.value) || 0;
+        inp.value = (Math.round((v + b.dataset.step * step) * 100) / 100).toString().replace('.', ','); update();
+    });
+    $('btn-submit').onclick = () => {
+        const n = update(), t = S.qs.length;
+        ask('Xác nhận nộp bài?', n < t ? `Bạn mới hoàn thành <b>${n}/${t}</b> câu. Chắc chắn muốn nộp bài sớm?` : 'Bạn đã trả lời tất cả các câu hỏi.', 'Nộp bài', () => finish(false));
+    };
+    window.addEventListener('beforeunload', e => { if (S.quizOn) { e.preventDefault(); e.returnValue = ''; } });
+
+    function finish(auto) {
+        if (!S.quizOn) return;
+        S.quizOn = false; clearInterval(S.tick);
+        const ans = collect(), gr = grade(S.qs, ans), ts = Date.now();
+        const h = loadHist(); h.push({ id: ts, ts, testId: S.id, testName: testLabel(S.id), score: gr.total, review: { qs: S.qs, ans } });
+        const saved = saveHist(h);
+        if (modalOk) closeModal();
+        showResult(S.id, S.qs, ans, ts, false);
+        if (auto) toast('Đã hết giờ, bài của bạn được tự động nộp.');
+        else if (!saved) toast('Không lưu được lịch sử (trình duyệt chặn lưu trữ).');
+    }
+
+    /* ===== KẾT QUẢ / XEM LẠI ===== */
+    function showResult(id, qs, ans, ts, fromHistory) {
+        const gr = grade(qs, ans); S.id = id;
+        const when = ts ? new Date(ts).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
+        $('r-title').textContent = fromHistory ? `Xem lại bài làm · ${testLabel(id)} · ${when}` : 'Hoàn thành bài thi!';
+        $('r-score').innerHTML = `${fmt(gr.total)}<small> / ${SCORE.total}</small>`;
+        $('r-stats').innerHTML = `<span>Đúng hoàn toàn ${gr.ok}/${qs.length} câu</span>` + ['mcq', 'tf', 'sa'].map(t => {
+            const it = gr.items.filter((_, i) => qs[i].type === t); if (!it.length) return '';
+            return `<span>· ${TYPE_NAME[t]}: ${fmt(it.reduce((s, x) => s + x.got, 0))}/${fmt(it.reduce((s, x) => s + x.max, 0))}đ</span>`;
+        }).join('');
+        $('review').innerHTML = renderList(qs, true, ans, gr);
+        $('review').classList.remove('only-wrong');
+        document.querySelectorAll('.fb').forEach(b => b.setAttribute('aria-pressed', b.dataset.f === 'all'));
+        show('s-result');
+    }
+    document.querySelector('.filters').onclick = e => {
+        const b = e.target.closest('.fb'); if (!b) return;
+        document.querySelectorAll('.fb').forEach(x => x.setAttribute('aria-pressed', x === b));
+        $('review').classList.toggle('only-wrong', b.dataset.f === 'wrong');
+    };
+    $('r-home').onclick = () => { renderHome(); show('s-home'); };
+    $('r-retry').onclick = () => startTest(S.id);
+
+    renderHome();
+</script>
+</body>
+</html>

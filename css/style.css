@@ -1,11 +1,11 @@
     :root {
-        --bg-main: #0b0e14;
-        --bg-card: #12161f;
+        --bg-main: #100b14;
+        --bg-card: #19121f;
         --bg-nav: rgba(10, 11, 16, 0.85);
         --text-main: #a9b4c3;
-        --text-bright: #f1f5f9;
+        --text-bright: #f5f1f9;
         --accent-cyan: #c084fc;
-        --accent-purple: #a5b4fc;
+        --accent-purple: #d3b0f1;
         --gradient-neon: linear-gradient(135deg, #c084fc, #a78bfa);
         --shadow-neon: 0 8px 24px rgba(0, 0, 0, 0.35);
         --transition-smooth: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
@@ -36,7 +36,7 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-color: #080a10;
+        background-color: #0c0810;
         z-index: 10000;
         display: flex;
         justify-content: center;
@@ -180,7 +180,7 @@
         right: -100%;
         width: 280px;
         height: 100vh;
-        background: rgba(12, 14, 22, 0.95);
+        background: rgba(17, 12, 22, 0.95);
         backdrop-filter: blur(25px);
         -webkit-backdrop-filter: blur(25px);
         border-left: 1px solid rgba(192, 132, 252, 0.15);
@@ -867,7 +867,7 @@
         height: 52px;
         flex-shrink: 0;
         border-radius: 13px;
-        background: linear-gradient(145deg, rgba(192, 132, 252, 0.12), rgba(124, 156, 255, 0.12));
+        background: linear-gradient(145deg, rgba(192, 132, 252, 0.12), rgba(193, 144, 235, 0.12));
         border: 1px solid rgba(var(--ink-rgb), 0.08);
         display: flex;
         align-items: center;
@@ -1438,13 +1438,13 @@
 
     .hobby-box:hover {
         transform: translateY(-5px);
-        background: rgba(18, 20, 32, 0.7);
-        border-color: rgba(124, 156, 255, 0.2);
-        box-shadow: 0 10px 20px rgba(124, 156, 255, 0.05);
+        background: rgba(25, 18, 32, 0.7);
+        border-color: rgba(193, 144, 235, 0.2);
+        box-shadow: 0 10px 20px rgba(193, 144, 235, 0.05);
     }
 
     footer {
-        background-color: #080a10;
+        background-color: #0c0810;
         padding: 40px 20px;
         text-align: center;
         border-top: 1px solid rgba(var(--ink-rgb), 0.03);
@@ -1603,7 +1603,7 @@
     .secret-menu-backdrop {
         position: fixed;
         inset: 0;
-        background: rgba(2, 3, 6, 0.75);
+        background: rgba(4, 2, 6, 0.75);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         z-index: 5000;
@@ -1776,7 +1776,7 @@ html { scroll-padding-top: 84px; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 
 /* 1. Accessibility */
-.skip-link { position: fixed; top: 8px; left: 8px; z-index: 11000; padding: 12px 18px; border-radius: 10px; background: var(--accent-cyan); color: #080a10; font-weight: 600; transform: translateY(-200%); }
+.skip-link { position: fixed; top: 8px; left: 8px; z-index: 11000; padding: 12px 18px; border-radius: 10px; background: var(--accent-cyan); color: #0c0810; font-weight: 600; transform: translateY(-200%); }
 .skip-link:focus { transform: none; }
 :focus-visible { outline: 3px solid var(--accent-cyan); outline-offset: 3px; }
 :focus:not(:focus-visible) { outline: none; }
@@ -1820,8 +1820,8 @@ a, button, input, [role="button"] { touch-action: manipulation; -webkit-tap-high
 .section-cta { text-align: center; margin-top: 35px; }
 .btn-all-projects { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 12px 28px; background: rgba(192,132,252,0.08); color: var(--accent-cyan); border: 1px solid rgba(192,132,252,0.3); border-radius: 30px; font-weight: 600; font-size: 0.95rem; transition: var(--transition-smooth); }
 .btn-all-projects i:last-child { font-size: 0.85rem; }
-@media (hover: hover) { .btn-all-projects:hover { background: var(--accent-cyan); color: #0a0e17; box-shadow: 0 6px 20px rgba(192,132,252,0.4); transform: translateY(-2px); } }
-.btn-all-projects:focus-visible { background: var(--accent-cyan); color: #0a0e17; }
+@media (hover: hover) { .btn-all-projects:hover { background: var(--accent-cyan); color: #110a17; box-shadow: 0 6px 20px rgba(192,132,252,0.4); transform: translateY(-2px); } }
+.btn-all-projects:focus-visible { background: var(--accent-cyan); color: #110a17; }
 
 /* 7. Reduced motion */
 @media (prefers-reduced-motion: reduce) {
@@ -1922,7 +1922,7 @@ footer { background: none; border-top: 1px solid var(--border); padding: 32px 24
    Redesign v3: profile-card layout (banner + overlapping avatar)
    ============================================================ */
 .hero { max-width: 1080px; margin: 0 auto; padding: 96px 24px 72px; }
-.hero::before { content: ''; display: block; height: 180px; border-radius: 20px; border: 1px solid var(--border); background: linear-gradient(135deg, #14202f 0%, #101a2a 45%, #1b2340 100%); }
+.hero::before { content: ''; display: block; height: 180px; border-radius: 20px; border: 1px solid var(--border); background: linear-gradient(135deg, #22142f 0%, #1e102a 45%, #2f1b40 100%); }
 .hero-top { grid-template-columns: 1fr; gap: 0; margin-top: -64px; padding: 0 28px; position: relative; }
 .avatar { width: 128px; height: 128px; border-radius: 50%; border: 5px solid var(--bg-main); background: var(--bg-main); }
 .hero-right { padding-top: 16px; }
@@ -1947,11 +1947,11 @@ footer { background: none; border-top: 1px solid var(--border); padding: 32px 24
    Redesign v4: stacked cards + dark / light themes
    ============================================================ */
 :root { --ink-rgb: 255,255,255; --surface: #11151c; --surface-2: #171c26; --border: rgba(255,255,255,0.08);
-        --banner: linear-gradient(135deg, #1e2a44, #2c2160); color-scheme: dark; }
-:root[data-theme="light"] { --ink-rgb: 15,23,42; --bg-main: #e9edf3; --bg-card: #ffffff; --surface: #ffffff; --surface-2: #f3f5f9;
-        --border: rgba(15,23,42,0.1); --bg-nav: rgba(255,255,255,0.92); --text-main: #475569; --text-bright: #0f172a;
-        --accent-cyan: #2f62e8; --accent-purple: #6d5ae6; --gradient-neon: linear-gradient(135deg, #2f62e8, #6d5ae6);
-        --banner: linear-gradient(135deg, #c7dbff, #e6d9ff); color-scheme: light; }
+        --banner: linear-gradient(135deg, #321e44, #432160); color-scheme: dark; }
+:root[data-theme="light"] { --ink-rgb: 15,23,42; --bg-main: #eee9f3; --bg-card: #ffffff; --surface: #ffffff; --surface-2: #f6f3f9;
+        --border: rgba(29, 15, 42,0.1); --bg-nav: rgba(255,255,255,0.92); --text-main: #475569; --text-bright: #1d0f2a;
+        --accent-cyan: #913bdc; --accent-purple: #a45ee2; --gradient-neon: linear-gradient(135deg, #913bdc, #a45ee2);
+        --banner: linear-gradient(135deg, #e4cff7, #e6d9ff); color-scheme: light; }
 :root[data-theme="light"] .music-btn-play, :root[data-theme="light"] .skip-link { color: #fff; }
 .timeline-period { color: var(--text-main); }
 
@@ -2163,3 +2163,28 @@ h1, h2, h3, .logo, .loader-logo, .section-title, .role-title, .tagline, .role-ty
 }
 .nav-heading:first-child { padding-top: 0; }
 .nav-setting { padding: 4px 6px; }
+
+
+/* ============================================================
+   Hover polish: one smooth, consistent card interaction
+   ============================================================ */
+:root { --ease-out: cubic-bezier(0.22, 1, 0.36, 1); }
+.project-card, .hobby-box, .timeline-content, .about-text, .skills-wrapper, .discord-status, .spotify-player, .discord-game-card, .music-player,
+body .readme-box, body .newton-card, body .newton-pascal-card, body .newton-formula-box {
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), border-color 0.3s ease, background-color 0.3s ease;
+}
+/* after the scroll reveal ends, drop its slow transition and delay */
+.js-anim .reveal.in.done { transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), border-color 0.3s ease, background-color 0.3s ease, opacity 0.3s ease; transition-delay: 0s; }
+/* entrance animations must not keep a locked transform that blocks hover */
+@media (prefers-reduced-motion: no-preference) { .hero-right > * { animation-fill-mode: backwards; } }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .project-card:hover, .hobby-box:hover, .timeline-content:hover, .about-text:hover, .skills-wrapper:hover,
+  body .readme-box:hover, body .newton-card:hover, body .newton-pascal-card:hover, body .newton-formula-box:hover {
+    transform: translateY(-4px); border-color: rgba(192, 132, 252, 0.5); box-shadow: 0 16px 36px rgba(88, 28, 135, 0.35); }
+  .discord-status:hover, .spotify-player:hover, .discord-game-card:hover, .music-player:hover {
+    transform: translateY(-2px); border-color: rgba(192, 132, 252, 0.4); box-shadow: 0 10px 26px rgba(88, 28, 135, 0.3); }
+  .nav-links a:hover { transform: translateX(4px); }
+  .tech-badge { transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s var(--ease-out); }
+  .tech-badge:hover { background: rgba(168, 85, 247, 0.25); border-color: rgba(192, 132, 252, 0.6); transform: translateY(-1px); }
+  .skill-box:hover .skill-bar-progress { filter: brightness(1.2); }
+}

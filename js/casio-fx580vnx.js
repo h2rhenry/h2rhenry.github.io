@@ -9,10 +9,10 @@
   // Only activate on study-corner pages
   if (!/study-corner/i.test(location.pathname)) return;
 
-  const ACCENT = '#00d2ff';
+  const ACCENT = '#c084fc';
   const ACCENT2 = '#9b5de5';
   const BG = '#0a0b10';
-  const CARD = '#121420';
+  const CARD = '#191220';
 
   // ---------- State ----------
   let visible = false;
@@ -568,7 +568,7 @@
     const css = `
 #casio-overlay {
   position: fixed; inset: 0; z-index: 99999;
-  background: rgba(5,6,12,0.78); backdrop-filter: blur(6px);
+  background: rgba(9, 5, 12,0.78); backdrop-filter: blur(6px);
   display: flex; align-items: center; justify-content: center;
   opacity: 0; pointer-events: none; transition: opacity .28s ease;
   font-family: 'Poppins', system-ui, sans-serif;
@@ -576,10 +576,10 @@
 #casio-overlay.open { opacity: 1; pointer-events: auto; }
 #casio-body {
   width: min(380px, 96vw);
-  background: linear-gradient(160deg, #0d0f18 0%, #121420 50%, #0a0b10 100%);
-  border: 1px solid rgba(0,210,255,0.35);
+  background: linear-gradient(160deg, #130d18 0%, #191220 50%, #0a0b10 100%);
+  border: 1px solid rgba(133, 38, 217,0.35);
   border-radius: 22px;
-  box-shadow: 0 0 0 1px rgba(155,93,229,0.15), 0 0 40px rgba(0,210,255,0.18), 0 25px 50px rgba(0,0,0,0.55);
+  box-shadow: 0 0 0 1px rgba(155,93,229,0.15), 0 0 40px rgba(133, 38, 217,0.18), 0 25px 50px rgba(0,0,0,0.55);
   padding: 14px 14px 18px;
   position: relative;
   user-select: none;
@@ -590,46 +590,46 @@
 }
 #casio-title {
   font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
-  background: linear-gradient(135deg, #00d2ff, #9b5de5);
+  background: linear-gradient(135deg, #c084fc, #9b5de5);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 #casio-close {
-  background: transparent; border: 1px solid rgba(0,210,255,0.4);
-  color: #00d2ff; width: 28px; height: 28px; border-radius: 8px;
+  background: transparent; border: 1px solid rgba(133, 38, 217,0.4);
+  color: #c084fc; width: 28px; height: 28px; border-radius: 8px;
   cursor: pointer; font-size: 1rem; line-height: 1;
   transition: all .2s;
 }
-#casio-close:hover { background: rgba(0,210,255,0.15); box-shadow: 0 0 12px rgba(0,210,255,0.3); }
+#casio-close:hover { background: rgba(133, 38, 217,0.15); box-shadow: 0 0 12px rgba(133, 38, 217,0.3); }
 #casio-screen {
-  background: #0c1420;
-  border: 2px solid rgba(0,210,255,0.45);
+  background: #170c20;
+  border: 2px solid rgba(133, 38, 217,0.45);
   border-radius: 10px;
   padding: 10px 12px;
   margin-bottom: 12px;
   min-height: 78px;
-  box-shadow: inset 0 0 20px rgba(0,210,255,0.08), 0 0 15px rgba(0,210,255,0.12);
+  box-shadow: inset 0 0 20px rgba(133, 38, 217,0.08), 0 0 15px rgba(133, 38, 217,0.12);
   position: relative;
 }
 #casio-mode-bar {
   display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px;
-  font-size: 0.62rem; color: #00d2ff; opacity: 0.85;
+  font-size: 0.62rem; color: #c084fc; opacity: 0.85;
 }
 #casio-mode-bar span {
   padding: 1px 6px; border-radius: 4px;
-  background: rgba(0,210,255,0.12); border: 1px solid rgba(0,210,255,0.25);
+  background: rgba(133, 38, 217,0.12); border: 1px solid rgba(133, 38, 217,0.25);
 }
 #casio-mode-bar span.active {
-  background: rgba(0,210,255,0.28); border-color: #00d2ff; color: #fff;
-  box-shadow: 0 0 8px rgba(0,210,255,0.35);
+  background: rgba(133, 38, 217,0.28); border-color: #c084fc; color: #fff;
+  box-shadow: 0 0 8px rgba(133, 38, 217,0.35);
 }
 #casio-expr {
-  font-size: 0.82rem; color: #7dd8f0; min-height: 1.2em;
+  font-size: 0.82rem; color: #d8b4fe; min-height: 1.2em;
   word-break: break-all; opacity: 0.9; text-align: right;
 }
 #casio-result {
-  font-size: 1.35rem; font-weight: 600; color: #e8faff;
+  font-size: 1.35rem; font-weight: 600; color: #f5ecff;
   text-align: right; margin-top: 4px; word-break: break-all;
-  text-shadow: 0 0 12px rgba(0,210,255,0.35);
+  text-shadow: 0 0 12px rgba(133, 38, 217,0.35);
 }
 #casio-keys {
   display: grid;
@@ -640,28 +640,28 @@
   appearance: none; border: none; border-radius: 10px;
   height: 40px; font-size: 0.78rem; font-weight: 600;
   cursor: pointer; transition: all .15s ease;
-  background: #1a1e2e; color: #c8d4e0;
+  background: #251a2e; color: #d5c8e0;
   border: 1px solid rgba(255,255,255,0.06);
-  box-shadow: 0 2px 0 #0a0c14, 0 3px 6px rgba(0,0,0,0.35);
+  box-shadow: 0 2px 0 #0f0a14, 0 3px 6px rgba(0,0,0,0.35);
   position: relative;
 }
 .casio-btn:hover {
   filter: brightness(1.15);
-  border-color: rgba(0,210,255,0.35);
+  border-color: rgba(133, 38, 217,0.35);
 }
 .casio-btn:active {
   transform: translateY(2px);
-  box-shadow: 0 0 0 #0a0c14, 0 1px 3px rgba(0,0,0,0.4);
+  box-shadow: 0 0 0 #0f0a14, 0 1px 3px rgba(0,0,0,0.4);
 }
-.casio-btn.fn { background: #151a28; color: #00d2ff; font-size: 0.68rem; }
-.casio-btn.op { background: #1c1830; color: #c9a0ff; }
+.casio-btn.fn { background: #1f1528; color: #c084fc; font-size: 0.68rem; }
+.casio-btn.op { background: #251830; color: #c9a0ff; }
 .casio-btn.eq {
-  background: linear-gradient(135deg, #00b8e0, #7b4fc7);
+  background: linear-gradient(135deg, #a855f7, #7b4fc7);
   color: #fff; border: none;
-  box-shadow: 0 2px 0 #005a70, 0 0 14px rgba(0,210,255,0.35);
+  box-shadow: 0 2px 0 #3b115f, 0 0 14px rgba(133, 38, 217,0.35);
 }
-.casio-btn.num { color: #eef6ff; font-size: 0.95rem; }
-.casio-btn.shift-on { box-shadow: 0 0 0 2px #00d2ff, 0 0 12px rgba(0,210,255,0.4); }
+.casio-btn.num { color: #f7f1fc; font-size: 0.95rem; }
+.casio-btn.shift-on { box-shadow: 0 0 0 2px #c084fc, 0 0 12px rgba(133, 38, 217,0.4); }
 .casio-btn .sub {
   position: absolute; top: 2px; right: 4px;
   font-size: 0.55rem; color: #9b5de5; font-weight: 500;
@@ -669,30 +669,30 @@
 #casio-panel {
   display: none; margin-top: 10px;
   background: rgba(0,0,0,0.25); border-radius: 12px;
-  padding: 12px; border: 1px solid rgba(0,210,255,0.2);
+  padding: 12px; border: 1px solid rgba(133, 38, 217,0.2);
   max-height: 220px; overflow-y: auto;
 }
 #casio-panel.open { display: block; }
 #casio-panel h4 {
-  margin: 0 0 8px; font-size: 0.78rem; color: #00d2ff;
+  margin: 0 0 8px; font-size: 0.78rem; color: #c084fc;
   font-weight: 600;
 }
 #casio-panel input, #casio-panel select {
-  background: #0c1018; border: 1px solid rgba(0,210,255,0.3);
-  color: #e0f0ff; border-radius: 6px; padding: 5px 8px;
+  background: #120c18; border: 1px solid rgba(133, 38, 217,0.3);
+  color: #f0e5fa; border-radius: 6px; padding: 5px 8px;
   font-size: 0.78rem; width: 100%; margin-bottom: 6px;
 }
 #casio-panel .row { display: flex; gap: 6px; margin-bottom: 6px; flex-wrap: wrap; }
 #casio-panel .row input { flex: 1; min-width: 50px; }
 #casio-panel button.panel-btn {
-  background: linear-gradient(135deg, #00b8e0, #7b4fc7);
+  background: linear-gradient(135deg, #a855f7, #7b4fc7);
   border: none; color: #fff; border-radius: 8px;
   padding: 7px 12px; font-size: 0.75rem; font-weight: 600;
   cursor: pointer; margin-top: 4px;
 }
 #casio-panel .result-box {
-  margin-top: 8px; padding: 8px; background: #0c1420;
-  border-radius: 8px; color: #a8e6ff; font-size: 0.8rem;
+  margin-top: 8px; padding: 8px; background: #170c20;
+  border-radius: 8px; color: #d6b5f2; font-size: 0.8rem;
   white-space: pre-wrap; word-break: break-all;
 }
 #casio-hint {
@@ -926,7 +926,7 @@
               row.appendChild(inp);
             }
             const eq = document.createElement('span');
-            eq.textContent = '='; eq.style.color = '#00d2ff'; eq.style.alignSelf = 'center';
+            eq.textContent = '='; eq.style.color = '#c084fc'; eq.style.alignSelf = 'center';
             row.appendChild(eq);
             const rhs = document.createElement('input');
             rhs.type = 'number'; rhs.step = 'any';

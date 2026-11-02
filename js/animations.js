@@ -24,7 +24,7 @@
     R.classList.add('js-anim');
     var els = D.querySelectorAll('section, .project-card, .hobby-box, .timeline-item, .skill-box');
     var io = new IntersectionObserver(function (es) {
-      es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } });
+      es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); (function (el) { setTimeout(function () { el.classList.add('done'); }, 1500); })(x.target); io.unobserve(x.target); } });
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
     els.forEach(function (e) {
       var i = Array.prototype.indexOf.call(e.parentNode.children, e);

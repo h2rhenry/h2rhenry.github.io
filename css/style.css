@@ -2201,3 +2201,11 @@ body .readme-box, body .newton-card, body .newton-pascal-card, body .newton-form
 .page-hero { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; max-width: 880px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
 .page-hero h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); line-height: 1.2; margin: 0 0 14px; text-wrap: balance; }
 .page-hero .description { max-width: 62ch; margin: 0 auto; text-align: center; text-wrap: pretty; }
+
+
+/* Skill icons */
+.skill-name { display: inline-flex; align-items: center; gap: 10px; }
+.skill-icon { width: 28px; height: 28px; flex-shrink: 0; object-fit: contain; }
+.only-light { display: none; }
+:root[data-theme="light"] .only-dark { display: none; }
+:root[data-theme="light"] .only-light { display: inline; }

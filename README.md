@@ -1,12 +1,10 @@
 <div align="center">
 
-# h2rhenry | Personal Profile
+# H2rhenry | Personal Profile
 
 **Trang hồ sơ cá nhân của Hoàng Hải (h2rhenry), nhà phát triển trong cộng đồng Minecraft server.**
 
-Giao diện tím đậm, chế độ sáng / tối, hai ngôn ngữ, trạng thái Discord trực tiếp và trình phát nhạc.
-
-[![Live Site](https://img.shields.io/badge/Live-h2rhenry.github.io-8b5cf6?style=for-the-badge&logo=githubpages&logoColor=white)](https://h2rhenry.github.io)
+[![Live Site](https://img.shields.io/badge/Live-h2rhenry.github.io-8b5cf6?style=for-the-badge&logo=githubpages&logoColor=white)](https://h2rhenry.is-a.dev)
 [![License: MIT](https://img.shields.io/github/license/h2rhenry/h2rhenry.github.io?style=for-the-badge&color=a855f7)](LICENSE)
 [![Last Commit](https://img.shields.io/github/last-commit/h2rhenry/h2rhenry.github.io?style=for-the-badge&color=7c3aed)](https://github.com/h2rhenry/h2rhenry.github.io/commits/main)
 [![Repo Size](https://img.shields.io/github/repo-size/h2rhenry/h2rhenry.github.io?style=for-the-badge&color=6d28d9)](https://github.com/h2rhenry/h2rhenry.github.io)
@@ -15,8 +13,8 @@ Giao diện tím đậm, chế độ sáng / tối, hai ngôn ngữ, trạng th�
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![PWA](https://img.shields.io/badge/PWA-5A0FC8?style=flat-square&logo=pwa&logoColor=white)
-![No Build](https://img.shields.io/badge/Build-không%20cần-22c55e?style=flat-square)
-![Accessibility](https://img.shields.io/badge/A11y-focus%20%7C%20ARIA%20%7C%20reduced--motion-8b5cf6?style=flat-square)
+![No Build](https://img.shields.io/badge/Build-NO%20NEED-22c55e?style=flat-square)
+![Accessibility](https://img.shields.io/badge/A11y-FOCUS%20%7C%20ARIA%20%7C%20REDUCED--motion-8b5cf6?style=flat-square)
 
 [Xem trang](https://h2rhenry.github.io) · [Tính năng](#tính-năng) · [Bắt đầu nhanh](#bắt-đầu-nhanh) · [Tùy chỉnh](#tùy-chỉnh) · [Giấy phép](#giấy-phép)
 

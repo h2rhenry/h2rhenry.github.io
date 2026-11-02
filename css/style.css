@@ -2220,3 +2220,8 @@ body .readme-box, body .newton-card, body .newton-pascal-card, body .newton-form
 .nav-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--accent-cyan); transform: translateX(16px); transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1); }
 :root[data-theme="light"] .nav-switch::after { transform: none; }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) { .nav-links .nav-btn:hover { transform: translateX(4px); } }
+
+/* Fix: old #lang-toggle rule (id selector) was shrinking the settings buttons */
+.nav-links #theme-toggle.nav-btn, .nav-links #lang-toggle.nav-btn { width: 100%; height: auto; min-width: 0; padding: 12px 18px; font-size: 1.05rem; letter-spacing: 0; justify-content: flex-start; }
+.nav-links .nav-btn .nav-btn-value { font-size: 0.78rem; letter-spacing: 0.06em; }
+.nav-links .nav-btn > span:not(.nav-btn-value):not(.nav-switch) { flex: 0 1 auto; }

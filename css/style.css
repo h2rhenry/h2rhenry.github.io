@@ -1834,7 +1834,7 @@ a, button, input, [role="button"] { touch-action: manipulation; -webkit-tap-high
 /* ============================================================
    Professional pass: no decorative effects, calmer palette
    ============================================================ */
-#preloader, #particles-bg, .cursor-particle { display: none !important; }
+#particles-bg, .cursor-particle { display: none !important; }
 .fade-in-up { opacity: 1 !important; transform: none !important; transition: none !important; }
 .skill-bar-progress { transition: none; }
 .avatar-wrapper::before, .loader-logo { animation: none; }
@@ -2188,3 +2188,16 @@ body .readme-box, body .newton-card, body .newton-pascal-card, body .newton-form
   .tech-badge:hover { background: rgba(168, 85, 247, 0.25); border-color: rgba(192, 132, 252, 0.6); transform: translateY(-1px); }
   .skill-box:hover .skill-bar-progress { filter: brightness(1.2); }
 }
+
+
+/* ============================================================
+   Loader restored + consistent page headers
+   ============================================================ */
+#preloader { background: var(--bg-main); }
+.loader-logo { font-family: 'Chakra Petch', 'Exo 2', sans-serif; letter-spacing: 0.12em; }
+.loader-status { color: var(--text-main); }
+
+/* Sub-page header (Projects, Newton, ...): centered, same rhythm */
+.page-hero { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; max-width: 880px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+.page-hero h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); line-height: 1.2; margin: 0 0 14px; text-wrap: balance; }
+.page-hero .description { max-width: 62ch; margin: 0 auto; text-align: center; text-wrap: pretty; }

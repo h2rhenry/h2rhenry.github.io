@@ -507,6 +507,7 @@
         const MUSIC_FOLDER = 'assets/music/';
         const MUSIC_COVER_FOLDER = 'assets/music/covers/';
         const PLAYLIST = [
+            { title: 'The Other Side Of The Paradise', artist: 'Glass Animal', src: 'first.mp3', cover: '3.png' },
             { title: 'Nevada', artist: 'Vicetone', src: 'Nevada.mp3', cover: '1.webp' },
             { title: 'Never Be Alone', artist: 'TheFatRat', src: 'NBA.mp3', cover: '2.webp' },
         ];

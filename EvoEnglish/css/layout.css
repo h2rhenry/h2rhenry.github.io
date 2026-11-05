@@ -1,0 +1,42 @@
+.app{display:grid;grid-template-columns:var(--sb-w,264px) minmax(0,1fr);min-height:100vh;transition:grid-template-columns var(--t-med)}
+.app.collapsed{--sb-w:80px}
+.sidebar{position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--surface);border-right:1px solid var(--border);padding:var(--s4) var(--s3);display:flex;flex-direction:column;gap:var(--s4)}
+.brand{display:flex;align-items:center;gap:var(--s3);padding:var(--s1) var(--s2) var(--s2);font-weight:800;font-size:1.2rem;letter-spacing:-.02em;color:var(--text)}
+.brand-mark{display:grid;place-items:center;width:40px;height:40px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--hero-from),var(--hero-to));color:#fff;flex:none;font-size:1.2rem;box-shadow:0 3px 0 var(--primary-edge)}
+.nav{display:flex;flex-direction:column;gap:var(--s1)}
+.nav a{position:relative;display:flex;align-items:center;gap:var(--s3);min-height:44px;padding:var(--s2) var(--s3);border-radius:var(--r-sm);color:var(--muted);text-decoration:none;font-weight:600;transition:background var(--t-fast),color var(--t-fast)}
+.nav a:hover{background:var(--surface-2);color:var(--text)}
+.nav a:active{background:var(--accent-soft)}
+.nav a[aria-current="page"]{background:var(--accent-soft);color:var(--primary);font-weight:800}
+.nav a[aria-current="page"]::before{content:"";position:absolute;left:-12px;top:10px;bottom:10px;width:4px;border-radius:0 4px 4px 0;background:var(--primary)}
+.nav svg,.bottom-nav svg,.icon-btn svg{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.app.collapsed .nav .label,.app.collapsed .brand-text{display:none}
+.app.collapsed .nav a{justify-content:center;padding:var(--s2)}
+.main-wrap{min-width:0;display:flex;flex-direction:column}
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:var(--s2);padding:var(--s3) var(--s5);background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.topbar-title{flex:1;margin:0;font-weight:800;font-size:1.05rem;letter-spacing:-.01em}
+.icon-btn{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--border);border-radius:var(--r-sm);background:var(--surface);color:var(--text);cursor:pointer;transition:background var(--t-fast),border-color var(--t-fast),box-shadow var(--t-fast)}
+.icon-btn:hover{background:var(--surface-2);border-color:var(--border-strong)}
+.icon-btn:active{box-shadow:var(--shadow-press) inset;background:var(--accent-soft)}
+.content{width:100%;max-width:1120px;margin:0 auto;padding:var(--s5) var(--s5) var(--s7)}
+.bottom-nav{display:none}
+.scrim{position:fixed;inset:0;background:rgba(15,18,38,.62);z-index:35}
+.menu-btn{display:none}
+@media (max-width:899px){
+  .app,.app.collapsed{grid-template-columns:minmax(0,1fr)}
+  .sidebar{position:fixed;inset:0 auto 0 0;width:min(300px,86vw);height:100dvh;z-index:40;transform:translateX(-100%);visibility:hidden;transition:transform var(--t-med),visibility 0s .22s;padding-top:calc(var(--s4) + env(safe-area-inset-top))}
+  .app.drawer-open .sidebar{transform:none;visibility:visible;transition-delay:0s;box-shadow:var(--shadow)}
+  .app.collapsed .nav .label,.app.collapsed .brand-text{display:inline}
+  .app.collapsed .nav a{justify-content:flex-start;padding:var(--s2) var(--s3)}
+  .menu-btn{display:grid}.collapse-btn{display:none}
+  .topbar{padding:var(--s2) var(--s3);padding-top:calc(var(--s2) + env(safe-area-inset-top))}
+  .content{padding:var(--s4) 14px calc(96px + env(safe-area-inset-bottom))}
+  .bottom-nav{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--border);padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -6px 20px rgba(49,46,129,.07)}
+  .bottom-nav a,.bottom-nav button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:60px;padding:var(--s2) 2px;border:0;background:none;color:var(--muted);font:inherit;font-size:.75rem;font-weight:600;text-decoration:none;cursor:pointer;transition:color var(--t-fast),background var(--t-fast)}
+  .bottom-nav a:active,.bottom-nav button:active{background:var(--accent-soft)}
+  .bottom-nav [aria-current="page"]{color:var(--primary);font-weight:800}
+  .bottom-nav [aria-current="page"]::before{content:"";position:absolute;top:0;left:30%;right:30%;height:3px;border-radius:0 0 4px 4px;background:var(--primary)}
+}
+/* Khi cuộn tới phần tử đang focus, chừa chỗ cho thanh trên cùng và thanh dưới cố định để không bị che. */
+html{scroll-padding-top:84px;scroll-padding-bottom:84px}
+@media (max-width:899px){html{scroll-padding-top:80px;scroll-padding-bottom:160px}}

@@ -1,0 +1,217 @@
+{
+ "sentences": [
+  {
+   "id": "s-a0-1",
+   "level": "A0",
+   "kind": "sentence",
+   "text": "Hello, my name is Lan.",
+   "vi": "Xin chào, tên mình là Lan.",
+   "tip": "Từ mang nội dung (name, Lan) thường được nhấn mạnh hơn các từ chức năng."
+  },
+  {
+   "id": "s-a0-2",
+   "level": "A0",
+   "kind": "sentence",
+   "text": "Nice to meet you.",
+   "vi": "Rất vui được gặp bạn.",
+   "tip": "Khi nói nhanh, \"meet you\" thường được nối âm."
+  },
+  {
+   "id": "s-a0-3",
+   "level": "A0",
+   "kind": "sentence",
+   "text": "I am a student.",
+   "vi": "Mình là học sinh.",
+   "tip": "\"student\" nhấn ở âm tiết đầu: STU-dent."
+  },
+  {
+   "id": "s-a0-4",
+   "level": "A0",
+   "kind": "sentence",
+   "text": "I have a brother and a sister.",
+   "vi": "Mình có một anh/em trai và một chị/em gái.",
+   "tip": "Chú ý âm cuối của \"brother\" và \"sister\" (âm /ər/ nhẹ, không nhấn)."
+  },
+  {
+   "id": "s-a1-1",
+   "level": "A1",
+   "kind": "sentence",
+   "text": "I get up at six o'clock every morning.",
+   "vi": "Sáng nào mình cũng dậy lúc sáu giờ.",
+   "tip": "\"o'clock\" đọc là /əˈklɑːk/, nhấn âm tiết thứ hai."
+  },
+  {
+   "id": "s-a1-2",
+   "level": "A1",
+   "kind": "sentence",
+   "text": "Can I have a cup of tea, please?",
+   "vi": "Cho mình một tách trà được không?",
+   "tip": "Câu hỏi Yes/No thường lên giọng ở cuối câu."
+  },
+  {
+   "id": "s-a1-3",
+   "level": "A1",
+   "kind": "sentence",
+   "text": "Where is the bus station?",
+   "vi": "Bến xe buýt ở đâu?",
+   "tip": "Câu hỏi bắt đầu bằng Wh- thường xuống giọng ở cuối câu."
+  },
+  {
+   "id": "s-a1-4",
+   "level": "A1",
+   "kind": "sentence",
+   "text": "She is playing football in the park.",
+   "vi": "Cô ấy đang chơi bóng đá trong công viên.",
+   "tip": "Chú ý đọc rõ âm cuối /ŋ/ trong \"playing\"."
+  },
+  {
+   "id": "s-a2-1",
+   "level": "A2",
+   "kind": "sentence",
+   "text": "Yesterday I went to the market with my mother.",
+   "vi": "Hôm qua mình đi chợ với mẹ.",
+   "tip": "\"went\" đọc là /wɛnt/; đừng bỏ âm /t/ cuối từ khi sau đó là phụ âm."
+  },
+  {
+   "id": "s-a2-2",
+   "level": "A2",
+   "kind": "sentence",
+   "text": "If it rains tomorrow, we will stay at home.",
+   "vi": "Nếu ngày mai trời mưa, chúng mình sẽ ở nhà.",
+   "tip": "Ngắt giọng ngắn sau dấu phẩy, giữa hai mệnh đề."
+  },
+  {
+   "id": "s-a2-3",
+   "level": "A2",
+   "kind": "sentence",
+   "text": "This phone is more expensive than that one.",
+   "vi": "Chiếc điện thoại này đắt hơn chiếc kia.",
+   "tip": "\"expensive\" nhấn ở âm tiết thứ hai: ex-PEN-sive."
+  },
+  {
+   "id": "s-a2-4",
+   "level": "A2",
+   "kind": "sentence",
+   "text": "I am going to visit my grandparents next weekend.",
+   "vi": "Cuối tuần sau mình sẽ thăm ông bà.",
+   "tip": "\"going to\" trong nói nhanh thường được rút gọn, nhưng khi mới luyện hãy đọc đầy đủ."
+  }
+ ],
+ "topics": [
+  {
+   "id": "t-a0-1",
+   "level": "A0",
+   "kind": "topic",
+   "title": "Introduce yourself",
+   "vi": "Giới thiệu bản thân.",
+   "questions": [
+    "What is your name?",
+    "How old are you?",
+    "Where do you live?",
+    "What do you like?"
+   ],
+   "phrases": [
+    "My name is …",
+    "I am … years old.",
+    "I live in …",
+    "I like …"
+   ],
+   "seconds": 30
+  },
+  {
+   "id": "t-a0-2",
+   "level": "A0",
+   "kind": "topic",
+   "title": "Your family",
+   "vi": "Nói về gia đình bạn.",
+   "questions": [
+    "How many people are in your family?",
+    "What do your parents do?",
+    "Do you have brothers or sisters?"
+   ],
+   "phrases": [
+    "There are … people in my family.",
+    "My father is a …",
+    "I have a brother / a sister."
+   ],
+   "seconds": 30
+  },
+  {
+   "id": "t-a1-1",
+   "level": "A1",
+   "kind": "topic",
+   "title": "Your daily routine",
+   "vi": "Nói về một ngày bình thường của bạn.",
+   "questions": [
+    "What time do you get up?",
+    "What do you do in the morning?",
+    "What do you do in the evening?"
+   ],
+   "phrases": [
+    "I usually …",
+    "First, … Then …",
+    "After that, …",
+    "In the evening, …"
+   ],
+   "seconds": 45
+  },
+  {
+   "id": "t-a1-2",
+   "level": "A1",
+   "kind": "topic",
+   "title": "Your favourite food",
+   "vi": "Nói về món ăn bạn thích.",
+   "questions": [
+    "What is your favourite food?",
+    "Why do you like it?",
+    "Who cooks it for you?"
+   ],
+   "phrases": [
+    "My favourite food is …",
+    "I like it because …",
+    "It tastes …",
+    "My mother cooks it."
+   ],
+   "seconds": 45
+  },
+  {
+   "id": "t-a2-1",
+   "level": "A2",
+   "kind": "topic",
+   "title": "Last weekend",
+   "vi": "Kể về cuối tuần vừa qua.",
+   "questions": [
+    "Where did you go?",
+    "Who did you meet?",
+    "What did you do?",
+    "How did you feel?"
+   ],
+   "phrases": [
+    "Last weekend, I …",
+    "On Saturday, we went to …",
+    "It was …",
+    "I felt … because …"
+   ],
+   "seconds": 60
+  },
+  {
+   "id": "t-a2-2",
+   "level": "A2",
+   "kind": "topic",
+   "title": "Your holiday plans",
+   "vi": "Nói về kế hoạch kỳ nghỉ.",
+   "questions": [
+    "Where are you going to go?",
+    "What will you do there?",
+    "What will you do if it rains?"
+   ],
+   "phrases": [
+    "I am going to …",
+    "I will …",
+    "If the weather is nice, I will …",
+    "I hope …"
+   ],
+   "seconds": 60
+  }
+ ]
+}

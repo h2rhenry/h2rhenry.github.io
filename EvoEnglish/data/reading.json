@@ -1,0 +1,597 @@
+{
+ "passages": [
+  {
+   "id": "a0-my-family",
+   "level": "A0",
+   "title": "My Name Is Lan",
+   "paragraphs": [
+    "My name is Lan. I am ten years old. I am a student.",
+    "I have a brother and a sister. My brother is Nam. My sister is Hoa. We live in a small house. I love my family."
+   ],
+   "vocab": [
+    {
+     "w": "live",
+     "vi": "sống",
+     "pos": "v"
+    },
+    {
+     "w": "love",
+     "vi": "yêu thương",
+     "pos": "v"
+    },
+    {
+     "w": "years",
+     "vi": "năm (tuổi)",
+     "pos": "n"
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "kind": "detail",
+     "q": "How old is Lan?",
+     "options": [
+      "Nine",
+      "Ten",
+      "Eleven",
+      "Twelve"
+     ],
+     "answer": "Ten",
+     "why": "Bài viết: \"I am ten years old.\""
+    },
+    {
+     "id": "q2",
+     "kind": "detail",
+     "q": "Who is Nam?",
+     "options": [
+      "Lan's father",
+      "Lan's brother",
+      "Lan's friend",
+      "Lan's teacher"
+     ],
+     "answer": "Lan's brother",
+     "why": "\"My brother is Nam.\""
+    },
+    {
+     "id": "q3",
+     "kind": "find",
+     "q": "Lan lives in a big house.",
+     "options": [
+      "Đúng",
+      "Sai",
+      "Không có thông tin"
+     ],
+     "answer": "Sai",
+     "why": "Bài viết nói họ sống trong một ngôi nhà nhỏ (small house)."
+    },
+    {
+     "id": "q4",
+     "kind": "find",
+     "q": "Lan has a dog.",
+     "options": [
+      "Đúng",
+      "Sai",
+      "Không có thông tin"
+     ],
+     "answer": "Không có thông tin",
+     "why": "Bài không nhắc đến con chó."
+    }
+   ]
+  },
+  {
+   "id": "a0-breakfast",
+   "level": "A0",
+   "title": "Breakfast at Home",
+   "paragraphs": [
+    "I get up at six. I eat bread and an egg for breakfast. My mother drinks tea. My father drinks coffee. I drink milk.",
+    "After breakfast, I go to school by bike."
+   ],
+   "vocab": [
+    {
+     "w": "get up",
+     "vi": "thức dậy",
+     "pos": "v"
+    },
+    {
+     "w": "bike",
+     "vi": "xe đạp",
+     "pos": "n"
+    },
+    {
+     "w": "After",
+     "vi": "sau khi",
+     "pos": "prep"
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "kind": "detail",
+     "q": "What does the writer drink?",
+     "options": [
+      "Tea",
+      "Coffee",
+      "Milk",
+      "Water"
+     ],
+     "answer": "Milk",
+     "why": "\"I drink milk.\""
+    },
+    {
+     "id": "q2",
+     "kind": "detail",
+     "q": "What does the writer's father drink?",
+     "options": [
+      "Tea",
+      "Coffee",
+      "Milk",
+      "Juice"
+     ],
+     "answer": "Coffee",
+     "why": "\"My father drinks coffee.\""
+    },
+    {
+     "id": "q3",
+     "kind": "find",
+     "q": "The writer goes to school by bus.",
+     "options": [
+      "Đúng",
+      "Sai",
+      "Không có thông tin"
+     ],
+     "answer": "Sai",
+     "why": "Bài viết nói người viết đi học bằng xe đạp (by bike)."
+    },
+    {
+     "id": "q4",
+     "kind": "find",
+     "q": "The writer has a sister.",
+     "options": [
+      "Đúng",
+      "Sai",
+      "Không có thông tin"
+     ],
+     "answer": "Không có thông tin",
+     "why": "Bài không nói về anh chị em."
+    }
+   ]
+  },
+  {
+   "id": "a1-park",
+   "level": "A1",
+   "title": "A Day at the Park",
+   "paragraphs": [
+    "On Saturday, Mai and her friends go to the park near her house. The weather is sunny and warm. They play football and talk under a big tree.",
+    "At noon, they eat sandwiches and drink water. In the afternoon, it starts to rain, so they run home. Mai is tired but happy."
+   ],
+   "vocab": [
+    {
+     "w": "weather",
+     "vi": "thời tiết",
+     "pos": "n"
+    },
+    {
+     "w": "sunny",
+     "vi": "có nắng",
+     "pos": "adj"
+    },
+    {
+     "w": "warm",
+     "vi": "ấm áp",
+     "pos": "adj"
+    },
+    {
+     "w": "sandwiches",
+     "vi": "bánh sandwich",
+     "pos": "n"
+    },
+    {
+     "w": "tired",
+     "vi": "mệt",
+     "pos": "adj"
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "kind": "detail",
+     "q": "Where do Mai and her friends go?",
+     "options": [
+      "To the beach",
+      "To the park",
+      "To the market",
+      "To school"
+     ],
+     "answer": "To the park",
+     "why": "\"go to the park near her house\""
+    },
+    {
+     "id": "q2",
+     "kind": "detail",
+     "q": "What do they eat at noon?",
+     "options": [
+      "Rice",
+      "Fruit",
+      "Sandwiches",
+      "Soup"
+     ],
+     "answer": "Sandwiches",
+     "why": "\"At noon, they eat sandwiches\""
+    },
+    {
+     "id": "q3",
+     "kind": "find",
+     "q": "It rains in the morning.",
+     "options": [
+      "Đúng",
+      "Sai",
+      "Không có thông tin"
+     ],
+     "answer": "Sai",
+     "why": "Trời bắt đầu mưa vào buổi chiều (in the afternoon)."
+    },
+    {
+     "id": "q4",
+     "kind": "find",
+     "q": "Mai takes a camera to the park.",
+     "options": [
+      "Đúng",
+      "Sai",
+      "Không có thông tin"
+     ],
+     "answer": "Không có thông tin",
+     "why": "Bài không nhắc đến máy ảnh."
+    },
+    {
+     "id": "q5",
+     "kind": "infer",
+     "q": "Why do they run home?",
+     "options": [
+      "Because it starts to rain",
+      "Because they are hungry",
+      "Because the park closes",
+      "Because they are late"
+     ],
+     "answer": "Because it starts to rain",
+     "why": "\"it starts to rain, so they run home\" (so = vì vậy)."
+    }
+   ]
+  },
+  {
+   "id": "a1-market",
+   "level": "A1",
+   "title": "At the Market",
+   "paragraphs": [
+    "Minh goes to the market with his mother every Sunday. They buy fruit, fish and vegetables. Minh likes apples, but his mother likes oranges.",
+    "The market is busy and noisy. After shopping, they have a cold drink and walk home."
+   ],
+   "vocab": [
+    {
+     "w": "vegetables",
+     "vi": "rau củ",
+     "pos": "n"
+    },
+    {
+     "w": "busy",
+     "vi": "đông đúc",
+     "pos": "adj"
+    },
+    {
+     "w": "noisy",
+     "vi": "ồn ào",
+     "pos": "adj"
+    },
+    {
+     "w": "oranges",
+     "vi": "quả cam",
+     "pos": "n"
+    },
+    {
+     "w": "shopping",
+     "vi": "việc mua sắm",
+     "pos": "n"
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "kind": "detail",
+     "q": "When does Minh go to the market?",
+     "options": [
+      "Every Saturday",
+      "Every Sunday",
+      "Every morning",
+      "Every evening"
+     ],
+     "answer": "Every Sunday",
+     "why": "\"every Sunday\""
+    },
+    {
+     "id": "q2",
+     "kind": "detail",
+     "q": "What does Minh like?",
+     "options": [
+      "Apples",
+      "Oranges",
+      "Fish",
+      "Vegetables"
+     ],
+     "answer": "Apples",
+     "why": "\"Minh likes apples\""
+    },
+    {
+     "id": "q3",
+     "kind": "find",
+     "q": "The market is quiet.",
+     "options": [
+      "Đúng",
+      "Sai",
+      "Không có thông tin"
+     ],
+     "answer": "Sai",
+     "why": "Chợ \"busy and noisy\" (đông đúc và ồn ào)."
+    },
+    {
+     "id": "q4",
+     "kind": "find",
+     "q": "They go to the market by car.",
+     "options": [
+      "Đúng",
+      "Sai",
+      "Không có thông tin"
+     ],
+     "answer": "Không có thông tin",
+     "why": "Bài không nói họ đi bằng gì đến chợ."
+    },
+    {
+     "id": "q5",
+     "kind": "infer",
+     "q": "How do they get home?",
+     "options": [
+      "By bus",
+      "By car",
+      "They walk",
+      "By bike"
+     ],
+     "answer": "They walk",
+     "why": "\"walk home\""
+    }
+   ]
+  },
+  {
+   "id": "a2-library",
+   "level": "A2",
+   "title": "Learning English at the Library",
+   "paragraphs": [
+    "Lan wanted to learn English, so last year she joined a class at her local library. At first she found listening difficult because people spoke too fast.",
+    "However, she practised for twenty minutes every evening and watched short videos with subtitles. After six months, she could understand simple conversations.",
+    "Now she wants to read English books, but she says that unknown words are still a problem. Her teacher advises her to write them in a notebook and review them every week."
+   ],
+   "vocab": [
+    {
+     "w": "library",
+     "vi": "thư viện",
+     "pos": "n"
+    },
+    {
+     "w": "subtitles",
+     "vi": "phụ đề",
+     "pos": "n"
+    },
+    {
+     "w": "advises",
+     "vi": "khuyên",
+     "pos": "v"
+    },
+    {
+     "w": "notebook",
+     "vi": "sổ tay",
+     "pos": "n"
+    },
+    {
+     "w": "review",
+     "vi": "ôn lại",
+     "pos": "v"
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "kind": "detail",
+     "q": "Where did Lan join a class?",
+     "options": [
+      "At a school",
+      "At her local library",
+      "At a company",
+      "At a café"
+     ],
+     "answer": "At her local library",
+     "why": "\"joined a class at her local library\""
+    },
+    {
+     "id": "q2",
+     "kind": "detail",
+     "q": "How long did she practise every evening?",
+     "options": [
+      "Ten minutes",
+      "Twenty minutes",
+      "Thirty minutes",
+      "One hour"
+     ],
+     "answer": "Twenty minutes",
+     "why": "\"twenty minutes every evening\""
+    },
+    {
+     "id": "q3",
+     "kind": "find",
+     "q": "Lan found listening easy at first.",
+     "options": [
+      "Đúng",
+      "Sai",
+      "Không có thông tin"
+     ],
+     "answer": "Sai",
+     "why": "Ban đầu cô thấy nghe khó (\"listening difficult\")."
+    },
+    {
+     "id": "q4",
+     "kind": "find",
+     "q": "Lan lives abroad.",
+     "options": [
+      "Đúng",
+      "Sai",
+      "Không có thông tin"
+     ],
+     "answer": "Không có thông tin",
+     "why": "Bài không nói về nơi Lan sống."
+    },
+    {
+     "id": "q5",
+     "kind": "infer",
+     "q": "Why does the teacher suggest a notebook?",
+     "options": [
+      "To help Lan remember new words",
+      "To practise speaking",
+      "To save money",
+      "To write letters"
+     ],
+     "answer": "To help Lan remember new words",
+     "why": "Lan gặp vấn đề với từ mới; giáo viên bảo ghi và ôn lại hằng tuần."
+    },
+    {
+     "id": "q6",
+     "kind": "infer",
+     "q": "What can we say about Lan's progress?",
+     "options": [
+      "She improved by practising regularly",
+      "She did not improve",
+      "She stopped learning",
+      "She only reads books"
+     ],
+     "answer": "She improved by practising regularly",
+     "why": "Sau sáu tháng luyện tập đều đặn, cô hiểu được hội thoại đơn giản."
+    }
+   ]
+  },
+  {
+   "id": "a2-hue",
+   "level": "A2",
+   "title": "A Weekend in Hue",
+   "paragraphs": [
+    "Last weekend, my family travelled to Hue by train. The journey took about twelve hours, but we enjoyed the views from the window.",
+    "On Saturday we visited the old royal city and took many photos. It was very hot, so we drank a lot of water and rested in the shade. On Sunday morning we took a boat on the Perfume River.",
+    "Although we were tired, we all agreed that the trip was worth it."
+   ],
+   "vocab": [
+    {
+     "w": "journey",
+     "vi": "chuyến đi",
+     "pos": "n"
+    },
+    {
+     "w": "enjoyed",
+     "vi": "thích thú",
+     "pos": "v"
+    },
+    {
+     "w": "shade",
+     "vi": "bóng râm",
+     "pos": "n"
+    },
+    {
+     "w": "boat",
+     "vi": "con thuyền",
+     "pos": "n"
+    },
+    {
+     "w": "agreed",
+     "vi": "đồng ý",
+     "pos": "v"
+    },
+    {
+     "w": "worth it",
+     "vi": "đáng giá",
+     "pos": "phrase"
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "kind": "detail",
+     "q": "How did the family travel to Hue?",
+     "options": [
+      "By plane",
+      "By train",
+      "By bus",
+      "By car"
+     ],
+     "answer": "By train",
+     "why": "\"travelled to Hue by train\""
+    },
+    {
+     "id": "q2",
+     "kind": "detail",
+     "q": "What did they do on Sunday morning?",
+     "options": [
+      "Visited the royal city",
+      "Took a boat on the river",
+      "Went shopping",
+      "Stayed at the hotel"
+     ],
+     "answer": "Took a boat on the river",
+     "why": "\"On Sunday morning we took a boat\""
+    },
+    {
+     "id": "q3",
+     "kind": "find",
+     "q": "They visited the royal city on Sunday.",
+     "options": [
+      "Đúng",
+      "Sai",
+      "Không có thông tin"
+     ],
+     "answer": "Sai",
+     "why": "Họ thăm thành cổ vào thứ Bảy (Saturday)."
+    },
+    {
+     "id": "q4",
+     "kind": "find",
+     "q": "They stayed in a hotel near the river.",
+     "options": [
+      "Đúng",
+      "Sai",
+      "Không có thông tin"
+     ],
+     "answer": "Không có thông tin",
+     "why": "Bài không nói về chỗ ở."
+    },
+    {
+     "id": "q5",
+     "kind": "infer",
+     "q": "Why did they rest in the shade?",
+     "options": [
+      "Because it was very hot",
+      "Because it was raining",
+      "Because they were hungry",
+      "Because the royal city was closed"
+     ],
+     "answer": "Because it was very hot",
+     "why": "\"It was very hot, so we ... rested in the shade.\""
+    },
+    {
+     "id": "q6",
+     "kind": "infer",
+     "q": "What does \"the trip was worth it\" suggest?",
+     "options": [
+      "They thought the trip was a good decision",
+      "They did not like the trip",
+      "The trip was cheap",
+      "They will never travel again"
+     ],
+     "answer": "They thought the trip was a good decision",
+     "why": "Dù mệt, mọi người đều đồng ý chuyến đi đáng giá."
+    }
+   ]
+  }
+ ]
+}

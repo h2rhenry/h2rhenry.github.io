@@ -1,0 +1,271 @@
+{
+ "note": "Khung lộ trình tham khảo theo CEFR. Đây không phải chứng nhận trình độ chính thức.",
+ "levels": [
+  {
+   "id": "A0",
+   "name": "Mới bắt đầu",
+   "goal": "Làm quen từ vựng cơ bản về chào hỏi, gia đình, màu sắc và hai nền tảng ngữ pháp: to be, đại từ.",
+   "status": "ready",
+   "lessons": [
+    {
+     "id": "vocab:greetings",
+     "type": "vocab",
+     "ref": "greetings",
+     "title": "Chào hỏi & giới thiệu"
+    },
+    {
+     "id": "vocab:family",
+     "type": "vocab",
+     "ref": "family",
+     "title": "Gia đình"
+    },
+    {
+     "id": "vocab:colors",
+     "type": "vocab",
+     "ref": "colors",
+     "title": "Màu sắc & tính từ cơ bản"
+    },
+    {
+     "id": "grammar:to-be",
+     "type": "grammar",
+     "ref": "to-be",
+     "title": "Động từ to be (am / is / are)"
+    },
+    {
+     "id": "grammar:pronouns",
+     "type": "grammar",
+     "ref": "pronouns",
+     "title": "Đại từ nhân xưng và tính từ sở hữu"
+    },
+    {
+     "id": "reading:a0-my-family",
+     "type": "reading",
+     "ref": "a0-my-family",
+     "title": "My Name Is Lan"
+    },
+    {
+     "id": "reading:a0-breakfast",
+     "type": "reading",
+     "ref": "a0-breakfast",
+     "title": "Breakfast at Home"
+    },
+    {
+     "id": "listening:a0-meeting",
+     "type": "listening",
+     "ref": "a0-meeting",
+     "title": "Làm quen"
+    },
+    {
+     "id": "listening:a0-family",
+     "type": "listening",
+     "ref": "a0-family",
+     "title": "Gia đình tôi"
+    }
+   ],
+   "test": {
+    "id": "test:A0",
+    "title": "Kiểm tra cuối chương A0",
+    "passPct": 70
+   }
+  },
+  {
+   "id": "A1",
+   "name": "Beginner",
+   "goal": "Hiểu và dùng câu đơn giản về bản thân, đồ vật và thói quen hằng ngày.",
+   "status": "ready",
+   "lessons": [
+    {
+     "id": "vocab:time",
+     "type": "vocab",
+     "ref": "time",
+     "title": "Số đếm & thời gian"
+    },
+    {
+     "id": "vocab:food",
+     "type": "vocab",
+     "ref": "food",
+     "title": "Đồ ăn & thức uống"
+    },
+    {
+     "id": "vocab:home",
+     "type": "vocab",
+     "ref": "home",
+     "title": "Nhà cửa & đồ vật"
+    },
+    {
+     "id": "vocab:animals",
+     "type": "vocab",
+     "ref": "animals",
+     "title": "Động vật"
+    },
+    {
+     "id": "vocab:daily",
+     "type": "vocab",
+     "ref": "daily",
+     "title": "Hoạt động hằng ngày"
+    },
+    {
+     "id": "vocab:places",
+     "type": "vocab",
+     "ref": "places",
+     "title": "Địa điểm"
+    },
+    {
+     "id": "grammar:plural",
+     "type": "grammar",
+     "ref": "plural",
+     "title": "Danh từ số ít và số nhiều"
+    },
+    {
+     "id": "grammar:articles",
+     "type": "grammar",
+     "ref": "articles",
+     "title": "Mạo từ a / an / the"
+    },
+    {
+     "id": "grammar:present-simple",
+     "type": "grammar",
+     "ref": "present-simple",
+     "title": "Thì hiện tại đơn"
+    },
+    {
+     "id": "grammar:present-continuous",
+     "type": "grammar",
+     "ref": "present-continuous",
+     "title": "Thì hiện tại tiếp diễn"
+    },
+    {
+     "id": "grammar:countable",
+     "type": "grammar",
+     "ref": "countable",
+     "title": "Danh từ đếm được và không đếm được"
+    },
+    {
+     "id": "grammar:prepositions",
+     "type": "grammar",
+     "ref": "prepositions",
+     "title": "Giới từ thông dụng: at, on, in, to"
+    },
+    {
+     "id": "reading:a1-park",
+     "type": "reading",
+     "ref": "a1-park",
+     "title": "A Day at the Park"
+    },
+    {
+     "id": "reading:a1-market",
+     "type": "reading",
+     "ref": "a1-market",
+     "title": "At the Market"
+    },
+    {
+     "id": "listening:a1-routine",
+     "type": "listening",
+     "ref": "a1-routine",
+     "title": "Một ngày làm việc"
+    },
+    {
+     "id": "listening:a1-cafe",
+     "type": "listening",
+     "ref": "a1-cafe",
+     "title": "Ở quán cà phê"
+    }
+   ],
+   "test": {
+    "id": "test:A1",
+    "title": "Kiểm tra cuối chương A1",
+    "passPct": 70
+   }
+  },
+  {
+   "id": "A2",
+   "name": "Elementary",
+   "goal": "Kể chuyện đã xảy ra, nói về kế hoạch, so sánh và đưa ra lời khuyên.",
+   "status": "partial",
+   "lessons": [
+    {
+     "id": "grammar:past-simple",
+     "type": "grammar",
+     "ref": "past-simple",
+     "title": "Thì quá khứ đơn"
+    },
+    {
+     "id": "grammar:future",
+     "type": "grammar",
+     "ref": "future",
+     "title": "Các cách nói về tương lai: will và be going to"
+    },
+    {
+     "id": "grammar:comparatives",
+     "type": "grammar",
+     "ref": "comparatives",
+     "title": "So sánh hơn và so sánh nhất"
+    },
+    {
+     "id": "grammar:modals",
+     "type": "grammar",
+     "ref": "modals",
+     "title": "Động từ khuyết thiếu cơ bản"
+    },
+    {
+     "id": "grammar:conditionals",
+     "type": "grammar",
+     "ref": "conditionals",
+     "title": "Câu điều kiện loại 1"
+    },
+    {
+     "id": "reading:a2-library",
+     "type": "reading",
+     "ref": "a2-library",
+     "title": "Learning English at the Library"
+    },
+    {
+     "id": "reading:a2-hue",
+     "type": "reading",
+     "ref": "a2-hue",
+     "title": "A Weekend in Hue"
+    },
+    {
+     "id": "listening:a2-weekend",
+     "type": "listening",
+     "ref": "a2-weekend",
+     "title": "Kế hoạch cuối tuần"
+    }
+   ],
+   "note": "Mới có ngữ pháp, bài đọc và bài nghe. Từ vựng A2 đang chờ bổ sung.",
+   "test": {
+    "id": "test:A2",
+    "title": "Kiểm tra cuối chương A2",
+    "passPct": 70
+   }
+  },
+  {
+   "id": "B1",
+   "name": "Intermediate",
+   "goal": "Nói và viết về chủ đề quen thuộc, diễn đạt ý kiến và kế hoạch.",
+   "status": "pending",
+   "lessons": []
+  },
+  {
+   "id": "B2",
+   "name": "Upper-Intermediate",
+   "goal": "Hiểu văn bản phức tạp hơn và trao đổi khá trôi chảy.",
+   "status": "pending",
+   "lessons": []
+  },
+  {
+   "id": "C1",
+   "name": "Advanced",
+   "goal": "Dùng ngôn ngữ linh hoạt cho học tập và công việc.",
+   "status": "pending",
+   "lessons": []
+  },
+  {
+   "id": "C2",
+   "name": "Proficiency",
+   "goal": "Diễn đạt chính xác, tự nhiên trong mọi ngữ cảnh.",
+   "status": "pending",
+   "lessons": []
+  }
+ ]
+}

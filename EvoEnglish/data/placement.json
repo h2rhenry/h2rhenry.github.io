@@ -1,0 +1,288 @@
+{
+ "note": "Bài kiểm tra đầu vào tham khảo gồm 20 câu. Không thay thế bài thi chuẩn hóa.",
+ "passPct": 65,
+ "questions": [
+  {
+   "id": "p1",
+   "level": "A0",
+   "skill": "grammar",
+   "q": "She ____ my teacher.",
+   "options": [
+    "is",
+    "am",
+    "are",
+    "be"
+   ],
+   "answer": "is",
+   "why": "She đi với is."
+  },
+  {
+   "id": "p2",
+   "level": "A0",
+   "skill": "vocab",
+   "q": "\"apple\" nghĩa là gì?",
+   "options": [
+    "quả táo",
+    "con mèo",
+    "cái bàn",
+    "màu đỏ"
+   ],
+   "answer": "quả táo",
+   "why": "Apple là quả táo."
+  },
+  {
+   "id": "p3",
+   "level": "A0",
+   "skill": "grammar",
+   "q": "I have two ____.",
+   "options": [
+    "book",
+    "books",
+    "bookes",
+    "a book"
+   ],
+   "answer": "books",
+   "why": "Hai quyển sách cần danh từ số nhiều: books."
+  },
+  {
+   "id": "p4",
+   "level": "A0",
+   "skill": "vocab",
+   "q": "Good ____, teacher!",
+   "options": [
+    "morning",
+    "eat",
+    "blue",
+    "small"
+   ],
+   "answer": "morning",
+   "why": "Good morning là lời chào buổi sáng."
+  },
+  {
+   "id": "p5",
+   "level": "A1",
+   "skill": "grammar",
+   "q": "He ____ to school by bike every day.",
+   "options": [
+    "go",
+    "goes",
+    "going",
+    "is go"
+   ],
+   "answer": "goes",
+   "why": "Thì hiện tại đơn, chủ ngữ he nên thêm es."
+  },
+  {
+   "id": "p6",
+   "level": "A1",
+   "skill": "grammar",
+   "q": "My brother is ____ engineer.",
+   "options": [
+    "a",
+    "an",
+    "two",
+    "many"
+   ],
+   "answer": "an",
+   "why": "Engineer bắt đầu bằng âm nguyên âm nên dùng an."
+  },
+  {
+   "id": "p7",
+   "level": "A1",
+   "skill": "grammar",
+   "q": "Look! The children ____ in the garden.",
+   "options": [
+    "play",
+    "plays",
+    "are playing",
+    "played"
+   ],
+   "answer": "are playing",
+   "why": "\"Look!\" báo hiệu hành động đang diễn ra: hiện tại tiếp diễn."
+  },
+  {
+   "id": "p8",
+   "level": "A1",
+   "skill": "grammar",
+   "q": "There isn't ____ milk in the fridge.",
+   "options": [
+    "many",
+    "much",
+    "a",
+    "few"
+   ],
+   "answer": "much",
+   "why": "Milk không đếm được nên dùng much."
+  },
+  {
+   "id": "p9",
+   "level": "A1",
+   "skill": "grammar",
+   "q": "We have English class ____ Monday.",
+   "options": [
+    "in",
+    "on",
+    "at",
+    "to"
+   ],
+   "answer": "on",
+   "why": "Thứ trong tuần dùng on."
+  },
+  {
+   "id": "p10",
+   "level": "A1",
+   "skill": "reading",
+   "q": "What does Tom do every morning?",
+   "options": [
+    "He walks his dog in the park",
+    "He plays football",
+    "He goes to school by bus",
+    "He reads a book"
+   ],
+   "answer": "He walks his dog in the park",
+   "why": "Bài viết: \"Every morning Tom walks Max in the park.\"",
+   "passage": "Tom is ten. He has a dog named Max. Every morning Tom walks Max in the park. After school, Tom plays football."
+  },
+  {
+   "id": "p11",
+   "level": "A2",
+   "skill": "grammar",
+   "q": "Yesterday we ____ a film at the cinema.",
+   "options": [
+    "watched",
+    "watch",
+    "watching",
+    "are watching"
+   ],
+   "answer": "watched",
+   "why": "Yesterday báo hiệu quá khứ đơn."
+  },
+  {
+   "id": "p12",
+   "level": "A2",
+   "skill": "grammar",
+   "q": "This phone is ____ than that one.",
+   "options": [
+    "cheap",
+    "cheaper",
+    "more cheap",
+    "cheapest"
+   ],
+   "answer": "cheaper",
+   "why": "Tính từ ngắn dùng -er khi so sánh hơn."
+  },
+  {
+   "id": "p13",
+   "level": "A2",
+   "skill": "grammar",
+   "q": "I think it ____ rain tomorrow, so take an umbrella.",
+   "options": [
+    "will",
+    "did",
+    "has",
+    "are"
+   ],
+   "answer": "will",
+   "why": "Dự đoán tương lai dùng will + V."
+  },
+  {
+   "id": "p14",
+   "level": "A2",
+   "skill": "grammar",
+   "q": "You ____ wear a seat belt in the car. It is the law.",
+   "options": [
+    "must",
+    "can",
+    "might",
+    "would"
+   ],
+   "answer": "must",
+   "why": "Must diễn đạt sự bắt buộc."
+  },
+  {
+   "id": "p15",
+   "level": "A2",
+   "skill": "grammar",
+   "q": "If you ____ the bus, you will be late.",
+   "options": [
+    "miss",
+    "will miss",
+    "missed",
+    "missing"
+   ],
+   "answer": "miss",
+   "why": "Câu điều kiện loại 1: mệnh đề if dùng hiện tại đơn."
+  },
+  {
+   "id": "p16",
+   "level": "A2",
+   "skill": "reading",
+   "q": "Why did Lan's listening get better?",
+   "options": [
+    "She practised every evening",
+    "She moved to a new city",
+    "She stopped studying",
+    "She lived abroad"
+   ],
+   "answer": "She practised every evening",
+   "why": "Bài viết: cô luyện tập hai mươi phút mỗi tối.",
+   "passage": "Lan wanted to learn English, so last year she joined a class at her local library. At first she found listening difficult, but she practised for twenty minutes every evening. Now she can understand short stories."
+  },
+  {
+   "id": "p17",
+   "level": "B1",
+   "skill": "grammar",
+   "q": "If I ____ more time, I would learn another language.",
+   "options": [
+    "had",
+    "have",
+    "will have",
+    "would have"
+   ],
+   "answer": "had",
+   "why": "Câu điều kiện loại 2: if + quá khứ đơn, would + V."
+  },
+  {
+   "id": "p18",
+   "level": "B1",
+   "skill": "grammar",
+   "q": "The report ____ by the manager before the meeting yesterday.",
+   "options": [
+    "was finished",
+    "finished",
+    "has finishing",
+    "is finish"
+   ],
+   "answer": "was finished",
+   "why": "Câu bị động quá khứ đơn: was/were + V3."
+  },
+  {
+   "id": "p19",
+   "level": "B1",
+   "skill": "vocab",
+   "q": "She is very ____; she never gives up when things are hard.",
+   "options": [
+    "determined",
+    "lazy",
+    "careless",
+    "shy"
+   ],
+   "answer": "determined",
+   "why": "Determined nghĩa là quyết tâm, phù hợp với \"never gives up\"."
+  },
+  {
+   "id": "p20",
+   "level": "B1",
+   "skill": "grammar",
+   "q": "I have lived in this city ____ 2018.",
+   "options": [
+    "for",
+    "since",
+    "during",
+    "ago"
+   ],
+   "answer": "since",
+   "why": "Since + mốc thời gian dùng với hiện tại hoàn thành."
+  }
+ ]
+}

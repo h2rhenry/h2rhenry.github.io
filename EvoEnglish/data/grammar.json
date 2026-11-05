@@ -1,0 +1,1645 @@
+{
+ "lessons": [
+  {
+   "id": "to-be",
+   "level": "A0",
+   "title": "Động từ to be (am / is / are)",
+   "summary": "To be nghĩa là \"là, thì, ở\". Dạng của nó thay đổi theo chủ ngữ.",
+   "formula": [
+    "I am · He / She / It is · You / We / They are",
+    "Phủ định: am not · is not (isn't) · are not (aren't)",
+    "Câu hỏi: Am I…? · Is he…? · Are you…?"
+   ],
+   "usage": [
+    "Nói về nghề nghiệp, quốc tịch, tuổi: I am a student.",
+    "Mô tả trạng thái, tính chất: She is happy.",
+    "Nói về vị trí: They are at home."
+   ],
+   "examples": [
+    {
+     "en": "I am a student.",
+     "vi": "Mình là học sinh."
+    },
+    {
+     "en": "She is twelve years old.",
+     "vi": "Cô ấy mười hai tuổi."
+    },
+    {
+     "en": "We are at the park.",
+     "vi": "Chúng mình đang ở công viên."
+    },
+    {
+     "en": "Is he your brother?",
+     "vi": "Anh ấy là anh trai bạn à?"
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "I is a student.",
+     "right": "I am a student.",
+     "note": "Chủ ngữ I đi với am."
+    },
+    {
+     "wrong": "She are happy.",
+     "right": "She is happy.",
+     "note": "She, he, it đi với is."
+    },
+    {
+     "wrong": "He not is tired.",
+     "right": "He is not tired.",
+     "note": "Phủ định đặt not sau to be."
+    }
+   ],
+   "exercises": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "q": "I ____ a student.",
+     "options": [
+      "am",
+      "is",
+      "are",
+      "be"
+     ],
+     "answer": "am",
+     "why": "Chủ ngữ I đi với am."
+    },
+    {
+     "id": "q2",
+     "type": "mc",
+     "q": "They ____ at home.",
+     "options": [
+      "is",
+      "am",
+      "are",
+      "be"
+     ],
+     "answer": "are",
+     "why": "They là số nhiều nên dùng are."
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "q": "It ____ not cold today.",
+     "options": [
+      "is",
+      "are",
+      "am",
+      "be"
+     ],
+     "answer": "is",
+     "why": "It đi với is."
+    },
+    {
+     "id": "q4",
+     "type": "fill",
+     "q": "My sister ____ twelve years old.",
+     "answer": "is",
+     "accepts": [],
+     "why": "My sister = she, nên dùng is."
+    },
+    {
+     "id": "q5",
+     "type": "fill",
+     "q": "____ you tired?",
+     "answer": "Are",
+     "accepts": [],
+     "why": "Câu hỏi với you: Are you…?"
+    },
+    {
+     "id": "q6",
+     "type": "fix",
+     "q": "She are my friend.",
+     "answer": "She is my friend.",
+     "accepts": [],
+     "why": "She đi với is."
+    },
+    {
+     "id": "q7",
+     "type": "fix",
+     "q": "We is in the classroom.",
+     "answer": "We are in the classroom.",
+     "accepts": [],
+     "why": "We đi với are."
+    }
+   ]
+  },
+  {
+   "id": "pronouns",
+   "level": "A0",
+   "title": "Đại từ nhân xưng và tính từ sở hữu",
+   "summary": "Đại từ thay cho danh từ. Dạng của đại từ đổi theo vai trò trong câu: chủ ngữ, tân ngữ hay sở hữu.",
+   "formula": [
+    "Chủ ngữ: I · you · he · she · it · we · they",
+    "Tân ngữ: me · you · him · her · it · us · them",
+    "Tính từ sở hữu: my · your · his · her · its · our · their"
+   ],
+   "usage": [
+    "Đại từ chủ ngữ đứng trước động từ: She likes tea.",
+    "Đại từ tân ngữ đứng sau động từ hoặc giới từ: I like her.",
+    "Tính từ sở hữu đứng trước danh từ: This is my book.",
+    "You dùng cho một người hoặc nhiều người."
+   ],
+   "examples": [
+    {
+     "en": "He is my brother.",
+     "vi": "Anh ấy là anh trai mình."
+    },
+    {
+     "en": "I love them.",
+     "vi": "Mình yêu quý họ."
+    },
+    {
+     "en": "This is our house.",
+     "vi": "Đây là nhà của chúng tôi."
+    },
+    {
+     "en": "Mai likes her teacher.",
+     "vi": "Mai quý cô giáo của cô ấy."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Me am tired.",
+     "right": "I am tired.",
+     "note": "Làm chủ ngữ phải dùng I, không dùng me."
+    },
+    {
+     "wrong": "I like she.",
+     "right": "I like her.",
+     "note": "Sau động từ dùng tân ngữ her."
+    },
+    {
+     "wrong": "Her is my sister.",
+     "right": "She is my sister.",
+     "note": "Làm chủ ngữ dùng she."
+    }
+   ],
+   "exercises": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "q": "____ is my brother. (anh ấy)",
+     "options": [
+      "He",
+      "Him",
+      "His",
+      "Her"
+     ],
+     "answer": "He",
+     "why": "Chủ ngữ nam, số ít: He."
+    },
+    {
+     "id": "q2",
+     "type": "mc",
+     "q": "I love ____. (họ)",
+     "options": [
+      "they",
+      "them",
+      "their",
+      "theirs"
+     ],
+     "answer": "them",
+     "why": "Tân ngữ của they là them."
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "q": "This is ____ book. (của mình)",
+     "options": [
+      "my",
+      "me",
+      "I",
+      "mine"
+     ],
+     "answer": "my",
+     "why": "Trước danh từ dùng tính từ sở hữu my."
+    },
+    {
+     "id": "q4",
+     "type": "fill",
+     "q": "Mai is my friend. ____ is kind.",
+     "answer": "She",
+     "accepts": [],
+     "why": "Thay Mai (nữ) bằng She."
+    },
+    {
+     "id": "q5",
+     "type": "fill",
+     "q": "We love ____ teacher. (của chúng tôi)",
+     "answer": "our",
+     "accepts": [],
+     "why": "Tính từ sở hữu của we là our."
+    },
+    {
+     "id": "q6",
+     "type": "fix",
+     "q": "Him is a doctor.",
+     "answer": "He is a doctor.",
+     "accepts": [],
+     "why": "Làm chủ ngữ dùng He."
+    },
+    {
+     "id": "q7",
+     "type": "fix",
+     "q": "I see they in the park.",
+     "answer": "I see them in the park.",
+     "accepts": [],
+     "why": "Sau động từ see dùng tân ngữ them."
+    }
+   ]
+  },
+  {
+   "id": "plural",
+   "level": "A1",
+   "title": "Danh từ số ít và số nhiều",
+   "summary": "Hầu hết danh từ thêm -s ở số nhiều, nhưng có một số quy tắc đặc biệt và nhiều danh từ bất quy tắc.",
+   "formula": [
+    "Thông thường: + s (book → books)",
+    "Tận cùng s, sh, ch, x, z: + es (box → boxes, watch → watches)",
+    "Phụ âm + y: y → ies (city → cities); nguyên âm + y: + s (boy → boys)",
+    "Bất quy tắc: man → men, woman → women, child → children, person → people, foot → feet"
+   ],
+   "usage": [
+    "Dùng số nhiều khi nói về hơn một người hoặc vật: two books.",
+    "Một số danh từ không đổi: sheep, fish (fish thường giữ nguyên ở số nhiều).",
+    "Một số từ tận cùng f/fe đổi thành ves (knife → knives), nhưng không phải mọi từ (roof → roofs)."
+   ],
+   "examples": [
+    {
+     "en": "I have two brothers.",
+     "vi": "Mình có hai anh/em trai."
+    },
+    {
+     "en": "There are three boxes on the table.",
+     "vi": "Có ba cái hộp trên bàn."
+    },
+    {
+     "en": "The children are in the park.",
+     "vi": "Bọn trẻ đang ở công viên."
+    },
+    {
+     "en": "She has two babies.",
+     "vi": "Cô ấy có hai em bé."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "two childs",
+     "right": "two children",
+     "note": "child là danh từ bất quy tắc."
+    },
+    {
+     "wrong": "three boxs",
+     "right": "three boxes",
+     "note": "Tận cùng x thì thêm es."
+    },
+    {
+     "wrong": "a peoples",
+     "right": "people",
+     "note": "People đã là số nhiều, không thêm s."
+    }
+   ],
+   "exercises": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "q": "Số nhiều của \"city\" là:",
+     "options": [
+      "cities",
+      "citys",
+      "cityes",
+      "city's"
+     ],
+     "answer": "cities",
+     "why": "Phụ âm + y đổi y thành ies."
+    },
+    {
+     "id": "q2",
+     "type": "mc",
+     "q": "Số nhiều của \"watch\" là:",
+     "options": [
+      "watchs",
+      "watches",
+      "watchies",
+      "watch"
+     ],
+     "answer": "watches",
+     "why": "Tận cùng ch thì thêm es."
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "q": "Số nhiều của \"child\" là:",
+     "options": [
+      "childs",
+      "childes",
+      "children",
+      "childrens"
+     ],
+     "answer": "children",
+     "why": "Child → children là dạng bất quy tắc."
+    },
+    {
+     "id": "q4",
+     "type": "fill",
+     "q": "I have two ____. (baby)",
+     "answer": "babies",
+     "accepts": [],
+     "why": "Phụ âm + y đổi thành ies."
+    },
+    {
+     "id": "q5",
+     "type": "fill",
+     "q": "There are five ____ in the room. (woman)",
+     "answer": "women",
+     "accepts": [],
+     "why": "Woman → women."
+    },
+    {
+     "id": "q6",
+     "type": "fix",
+     "q": "She has three boxs.",
+     "answer": "She has three boxes.",
+     "accepts": [],
+     "why": "Box tận cùng x nên thêm es."
+    },
+    {
+     "id": "q7",
+     "type": "fix",
+     "q": "Two childs are playing.",
+     "answer": "Two children are playing.",
+     "accepts": [],
+     "why": "Số nhiều của child là children."
+    }
+   ]
+  },
+  {
+   "id": "articles",
+   "level": "A1",
+   "title": "Mạo từ a / an / the",
+   "summary": "A và an dùng với danh từ đếm được số ít chưa xác định. The dùng khi người nói và người nghe đều biết đang nói về cái nào.",
+   "formula": [
+    "a + từ bắt đầu bằng phụ âm (về âm đọc): a book, a university",
+    "an + từ bắt đầu bằng nguyên âm (về âm đọc): an apple, an hour",
+    "the + danh từ đã xác định hoặc duy nhất: the sun, the door"
+   ],
+   "usage": [
+    "Nhắc đến lần đầu dùng a/an, nhắc lại dùng the: I have a cat. The cat is black.",
+    "Chọn a hay an dựa vào âm đọc, không dựa vào chữ cái viết.",
+    "Với danh từ số nhiều hoặc không đếm được nói chung, thường không dùng mạo từ: I like music."
+   ],
+   "examples": [
+    {
+     "en": "I eat an apple every day.",
+     "vi": "Ngày nào mình cũng ăn một quả táo."
+    },
+    {
+     "en": "She is a university student.",
+     "vi": "Cô ấy là sinh viên đại học."
+    },
+    {
+     "en": "Please close the door.",
+     "vi": "Làm ơn đóng cửa lại."
+    },
+    {
+     "en": "He is an honest man.",
+     "vi": "Anh ấy là một người trung thực."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "an university",
+     "right": "a university",
+     "note": "University bắt đầu bằng âm /j/ (phụ âm) nên dùng a."
+    },
+    {
+     "wrong": "I have a apple.",
+     "right": "I have an apple.",
+     "note": "Apple bắt đầu bằng nguyên âm nên dùng an."
+    },
+    {
+     "wrong": "He is a honest man.",
+     "right": "He is an honest man.",
+     "note": "Chữ h trong honest không được đọc, âm đầu là nguyên âm."
+    }
+   ],
+   "exercises": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "q": "I eat ____ apple every day.",
+     "options": [
+      "a",
+      "an",
+      "the",
+      "(không dùng)"
+     ],
+     "answer": "an",
+     "why": "Apple bắt đầu bằng âm nguyên âm."
+    },
+    {
+     "id": "q2",
+     "type": "mc",
+     "q": "She is ____ university student.",
+     "options": [
+      "an",
+      "a",
+      "the",
+      "(không dùng)"
+     ],
+     "answer": "a",
+     "why": "University bắt đầu bằng âm /j/ nên dùng a."
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "q": "Please close ____ door. (cánh cửa cả hai đã biết)",
+     "options": [
+      "a",
+      "an",
+      "the",
+      "(không dùng)"
+     ],
+     "answer": "the",
+     "why": "Cánh cửa đã xác định nên dùng the."
+    },
+    {
+     "id": "q4",
+     "type": "mc",
+     "q": "____ sun is hot today.",
+     "options": [
+      "A",
+      "An",
+      "The",
+      "(không dùng)"
+     ],
+     "answer": "The",
+     "why": "Mặt trời là duy nhất nên dùng the."
+    },
+    {
+     "id": "q5",
+     "type": "fill",
+     "q": "He is ____ honest man.",
+     "answer": "an",
+     "accepts": [],
+     "why": "Honest bắt đầu bằng âm nguyên âm (chữ h câm)."
+    },
+    {
+     "id": "q6",
+     "type": "fill",
+     "q": "I have ____ cat. The cat is black.",
+     "answer": "a",
+     "accepts": [],
+     "why": "Nhắc đến lần đầu dùng a."
+    },
+    {
+     "id": "q7",
+     "type": "fix",
+     "q": "I want a orange.",
+     "answer": "I want an orange.",
+     "accepts": [],
+     "why": "Orange bắt đầu bằng nguyên âm nên dùng an."
+    }
+   ]
+  },
+  {
+   "id": "present-simple",
+   "level": "A1",
+   "title": "Thì hiện tại đơn",
+   "summary": "Dùng để nói về thói quen, sự thật hiển nhiên và lịch trình cố định.",
+   "formula": [
+    "Khẳng định: S + V (he/she/it + V-s/es)",
+    "Phủ định: S + do/does + not + V",
+    "Câu hỏi: Do/Does + S + V?",
+    "Với he/she/it: watch → watches, study → studies, go → goes, have → has"
+   ],
+   "usage": [
+    "Thói quen: I get up at six.",
+    "Sự thật: Water boils at 100°C.",
+    "Lịch trình: The class starts at eight.",
+    "Hay đi với: always, usually, often, sometimes, never, every day."
+   ],
+   "examples": [
+    {
+     "en": "My father drinks coffee every morning.",
+     "vi": "Bố mình uống cà phê mỗi sáng."
+    },
+    {
+     "en": "They do not work on Sunday.",
+     "vi": "Họ không làm việc vào Chủ nhật."
+    },
+    {
+     "en": "Does she speak English?",
+     "vi": "Cô ấy có nói tiếng Anh không?"
+    },
+    {
+     "en": "Tom studies at night.",
+     "vi": "Tom học vào buổi tối."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "She go to school.",
+     "right": "She goes to school.",
+     "note": "He/she/it cần thêm s/es ở động từ."
+    },
+    {
+     "wrong": "He doesn't likes tea.",
+     "right": "He doesn't like tea.",
+     "note": "Sau does/doesn't động từ ở dạng nguyên mẫu."
+    },
+    {
+     "wrong": "Do she like fish?",
+     "right": "Does she like fish?",
+     "note": "She đi với does."
+    }
+   ],
+   "exercises": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "q": "My father ____ coffee every morning.",
+     "options": [
+      "drink",
+      "drinks",
+      "drinking",
+      "is drink"
+     ],
+     "answer": "drinks",
+     "why": "Chủ ngữ ngôi thứ ba số ít nên thêm s."
+    },
+    {
+     "id": "q2",
+     "type": "mc",
+     "q": "They ____ not work on Sunday.",
+     "options": [
+      "do",
+      "does",
+      "are",
+      "is"
+     ],
+     "answer": "do",
+     "why": "They đi với do."
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "q": "____ she speak English?",
+     "options": [
+      "Do",
+      "Does",
+      "Is",
+      "Are"
+     ],
+     "answer": "Does",
+     "why": "She đi với does."
+    },
+    {
+     "id": "q4",
+     "type": "fill",
+     "q": "Tom ____ English at night. (study)",
+     "answer": "studies",
+     "accepts": [],
+     "why": "Phụ âm + y đổi thành ies."
+    },
+    {
+     "id": "q5",
+     "type": "fill",
+     "q": "I ____ fish. (không thích)",
+     "answer": "do not like",
+     "accepts": [
+      "don't like"
+     ],
+     "why": "I đi với do; phủ định là do not (don't) like."
+    },
+    {
+     "id": "q6",
+     "type": "fix",
+     "q": "He don't like tea.",
+     "answer": "He doesn't like tea.",
+     "accepts": [
+      "He does not like tea."
+     ],
+     "why": "He đi với doesn't."
+    },
+    {
+     "id": "q7",
+     "type": "fix",
+     "q": "She go to school by bus.",
+     "answer": "She goes to school by bus.",
+     "accepts": [],
+     "why": "Go đổi thành goes với she."
+    }
+   ]
+  },
+  {
+   "id": "present-continuous",
+   "level": "A1",
+   "title": "Thì hiện tại tiếp diễn",
+   "summary": "Dùng cho hành động đang diễn ra lúc nói, tình huống tạm thời hoặc kế hoạch gần đã sắp xếp.",
+   "formula": [
+    "Khẳng định: S + am/is/are + V-ing",
+    "Phủ định: S + am/is/are + not + V-ing",
+    "Câu hỏi: Am/Is/Are + S + V-ing?",
+    "Chính tả: write → writing, run → running, lie → lying"
+   ],
+   "usage": [
+    "Đang xảy ra: Look! The baby is sleeping.",
+    "Tạm thời: I am staying with my aunt this week.",
+    "Kế hoạch gần: We are meeting him tomorrow.",
+    "Các động từ chỉ trạng thái như know, like, want thường không dùng ở thì tiếp diễn."
+   ],
+   "examples": [
+    {
+     "en": "We are watching TV now.",
+     "vi": "Bây giờ chúng mình đang xem TV."
+    },
+    {
+     "en": "She is running in the park.",
+     "vi": "Cô ấy đang chạy trong công viên."
+    },
+    {
+     "en": "Are they playing football?",
+     "vi": "Họ có đang chơi bóng đá không?"
+    },
+    {
+     "en": "I am not working today.",
+     "vi": "Hôm nay mình không làm việc."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "I am play football.",
+     "right": "I am playing football.",
+     "note": "Sau am/is/are động từ cần thêm -ing."
+    },
+    {
+     "wrong": "He is knowing the answer.",
+     "right": "He knows the answer.",
+     "note": "Know là động từ chỉ trạng thái, thường dùng hiện tại đơn."
+    },
+    {
+     "wrong": "She is runing.",
+     "right": "She is running.",
+     "note": "Run gấp đôi phụ âm cuối khi thêm -ing."
+    }
+   ],
+   "exercises": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "q": "Look! The baby ____.",
+     "options": [
+      "sleeps",
+      "is sleeping",
+      "sleep",
+      "are sleeping"
+     ],
+     "answer": "is sleeping",
+     "why": "Hành động đang diễn ra lúc nói."
+    },
+    {
+     "id": "q2",
+     "type": "mc",
+     "q": "I ____ the answer.",
+     "options": [
+      "know",
+      "am knowing",
+      "knowing",
+      "is know"
+     ],
+     "answer": "know",
+     "why": "Know thường không dùng ở thì tiếp diễn."
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "q": "They ____ football now.",
+     "options": [
+      "play",
+      "plays",
+      "are playing",
+      "is playing"
+     ],
+     "answer": "are playing",
+     "why": "They đi với are + V-ing."
+    },
+    {
+     "id": "q4",
+     "type": "fill",
+     "q": "We ____ TV now. (watch)",
+     "answer": "are watching",
+     "accepts": [],
+     "why": "We + are + V-ing."
+    },
+    {
+     "id": "q5",
+     "type": "fill",
+     "q": "She is ____ in the park. (run)",
+     "answer": "running",
+     "accepts": [],
+     "why": "Run gấp đôi n khi thêm -ing."
+    },
+    {
+     "id": "q6",
+     "type": "fix",
+     "q": "They are play football.",
+     "answer": "They are playing football.",
+     "accepts": [],
+     "why": "Cần thêm -ing sau are."
+    },
+    {
+     "id": "q7",
+     "type": "fix",
+     "q": "He is cook dinner now.",
+     "answer": "He is cooking dinner now.",
+     "accepts": [],
+     "why": "Cook cần thêm -ing."
+    }
+   ]
+  },
+  {
+   "id": "countable",
+   "level": "A1",
+   "title": "Danh từ đếm được và không đếm được",
+   "summary": "Danh từ đếm được có số ít và số nhiều. Danh từ không đếm được không có dạng số nhiều và thường dùng với lượng từ.",
+   "formula": [
+    "Đếm được: a/an, many, a few, số nhiều (many books)",
+    "Không đếm được: much, a little, không thêm s (much water)",
+    "Cả hai: a lot of, some (câu khẳng định), any (câu phủ định và nghi vấn)",
+    "Đơn vị: a glass of water, a piece of advice"
+   ],
+   "usage": [
+    "Không đếm được thường gặp: water, rice, milk, information, advice, homework, money.",
+    "How many + danh từ đếm được số nhiều; How much + danh từ không đếm được.",
+    "Một số danh từ có thể đếm được hoặc không tùy nghĩa, nên cần xét theo ngữ cảnh."
+   ],
+   "examples": [
+    {
+     "en": "How much water do you drink?",
+     "vi": "Bạn uống bao nhiêu nước?"
+    },
+    {
+     "en": "There aren't many chairs.",
+     "vi": "Không có nhiều ghế."
+    },
+    {
+     "en": "I need some advice.",
+     "vi": "Mình cần một lời khuyên."
+    },
+    {
+     "en": "She gave me a lot of information.",
+     "vi": "Cô ấy cho mình nhiều thông tin."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "informations",
+     "right": "information",
+     "note": "Information không đếm được, không thêm s."
+    },
+    {
+     "wrong": "much books",
+     "right": "many books",
+     "note": "Books đếm được nên dùng many."
+    },
+    {
+     "wrong": "an advice",
+     "right": "some advice / a piece of advice",
+     "note": "Advice không đếm được nên không dùng an."
+    }
+   ],
+   "exercises": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "q": "How ____ water do you drink?",
+     "options": [
+      "many",
+      "much",
+      "a few",
+      "an"
+     ],
+     "answer": "much",
+     "why": "Water không đếm được nên dùng much."
+    },
+    {
+     "id": "q2",
+     "type": "mc",
+     "q": "There aren't ____ chairs.",
+     "options": [
+      "many",
+      "much",
+      "a little",
+      "an"
+     ],
+     "answer": "many",
+     "why": "Chairs đếm được số nhiều nên dùng many."
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "q": "I need some ____.",
+     "options": [
+      "advice",
+      "advices",
+      "an advice",
+      "many advice"
+     ],
+     "answer": "advice",
+     "why": "Advice không đếm được."
+    },
+    {
+     "id": "q4",
+     "type": "fill",
+     "q": "How ____ students are in your class?",
+     "answer": "many",
+     "accepts": [],
+     "why": "Students đếm được số nhiều."
+    },
+    {
+     "id": "q5",
+     "type": "fill",
+     "q": "She gives me a lot of ____. (information)",
+     "answer": "information",
+     "accepts": [],
+     "why": "Không thêm s."
+    },
+    {
+     "id": "q6",
+     "type": "fix",
+     "q": "I have many homeworks.",
+     "answer": "I have a lot of homework.",
+     "accepts": [
+      "I have lots of homework."
+     ],
+     "why": "Homework không đếm được, không thêm s."
+    },
+    {
+     "id": "q7",
+     "type": "fix",
+     "q": "She gives me an advice.",
+     "answer": "She gives me some advice.",
+     "accepts": [
+      "She gives me a piece of advice.",
+      "She gives me advice."
+     ],
+     "why": "Advice không đếm được nên không dùng an."
+    }
+   ]
+  },
+  {
+   "id": "prepositions",
+   "level": "A1",
+   "title": "Giới từ thông dụng: at, on, in, to",
+   "summary": "Giới từ chỉ thời gian và nơi chốn. Nhiều cụm là thói quen dùng, nên cần học theo cụm.",
+   "formula": [
+    "Thời gian: at (giờ, at night) · on (thứ, ngày) · in (tháng, năm, mùa, buổi)",
+    "Nơi chốn: at (một điểm) · in (bên trong) · on (trên bề mặt)",
+    "Chuyển động: to (đến một nơi)"
+   ],
+   "usage": [
+    "at 8 o'clock, at night, at the station",
+    "on Monday, on 5 May, on Friday morning",
+    "in May, in 2025, in summer, in the morning",
+    "go to school, come to my house"
+   ],
+   "examples": [
+    {
+     "en": "The class starts at 8 o'clock.",
+     "vi": "Lớp học bắt đầu lúc 8 giờ."
+    },
+    {
+     "en": "My birthday is in May.",
+     "vi": "Sinh nhật mình vào tháng Năm."
+    },
+    {
+     "en": "See you on Friday.",
+     "vi": "Hẹn gặp bạn vào thứ Sáu."
+    },
+    {
+     "en": "The book is on the table.",
+     "vi": "Quyển sách ở trên bàn."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "in Monday",
+     "right": "on Monday",
+     "note": "Thứ trong tuần dùng on."
+    },
+    {
+     "wrong": "at the morning",
+     "right": "in the morning",
+     "note": "Buổi trong ngày thường dùng in."
+    },
+    {
+     "wrong": "I go in school.",
+     "right": "I go to school.",
+     "note": "Chuyển động đến nơi nào đó dùng to."
+    }
+   ],
+   "exercises": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "q": "The class starts ____ 8 o'clock.",
+     "options": [
+      "at",
+      "on",
+      "in",
+      "to"
+     ],
+     "answer": "at",
+     "why": "Giờ cụ thể dùng at."
+    },
+    {
+     "id": "q2",
+     "type": "mc",
+     "q": "My birthday is ____ May.",
+     "options": [
+      "at",
+      "on",
+      "in",
+      "to"
+     ],
+     "answer": "in",
+     "why": "Tháng dùng in."
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "q": "See you ____ Friday.",
+     "options": [
+      "at",
+      "on",
+      "in",
+      "to"
+     ],
+     "answer": "on",
+     "why": "Thứ trong tuần dùng on."
+    },
+    {
+     "id": "q4",
+     "type": "fill",
+     "q": "The cat is ____ the table. (trên mặt bàn)",
+     "answer": "on",
+     "accepts": [],
+     "why": "Trên bề mặt dùng on."
+    },
+    {
+     "id": "q5",
+     "type": "fill",
+     "q": "I get up ____ the morning.",
+     "answer": "in",
+     "accepts": [],
+     "why": "in the morning là cụm cố định."
+    },
+    {
+     "id": "q6",
+     "type": "fix",
+     "q": "I was born at 2005.",
+     "answer": "I was born in 2005.",
+     "accepts": [],
+     "why": "Năm dùng in."
+    },
+    {
+     "id": "q7",
+     "type": "fix",
+     "q": "She goes at school every day.",
+     "answer": "She goes to school every day.",
+     "accepts": [],
+     "why": "Đi đến trường dùng to."
+    }
+   ]
+  },
+  {
+   "id": "past-simple",
+   "level": "A2",
+   "title": "Thì quá khứ đơn",
+   "summary": "Dùng cho hành động đã xảy ra và kết thúc trong quá khứ, thường có mốc thời gian rõ ràng.",
+   "formula": [
+    "Khẳng định: S + V-ed (có quy tắc) hoặc dạng quá khứ (bất quy tắc)",
+    "Phủ định: S + did not (didn't) + V nguyên mẫu",
+    "Câu hỏi: Did + S + V nguyên mẫu?",
+    "To be: I/he/she/it was · you/we/they were",
+    "Bất quy tắc thường gặp: go → went, see → saw, eat → ate, buy → bought, have → had"
+   ],
+   "usage": [
+    "Hành động đã xong: I visited my aunt yesterday.",
+    "Hay đi với: yesterday, last week, in 2020, two days ago.",
+    "Sau did/didn't, động từ trở về nguyên mẫu."
+   ],
+   "examples": [
+    {
+     "en": "Yesterday I went to the market.",
+     "vi": "Hôm qua mình đi chợ."
+    },
+    {
+     "en": "They were not at home last night.",
+     "vi": "Tối qua họ không ở nhà."
+    },
+    {
+     "en": "Did he see the film?",
+     "vi": "Anh ấy đã xem phim đó chưa?"
+    },
+    {
+     "en": "She bought a new bag last week.",
+     "vi": "Tuần trước cô ấy mua một chiếc túi mới."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "I goed to school.",
+     "right": "I went to school.",
+     "note": "Go là động từ bất quy tắc: went."
+    },
+    {
+     "wrong": "She didn't went.",
+     "right": "She didn't go.",
+     "note": "Sau didn't dùng động từ nguyên mẫu."
+    },
+    {
+     "wrong": "Did you saw him?",
+     "right": "Did you see him?",
+     "note": "Sau did dùng động từ nguyên mẫu."
+    }
+   ],
+   "exercises": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "q": "Yesterday I ____ to the market.",
+     "options": [
+      "go",
+      "goes",
+      "went",
+      "going"
+     ],
+     "answer": "went",
+     "why": "Quá khứ của go là went."
+    },
+    {
+     "id": "q2",
+     "type": "mc",
+     "q": "They ____ not at home last night.",
+     "options": [
+      "was",
+      "were",
+      "are",
+      "did"
+     ],
+     "answer": "were",
+     "why": "They đi với were."
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "q": "Did he ____ the film?",
+     "options": [
+      "saw",
+      "see",
+      "seen",
+      "sees"
+     ],
+     "answer": "see",
+     "why": "Sau did dùng động từ nguyên mẫu."
+    },
+    {
+     "id": "q4",
+     "type": "fill",
+     "q": "She ____ a new bag last week. (buy)",
+     "answer": "bought",
+     "accepts": [],
+     "why": "Quá khứ của buy là bought."
+    },
+    {
+     "id": "q5",
+     "type": "fill",
+     "q": "We ____ football yesterday. (play)",
+     "answer": "played",
+     "accepts": [],
+     "why": "Động từ có quy tắc thêm -ed."
+    },
+    {
+     "id": "q6",
+     "type": "fix",
+     "q": "He didn't went to school.",
+     "answer": "He didn't go to school.",
+     "accepts": [
+      "He did not go to school."
+     ],
+     "why": "Sau didn't dùng nguyên mẫu."
+    },
+    {
+     "id": "q7",
+     "type": "fix",
+     "q": "I eated rice for lunch.",
+     "answer": "I ate rice for lunch.",
+     "accepts": [],
+     "why": "Quá khứ của eat là ate."
+    }
+   ]
+  },
+  {
+   "id": "future",
+   "level": "A2",
+   "title": "Các cách nói về tương lai: will và be going to",
+   "summary": "Tiếng Anh có nhiều cách nói về tương lai. Will và be going to là hai cách phổ biến, thường dùng khác nhau về ngữ cảnh.",
+   "formula": [
+    "will + V nguyên mẫu (phủ định: will not / won't)",
+    "am/is/are + going to + V nguyên mẫu",
+    "Kế hoạch đã sắp xếp có thể dùng hiện tại tiếp diễn: I'm meeting her at 5."
+   ],
+   "usage": [
+    "Will: quyết định ngay lúc nói, lời hứa, dự đoán theo ý kiến: I think it will be sunny.",
+    "Be going to: kế hoạch đã có từ trước hoặc dự đoán dựa trên dấu hiệu: Look at the clouds! It is going to rain.",
+    "Hai cách đôi khi dùng thay được cho nhau, ranh giới không tuyệt đối."
+   ],
+   "examples": [
+    {
+     "en": "The phone is ringing. I will answer it.",
+     "vi": "Điện thoại đang reo. Để mình nghe."
+    },
+    {
+     "en": "We are going to visit Hue next month.",
+     "vi": "Tháng sau chúng mình sẽ đi Huế."
+    },
+    {
+     "en": "She will not come tomorrow.",
+     "vi": "Ngày mai cô ấy sẽ không đến."
+    },
+    {
+     "en": "I think it will be sunny tomorrow.",
+     "vi": "Mình nghĩ ngày mai trời sẽ nắng."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "I will to call you.",
+     "right": "I will call you.",
+     "note": "Sau will dùng nguyên mẫu, không có to."
+    },
+    {
+     "wrong": "She will goes.",
+     "right": "She will go.",
+     "note": "Sau will không thêm s."
+    },
+    {
+     "wrong": "He is going to plays.",
+     "right": "He is going to play.",
+     "note": "Sau going to dùng nguyên mẫu."
+    }
+   ],
+   "exercises": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "q": "The phone is ringing. I ____ answer it.",
+     "options": [
+      "will",
+      "am going to",
+      "go to",
+      "would"
+     ],
+     "answer": "will",
+     "why": "Quyết định ngay lúc nói thường dùng will."
+    },
+    {
+     "id": "q2",
+     "type": "mc",
+     "q": "Look at the clouds! It ____ rain.",
+     "options": [
+      "will",
+      "is going to",
+      "goes to",
+      "going to"
+     ],
+     "answer": "is going to",
+     "why": "Dự đoán dựa trên dấu hiệu nhìn thấy thường dùng be going to."
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "q": "She ____ not come tomorrow.",
+     "options": [
+      "will",
+      "is",
+      "does",
+      "goes"
+     ],
+     "answer": "will",
+     "why": "Will not dùng cho tương lai."
+    },
+    {
+     "id": "q4",
+     "type": "fill",
+     "q": "We are going to ____ Hue next month. (visit)",
+     "answer": "visit",
+     "accepts": [],
+     "why": "Sau going to dùng nguyên mẫu."
+    },
+    {
+     "id": "q5",
+     "type": "fill",
+     "q": "I think it ____ sunny tomorrow. (be)",
+     "answer": "will be",
+     "accepts": [],
+     "why": "Dự đoán theo ý kiến dùng will + V."
+    },
+    {
+     "id": "q6",
+     "type": "fix",
+     "q": "I will to call you later.",
+     "answer": "I will call you later.",
+     "accepts": [],
+     "why": "Sau will không dùng to."
+    },
+    {
+     "id": "q7",
+     "type": "fix",
+     "q": "He is going to plays football.",
+     "answer": "He is going to play football.",
+     "accepts": [],
+     "why": "Sau going to dùng nguyên mẫu."
+    }
+   ]
+  },
+  {
+   "id": "comparatives",
+   "level": "A2",
+   "title": "So sánh hơn và so sánh nhất",
+   "summary": "So sánh hơn dùng để so hai đối tượng. So sánh nhất dùng để chỉ đối tượng nổi bật nhất trong nhóm.",
+   "formula": [
+    "Tính từ ngắn: adj-er than / the adj-est (tall → taller → the tallest)",
+    "Tính từ dài: more adj than / the most adj (more beautiful, the most beautiful)",
+    "Gấp đôi phụ âm: big → bigger; y → ier: happy → happier",
+    "Bất quy tắc: good → better → the best; bad → worse → the worst"
+   ],
+   "usage": [
+    "Tính từ một âm tiết thường thêm -er/-est.",
+    "Tính từ từ ba âm tiết trở lên thường dùng more/most.",
+    "Một số tính từ hai âm tiết có thể dùng cả hai cách, cần tra từ điển."
+   ],
+   "examples": [
+    {
+     "en": "My house is bigger than yours.",
+     "vi": "Nhà mình to hơn nhà bạn."
+    },
+    {
+     "en": "She is the best student in the class.",
+     "vi": "Cô ấy là học sinh giỏi nhất lớp."
+    },
+    {
+     "en": "This book is more interesting than that one.",
+     "vi": "Cuốn sách này thú vị hơn cuốn kia."
+    },
+    {
+     "en": "Today is hotter than yesterday.",
+     "vi": "Hôm nay nóng hơn hôm qua."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "more tall",
+     "right": "taller",
+     "note": "Tính từ ngắn dùng -er."
+    },
+    {
+     "wrong": "the most good",
+     "right": "the best",
+     "note": "Good là tính từ bất quy tắc."
+    },
+    {
+     "wrong": "more big than",
+     "right": "bigger than",
+     "note": "Big là tính từ ngắn, dùng bigger."
+    }
+   ],
+   "exercises": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "q": "My house is ____ than yours.",
+     "options": [
+      "big",
+      "bigger",
+      "more big",
+      "biggest"
+     ],
+     "answer": "bigger",
+     "why": "Tính từ ngắn dùng -er, gấp đôi g."
+    },
+    {
+     "id": "q2",
+     "type": "mc",
+     "q": "She is the ____ student in the class.",
+     "options": [
+      "good",
+      "better",
+      "best",
+      "most good"
+     ],
+     "answer": "best",
+     "why": "So sánh nhất của good là best."
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "q": "This book is ____ than that one.",
+     "options": [
+      "interesting",
+      "more interesting",
+      "interestinger",
+      "most interesting"
+     ],
+     "answer": "more interesting",
+     "why": "Tính từ dài dùng more."
+    },
+    {
+     "id": "q4",
+     "type": "fill",
+     "q": "Today is ____ than yesterday. (hot)",
+     "answer": "hotter",
+     "accepts": [],
+     "why": "Gấp đôi t rồi thêm -er."
+    },
+    {
+     "id": "q5",
+     "type": "fill",
+     "q": "He is the ____ boy in our team. (tall)",
+     "answer": "tallest",
+     "accepts": [],
+     "why": "So sánh nhất của tall là the tallest."
+    },
+    {
+     "id": "q6",
+     "type": "fix",
+     "q": "She is more tall than me.",
+     "answer": "She is taller than me.",
+     "accepts": [
+      "She is taller than I am."
+     ],
+     "why": "Tall là tính từ ngắn nên dùng taller."
+    },
+    {
+     "id": "q7",
+     "type": "fix",
+     "q": "This is the most good restaurant.",
+     "answer": "This is the best restaurant.",
+     "accepts": [],
+     "why": "So sánh nhất của good là best."
+    }
+   ]
+  },
+  {
+   "id": "modals",
+   "level": "A2",
+   "title": "Động từ khuyết thiếu cơ bản",
+   "summary": "Động từ khuyết thiếu (modal verbs) đứng trước động từ nguyên mẫu để diễn đạt khả năng, xin phép, lời khuyên và sự bắt buộc.",
+   "formula": [
+    "S + modal + V nguyên mẫu (không có to, không thêm s)",
+    "Phủ định: cannot (can't), should not (shouldn't), must not (mustn't)",
+    "Câu hỏi: Can/Could/May + S + V?"
+   ],
+   "usage": [
+    "can: khả năng, xin phép thông thường. could: lịch sự hơn, hoặc khả năng trong quá khứ.",
+    "may: xin phép trang trọng, khả năng.",
+    "should: lời khuyên. must: bắt buộc mạnh.",
+    "mustn't là không được phép; don't have to là không cần thiết phải làm."
+   ],
+   "examples": [
+    {
+     "en": "I can swim, but I can't ride a bike.",
+     "vi": "Mình biết bơi nhưng không biết đi xe đạp."
+    },
+    {
+     "en": "You should see a doctor.",
+     "vi": "Bạn nên đi khám bác sĩ."
+    },
+    {
+     "en": "May I open the window?",
+     "vi": "Mình mở cửa sổ được không ạ?"
+    },
+    {
+     "en": "Students mustn't use phones in the exam.",
+     "vi": "Thí sinh không được dùng điện thoại trong kỳ thi."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "She cans swim.",
+     "right": "She can swim.",
+     "note": "Modal không thêm s."
+    },
+    {
+     "wrong": "I must to go.",
+     "right": "I must go.",
+     "note": "Sau modal không có to."
+    },
+    {
+     "wrong": "Can you to help me?",
+     "right": "Can you help me?",
+     "note": "Sau can dùng nguyên mẫu."
+    }
+   ],
+   "exercises": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "q": "I ____ swim, but I can't ride a bike.",
+     "options": [
+      "can",
+      "cans",
+      "must",
+      "may to"
+     ],
+     "answer": "can",
+     "why": "Can diễn đạt khả năng."
+    },
+    {
+     "id": "q2",
+     "type": "mc",
+     "q": "You look sick. You ____ see a doctor.",
+     "options": [
+      "can",
+      "should",
+      "may",
+      "mustn't"
+     ],
+     "answer": "should",
+     "why": "Should dùng để khuyên."
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "q": "Students ____ use phones in the exam. (cấm)",
+     "options": [
+      "must",
+      "mustn't",
+      "don't have to",
+      "should"
+     ],
+     "answer": "mustn't",
+     "why": "Mustn't nghĩa là không được phép."
+    },
+    {
+     "id": "q4",
+     "type": "fill",
+     "q": "____ I open the window? (xin phép lịch sự)",
+     "answer": "May",
+     "accepts": [
+      "Can",
+      "Could"
+     ],
+     "why": "May, can, could đều dùng để xin phép."
+    },
+    {
+     "id": "q5",
+     "type": "fill",
+     "q": "She ____ speak three languages. (có khả năng)",
+     "answer": "can",
+     "accepts": [],
+     "why": "Can + nguyên mẫu diễn đạt khả năng."
+    },
+    {
+     "id": "q6",
+     "type": "fix",
+     "q": "He cans play the guitar.",
+     "answer": "He can play the guitar.",
+     "accepts": [],
+     "why": "Modal không thêm s."
+    },
+    {
+     "id": "q7",
+     "type": "fix",
+     "q": "You should to study more.",
+     "answer": "You should study more.",
+     "accepts": [],
+     "why": "Sau should không có to."
+    }
+   ]
+  },
+  {
+   "id": "conditionals",
+   "level": "A2",
+   "title": "Câu điều kiện loại 1",
+   "summary": "Câu điều kiện loại 1 nói về điều có thể xảy ra ở hiện tại hoặc tương lai nếu một điều kiện được đáp ứng.",
+   "formula": [
+    "If + hiện tại đơn, S + will + V nguyên mẫu",
+    "Có thể đảo vế: S + will + V if + hiện tại đơn",
+    "unless = if … not: Unless it rains, we will go out.",
+    "Điều luôn đúng: If + hiện tại đơn, hiện tại đơn (If you heat ice, it melts)."
+   ],
+   "usage": [
+    "Không dùng will trong mệnh đề if.",
+    "Mệnh đề chính cũng có thể dùng can, may, should, hoặc câu mệnh lệnh.",
+    "Khi mệnh đề if đứng trước, dùng dấu phẩy."
+   ],
+   "examples": [
+    {
+     "en": "If it rains, we will stay at home.",
+     "vi": "Nếu trời mưa, chúng mình sẽ ở nhà."
+    },
+    {
+     "en": "If you study hard, you will pass.",
+     "vi": "Nếu bạn học chăm, bạn sẽ đỗ."
+    },
+    {
+     "en": "She will be late if she misses the bus.",
+     "vi": "Cô ấy sẽ đến muộn nếu lỡ xe buýt."
+    },
+    {
+     "en": "We will go out unless it rains.",
+     "vi": "Chúng mình sẽ đi chơi trừ khi trời mưa."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "If it will rain, I will stay home.",
+     "right": "If it rains, I will stay home.",
+     "note": "Không dùng will trong mệnh đề if."
+    },
+    {
+     "wrong": "If she comes, I will to tell her.",
+     "right": "If she comes, I will tell her.",
+     "note": "Sau will dùng nguyên mẫu, không có to."
+    }
+   ],
+   "exercises": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "q": "If it rains, we ____ at home.",
+     "options": [
+      "will stay",
+      "stay will",
+      "stayed",
+      "would stay"
+     ],
+     "answer": "will stay",
+     "why": "Mệnh đề chính dùng will + V."
+    },
+    {
+     "id": "q2",
+     "type": "mc",
+     "q": "If you ____ hard, you will pass.",
+     "options": [
+      "study",
+      "will study",
+      "studied",
+      "studying"
+     ],
+     "answer": "study",
+     "why": "Mệnh đề if dùng hiện tại đơn."
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "q": "She will be late if she ____ the bus.",
+     "options": [
+      "misses",
+      "will miss",
+      "missed",
+      "missing"
+     ],
+     "answer": "misses",
+     "why": "Mệnh đề if dùng hiện tại đơn."
+    },
+    {
+     "id": "q4",
+     "type": "fill",
+     "q": "If I ____ time, I will call you. (have)",
+     "answer": "have",
+     "accepts": [],
+     "why": "Mệnh đề if dùng hiện tại đơn."
+    },
+    {
+     "id": "q5",
+     "type": "fill",
+     "q": "We will go out ____ it rains. (trừ khi)",
+     "answer": "unless",
+     "accepts": [],
+     "why": "Unless nghĩa là if … not."
+    },
+    {
+     "id": "q6",
+     "type": "fix",
+     "q": "If it will rain, I will stay home.",
+     "answer": "If it rains, I will stay home.",
+     "accepts": [],
+     "why": "Không dùng will trong mệnh đề if."
+    },
+    {
+     "id": "q7",
+     "type": "fix",
+     "q": "If she comes, I will to tell her.",
+     "answer": "If she comes, I will tell her.",
+     "accepts": [],
+     "why": "Sau will không dùng to."
+    }
+   ]
+  }
+ ]
+}

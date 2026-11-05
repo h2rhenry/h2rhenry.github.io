@@ -1,0 +1,255 @@
+{
+ "commonChecklist": [
+  "Mỗi câu bắt đầu bằng chữ hoa và kết thúc bằng dấu câu.",
+  "Đã kiểm tra chủ ngữ và động từ có hòa hợp (he/she/it + động từ thêm s).",
+  "Đã dùng đúng thì của động từ cho nội dung bài viết.",
+  "Đã kiểm tra a / an / the và danh từ số ít, số nhiều.",
+  "Đã đọc lại một lượt và sửa lỗi chính tả."
+ ],
+ "tasks": [
+  {
+   "id": "a0-intro",
+   "level": "A0",
+   "title": "Giới thiệu bản thân",
+   "kind": "câu",
+   "prompt": "Viết 4 đến 6 câu giới thiệu bản thân: tên, tuổi, nơi sống và sở thích.",
+   "minWords": 20,
+   "maxWords": 50,
+   "structure": [
+    "Câu 1: tên",
+    "Câu 2: tuổi",
+    "Câu 3: nơi sống",
+    "Câu 4: sở thích"
+   ],
+   "phrases": [
+    "My name is …",
+    "I am … years old.",
+    "I live in …",
+    "I like …"
+   ],
+   "checklist": [
+    "Có nêu tên.",
+    "Có nêu tuổi (dùng I am … years old).",
+    "Có nêu nơi sống.",
+    "Có nêu ít nhất một sở thích."
+   ],
+   "sample": "Hello! My name is Mai. I am twelve years old. I am a student. I live in Da Nang with my family. I like music and football.",
+   "sampleNotes": [
+    "Tuổi dùng \"I am … years old\", không dùng \"I have … years old\".",
+    "Mỗi câu ngắn, bắt đầu bằng chữ hoa, kết thúc bằng dấu chấm."
+   ]
+  },
+  {
+   "id": "a0-family",
+   "level": "A0",
+   "title": "Gia đình của tôi",
+   "kind": "đoạn ngắn",
+   "prompt": "Viết một đoạn ngắn giới thiệu các thành viên trong gia đình và nghề nghiệp hoặc tuổi của họ.",
+   "minWords": 25,
+   "maxWords": 60,
+   "structure": [
+    "Câu mở đầu: gia đình có mấy người",
+    "Mỗi người một câu ngắn",
+    "Câu kết: cảm xúc về gia đình"
+   ],
+   "phrases": [
+    "There are … people in my family.",
+    "My father/mother is a …",
+    "My sister/brother is … years old.",
+    "We love each other."
+   ],
+   "checklist": [
+    "Có nói gia đình có bao nhiêu người.",
+    "Có ít nhất ba thành viên.",
+    "Dùng đúng is/are với từng chủ ngữ."
+   ],
+   "sample": "I have a small family. There are four people in my family: my father, my mother, my sister and me. My father is a driver. My mother is a teacher. My sister is ten years old. We love each other.",
+   "sampleNotes": [
+    "Dùng \"There are …\" để nói số lượng người.",
+    "Chủ ngữ số ít (my father, my sister) đi với is."
+   ]
+  },
+  {
+   "id": "a1-routine",
+   "level": "A1",
+   "title": "Một ngày của tôi",
+   "kind": "đoạn văn",
+   "prompt": "Viết một đoạn văn về một ngày bình thường của bạn, từ sáng đến tối.",
+   "minWords": 50,
+   "maxWords": 90,
+   "structure": [
+    "Câu mở đầu: giờ thức dậy",
+    "Các việc buổi sáng và đi học/đi làm",
+    "Các việc buổi chiều",
+    "Các việc buổi tối và giờ đi ngủ"
+   ],
+   "phrases": [
+    "I usually …",
+    "First, … Then …",
+    "After school/work, …",
+    "In the evening, …",
+    "at … o'clock"
+   ],
+   "checklist": [
+    "Dùng thì hiện tại đơn cho thói quen.",
+    "Có từ nối thứ tự (first, then, after…).",
+    "Có giờ giấc cụ thể.",
+    "Động từ ngôi thứ ba (nếu có) thêm s/es."
+   ],
+   "sample": "I usually get up at six thirty. First, I wash my face and have breakfast with my family. Then I go to school by bike. Classes start at seven forty-five. After school, I play football with my friends for an hour. In the evening, I do my homework and watch TV. I go to bed at ten o'clock.",
+   "sampleNotes": [
+    "Thói quen dùng thì hiện tại đơn.",
+    "Dùng trạng từ tần suất (usually) trước động từ thường.",
+    "Dùng first, then, after school để sắp xếp trình tự."
+   ]
+  },
+  {
+   "id": "a1-place",
+   "level": "A1",
+   "title": "Nơi tôi yêu thích",
+   "kind": "đoạn văn",
+   "prompt": "Mô tả một nơi bạn thích: ở đâu, có gì, bạn làm gì ở đó và vì sao bạn thích.",
+   "minWords": 50,
+   "maxWords": 90,
+   "structure": [
+    "Giới thiệu nơi đó",
+    "Mô tả những gì bạn thấy",
+    "Hoạt động bạn làm",
+    "Lý do bạn thích"
+   ],
+   "phrases": [
+    "My favourite place is …",
+    "There is/are …",
+    "I often …",
+    "I love it because …"
+   ],
+   "checklist": [
+    "Có nói rõ nơi đó ở đâu.",
+    "Có ít nhất hai tính từ mô tả.",
+    "Có một lý do với because.",
+    "Dùng there is / there are đúng với danh từ."
+   ],
+   "sample": "My favourite place is the beach near my house. I go there every weekend with my family. The water is clear and the sand is soft. My brother and I swim and build sandcastles. My parents sit under an umbrella and read books. We often eat fresh seafood for lunch. I love this place because it makes me feel relaxed and happy.",
+   "sampleNotes": [
+    "Tính từ đứng trước danh từ hoặc sau to be: clear water / the water is clear.",
+    "\"because\" nối lý do với kết luận.",
+    "\"an umbrella\": an trước âm nguyên âm."
+   ]
+  },
+  {
+   "id": "a2-weekend",
+   "level": "A2",
+   "title": "Cuối tuần vừa qua",
+   "kind": "đoạn văn",
+   "prompt": "Kể về cuối tuần vừa qua của bạn: bạn đã đi đâu, làm gì, với ai và cảm thấy thế nào.",
+   "minWords": 80,
+   "maxWords": 130,
+   "structure": [
+    "Câu mở đầu: nhận xét chung",
+    "Các việc hôm thứ Bảy",
+    "Các việc hôm Chủ nhật",
+    "Cảm xúc cuối cùng"
+   ],
+   "phrases": [
+    "Last weekend was …",
+    "On Saturday morning, I …",
+    "Then / After that / Unfortunately, …",
+    "I felt … because …"
+   ],
+   "checklist": [
+    "Dùng thì quá khứ đơn nhất quán.",
+    "Động từ bất quy tắc đúng dạng (went, bought, met, ate…).",
+    "Phủ định/nghi vấn dùng did + động từ nguyên mẫu.",
+    "Có từ nối thời gian và từ nối đối lập (but, so, unfortunately)."
+   ],
+   "sample": "Last weekend was great. On Saturday morning, I went to the market with my mother and we bought some fruit and vegetables. In the afternoon, I met my friends at the park. We played badminton and talked for two hours. Unfortunately, it started to rain, so we ran to a café and drank hot chocolate. On Sunday, I stayed at home and cleaned my room. Then I watched a film with my brother. I was a little tired in the evening, but I felt happy because I spent time with the people I love.",
+   "sampleNotes": [
+    "Toàn bài dùng quá khứ đơn: went, bought, met, drank.",
+    "\"so\" chỉ kết quả, \"but\" chỉ đối lập, \"because\" chỉ lý do.",
+    "\"Unfortunately\" đứng đầu câu, theo sau là dấu phẩy."
+   ]
+  },
+  {
+   "id": "a2-plan",
+   "level": "A2",
+   "title": "Kế hoạch cho kỳ nghỉ",
+   "kind": "đoạn văn",
+   "prompt": "Viết về kế hoạch cho một chuyến đi hoặc kỳ nghỉ sắp tới: đi đâu, làm gì và hy vọng điều gì.",
+   "minWords": 80,
+   "maxWords": 130,
+   "structure": [
+    "Điểm đến và thời gian",
+    "Các hoạt động đã dự định",
+    "Một tình huống có điều kiện (if)",
+    "Điều bạn hy vọng"
+   ],
+   "phrases": [
+    "I am going to …",
+    "We will …",
+    "If the weather is nice, we will …",
+    "I hope …"
+   ],
+   "checklist": [
+    "Dùng be going to cho kế hoạch đã có.",
+    "Dùng will cho quyết định hoặc dự đoán.",
+    "Mệnh đề if dùng hiện tại đơn, không dùng will.",
+    "Sau will / going to là động từ nguyên mẫu."
+   ],
+   "sample": "Next summer, my family is going to travel to Da Lat. We will leave on the first of July and stay there for five days. I am going to visit the flower gardens and take a lot of photos. My father will rent a car, so we can see many places. If the weather is nice, we will have a picnic by the lake. I think the trip will be wonderful, and I hope I will learn something new about my country.",
+   "sampleNotes": [
+    "\"is going to travel\" nói kế hoạch; \"will leave\" nói lịch trình quyết định.",
+    "\"If the weather is nice, we will …\": if + hiện tại đơn, will + V.",
+    "\"so we can see\": so + mệnh đề chỉ mục đích hoặc kết quả."
+   ]
+  },
+  {
+   "id": "a2-opinion",
+   "level": "A2",
+   "title": "Học ở nhà hay đến trường?",
+   "kind": "đoạn văn",
+   "prompt": "Nêu ý kiến của bạn: học ở nhà hay đến trường tốt hơn? Đưa ra ít nhất hai lý do.",
+   "minWords": 80,
+   "maxWords": 130,
+   "structure": [
+    "Nêu ý kiến",
+    "Lý do thứ nhất",
+    "Lý do thứ hai",
+    "Một mặt ngược lại",
+    "Kết luận"
+   ],
+   "phrases": [
+    "I prefer … to …",
+    "First, … Second, …",
+    "In addition, …",
+    "However, …",
+    "In conclusion, I think …"
+   ],
+   "checklist": [
+    "Có câu nêu ý kiến rõ ràng.",
+    "Có ít nhất hai lý do, mỗi lý do có giải thích.",
+    "Có từ nối (first, second, in addition, however).",
+    "Có câu kết luận."
+   ],
+   "sample": "I prefer studying at school to studying at home. First, at school I can ask my teacher questions at once and get clear answers. Second, I can make friends and work in groups, which helps me learn faster. In addition, school has a library and many useful books. However, studying at home also has some advantages. It saves time, and I can study at my own speed. In conclusion, I think school is better for most students because it gives them more support.",
+   "sampleNotes": [
+    "\"prefer A to B\": thích A hơn B (A, B cùng dạng V-ing).",
+    "Dùng first, second, in addition để xếp các lý do.",
+    "\"However\" mở ra ý ngược lại; \"In conclusion\" mở đầu kết luận."
+   ]
+  },
+  {
+   "id": "free",
+   "level": "Tự do",
+   "title": "Viết tự do",
+   "kind": "tự do",
+   "prompt": "Viết bất cứ điều gì bạn muốn luyện: nhật ký, một đoạn kể chuyện hoặc vài câu ví dụ với từ mới.",
+   "minWords": 0,
+   "maxWords": 0,
+   "structure": [],
+   "phrases": [],
+   "checklist": [],
+   "sample": "",
+   "sampleNotes": ""
+  }
+ ]
+}

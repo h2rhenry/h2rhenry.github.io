@@ -1,0 +1,793 @@
+{
+ "disclaimer": "TOEIC là thương hiệu của ETS. EvoEnglish là sản phẩm độc lập, không liên kết với, không được bảo trợ hay chứng nhận bởi ETS. Toàn bộ đề luyện do EvoEnglish tự soạn, không phải đề thi thật. Điểm hiển thị chỉ là kết quả luyện tập tham khảo (số câu đúng), không phải điểm TOEIC chính thức.",
+ "future": "TOEIC Speaking & Writing: cấu trúc đã được chừa sẵn, nội dung đang chờ bổ sung.",
+ "parts": [
+  {
+   "id": "part1",
+   "title": "Part 1: Photographs",
+   "skill": "listening",
+   "minutes": 0,
+   "instructions": "Nhìn tranh, nghe bốn câu mô tả (A–D), rồi chọn câu mô tả đúng nhất. Nội dung các câu chỉ hiện sau khi bạn nộp bài (trừ khi trình duyệt không có giọng đọc).",
+   "items": [
+    {
+     "scene": "laptop",
+     "alt": "Tranh minh họa: một người phụ nữ ngồi ở bàn làm việc, trước mặt có máy tính xách tay, một tách cà phê và một chậu cây nhỏ.",
+     "statements": [
+      "A woman is using a laptop.",
+      "A woman is talking on the phone.",
+      "A woman is writing on a whiteboard.",
+      "A woman is carrying a box."
+     ],
+     "answer": "A",
+     "why": "Trong tranh người phụ nữ đang ngồi gõ máy tính xách tay. Không có điện thoại, bảng trắng hay hộp."
+    },
+    {
+     "scene": "handshake",
+     "alt": "Tranh minh họa: hai người đứng đối diện trong văn phòng và bắt tay nhau.",
+     "statements": [
+      "Two people are sitting on a bench.",
+      "Two people are climbing the stairs.",
+      "Two people are shaking hands.",
+      "Two people are cooking in a kitchen."
+     ],
+     "answer": "C",
+     "why": "Hai người đứng đối diện và bắt tay. Đáp án sai mô tả những hoạt động không có trong tranh."
+    },
+    {
+     "scene": "bicycle",
+     "alt": "Tranh minh họa: một người đang đạp xe trên đường, hai bên có cây.",
+     "statements": [
+      "A man is repairing a bicycle.",
+      "A man is riding a bicycle.",
+      "A man is parking a car.",
+      "A man is carrying a bicycle upstairs."
+     ],
+     "answer": "B",
+     "why": "Người đàn ông đang đạp xe (riding). Repairing, parking và carrying đều không đúng với tranh."
+    },
+    {
+     "scene": "busstop",
+     "alt": "Tranh minh họa: ba người đứng chờ dưới mái che của trạm xe buýt. Không có xe buýt trong tranh.",
+     "statements": [
+      "A bus is stopped in front of the people.",
+      "Some people are swimming in a pool.",
+      "Some people are boarding a train.",
+      "Some people are waiting at a bus stop."
+     ],
+     "answer": "D",
+     "why": "Ba người đứng chờ ở trạm xe buýt. Trong tranh không có xe buýt nào đang dừng, nên câu nhắc đến xe buýt đang dừng là sai."
+    }
+   ]
+  },
+  {
+   "id": "part2",
+   "title": "Part 2: Question–Response",
+   "skill": "listening",
+   "minutes": 0,
+   "instructions": "Nghe một câu hỏi và ba câu đáp (A–C), rồi chọn câu đáp phù hợp nhất. Nội dung chỉ hiện sau khi bạn nộp bài.",
+   "items": [
+    {
+     "question": "When does the meeting start?",
+     "responses": [
+      "At three o'clock.",
+      "In the conference room.",
+      "Yes, I did."
+     ],
+     "answer": "A",
+     "why": "Câu hỏi When cần câu trả lời về thời gian: \"At three o'clock.\""
+    },
+    {
+     "question": "Where can I find the printer paper?",
+     "responses": [
+      "About twenty dollars.",
+      "It's in the supply closet.",
+      "I printed it yesterday."
+     ],
+     "answer": "B",
+     "why": "Where hỏi nơi chốn: \"It's in the supply closet.\" Các đáp án còn lại trả lời cho câu hỏi khác (giá tiền, thời điểm)."
+    },
+    {
+     "question": "Who is leading the training session?",
+     "responses": [
+      "At the main office.",
+      "Two hours long.",
+      "Ms. Alvarez from the HR department."
+     ],
+     "answer": "C",
+     "why": "Who hỏi về người: \"Ms. Alvarez from the HR department.\""
+    },
+    {
+     "question": "Would you like to review the report before Friday?",
+     "responses": [
+      "Yes, please send it to me.",
+      "It's on the second floor.",
+      "The reports were very long."
+     ],
+     "answer": "A",
+     "why": "Câu hỏi Yes/No lịch sự. \"Yes, please send it to me.\" là câu trả lời trực tiếp."
+    },
+    {
+     "question": "Why was the flight delayed?",
+     "responses": [
+      "Seat 14A, I think.",
+      "Because of the heavy snow.",
+      "Yes, the flight leaves at noon."
+     ],
+     "answer": "B",
+     "why": "Why hỏi lý do: \"Because of the heavy snow.\""
+    },
+    {
+     "question": "Haven't you ordered the new laptops yet?",
+     "responses": [
+      "They're very light.",
+      "At the electronics store.",
+      "No, I'm waiting for the budget approval."
+     ],
+     "answer": "C",
+     "why": "Câu hỏi phủ định. \"No, I'm waiting for the budget approval.\" trả lời trực tiếp và giải thích lý do."
+    }
+   ]
+  },
+  {
+   "id": "part3",
+   "title": "Part 3: Conversations",
+   "skill": "listening",
+   "minutes": 0,
+   "instructions": "Nghe từng đoạn hội thoại rồi trả lời ba câu hỏi cho mỗi đoạn.",
+   "groups": [
+    {
+     "id": "g1",
+     "lines": [
+      {
+       "who": "Woman",
+       "text": "Hi Daniel, did you reserve the conference room for tomorrow's client meeting?"
+      },
+      {
+       "who": "Man",
+       "text": "Not yet. I tried this morning, but the booking system was down."
+      },
+      {
+       "who": "Woman",
+       "text": "The client arrives at ten, and we need a room that fits twelve people."
+      },
+      {
+       "who": "Man",
+       "text": "The large room on the third floor is usually free in the morning. I'll call the front desk right now."
+      },
+      {
+       "who": "Woman",
+       "text": "Great. And could you also ask them to set up the projector?"
+      },
+      {
+       "who": "Man",
+       "text": "Sure. I'll send you a confirmation email as soon as it's done."
+      }
+     ],
+     "questions": [
+      {
+       "q": "What problem does the man mention?",
+       "options": [
+        "The client cancelled the meeting.",
+        "The booking system was not working.",
+        "The projector is broken.",
+        "The room is too small."
+       ],
+       "answer": "The booking system was not working.",
+       "why": "Người đàn ông nói: \"the booking system was down\"."
+      },
+      {
+       "q": "How many people need space in the room?",
+       "options": [
+        "Six",
+        "Ten",
+        "Twelve",
+        "Fifteen"
+       ],
+       "answer": "Twelve",
+       "why": "Người phụ nữ nói cần phòng \"fits twelve people\"."
+      },
+      {
+       "q": "What will the man do next?",
+       "options": [
+        "Call the front desk",
+        "Email the client",
+        "Move the meeting to another day",
+        "Buy a new projector"
+       ],
+       "answer": "Call the front desk",
+       "why": "Người đàn ông nói: \"I'll call the front desk right now.\""
+      }
+     ]
+    },
+    {
+     "id": "g2",
+     "lines": [
+      {
+       "who": "Customer",
+       "text": "Hello, I bought this jacket last week, but it's too small. Can I exchange it for a larger size?"
+      },
+      {
+       "who": "Clerk",
+       "text": "Of course. Do you have your receipt?"
+      },
+      {
+       "who": "Customer",
+       "text": "Yes, here it is."
+      },
+      {
+       "who": "Clerk",
+       "text": "I'm afraid we don't have this color in a large, but we do have it in extra large. Would that fit?"
+      },
+      {
+       "who": "Customer",
+       "text": "I think so. Could I try it on?"
+      },
+      {
+       "who": "Clerk",
+       "text": "The fitting rooms are at the back of the store, next to the shoe section."
+      }
+     ],
+     "questions": [
+      {
+       "q": "What does the customer want to do?",
+       "options": [
+        "Buy a pair of shoes",
+        "Exchange a jacket",
+        "Ask for a refund",
+        "Pay for a delivery"
+       ],
+       "answer": "Exchange a jacket",
+       "why": "Khách hỏi: \"Can I exchange it for a larger size?\""
+      },
+      {
+       "q": "What size does the clerk offer?",
+       "options": [
+        "Small",
+        "Medium",
+        "Large",
+        "Extra large"
+       ],
+       "answer": "Extra large",
+       "why": "Nhân viên: \"we do have it in extra large\"."
+      },
+      {
+       "q": "Where are the fitting rooms?",
+       "options": [
+        "At the back of the store",
+        "Next to the entrance",
+        "Upstairs",
+        "Behind the cash register"
+       ],
+       "answer": "At the back of the store",
+       "why": "\"The fitting rooms are at the back of the store\"."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "part4",
+   "title": "Part 4: Talks",
+   "skill": "listening",
+   "minutes": 0,
+   "instructions": "Nghe từng bài nói ngắn (thông báo, tin nhắn thoại...) rồi trả lời ba câu hỏi cho mỗi bài.",
+   "groups": [
+    {
+     "id": "g1",
+     "lines": [
+      {
+       "who": "Speaker",
+       "text": "Attention passengers. The nine fifteen train to Riverton has been delayed by about thirty minutes due to a signal problem. Passengers may wait in the main hall, where free coffee is available. Please note that the train will now leave from platform five instead of platform two. We apologize for the inconvenience."
+      }
+     ],
+     "questions": [
+      {
+       "q": "Where is the announcement most likely heard?",
+       "options": [
+        "At an airport",
+        "At a bus terminal",
+        "At a train station",
+        "In a hotel"
+       ],
+       "answer": "At a train station",
+       "why": "Nội dung nói về chuyến tàu (train), sân ga (platform)."
+      },
+      {
+       "q": "How long is the delay?",
+       "options": [
+        "About fifteen minutes",
+        "About thirty minutes",
+        "About one hour",
+        "About two hours"
+       ],
+       "answer": "About thirty minutes",
+       "why": "\"delayed by about thirty minutes\"."
+      },
+      {
+       "q": "Which platform will the train leave from?",
+       "options": [
+        "Platform five",
+        "Platform two",
+        "Platform three",
+        "Platform seven"
+       ],
+       "answer": "Platform five",
+       "why": "\"will now leave from platform five instead of platform two\"."
+      }
+     ]
+    },
+    {
+     "id": "g2",
+     "lines": [
+      {
+       "who": "Speaker",
+       "text": "Hello, this is Maria from Greenfield Dental Clinic calling for Mr. Park. I'm calling to confirm your appointment on Wednesday at two thirty. Please arrive ten minutes early to complete a short form, and bring your insurance card. If you need to reschedule, please call us before Tuesday at noon. Thank you."
+      }
+     ],
+     "questions": [
+      {
+       "q": "Why is the speaker calling?",
+       "options": [
+        "To confirm an appointment",
+        "To cancel an order",
+        "To offer a discount",
+        "To ask for a payment"
+       ],
+       "answer": "To confirm an appointment",
+       "why": "\"I'm calling to confirm your appointment\"."
+      },
+      {
+       "q": "What should Mr. Park bring?",
+       "options": [
+        "A photo",
+        "A medical report",
+        "A credit card",
+        "His insurance card"
+       ],
+       "answer": "His insurance card",
+       "why": "\"bring your insurance card\"."
+      },
+      {
+       "q": "What should Mr. Park do if he needs to change the time?",
+       "options": [
+        "Reply by email",
+        "Call before Tuesday at noon",
+        "Come to the clinic on Wednesday",
+        "Call after the appointment"
+       ],
+       "answer": "Call before Tuesday at noon",
+       "why": "\"If you need to reschedule, please call us before Tuesday at noon\"."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "part5",
+   "title": "Part 5: Incomplete Sentences",
+   "skill": "reading",
+   "minutes": 6,
+   "instructions": "Chọn từ hoặc cụm từ đúng nhất để hoàn thành mỗi câu.",
+   "items": [
+    {
+     "q": "The manager asked all employees to ____ their reports by Friday.",
+     "options": [
+      "submit",
+      "submits",
+      "submitted",
+      "submitting"
+     ],
+     "answer": "submit",
+     "why": "Sau \"asked ... to\" dùng động từ nguyên mẫu: to submit."
+    },
+    {
+     "q": "Ms. Tanaka is ____ for organizing the annual conference.",
+     "options": [
+      "responsibly",
+      "responsible",
+      "responsibility",
+      "responsibilities"
+     ],
+     "answer": "responsible",
+     "why": "Sau to be cần tính từ: be responsible for (chịu trách nhiệm về)."
+    },
+    {
+     "q": "The new software is ____ easier to use than the old version.",
+     "options": [
+      "very",
+      "too",
+      "much",
+      "so"
+     ],
+     "answer": "much",
+     "why": "\"much\" bổ nghĩa cho dạng so sánh hơn (much easier). Very, too, so không đi với so sánh hơn."
+    },
+    {
+     "q": "Please contact the human resources department ____ you have any questions about your benefits.",
+     "options": [
+      "than",
+      "if",
+      "but",
+      "so"
+     ],
+     "answer": "if",
+     "why": "\"if you have any questions\" mở đầu mệnh đề điều kiện."
+    },
+    {
+     "q": "The company's profits increased ____ the second quarter.",
+     "options": [
+      "between",
+      "during",
+      "among",
+      "toward"
+     ],
+     "answer": "during",
+     "why": "\"during the second quarter\": trong suốt quý hai. Between cần hai mốc; among dùng với nhóm từ ba trở lên."
+    },
+    {
+     "q": "Mr. Lee will be out of the office ____ next Monday.",
+     "options": [
+      "during",
+      "while",
+      "until",
+      "since"
+     ],
+     "answer": "until",
+     "why": "\"until next Monday\": cho đến thứ Hai tuần sau. While là liên từ, since dùng với mốc trong quá khứ."
+    },
+    {
+     "q": "All visitors must ____ at the front desk before entering the building.",
+     "options": [
+      "registration",
+      "registering",
+      "registers",
+      "register"
+     ],
+     "answer": "register",
+     "why": "Sau động từ khuyết thiếu must dùng động từ nguyên mẫu."
+    },
+    {
+     "q": "The restaurant is famous for its ____ service and reasonable prices.",
+     "options": [
+      "excellently",
+      "excellence",
+      "excellent",
+      "excel"
+     ],
+     "answer": "excellent",
+     "why": "Trước danh từ service cần tính từ: excellent."
+    },
+    {
+     "q": "We regret to inform you that the shipment has been ____ due to bad weather.",
+     "options": [
+      "delay",
+      "delaying",
+      "delays",
+      "delayed"
+     ],
+     "answer": "delayed",
+     "why": "Câu bị động hiện tại hoàn thành: has been + V3 (delayed)."
+    },
+    {
+     "q": "Neither the manager ____ the assistants were aware of the schedule change.",
+     "options": [
+      "or",
+      "and",
+      "nor",
+      "but"
+     ],
+     "answer": "nor",
+     "why": "Cấu trúc neither ... nor ...: không ... cũng không ..."
+    }
+   ]
+  },
+  {
+   "id": "part6",
+   "title": "Part 6: Text Completion",
+   "skill": "reading",
+   "minutes": 6,
+   "instructions": "Đọc văn bản và chọn từ hoặc cụm từ đúng nhất cho mỗi chỗ trống.",
+   "groups": [
+    {
+     "id": "g1",
+     "title": "Email",
+     "text": [
+      "Dear Ms. Chen,",
+      "Thank you for your application for the marketing assistant position. We were (1) ____ impressed by your experience and would like to invite you for an interview. The interview will take place at our head office on Tuesday, May 6, at 10:00 a.m. Please bring a copy of your résumé and (2) ____ of your previous work.",
+      "If this time is not convenient, (3) ____ let us know as soon as possible so that we can arrange another date. We look forward to (4) ____ you.",
+      "Sincerely,",
+      "Paul Weber, Human Resources"
+     ],
+     "questions": [
+      {
+       "q": "Blank (1)",
+       "options": [
+        "very",
+        "lot",
+        "well",
+        "far"
+       ],
+       "answer": "very",
+       "why": "\"very impressed\": rất ấn tượng. Very bổ nghĩa cho tính từ impressed."
+      },
+      {
+       "q": "Blank (2)",
+       "options": [
+        "example",
+        "examples",
+        "exemplify",
+        "exemplary"
+       ],
+       "answer": "examples",
+       "why": "\"examples of your previous work\": cần danh từ số nhiều sau \"copy of your résumé and\" (liệt kê song song)."
+      },
+      {
+       "q": "Blank (3)",
+       "options": [
+        "although",
+        "please",
+        "otherwise",
+        "therefore"
+       ],
+       "answer": "please",
+       "why": "\"please let us know\": lời đề nghị lịch sự trong thư."
+      },
+      {
+       "q": "Blank (4)",
+       "options": [
+        "meet",
+        "met",
+        "meeting",
+        "to meet"
+       ],
+       "answer": "meeting",
+       "why": "\"look forward to\" + V-ing (to là giới từ)."
+      }
+     ]
+    },
+    {
+     "id": "g2",
+     "title": "Notice",
+     "text": [
+      "NOTICE TO ALL RESIDENTS",
+      "The building's elevator will be (1) ____ for maintenance on Saturday, June 14, from 8:00 a.m. to 4:00 p.m. During this time, residents (2) ____ use the stairs. We (3) ____ for any inconvenience this may cause.",
+      "If you have difficulty climbing stairs, please contact the building manager by Thursday, and special arrangements (4) ____ made."
+     ],
+     "questions": [
+      {
+       "q": "Blank (1)",
+       "options": [
+        "unavailably",
+        "unavailability",
+        "unavailable",
+        "unavail"
+       ],
+       "answer": "unavailable",
+       "why": "Sau will be cần tính từ: unavailable (không dùng được)."
+      },
+      {
+       "q": "Blank (2)",
+       "options": [
+        "having to",
+        "had to",
+        "should have",
+        "will have to"
+       ],
+       "answer": "will have to",
+       "why": "Thông báo về sự kiện sắp tới nên dùng tương lai: will have to (sẽ phải)."
+      },
+      {
+       "q": "Blank (3)",
+       "options": [
+        "apologizes",
+        "apology",
+        "apologizing",
+        "apologize"
+       ],
+       "answer": "apologize",
+       "why": "Chủ ngữ We nên dùng động từ nguyên mẫu: We apologize for ..."
+      },
+      {
+       "q": "Blank (4)",
+       "options": [
+        "are",
+        "will be",
+        "have",
+        "will"
+       ],
+       "answer": "will be",
+       "why": "Bị động tương lai: special arrangements will be made."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "part7",
+   "title": "Part 7: Reading Comprehension",
+   "skill": "reading",
+   "minutes": 12,
+   "instructions": "Đọc từng văn bản (hoặc cặp văn bản) rồi trả lời các câu hỏi.",
+   "groups": [
+    {
+     "id": "g1",
+     "title": "Email",
+     "passages": [
+      {
+       "label": "Email",
+       "text": [
+        "From: Sophia Martin",
+        "To: All staff",
+        "Subject: New parking rules",
+        "Date: March 3",
+        "Dear colleagues,",
+        "Starting April 1, employees who drive to work must register their vehicles with the facilities office. Registered vehicles will receive a parking permit, which should be displayed on the windshield. Cars without a permit will not be allowed to enter the garage. To register, please complete the online form on the company intranet and attach a photo of your driver's license. Permits are free for employees; however, replacement permits cost $10. Please register before March 25 to avoid delays.",
+        "Thank you,",
+        "Sophia Martin, Facilities Manager"
+       ]
+      }
+     ],
+     "questions": [
+      {
+       "q": "Why was the email written?",
+       "options": [
+        "To announce a new parking rule",
+        "To invite staff to a party",
+        "To introduce a new manager",
+        "To ask for car donations"
+       ],
+       "answer": "To announce a new parking rule",
+       "why": "Email thông báo quy định đăng ký xe và giấy phép đỗ xe bắt đầu từ ngày 1/4."
+      },
+      {
+       "q": "What must employees attach to the online form?",
+       "options": [
+        "A copy of their contract",
+        "A map of their route",
+        "A photo of their driver's license",
+        "A payment receipt"
+       ],
+       "answer": "A photo of their driver's license",
+       "why": "\"attach a photo of your driver's license\"."
+      },
+      {
+       "q": "How much does a replacement permit cost?",
+       "options": [
+        "$5",
+        "$10",
+        "$15",
+        "Nothing"
+       ],
+       "answer": "$10",
+       "why": "\"replacement permits cost $10\". Giấy phép đầu tiên miễn phí."
+      }
+     ]
+    },
+    {
+     "id": "g2",
+     "title": "Advertisement",
+     "passages": [
+      {
+       "label": "Advertisement",
+       "text": [
+        "Brightside Language Center — Evening English Courses",
+        "Learn English in a friendly environment! Classes are held on Monday and Wednesday from 6:30 to 8:00 p.m. The course is suitable for beginner to intermediate students and lasts ten weeks, starting April 7. The fee is $180, which includes the textbook. Register before March 20 and receive a 15% discount. A free trial class will be held on March 28. To register, call the center's front office."
+       ]
+      }
+     ],
+     "questions": [
+      {
+       "q": "How long does the course last?",
+       "options": [
+        "Six weeks",
+        "Eight weeks",
+        "Twelve weeks",
+        "Ten weeks"
+       ],
+       "answer": "Ten weeks",
+       "why": "\"lasts ten weeks, starting April 7\"."
+      },
+      {
+       "q": "What is included in the fee?",
+       "options": [
+        "The textbook",
+        "An exam",
+        "Evening meals",
+        "A certificate"
+       ],
+       "answer": "The textbook",
+       "why": "\"$180, which includes the textbook\"."
+      },
+      {
+       "q": "What can people do on March 28?",
+       "options": [
+        "Receive a discount",
+        "Attend a free trial class",
+        "Start the course",
+        "Buy a textbook"
+       ],
+       "answer": "Attend a free trial class",
+       "why": "\"A free trial class will be held on March 28\"."
+      }
+     ]
+    },
+    {
+     "id": "g3",
+     "title": "Hai email liên quan",
+     "passages": [
+      {
+       "label": "Email 1",
+       "text": [
+        "To: Customer Service",
+        "From: Hannah Brooks",
+        "Date: June 2",
+        "Subject: Missing item",
+        "I ordered a desk lamp and a notebook set (order #4471) on May 28. The package arrived yesterday, but the notebook set was missing. The packing slip lists both items. Could you please send the missing item?",
+        "Thanks,",
+        "Hannah Brooks"
+       ]
+      },
+      {
+       "label": "Email 2",
+       "text": [
+        "To: Hannah Brooks",
+        "From: Customer Service",
+        "Date: June 3",
+        "Subject: Re: Missing item",
+        "Dear Ms. Brooks,",
+        "We apologize for the error. We have checked order #4471 and found that the notebook set was sent in a separate package, which is expected to arrive on June 5. If it has not arrived by June 7, please contact us again and we will send a replacement. As an apology, we have added a 10% discount to your next order.",
+        "Customer Service Team"
+       ]
+      }
+     ],
+     "questions": [
+      {
+       "q": "What was missing from Ms. Brooks's package?",
+       "options": [
+        "The desk lamp",
+        "The packing slip",
+        "The notebook set",
+        "The order form"
+       ],
+       "answer": "The notebook set",
+       "why": "Email 1: \"the notebook set was missing\"."
+      },
+      {
+       "q": "When is the missing item expected to arrive?",
+       "options": [
+        "June 5",
+        "June 2",
+        "June 3",
+        "June 7"
+       ],
+       "answer": "June 5",
+       "why": "Email 2: \"expected to arrive on June 5\"."
+      },
+      {
+       "q": "What will Ms. Brooks receive as an apology?",
+       "options": [
+        "A free lamp",
+        "A full refund",
+        "A gift card",
+        "A discount on her next order"
+       ],
+       "answer": "A discount on her next order",
+       "why": "Email 2: \"we have added a 10% discount to your next order\"."
+      },
+      {
+       "q": "What should Ms. Brooks do if the item has not arrived by June 7?",
+       "options": [
+        "Return the lamp",
+        "Contact customer service again",
+        "Place a new order",
+        "Wait another week"
+       ],
+       "answer": "Contact customer service again",
+       "why": "Email 2: \"please contact us again and we will send a replacement\"."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

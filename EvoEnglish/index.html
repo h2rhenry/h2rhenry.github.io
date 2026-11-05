@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light" data-font-size="md" data-motion="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EvoEnglish — Học tiếng Anh theo lộ trình</title>
+<meta name="description" content="EvoEnglish: web học tiếng Anh tĩnh, lưu tiến độ ngay trên trình duyệt, không cần tài khoản.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#4f46e5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1226" media="(prefers-color-scheme: dark)">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-pUCUiT+eMOOgXjWHxXUUuFSIBZmbAdifon93Vm9aHPo='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self' blob:; connect-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Cpath d='M9 10h14M9 16h10M9 22h14' stroke='%23c7d2fe' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<script>
+/* Áp dụng giao diện trước khi vẽ trang để tránh nháy sáng/tối */
+(function(){try{var s=JSON.parse(localStorage.getItem('evoenglish.settings')||'{}'),r=document.documentElement;
+var d=s.theme==='dark'||((!s.theme||s.theme==='system')&&matchMedia('(prefers-color-scheme: dark)').matches);
+r.dataset.theme=d?'dark':'light';if(s.fontSize)r.dataset.fontSize=s.fontSize;if(s.animations===false)r.dataset.motion='off';}catch(e){}})();
+</script>
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+<a class="skip-link" href="#view">Bỏ qua điều hướng</a>
+<div class="app" id="app">
+  <aside class="sidebar" id="sidebar" aria-label="Điều hướng chính">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">E</span>
+      <span class="brand-text">EvoEnglish</span>
+    </div>
+    <nav class="nav" id="nav"></nav>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+  <div class="main-wrap">
+    <header class="topbar">
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Mở menu" aria-controls="sidebar" aria-expanded="false"></button>
+      <button class="icon-btn collapse-btn" id="collapseBtn" type="button" aria-label="Thu gọn thanh bên"></button>
+      <p class="topbar-title" id="topTitle">Tổng quan</p>
+      <button class="icon-btn" id="themeBtn" type="button"></button>
+    </header>
+    <main class="content" id="view" tabindex="-1"><p class="muted">Đang tải…</p></main>
+  </div>
+  <nav class="bottom-nav" id="bottomNav" aria-label="Điều hướng nhanh"></nav>
+</div>
+<div class="toast-region" id="toasts" role="status" aria-live="polite"></div>
+<noscript><p style="padding:24px">EvoEnglish cần bật JavaScript để chạy.</p></noscript>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

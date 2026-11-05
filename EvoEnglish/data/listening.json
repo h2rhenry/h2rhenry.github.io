@@ -1,0 +1,438 @@
+{
+ "lessons": [
+  {
+   "id": "a0-meeting",
+   "level": "A0",
+   "title": "Làm quen",
+   "goal": "Nghe hai người chào hỏi và giới thiệu tên.",
+   "audio": null,
+   "lines": [
+    {
+     "who": "Anna",
+     "text": "Hello! My name is Anna.",
+     "vi": "Xin chào! Tên mình là Anna."
+    },
+    {
+     "who": "Ben",
+     "text": "Hi, Anna. I am Ben. Nice to meet you.",
+     "vi": "Chào Anna. Mình là Ben. Rất vui được gặp bạn."
+    },
+    {
+     "who": "Anna",
+     "text": "Nice to meet you too. Are you a student?",
+     "vi": "Mình cũng rất vui được gặp bạn. Bạn là học sinh à?"
+    },
+    {
+     "who": "Ben",
+     "text": "Yes, I am. I study English.",
+     "vi": "Đúng vậy. Mình học tiếng Anh."
+    },
+    {
+     "who": "Anna",
+     "text": "Me too!",
+     "vi": "Mình cũng vậy!"
+    }
+   ],
+   "glossary": [
+    {
+     "w": "Nice to meet you",
+     "vi": "Rất vui được gặp bạn"
+    },
+    {
+     "w": "study",
+     "vi": "học"
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "kind": "detail",
+     "q": "What is the first speaker's name?",
+     "options": [
+      "Ben",
+      "Anna",
+      "Lan",
+      "Tom"
+     ],
+     "answer": "Anna",
+     "why": "Người nói đầu tiên giới thiệu: \"My name is Anna.\""
+    },
+    {
+     "id": "q2",
+     "kind": "detail",
+     "q": "Is Ben a student?",
+     "options": [
+      "Yes, he is",
+      "No, he is not",
+      "We do not know",
+      "He is a teacher"
+     ],
+     "answer": "Yes, he is",
+     "why": "Ben nói: \"Yes, I am.\""
+    },
+    {
+     "id": "q3",
+     "kind": "detail",
+     "q": "What does Ben study?",
+     "options": [
+      "Maths",
+      "English",
+      "Music",
+      "History"
+     ],
+     "answer": "English",
+     "why": "\"I study English.\""
+    }
+   ]
+  },
+  {
+   "id": "a0-family",
+   "level": "A0",
+   "title": "Gia đình tôi",
+   "goal": "Nghe một người giới thiệu các thành viên trong gia đình.",
+   "audio": null,
+   "lines": [
+    {
+     "who": "Speaker",
+     "text": "This is my family. My father is Tom. My mother is Sue.",
+     "vi": "Đây là gia đình mình. Bố mình là Tom. Mẹ mình là Sue."
+    },
+    {
+     "who": "Speaker",
+     "text": "I have one brother. His name is Jack. He is seven.",
+     "vi": "Mình có một em trai. Tên em là Jack. Em bảy tuổi."
+    }
+   ],
+   "glossary": [
+    {
+     "w": "brother",
+     "vi": "anh/em trai"
+    },
+    {
+     "w": "father",
+     "vi": "bố"
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "kind": "detail",
+     "q": "What is the speaker's mother's name?",
+     "options": [
+      "Sue",
+      "Anna",
+      "Mary",
+      "Kate"
+     ],
+     "answer": "Sue",
+     "why": "\"My mother is Sue.\""
+    },
+    {
+     "id": "q2",
+     "kind": "detail",
+     "q": "How many brothers does the speaker have?",
+     "options": [
+      "None",
+      "One",
+      "Two",
+      "Three"
+     ],
+     "answer": "One",
+     "why": "\"I have one brother.\""
+    },
+    {
+     "id": "q3",
+     "kind": "detail",
+     "q": "How old is Jack?",
+     "options": [
+      "Five",
+      "Six",
+      "Seven",
+      "Eight"
+     ],
+     "answer": "Seven",
+     "why": "\"He is seven.\""
+    }
+   ]
+  },
+  {
+   "id": "a1-routine",
+   "level": "A1",
+   "title": "Một ngày làm việc",
+   "goal": "Nghe và nắm thông tin về giờ giấc, phương tiện, hoạt động.",
+   "audio": null,
+   "lines": [
+    {
+     "who": "Speaker",
+     "text": "I get up at six thirty. I have breakfast at seven.",
+     "vi": "Mình dậy lúc sáu giờ rưỡi. Mình ăn sáng lúc bảy giờ."
+    },
+    {
+     "who": "Speaker",
+     "text": "I go to work by bus at half past seven. I finish work at five.",
+     "vi": "Mình đi làm bằng xe buýt lúc bảy giờ rưỡi. Mình tan làm lúc năm giờ."
+    },
+    {
+     "who": "Speaker",
+     "text": "In the evening, I cook dinner and watch TV.",
+     "vi": "Buổi tối mình nấu bữa tối và xem TV."
+    }
+   ],
+   "glossary": [
+    {
+     "w": "half past seven",
+     "vi": "bảy giờ rưỡi"
+    },
+    {
+     "w": "finish work",
+     "vi": "tan làm"
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "kind": "detail",
+     "q": "What time does the speaker have breakfast?",
+     "options": [
+      "Six thirty",
+      "Seven",
+      "Half past seven",
+      "Five"
+     ],
+     "answer": "Seven",
+     "why": "\"I have breakfast at seven.\""
+    },
+    {
+     "id": "q2",
+     "kind": "detail",
+     "q": "How does the speaker go to work?",
+     "options": [
+      "By bike",
+      "By car",
+      "By bus",
+      "On foot"
+     ],
+     "answer": "By bus",
+     "why": "\"by bus\""
+    },
+    {
+     "id": "q3",
+     "kind": "detail",
+     "q": "When does the speaker finish work?",
+     "options": [
+      "At five",
+      "At six",
+      "At seven",
+      "At noon"
+     ],
+     "answer": "At five",
+     "why": "\"I finish work at five.\""
+    },
+    {
+     "id": "q4",
+     "kind": "detail",
+     "q": "What does the speaker do in the evening?",
+     "options": [
+      "Plays football and reads",
+      "Cooks dinner and watches TV",
+      "Goes shopping",
+      "Studies English"
+     ],
+     "answer": "Cooks dinner and watches TV",
+     "why": "\"I cook dinner and watch TV.\""
+    }
+   ]
+  },
+  {
+   "id": "a1-cafe",
+   "level": "A1",
+   "title": "Ở quán cà phê",
+   "goal": "Nghe một cuộc hội thoại gọi đồ uống và thanh toán.",
+   "audio": null,
+   "lines": [
+    {
+     "who": "Waiter",
+     "text": "Good afternoon. What would you like?",
+     "vi": "Chào buổi chiều. Bạn muốn dùng gì ạ?"
+    },
+    {
+     "who": "Customer",
+     "text": "I'd like a cup of coffee, please.",
+     "vi": "Cho mình một cốc cà phê."
+    },
+    {
+     "who": "Waiter",
+     "text": "Anything else?",
+     "vi": "Bạn dùng gì nữa không?"
+    },
+    {
+     "who": "Customer",
+     "text": "Yes, a piece of cake.",
+     "vi": "Có, một miếng bánh."
+    },
+    {
+     "who": "Waiter",
+     "text": "Sure. That's four dollars.",
+     "vi": "Vâng. Tổng cộng bốn đô la."
+    },
+    {
+     "who": "Customer",
+     "text": "Here you are.",
+     "vi": "Của bạn đây."
+    }
+   ],
+   "glossary": [
+    {
+     "w": "What would you like?",
+     "vi": "Bạn muốn dùng gì?"
+    },
+    {
+     "w": "a piece of cake",
+     "vi": "một miếng bánh"
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "kind": "detail",
+     "q": "What does the customer drink?",
+     "options": [
+      "Tea",
+      "Coffee",
+      "Milk",
+      "Juice"
+     ],
+     "answer": "Coffee",
+     "why": "\"a cup of coffee\""
+    },
+    {
+     "id": "q2",
+     "kind": "detail",
+     "q": "What food does the customer order?",
+     "options": [
+      "A sandwich",
+      "A piece of cake",
+      "Fruit",
+      "Soup"
+     ],
+     "answer": "A piece of cake",
+     "why": "\"a piece of cake\""
+    },
+    {
+     "id": "q3",
+     "kind": "detail",
+     "q": "How much is the order?",
+     "options": [
+      "Three dollars",
+      "Four dollars",
+      "Five dollars",
+      "Six dollars"
+     ],
+     "answer": "Four dollars",
+     "why": "\"That's four dollars.\""
+    },
+    {
+     "id": "q4",
+     "kind": "detail",
+     "q": "When does the conversation happen?",
+     "options": [
+      "In the morning",
+      "In the afternoon",
+      "In the evening",
+      "At night"
+     ],
+     "answer": "In the afternoon",
+     "why": "Người phục vụ chào \"Good afternoon\"."
+    }
+   ]
+  },
+  {
+   "id": "a2-weekend",
+   "level": "A2",
+   "title": "Kế hoạch cuối tuần",
+   "goal": "Nghe kế hoạch kèm điều kiện (if) và nắm ý chính.",
+   "audio": null,
+   "lines": [
+    {
+     "who": "Speaker",
+     "text": "This weekend I am going to visit my grandparents. They live in a small town near the sea.",
+     "vi": "Cuối tuần này mình sẽ thăm ông bà. Ông bà sống ở một thị trấn nhỏ gần biển."
+    },
+    {
+     "who": "Speaker",
+     "text": "We will go fishing on Saturday if the weather is good. If it rains, we will stay at home and play cards.",
+     "vi": "Thứ Bảy chúng mình sẽ đi câu cá nếu trời đẹp. Nếu trời mưa, chúng mình sẽ ở nhà chơi bài."
+    },
+    {
+     "who": "Speaker",
+     "text": "On Sunday afternoon I will take the bus back to the city.",
+     "vi": "Chiều Chủ nhật mình sẽ đi xe buýt về thành phố."
+    }
+   ],
+   "glossary": [
+    {
+     "w": "grandparents",
+     "vi": "ông bà"
+    },
+    {
+     "w": "go fishing",
+     "vi": "đi câu cá"
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "kind": "detail",
+     "q": "Who will the speaker visit?",
+     "options": [
+      "Friends",
+      "Grandparents",
+      "Cousins",
+      "Teachers"
+     ],
+     "answer": "Grandparents",
+     "why": "\"visit my grandparents\""
+    },
+    {
+     "id": "q2",
+     "kind": "detail",
+     "q": "Where do they live?",
+     "options": [
+      "In a big city",
+      "In a small town near the sea",
+      "In the mountains",
+      "Abroad"
+     ],
+     "answer": "In a small town near the sea",
+     "why": "\"a small town near the sea\""
+    },
+    {
+     "id": "q3",
+     "kind": "detail",
+     "q": "What will they do if it rains?",
+     "options": [
+      "Go fishing",
+      "Stay at home and play cards",
+      "Go shopping",
+      "Visit a museum"
+     ],
+     "answer": "Stay at home and play cards",
+     "why": "\"If it rains, we will stay at home and play cards.\""
+    },
+    {
+     "id": "q4",
+     "kind": "detail",
+     "q": "How will the speaker return to the city?",
+     "options": [
+      "By bus",
+      "By train",
+      "By car",
+      "By plane"
+     ],
+     "answer": "By bus",
+     "why": "\"take the bus back to the city\""
+    }
+   ]
+  }
+ ]
+}

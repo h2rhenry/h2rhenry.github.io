@@ -1,0 +1,821 @@
+{
+ "disclaimer": "EvoEnglish là sản phẩm độc lập, không liên kết với, không được bảo trợ hay chứng nhận bởi tổ chức thi IELTS. Toàn bộ đề luyện do EvoEnglish tự soạn, không phải đề thi thật. Điểm hiển thị chỉ là kết quả luyện tập tham khảo, không phải điểm IELTS chính thức.",
+ "listening": [
+  {
+   "id": "l1",
+   "title": "Joining a library",
+   "section": "Part 1 (hội thoại đời sống)",
+   "instructions": "Điền mỗi chỗ trống bằng MỘT TỪ hoặc MỘT SỐ, hoặc chọn đáp án đúng.",
+   "lines": [
+    {
+     "who": "Clerk",
+     "text": "Good morning. How can I help you?"
+    },
+    {
+     "who": "Customer",
+     "text": "Hi, I'd like to join the city library."
+    },
+    {
+     "who": "Clerk",
+     "text": "Certainly. Could I have your surname, please?"
+    },
+    {
+     "who": "Customer",
+     "text": "It's Reeves. That's R, E, E, V, E, S."
+    },
+    {
+     "who": "Clerk",
+     "text": "Thank you. And what's your address?"
+    },
+    {
+     "who": "Customer",
+     "text": "It's forty-two Maple Street."
+    },
+    {
+     "who": "Clerk",
+     "text": "Great. There are two types of membership. Standard costs fifteen pounds a year. Premium costs thirty pounds and lets you borrow ten books at a time."
+    },
+    {
+     "who": "Customer",
+     "text": "I'll take the standard one. I only read a few books a month."
+    },
+    {
+     "who": "Clerk",
+     "text": "Fine. Your card will be ready on Thursday. You can collect it from the front desk."
+    },
+    {
+     "who": "Customer",
+     "text": "Thursday afternoon is fine. Thank you."
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "kind": "text",
+     "q": "Surname: ____",
+     "answer": "Reeves",
+     "why": "Người khách đánh vần R-E-E-V-E-S.",
+     "accepts": []
+    },
+    {
+     "id": "q2",
+     "kind": "text",
+     "q": "House number: ____",
+     "answer": "42",
+     "why": "\"forty-two Maple Street\".",
+     "accepts": [
+      "forty-two",
+      "forty two"
+     ]
+    },
+    {
+     "id": "q3",
+     "kind": "text",
+     "q": "Street: ____ Street",
+     "answer": "Maple",
+     "why": "\"Maple Street\".",
+     "accepts": [
+      "Maple Street"
+     ]
+    },
+    {
+     "id": "q4",
+     "kind": "mc",
+     "q": "Which type of membership does the customer choose?",
+     "answer": "Standard",
+     "why": "Khách nói \"I'll take the standard one\".",
+     "options": [
+      "Standard",
+      "Premium",
+      "Student"
+     ]
+    },
+    {
+     "id": "q5",
+     "kind": "text",
+     "q": "Yearly cost of the chosen membership: £____",
+     "answer": "15",
+     "why": "Standard costs fifteen pounds a year.",
+     "accepts": [
+      "fifteen",
+      "£15",
+      "15 pounds",
+      "fifteen pounds"
+     ]
+    },
+    {
+     "id": "q6",
+     "kind": "text",
+     "q": "The card will be ready on ____",
+     "answer": "Thursday",
+     "why": "\"Your card will be ready on Thursday.\"",
+     "accepts": []
+    },
+    {
+     "id": "q7",
+     "kind": "mc",
+     "q": "Where can the customer collect the card?",
+     "answer": "At the front desk",
+     "why": "\"You can collect it from the front desk.\"",
+     "options": [
+      "At the front desk",
+      "In the reading room",
+      "On the website"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "l2",
+   "title": "Planning a presentation",
+   "section": "Part 3 (thảo luận học thuật)",
+   "instructions": "Chọn đáp án đúng hoặc điền MỘT TỪ hoặc MỘT SỐ.",
+   "lines": [
+    {
+     "who": "Maya",
+     "text": "Have you decided on a topic for the presentation, Leo?"
+    },
+    {
+     "who": "Leo",
+     "text": "I'm thinking of plastic waste in the ocean. What about you?"
+    },
+    {
+     "who": "Maya",
+     "text": "I'd prefer urban gardens. I read an article saying that rooftop gardens can reduce a building's energy use."
+    },
+    {
+     "who": "Leo",
+     "text": "That sounds interesting, but is there enough research?"
+    },
+    {
+     "who": "Maya",
+     "text": "Quite a lot, actually. The library has three recent books, and Dr Patel's lecture covered it last week."
+    },
+    {
+     "who": "Leo",
+     "text": "Then we should divide the work. I'll do the introduction and the data, and you can write the conclusion."
+    },
+    {
+     "who": "Maya",
+     "text": "Fine. And we have to submit the slides by the fifteenth of March."
+    },
+    {
+     "who": "Leo",
+     "text": "The fifteenth? I thought it was the twentieth."
+    },
+    {
+     "who": "Maya",
+     "text": "No, the twentieth is the date of the presentation itself."
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "kind": "mc",
+     "q": "What is Leo's topic?",
+     "answer": "Plastic waste in the ocean",
+     "why": "\"I'm thinking of plastic waste in the ocean.\"",
+     "options": [
+      "Plastic waste in the ocean",
+      "Urban gardens",
+      "Rooftop energy"
+     ]
+    },
+    {
+     "id": "q2",
+     "kind": "mc",
+     "q": "What is Maya's topic?",
+     "answer": "Urban gardens",
+     "why": "\"I'd prefer urban gardens.\"",
+     "options": [
+      "Plastic waste in the ocean",
+      "Urban gardens",
+      "Ocean energy"
+     ]
+    },
+    {
+     "id": "q3",
+     "kind": "mc",
+     "q": "According to the article, what can reduce a building's energy use?",
+     "answer": "Rooftop gardens",
+     "why": "Maya nhắc đến rooftop gardens.",
+     "options": [
+      "Rooftop gardens",
+      "Solar panels",
+      "Better windows"
+     ]
+    },
+    {
+     "id": "q4",
+     "kind": "mc",
+     "q": "How many recent books does the library have on the topic?",
+     "answer": "Three",
+     "why": "\"The library has three recent books.\"",
+     "options": [
+      "Two",
+      "Three",
+      "Five"
+     ]
+    },
+    {
+     "id": "q5",
+     "kind": "mc",
+     "q": "Who will write the conclusion?",
+     "answer": "Maya",
+     "why": "Leo: \"you can write the conclusion\" (you = Maya).",
+     "options": [
+      "Leo",
+      "Maya",
+      "Dr Patel"
+     ]
+    },
+    {
+     "id": "q6",
+     "kind": "text",
+     "q": "The slides must be submitted by ____ March.",
+     "answer": "15",
+     "why": "\"by the fifteenth of March\".",
+     "accepts": [
+      "fifteenth",
+      "15th",
+      "fifteen"
+     ]
+    },
+    {
+     "id": "q7",
+     "kind": "text",
+     "q": "The presentation takes place on ____ March.",
+     "answer": "20",
+     "why": "\"the twentieth is the date of the presentation\".",
+     "accepts": [
+      "twentieth",
+      "20th",
+      "twenty"
+     ]
+    }
+   ]
+  }
+ ],
+ "reading": {
+  "academic": [
+   {
+    "id": "ac-r1",
+    "title": "The Rise of Urban Beekeeping",
+    "minutes": 20,
+    "instructions": "Questions 1–4: True / False / Not Given. Questions 5–7: điền KHÔNG QUÁ HAI TỪ trong bài. Question 8: chọn một đáp án.",
+    "paragraphs": [
+     "In recent years, keeping bees on city rooftops has moved from a niche hobby to a widespread movement. Cities such as London, Paris and Toronto now host hives on the roofs of offices, hotels and museums. Supporters argue that urban areas can actually be better for bees than the countryside.",
+     "One reason is the variety of plants. Parks, gardens and balconies provide flowers that bloom at different times of year, whereas large farms often grow a single crop that flowers for only a few weeks. In addition, cities tend to be warmer than rural areas, which allows bees to start foraging earlier in spring. Pesticide use is also generally lower in city parks than on intensive farmland.",
+     "However, the trend has not been entirely positive. Some ecologists warn that a sudden increase in honeybees may harm wild pollinators, such as bumblebees and solitary bees, because they compete for the same flowers. Some studies have suggested that wild bee numbers may be lower in areas with very many hives. The researchers behind these studies did not claim that honeybees were the only cause, but they advised planners to think carefully before encouraging more hives.",
+     "Beekeeping groups respond that the best approach is to combine hives with habitat. Planting native flowers, leaving patches of bare soil for nesting, and avoiding chemical sprays can help both honeybees and wild species. Several cities have therefore started to link hive permits to planting requirements. Whether such measures will be enough remains to be seen, but most experts agree that more research is needed."
+    ],
+    "questions": [
+     {
+      "id": "q1",
+      "kind": "tfng",
+      "q": "Urban beekeeping is practised only by hobbyists.",
+      "answer": "False",
+      "why": "Đoạn 1: phong trào lan rộng, tổ ong đặt trên mái văn phòng, khách sạn, bảo tàng, nên không chỉ là sở thích cá nhân.",
+      "options": [
+       "True",
+       "False",
+       "Not Given"
+      ]
+     },
+     {
+      "id": "q2",
+      "kind": "tfng",
+      "q": "Cities are usually warmer than rural areas.",
+      "answer": "True",
+      "why": "Đoạn 2: \"cities tend to be warmer than rural areas\".",
+      "options": [
+       "True",
+       "False",
+       "Not Given"
+      ]
+     },
+     {
+      "id": "q3",
+      "kind": "tfng",
+      "q": "Rooftop hives produce more honey than hives in the countryside.",
+      "answer": "Not Given",
+      "why": "Bài không nói gì về lượng mật ong.",
+      "options": [
+       "True",
+       "False",
+       "Not Given"
+      ]
+     },
+     {
+      "id": "q4",
+      "kind": "tfng",
+      "q": "Researchers have proved that honeybees are the only cause of falling wild bee numbers.",
+      "answer": "False",
+      "why": "Đoạn 3: các nhà nghiên cứu \"did not claim that honeybees were the only cause\".",
+      "options": [
+       "True",
+       "False",
+       "Not Given"
+      ]
+     },
+     {
+      "id": "q5",
+      "kind": "text",
+      "q": "Large farms often grow a single crop that flowers for only a few ____.",
+      "answer": "weeks",
+      "why": "Đoạn 2: \"flowers for only a few weeks\".",
+      "accepts": []
+     },
+     {
+      "id": "q6",
+      "kind": "text",
+      "q": "Pesticide use is generally lower in city ____ than on intensive farmland.",
+      "answer": "parks",
+      "why": "Đoạn 2: \"lower in city parks than on intensive farmland\".",
+      "accepts": []
+     },
+     {
+      "id": "q7",
+      "kind": "text",
+      "q": "Beekeeping groups recommend leaving patches of ____ for nesting.",
+      "answer": "bare soil",
+      "why": "Đoạn 4: \"leaving patches of bare soil for nesting\".",
+      "accepts": [
+       "soil"
+      ]
+     },
+     {
+      "id": "q8",
+      "kind": "mc",
+      "q": "Several cities now link hive permits to what?",
+      "answer": "Planting requirements",
+      "why": "Đoạn 4: \"link hive permits to planting requirements\".",
+      "options": [
+       "Higher taxes",
+       "Planting requirements",
+       "Fewer hives per street",
+       "Training courses"
+      ]
+     }
+    ]
+   }
+  ],
+  "general": [
+   {
+    "id": "gt-r1",
+    "title": "Riverside Community Centre",
+    "minutes": 15,
+    "instructions": "Questions 1–2, 5, 7: chọn hoặc điền theo thông tin trong thông báo. Questions 3, 4, 6: True / False / Not Given.",
+    "paragraphs": [
+     "Riverside Community Centre — Winter Programme",
+     "Opening hours: Monday to Friday, 8.00 a.m. to 9.00 p.m. Saturday, 9.00 a.m. to 5.00 p.m. The centre is closed on Sundays and public holidays.",
+     "Courses start in the week beginning 6 January and run for eight weeks. Registration must be completed at the front desk or online at least five days before a course begins. Fees: Adults £60. Students and over-65s £40 (proof of status required). Children under 12 may only attend the Saturday Art Club (£25) and must be accompanied by an adult.",
+     "Courses: Beginners' Yoga (Tuesday, 7.00 p.m.), Conversational Spanish (Wednesday, 6.30 p.m.), Digital Photography (Thursday, 7.30 p.m.), Art Club for children (Saturday, 10.00 a.m.).",
+     "Cancellations: A full refund is available if you cancel more than seven days before the course starts. After that, only 50% of the fee will be returned. If a course is cancelled by the centre, all fees are returned in full.",
+     "Parking: Free parking is available behind the building after 6.00 p.m. During the day, visitors should use the public car park on Mill Road (charges apply)."
+    ],
+    "questions": [
+     {
+      "id": "q1",
+      "kind": "mc",
+      "q": "What time does the centre close on Saturday?",
+      "answer": "5.00 p.m.",
+      "why": "\"Saturday, 9.00 a.m. to 5.00 p.m.\"",
+      "options": [
+       "5.00 p.m.",
+       "9.00 p.m.",
+       "6.00 p.m.",
+       "Closed"
+      ]
+     },
+     {
+      "id": "q2",
+      "kind": "text",
+      "q": "How many weeks does each course last?",
+      "answer": "eight",
+      "why": "\"run for eight weeks\".",
+      "accepts": [
+       "8",
+       "8 weeks",
+       "eight weeks"
+      ]
+     },
+     {
+      "id": "q3",
+      "kind": "tfng",
+      "q": "Students must show proof of status to pay the lower fee.",
+      "answer": "True",
+      "why": "\"(proof of status required)\".",
+      "options": [
+       "True",
+       "False",
+       "Not Given"
+      ]
+     },
+     {
+      "id": "q4",
+      "kind": "tfng",
+      "q": "Children under 12 can attend any course if an adult comes with them.",
+      "answer": "False",
+      "why": "Trẻ dưới 12 tuổi chỉ được tham gia Saturday Art Club.",
+      "options": [
+       "True",
+       "False",
+       "Not Given"
+      ]
+     },
+     {
+      "id": "q5",
+      "kind": "mc",
+      "q": "How much of the fee is returned if you cancel five days before the course starts?",
+      "answer": "50%",
+      "why": "Hủy muộn hơn 7 ngày trước khóa học chỉ được hoàn 50%.",
+      "options": [
+       "All of it",
+       "50%",
+       "None of it",
+       "25%"
+      ]
+     },
+     {
+      "id": "q6",
+      "kind": "tfng",
+      "q": "The centre offers free parking all day.",
+      "answer": "False",
+      "why": "Chỗ đậu xe miễn phí chỉ sau 6.00 p.m.",
+      "options": [
+       "True",
+       "False",
+       "Not Given"
+      ]
+     },
+     {
+      "id": "q7",
+      "kind": "mc",
+      "q": "Which course takes place on Thursday?",
+      "answer": "Digital Photography",
+      "why": "\"Digital Photography (Thursday, 7.30 p.m.)\".",
+      "options": [
+       "Beginners' Yoga",
+       "Conversational Spanish",
+       "Digital Photography",
+       "Art Club"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "writing": {
+  "task1": [
+   {
+    "id": "w1-ac-1",
+    "track": "academic",
+    "title": "Task 1 · Mô tả bảng số liệu",
+    "minWords": 150,
+    "minutes": 20,
+    "prompt": "The table below shows the percentage of households with internet access in three countries in 2010, 2015 and 2020 (số liệu giả định do EvoEnglish soạn). Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words.",
+    "table": {
+     "head": [
+      "",
+      "2010",
+      "2015",
+      "2020"
+     ],
+     "rows": [
+      [
+       "Country A",
+       "45%",
+       "62%",
+       "81%"
+      ],
+      [
+       "Country B",
+       "30%",
+       "48%",
+       "70%"
+      ],
+      [
+       "Country C",
+       "72%",
+       "85%",
+       "93%"
+      ]
+     ]
+    },
+    "criteria": [
+     [
+      "task",
+      "Task Achievement",
+      "Bài có trả lời đủ và đúng yêu cầu của đề không?"
+     ],
+     [
+      "coherence",
+      "Coherence and Cohesion",
+      "Ý có được sắp xếp thành đoạn rõ ràng và nối với nhau bằng từ nối phù hợp không?"
+     ],
+     [
+      "lexical",
+      "Lexical Resource",
+      "Từ vựng có đúng, đa dạng và tự nhiên không?"
+     ],
+     [
+      "grammar",
+      "Grammatical Range and Accuracy",
+      "Có dùng nhiều cấu trúc câu khác nhau và ít lỗi không?"
+     ]
+    ],
+    "structure": [
+     "Đoạn 1: giới thiệu bảng nói về điều gì",
+     "Đoạn 2: nhận xét tổng quát (overview), không đưa số liệu quá chi tiết",
+     "Đoạn 3–4: so sánh số liệu nổi bật theo mốc năm"
+    ],
+    "phrases": [
+     "The table compares …",
+     "Overall, …",
+     "… rose from X to Y",
+     "… more than doubled",
+     "In contrast, …",
+     "respectively"
+    ],
+    "checklist": [
+     "Có câu overview nêu xu hướng chung.",
+     "Đã chọn và so sánh các số liệu chính, không liệt kê hết.",
+     "Số liệu và đơn vị (%) đúng.",
+     "Dùng thì quá khứ cho các mốc 2010 và 2015, hợp lý với 2020 trong dữ liệu."
+    ],
+    "sample": "The table compares the proportion of households with internet access in three countries in 2010, 2015 and 2020. Overall, access rose steadily in every country, and Country C remained the most connected throughout the period, although the gap with the other two countries narrowed. In 2010, Country C had the highest figure at 72 per cent, compared with 45 per cent in Country A and only 30 per cent in Country B. By 2015, these figures had increased to 85, 62 and 48 per cent respectively. The most dramatic change took place in Country B, where internet access more than doubled over the decade, reaching 70 per cent in 2020. Country A also grew strongly and ended at 81 per cent, while Country C, starting from a much higher base, rose more slowly to 93 per cent. In 2020, therefore, the difference between the highest and lowest countries was only 23 percentage points, compared with 42 points in 2010.",
+    "notes": [
+     "Câu thứ hai là overview: nêu xu hướng chung và quốc gia dẫn đầu.",
+     "Dùng \"respectively\" để gộp số liệu ngắn gọn.",
+     "So sánh khoảng cách 23 và 42 điểm phần trăm để kết bài tự nhiên."
+    ]
+   },
+   {
+    "id": "w1-gt-1",
+    "track": "general",
+    "title": "Task 1 · Thư phàn nàn",
+    "minWords": 150,
+    "minutes": 20,
+    "prompt": "You recently bought a laptop online, but it arrived damaged. Write a letter to the company. In your letter, explain what you bought and what is wrong, say what you would like the company to do, and tell them when you are available for delivery. Write at least 150 words. You do NOT need to write any addresses. Begin your letter with: Dear Sir or Madam,",
+    "criteria": [
+     [
+      "task",
+      "Task Achievement",
+      "Bài có trả lời đủ và đúng yêu cầu của đề không?"
+     ],
+     [
+      "coherence",
+      "Coherence and Cohesion",
+      "Ý có được sắp xếp thành đoạn rõ ràng và nối với nhau bằng từ nối phù hợp không?"
+     ],
+     [
+      "lexical",
+      "Lexical Resource",
+      "Từ vựng có đúng, đa dạng và tự nhiên không?"
+     ],
+     [
+      "grammar",
+      "Grammatical Range and Accuracy",
+      "Có dùng nhiều cấu trúc câu khác nhau và ít lỗi không?"
+     ]
+    ],
+    "structure": [
+     "Mở thư: lý do viết thư",
+     "Mô tả vấn đề cụ thể",
+     "Nêu yêu cầu bạn mong muốn",
+     "Nêu thời gian có thể nhận hàng",
+     "Kết thư lịch sự"
+    ],
+    "phrases": [
+     "I am writing to complain about …",
+     "Unfortunately, …",
+     "I would therefore like you to …",
+     "I am available …",
+     "I look forward to hearing from you."
+    ],
+    "checklist": [
+     "Cả ba ý của đề đều được đề cập.",
+     "Giọng văn lịch sự, trang trọng.",
+     "Mở và kết thư đúng quy tắc (Dear Sir or Madam … Yours faithfully).",
+     "Chi tiết cụ thể (ngày đặt, lỗi, số đơn hàng)."
+    ],
+    "sample": "Dear Sir or Madam,\n\nI am writing to complain about a laptop that I ordered from your website on 3 May. Unfortunately, it arrived yesterday with a large crack across the screen, and the keyboard does not respond properly. The order number is 58214. I paid £799 for it, and the box looked undamaged, so I believe the problem happened before dispatch.\n\nI bought this laptop for my studies, so I need a working computer as soon as possible. I would therefore like you to send me a replacement. If that is not possible, I would prefer a full refund.\n\nI am available at home on weekday mornings and on Saturdays, so please arrange delivery at one of those times. I will keep the damaged laptop in its original box until your courier collects it.\n\nI look forward to hearing from you soon, and I hope this problem can be solved quickly.\n\nYours faithfully,\nLinh Tran",
+    "notes": [
+     "Mở thư nêu rõ mục đích bằng \"I am writing to complain about …\".",
+     "Mỗi đoạn một ý và đều trả lời một gạch đầu dòng của đề.",
+     "\"Dear Sir or Madam\" kết thúc bằng \"Yours faithfully\"."
+    ]
+   }
+  ],
+  "task2": [
+   {
+    "id": "w2-1",
+    "track": "both",
+    "title": "Task 2 · Học ngoại ngữ từ tiểu học?",
+    "minWords": 250,
+    "minutes": 40,
+    "prompt": "Some people believe that children should start learning a foreign language at primary school, while others think it is better to wait until secondary school. Discuss both views and give your own opinion. Write at least 250 words.",
+    "criteria": [
+     [
+      "task",
+      "Task Response",
+      "Bài có trả lời đủ và đúng yêu cầu của đề không?"
+     ],
+     [
+      "coherence",
+      "Coherence and Cohesion",
+      "Ý có được sắp xếp thành đoạn rõ ràng và nối với nhau bằng từ nối phù hợp không?"
+     ],
+     [
+      "lexical",
+      "Lexical Resource",
+      "Từ vựng có đúng, đa dạng và tự nhiên không?"
+     ],
+     [
+      "grammar",
+      "Grammatical Range and Accuracy",
+      "Có dùng nhiều cấu trúc câu khác nhau và ít lỗi không?"
+     ]
+    ],
+    "structure": [
+     "Mở bài: nêu hai quan điểm và ý kiến của bạn",
+     "Thân bài 1: quan điểm thứ nhất",
+     "Thân bài 2: quan điểm thứ hai",
+     "Cân nhắc điều kiện (nếu có)",
+     "Kết bài"
+    ],
+    "phrases": [
+     "Opinions differ on …",
+     "Those who … usually argue that …",
+     "On the other hand, …",
+     "In my view, …",
+     "In conclusion, …"
+    ],
+    "checklist": [
+     "Đã bàn luận cả hai quan điểm.",
+     "Ý kiến cá nhân rõ ràng và nhất quán.",
+     "Mỗi đoạn một ý chính, có ví dụ hoặc giải thích.",
+     "Có ít nhất 250 từ."
+    ],
+    "sample": "Opinions differ on when children should begin learning a foreign language. While some people support an early start at primary school, others believe that secondary school is a more suitable time. In my view, introducing languages early offers more benefits, provided that lessons are well designed.\n\nThose who favour waiting until secondary school usually argue that young children already face many basic subjects. Literacy and numeracy are the foundation of all later learning, and adding a third subject might overload them. Moreover, many primary schools lack specialist teachers, so pupils may learn incorrect pronunciation or lose interest in the subject.\n\nOn the other hand, there are strong reasons to begin earlier. Young learners are generally more relaxed about making mistakes, and they can copy sounds more naturally than teenagers, who often feel embarrassed when speaking. Starting early also gives students many more years of practice, which is essential because language skills develop slowly. In addition, early lessons can be based on songs, games and stories, so children enjoy learning rather than regarding it as a burden.\n\nHowever, early teaching only works if it is done properly. Classes should be short and fun, and teachers should be trained to work with young children. If schools cannot provide this, a later start may be better than a poor early one. Parents can also support progress by encouraging children to practise at home.\n\nIn conclusion, although there are practical difficulties, I believe primary school is the best time to begin, because it allows children to build confidence and fluency gradually.",
+    "notes": [
+     "Mở bài nêu rõ cả hai quan điểm và lập trường của người viết.",
+     "Mỗi đoạn thân bài có câu chủ đề (topic sentence) rõ ràng.",
+     "Đoạn \"However\" cho thấy cân nhắc điều kiện, tạo chiều sâu cho lập luận."
+    ]
+   },
+   {
+    "id": "w2-2",
+    "track": "both",
+    "title": "Task 2 · Tắc nghẽn giao thông",
+    "minWords": 250,
+    "minutes": 40,
+    "prompt": "In many cities, traffic congestion is becoming worse. What are the causes of this problem, and what measures could governments take to reduce it? Write at least 250 words.",
+    "criteria": [
+     [
+      "task",
+      "Task Response",
+      "Bài có trả lời đủ và đúng yêu cầu của đề không?"
+     ],
+     [
+      "coherence",
+      "Coherence and Cohesion",
+      "Ý có được sắp xếp thành đoạn rõ ràng và nối với nhau bằng từ nối phù hợp không?"
+     ],
+     [
+      "lexical",
+      "Lexical Resource",
+      "Từ vựng có đúng, đa dạng và tự nhiên không?"
+     ],
+     [
+      "grammar",
+      "Grammatical Range and Accuracy",
+      "Có dùng nhiều cấu trúc câu khác nhau và ít lỗi không?"
+     ]
+    ],
+    "structure": [
+     "Mở bài: giới thiệu vấn đề",
+     "Thân bài 1: các nguyên nhân",
+     "Thân bài 2: các giải pháp",
+     "Kết bài"
+    ],
+    "phrases": [
+     "The first cause is …",
+     "A second cause is …",
+     "Governments can respond by …",
+     "Another solution is to …",
+     "In conclusion, …"
+    ],
+    "checklist": [
+     "Trả lời đủ hai câu hỏi (nguyên nhân và giải pháp).",
+     "Mỗi nguyên nhân và giải pháp đều có giải thích.",
+     "Dùng từ nối để sắp xếp ý.",
+     "Có ít nhất 250 từ."
+    ],
+    "sample": "Traffic congestion has become a serious problem in many large cities. This essay will examine the main causes and suggest several practical solutions.\n\nThe first cause is the rapid growth in the number of private vehicles. As incomes rise, more families can afford cars, and many people prefer to drive because it is convenient and comfortable. A second cause is poor public transport. When buses and trains are crowded, infrequent or unreliable, commuters have little choice but to use their own cars. In addition, cities often grow faster than their road networks, so the same streets must carry far more vehicles than they were designed for.\n\nGovernments can respond in several ways. The most effective measure is to invest in public transport, for example by building metro lines and creating dedicated bus lanes so that journeys become faster and more reliable. If public transport is a real alternative, many drivers will leave their cars at home. Another solution is to discourage unnecessary driving in central areas through congestion charges or higher parking fees. The income from these charges can then be used to improve buses and cycle lanes. Safe pavements would also encourage people to walk short distances. Finally, employers could be encouraged to offer flexible hours or remote work, which would reduce the number of people travelling at peak times.\n\nIn conclusion, congestion results mainly from rising car ownership and inadequate public transport. By improving transport services and making car use more expensive in busy areas, governments can reduce traffic and make cities more pleasant to live in.",
+    "notes": [
+     "Mở bài nói trước bài sẽ làm gì (\"This essay will examine …\").",
+     "Nguyên nhân và giải pháp tách thành hai đoạn riêng.",
+     "Giải pháp nào cũng gắn với lý do nó có tác dụng."
+    ]
+   }
+  ]
+ },
+ "speaking": {
+  "part1": [
+   {
+    "id": "p1-1",
+    "title": "Hometown",
+    "questions": [
+     "Where is your hometown?",
+     "What do you like most about it?",
+     "Has your hometown changed much in recent years?",
+     "Would you like to live there in the future? Why or why not?"
+    ]
+   },
+   {
+    "id": "p1-2",
+    "title": "Work or studies",
+    "questions": [
+     "Do you work or are you a student?",
+     "Why did you choose that job or subject?",
+     "What do you find most difficult about it?",
+     "What would you like to do after you finish?"
+    ]
+   },
+   {
+    "id": "p1-3",
+    "title": "Free time",
+    "questions": [
+     "What do you like to do in your free time?",
+     "Do you prefer spending free time alone or with others?",
+     "Did you have the same hobbies when you were a child?",
+     "Is there a new hobby you would like to try?"
+    ]
+   }
+  ],
+  "part2": [
+   {
+    "id": "p2-1",
+    "title": "A place you like to visit",
+    "cue": "Describe a place you like to visit in your free time.",
+    "bullets": [
+     "where it is",
+     "how often you go there",
+     "what you do there",
+     "and explain why you like it"
+    ],
+    "ideas": [
+     "Mở: tên nơi và vị trí",
+     "Tần suất: every weekend, once a month…",
+     "Hoạt động: 2–3 việc cụ thể",
+     "Lý do: cảm xúc hoặc lợi ích",
+     "Kết: một câu tổng kết"
+    ],
+    "sample": "I'd like to talk about a small park near my house. It's about ten minutes away on foot, and I go there almost every weekend. Usually I take a book and sit under a big tree, or I go for a walk around the lake. Sometimes I meet my friends there and we play badminton. The main reason I like it is that it's very peaceful, even though it's in the middle of the city. After a busy week, I feel relaxed and I can think clearly. In addition, the air is fresher than on the streets, which is good for my health. I think I will keep going there for a long time."
+   },
+   {
+    "id": "p2-2",
+    "title": "A person who helped you",
+    "cue": "Describe a person who has helped you.",
+    "bullets": [
+     "who the person is",
+     "how you know them",
+     "how they helped you",
+     "and explain how you felt about it"
+    ],
+    "ideas": [
+     "Mở: người đó là ai",
+     "Quan hệ: how you met",
+     "Việc giúp: tình huống cụ thể",
+     "Cảm xúc và bài học",
+     "Kết: lời cảm ơn"
+    ],
+    "sample": "I'd like to describe my old English teacher, Mrs Lan. I met her when I was fifteen, and she taught me for two years. At that time I was very shy and afraid of speaking in class. She never forced me to talk, but she gave me small tasks, such as reading one sentence aloud. Gradually I became more confident. When I had to prepare for an important exam, she also stayed after class to explain difficult points. I felt very grateful, because without her support I might have given up. Today I still remember her advice: practise a little every day."
+   }
+  ],
+  "part3": [
+   {
+    "id": "p3-1",
+    "title": "Leisure and relaxation",
+    "questions": [
+     "Why do people need places to relax?",
+     "How have leisure activities changed in the last fifty years?",
+     "Do you think governments should provide public parks? Why?",
+     "Is it better to relax alone or with other people?"
+    ]
+   },
+   {
+    "id": "p3-2",
+    "title": "Help and support",
+    "questions": [
+     "Why do some people find it hard to ask for help?",
+     "What qualities make a good teacher or mentor?",
+     "Should schools teach students to help others?",
+     "How do people help each other in your country?"
+    ]
+   }
+  ]
+ }
+}

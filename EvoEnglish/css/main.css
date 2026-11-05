@@ -1,0 +1,60 @@
+/* EvoEnglish — token thiết kế (theo design-system/evoenglish/MASTER.md)
+   Phong cách: Soft-Clay học tập (bo tròn, đổ bóng đôi, bấm có độ nảy), indigo + xanh lá tiến độ.
+   Phông: dùng phông hệ thống vì CSP chỉ cho nguồn cùng gốc và ứng dụng chạy ngoại tuyến. */
+:root{
+  --font:ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  /* Bo góc */
+  --r:18px;--r-sm:12px;--r-pill:999px;
+  /* Nhịp khoảng cách 4/8 */
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;
+  /* Chuyển động: nhanh cho phản hồi bấm, vừa cho đổi trạng thái */
+  --t-fast:150ms cubic-bezier(.2,.7,.3,1);--t-med:220ms cubic-bezier(.2,.7,.3,1);
+  /* Màu: sáng */
+  --bg:#eef2ff;--surface:#fff;--surface-2:#e8ecfb;
+  --text:#1e1b4b;--muted:#475569;
+  --primary:#4f46e5;--primary-hover:#4338ca;--primary-edge:#3730a3;--on-primary:#fff;
+  --accent:#4f46e5;--accent-soft:#e0e7ff;--ring:#4f46e5;
+  --progress:#16a34a;--progress-soft:#dcfce7;
+  --border:#d5dbf5;--border-strong:#7c85ee;
+  --ok:#15803d;--ok-soft:#dcfce7;--on-ok:#fff;--bad:#b91c1c;--bad-soft:#fee2e2;--warn:#92400e;
+  --hero-from:#4f46e5;--hero-to:#4338ca;--hero-text:#fff;--hero-sub:#e0e7ff;
+  --shadow:0 1px 0 rgba(255,255,255,.9) inset,0 2px 4px rgba(49,46,129,.06),0 10px 24px rgba(49,46,129,.08);
+  --shadow-press:0 1px 2px rgba(49,46,129,.12);
+  color-scheme:light;
+}
+/* Màu: tối — chọn riêng, không suy ra từ bản sáng */
+[data-theme="dark"]{
+  --bg:#0f1226;--surface:#171b36;--surface-2:#1f2447;
+  --text:#e0e7ff;--muted:#a5b0d6;
+  --primary:#a5b4fc;--primary-hover:#c7d2fe;--primary-edge:#6f7fe0;--on-primary:#0f1226;
+  --accent:#a5b4fc;--accent-soft:#2a2f66;--ring:#a5b4fc;
+  --progress:#22c55e;--progress-soft:#12301f;
+  --border:#2b3162;--border-strong:#6770b8;
+  --ok:#4ade80;--ok-soft:#12301f;--on-ok:#0f1226;--bad:#fca5a5;--bad-soft:#3a1620;--warn:#fbbf24;
+  --hero-from:#2a2f66;--hero-to:#1f2447;--hero-text:#e0e7ff;--hero-sub:#c7d2fe;
+  --shadow:0 2px 4px rgba(0,0,0,.35),0 10px 24px rgba(0,0,0,.3);
+  --shadow-press:0 1px 2px rgba(0,0,0,.4);
+  color-scheme:dark;
+}
+html[data-font-size="sm"]{font-size:15px}
+html[data-font-size="md"]{font-size:16px}
+html[data-font-size="lg"]{font-size:18px}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font:1rem/1.6 var(--font);background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3{line-height:1.25;margin:0 0 .5em;letter-spacing:-.015em;font-weight:800}
+h1{font-size:clamp(1.5rem,1.2rem + 1.2vw,2rem)}h2{font-size:1.2rem}h3{font-size:1.05rem}
+p{margin:0 0 .75em}
+a{color:var(--primary);text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+.muted{color:var(--muted)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--ring);outline-offset:3px;border-radius:8px}
+[tabindex="-1"]:focus{outline:none}
+.skip-link{position:absolute;left:-999px;top:8px;background:var(--primary);color:var(--on-primary);padding:10px 16px;border-radius:var(--r-sm);z-index:100;font-weight:700}
+.skip-link:focus{left:8px}
+[hidden]{display:none!important}
+::selection{background:var(--accent-soft);color:var(--text)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+[data-motion="off"] *,[data-motion="off"] *::before,[data-motion="off"] *::after{animation:none!important;transition:none!important}
+@media (forced-colors:active){.btn,.option,.qopt,.card,.stat,.icon-btn{border:2px solid ButtonText}.progress>span{background:Highlight}}

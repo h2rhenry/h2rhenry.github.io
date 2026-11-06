@@ -7,20 +7,22 @@
 <style>
 /* ===== Design tokens (xanh biển dịu mắt) ===== */
 :root{
-  --bg:rgb(235,245,252);--card:#fff;--text:rgb(30,50,70);--muted:rgb(76,98,120);
-  --accent:rgb(36,110,160);--accent-2:rgb(41,128,185);--accent-3:rgb(100,170,210);--tint:rgb(222,239,249);
-  --line:rgb(206,224,238);--ok:rgb(46,160,100);--ok-t:rgb(24,115,70);--ok-bg:rgb(228,246,237);
-  --bad:rgb(210,80,80);--bad-t:rgb(170,45,45);--bad-bg:rgb(252,234,234);--warn:rgb(214,120,30);
-  --r:14px;--sh:0 2px 14px rgba(36,90,130,.10);
+  color-scheme:dark;
+  --bg:rgb(11,20,33);--card:rgb(19,33,52);--text:rgb(228,238,248);--muted:rgb(153,175,199);
+  --accent:rgb(118,188,236);--accent-2:rgb(150,205,242);--accent-3:rgb(100,170,210);--tint:rgb(27,49,76);
+  --btn:rgb(36,110,170);--btn-h:rgb(48,132,196);
+  --line:rgb(45,68,96);--ok:rgb(60,185,120);--ok-t:rgb(125,224,170);--ok-bg:rgb(21,55,44);
+  --bad:rgb(228,98,98);--bad-t:rgb(255,152,152);--bad-bg:rgb(62,27,33);--warn:rgb(240,160,70);
+  --r:14px;--sh:0 2px 18px rgba(0,0,0,.35);
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{margin:0;background:radial-gradient(1200px 500px at 50% -120px,rgb(24,48,78),var(--bg) 70%) no-repeat,var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 button,input{font:inherit;color:inherit}
 button{cursor:pointer}
 :focus-visible{outline:3px solid var(--accent-3);outline-offset:2px}
 .i{width:20px;height:20px;flex:none}
-.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.top{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
 .top .in{max-width:1080px;margin:auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--accent);background:none;border:0;min-height:44px;padding:0;text-align:left}
 .brand .i{width:28px;height:28px}
@@ -33,12 +35,12 @@ h2{font-size:1.15rem;margin:0 0 12px}
 h1:focus{outline:none}
 .card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);padding:20px;margin-bottom:16px;border:1px solid var(--line)}
 .muted{color:var(--muted)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:12px;border:2px solid var(--accent);background:var(--accent);color:#fff;font-weight:600;transition:transform .2s,box-shadow .2s,background .2s}
-.btn:hover{background:var(--accent-2);box-shadow:0 4px 12px rgba(36,110,160,.25);transform:translateY(-1px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:12px;border:2px solid var(--btn);background:var(--btn);color:#fff;font-weight:600;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{background:var(--btn-h);border-color:var(--btn-h);box-shadow:0 4px 14px rgba(0,0,0,.4);transform:translateY(-1px)}
 .btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
-.btn.ghost{background:#fff;color:var(--accent)}
-.btn.ghost:hover{background:var(--tint)}
-.btn.danger{background:#fff;color:var(--bad-t);border-color:var(--bad)}
+.btn.ghost{background:var(--card);color:var(--accent);border-color:var(--line)}
+.btn.ghost:hover{background:var(--tint);border-color:var(--accent-3)}
+.btn.danger{background:var(--card);color:var(--bad-t);border-color:var(--bad)}
 .btn.danger:hover{background:var(--bad-bg)}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .hero{padding:8px 0 16px}
@@ -48,7 +50,7 @@ h1:focus{outline:none}
 .opt svg.ico{width:48px;height:44px;flex:none}
 .ex{position:relative;display:block;cursor:pointer}
 .ex input,.chip input,.opt input,.seg input{position:absolute;opacity:0;pointer-events:none}
-.ex .bx{display:block;height:100%;border:2px solid var(--line);border-radius:var(--r);padding:16px;background:#fff;transition:.2s}
+.ex .bx{display:block;height:100%;border:2px solid var(--line);border-radius:var(--r);padding:16px;background:var(--card);transition:.2s}
 .ex:hover .bx{border-color:var(--accent-3);transform:translateY(-2px);box-shadow:var(--sh)}
 .ex:has(input:checked) .bx{border-color:var(--accent);background:var(--tint)}
 .ex:has(input:focus-visible) .bx{outline:3px solid var(--accent-3);outline-offset:2px}
@@ -56,48 +58,55 @@ h1:focus{outline:none}
 .badge.hd{background:var(--bad-bg);color:var(--bad-t)}
 .ex b{display:block;margin:8px 0 4px}
 .chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.chip span{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:2px solid var(--line);border-radius:99px;background:#fff;cursor:pointer;font-weight:600;transition:.2s}
+.chip span{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:2px solid var(--line);border-radius:99px;background:var(--card);cursor:pointer;font-weight:600;transition:.2s}
 .chip:hover span{border-color:var(--accent-3)}
-.chip:has(input:checked) span{background:var(--accent);border-color:var(--accent);color:#fff}
+.chip:has(input:checked) span{background:var(--btn);border-color:var(--accent-3);color:#fff}
 .chip:has(input:focus-visible) span{outline:3px solid var(--accent-3);outline-offset:2px}
-.num{width:96px;min-height:44px;border:2px solid var(--line);border-radius:12px;padding:0 10px;background:#fff}
+.num{width:96px;min-height:44px;border:2px solid var(--line);border-radius:12px;padding:0 10px;background:var(--card)}
 .num:focus{border-color:var(--accent);outline:none}
+.sw{display:inline-flex;align-items:center;gap:10px;min-height:44px;cursor:pointer;position:relative;font-weight:600}
+.sw input{position:absolute;opacity:0;pointer-events:none}
+.sw .tr{width:46px;height:26px;border-radius:99px;background:var(--line);position:relative;transition:.2s;flex:none}
+.sw .tr::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s}
+.sw input:checked+.tr{background:var(--btn)}
+.sw input:checked+.tr::after{left:23px}
+.sw input:focus-visible+.tr{outline:3px solid var(--accent-3);outline-offset:2px}
 ul.g{margin:0;padding-left:20px}
 .hist{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.hist li{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fbfdff}
+.hist li{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--bg)}
 .sc{font-weight:800;font-size:1.2rem;color:var(--accent)}
 /* Làm bài */
-.bar{position:sticky;top:64px;z-index:15;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.bar{position:sticky;top:64px;z-index:15;background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .timer{display:flex;align-items:center;gap:8px;font-weight:800;font-size:1.35rem;font-variant-numeric:tabular-nums;color:var(--accent);padding:4px 14px;border-radius:99px;background:var(--tint);transition:.3s}
-.timer.warn{color:#fff;background:var(--bad);animation:pulse 1s ease-in-out infinite}
+.timer.warn{color:#fff;background:rgb(176,48,48);animation:pulse 1s ease-in-out infinite}
 @keyframes pulse{50%{opacity:.8}}
-.pg{margin:12px 0 4px;height:10px;background:#fff;border-radius:99px;border:1px solid var(--line);overflow:hidden}
+.pg{margin:12px 0 4px;height:10px;background:var(--card);border-radius:99px;border:1px solid var(--line);overflow:hidden}
 .pg div{height:100%;width:0;background:linear-gradient(90deg,var(--accent-3),var(--accent));transition:width .35s ease}
 .lay{display:grid;grid-template-columns:1fr 300px;gap:16px;margin-top:12px;align-items:start}
 .pal{position:sticky;top:140px}
 .pal h3{font-size:.85rem;margin:12px 0 6px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 .pal h3:first-child{margin-top:0}
 .pn-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:6px}
-.pn{min-height:44px;border-radius:10px;border:2px solid var(--line);background:#fff;font-weight:700;transition:.2s}
+.pn{min-height:44px;border-radius:10px;border:2px solid var(--line);background:var(--card);font-weight:700;transition:.2s}
 .pn:hover{border-color:var(--accent-3)}
-.pn.done{background:var(--accent-3);border-color:var(--accent-3);color:rgb(10,35,55)}
+.pn.done{background:var(--accent-3);border-color:var(--accent-3);color:rgb(8,28,45)}
 .pn.part{border-style:dashed;border-color:var(--accent)}
 .pn.cur{box-shadow:0 0 0 3px var(--accent);}
 .tag{display:inline-block;font-size:.82rem;font-weight:700;color:var(--accent);background:var(--tint);padding:3px 12px;border-radius:99px}
 .qt{font-size:1.1rem;margin:12px 0 16px;white-space:pre-line}
 .opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:center;min-height:52px;padding:10px 14px;border:2px solid var(--line);border-radius:12px;cursor:pointer;background:#fff;transition:.2s;position:relative}
-.opt:hover{border-color:var(--accent-3);background:#f5fafd}
+.opt{display:flex;gap:12px;align-items:center;min-height:52px;padding:10px 14px;border:2px solid var(--line);border-radius:12px;cursor:pointer;background:var(--card);transition:.2s;position:relative}
+.opt:hover{border-color:var(--accent-3);background:var(--tint)}
 .opt:has(input:checked){border-color:var(--accent);background:var(--tint)}
 .opt:has(input:focus-visible){outline:3px solid var(--accent-3);outline-offset:2px}
 .opt b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--tint);color:var(--accent);flex:none}
-.opt:has(input:checked) b{background:var(--accent);color:#fff}
+.opt:has(input:checked) b{background:var(--btn);color:#fff}
 .tfr{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:12px 0;border-top:1px solid var(--line)}
 .tfr p{margin:0;flex:1 1 280px}
 .seg{display:flex;gap:6px}
-.seg label span{display:inline-flex;align-items:center;justify-content:center;min-width:76px;min-height:44px;border:2px solid var(--line);border-radius:10px;font-weight:700;cursor:pointer;background:#fff;transition:.2s}
+.seg label span{display:inline-flex;align-items:center;justify-content:center;min-width:76px;min-height:44px;border:2px solid var(--line);border-radius:10px;font-weight:700;cursor:pointer;background:var(--card);transition:.2s}
 .seg label:hover span{border-color:var(--accent-3)}
-.seg label:has(input:checked) span{background:var(--accent);border-color:var(--accent);color:#fff}
+.seg label:has(input:checked) span{background:var(--btn);border-color:var(--accent-3);color:#fff}
 .seg label:has(input:focus-visible) span{outline:3px solid var(--accent-3);outline-offset:2px}
 .sa{width:100%;max-width:280px;min-height:48px;border:2px solid var(--line);border-radius:12px;padding:0 14px;font-size:1.1rem}
 .sa:focus{border-color:var(--accent);outline:none}
@@ -105,7 +114,7 @@ ul.g{margin:0;padding-left:20px}
 /* Kết quả */
 .sum{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:center}
 .ring{width:190px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--accent) 0deg,var(--tint) 0)}
-.ring div{width:78%;aspect-ratio:1;border-radius:50%;background:#fff;display:grid;place-items:center;text-align:center;line-height:1.2}
+.ring div{width:78%;aspect-ratio:1;border-radius:50%;background:var(--card);display:grid;place-items:center;text-align:center;line-height:1.2}
 .ring strong{font-size:2rem;color:var(--accent)}
 .bars{display:grid;gap:14px}
 .bl{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-weight:600;margin-bottom:4px}
@@ -122,7 +131,7 @@ ul.g{margin:0;padding-left:20px}
 .ro em{font-style:normal;font-size:.82rem;font-weight:700;margin-left:auto}
 .ro.right em{color:var(--ok-t)}.ro.wrong em{color:var(--bad-t)}
 .expl{margin-top:10px;padding:12px 14px;border-radius:12px;background:var(--tint);border:1px solid var(--accent-3)}
-dialog{border:0;border-radius:var(--r);padding:24px;max-width:420px;width:calc(100% - 32px);box-shadow:0 10px 40px rgba(20,50,80,.3);color:var(--text)}
+dialog{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;max-width:420px;width:calc(100% - 32px);box-shadow:0 10px 40px rgba(20,50,80,.3);color:var(--text)}
 dialog::backdrop{background:rgba(20,40,60,.45)}
 dialog h2{margin-top:0}
 @media (max-width:768px){
@@ -173,7 +182,7 @@ const EXAMS = {
   {id:6,type:'mcq',question:'Đồ thị độ dịch chuyển – thời gian (d – t) của chuyển động thẳng đều có dạng:',options:['Đường thẳng xiên góc với trục thời gian','Đường thẳng song song với trục thời gian','Đường parabol','Đường cong bất kì'],correct:0,explanation:'Vì d = vt nên d tỉ lệ thuận với t: đồ thị là đường thẳng xiên, độ dốc chính là vận tốc.'},
   {id:7,type:'mcq',question:'Đơn vị của gia tốc trong hệ SI là:',options:['m/s','m/s²','km/h','m²/s'],correct:1,explanation:'a = Δv/Δt nên đơn vị là (m/s)/s = m/s².'},
   {id:8,type:'mcq',question:'Gia tốc rơi tự do ở gần mặt đất có độ lớn xấp xỉ và hướng:',options:['9,8 m/s², thẳng đứng từ dưới lên','9,8 m/s², nằm ngang','9,8 m/s², thẳng đứng từ trên xuống','0 m/s²'],correct:2,explanation:'Gia tốc rơi tự do g ≈ 9,8 m/s², phương thẳng đứng, chiều hướng xuống.'},
-  {id:9,type:'mcq',question:'Công thức vận tốc của chuyển động thẳng biến đổi đều là:',options:['v = v₀ + at','v = v₀ − a/t','v = at²','v = v₀t + ½at²'],correct:0,explanation:'Từ a = Δv/Δt suy ra v = v₀ + at. Phương án D là công thức độ dịch chuyển.'},
+  {id:9,type:'mcq',question:'Công thức vận tốc của chuyển động thẳng biến đổi đều là:',options:['v = v₀ + at','v = v₀ − a/t','v = at²','v = v₀t + ½at²'],correct:0,explanation:'Từ a = Δv/Δt suy ra v = v₀ + at. Công thức v₀t + ½at² là công thức độ dịch chuyển.'},
   {id:10,type:'mcq',question:'Trên đồ thị vận tốc – thời gian (v – t), độ dịch chuyển trong một khoảng thời gian bằng:',options:['Độ dốc của đồ thị','Tung độ tại thời điểm cuối','Diện tích hình giới hạn giữa đồ thị và trục thời gian','Hoành độ tại thời điểm đầu'],correct:2,explanation:'Độ dịch chuyển bằng diện tích phần nằm giữa đồ thị v – t và trục Ot (độ dốc là gia tốc).'},
   {id:11,type:'tf',question:'Về phép đo và sai số trong Vật lí, xét các phát biểu sau:',statements:['Đo chiều dài quyển sách bằng thước kẻ là phép đo trực tiếp.','Sai số ngẫu nhiên là sai số do cấu tạo của dụng cụ đo gây ra.','Sai số tỉ đối được tính bằng δ = ΔA / Ā × 100%.','Kết quả đo được viết dưới dạng A = Ā ± ΔA.'],correct:[true,false,true,true],explanation:'a) Đúng: đọc trực tiếp trên thước. b) Sai: sai số do dụng cụ là sai số hệ thống; sai số ngẫu nhiên do yếu tố ngẫu nhiên. c) Đúng. d) Đúng.'},
   {id:12,type:'tf',question:'Về quy tắc an toàn khi học tập và nghiên cứu Vật lí, xét các phát biểu sau:',statements:['Cần đọc kĩ hướng dẫn sử dụng trước khi dùng thiết bị thí nghiệm.','Có thể dùng tay ướt chạm vào ổ điện nếu đã cẩn thận.','Cần đeo kính bảo hộ khi thí nghiệm có nguy cơ bắn hóa chất hoặc mảnh vỡ.','Có thể tự ý mang hóa chất ra khỏi phòng thí nghiệm sau buổi thực hành.'],correct:[true,false,true,false],explanation:'b) Sai: tay ướt rất dễ bị điện giật. d) Sai: không tự ý mang hóa chất, dụng cụ ra khỏi phòng thí nghiệm. a), c) Đúng.'},
@@ -210,7 +219,7 @@ const EXAMS = {
   {id:6,type:'mcq',question:'Hình 6.2 là bộ thí nghiệm dùng để đo tốc độ trung bình của chuyển động viên bi sắt. Dụng cụ số (1) là gì? (Xem Hình 6.2 trong đề gốc.)',options:['Đồng hồ đo thời gian hiện số','Nam châm điện','Viên bi sắt.','Cổng quang điện'],correct:0,explanation:'Theo Hình 6.2 (SGK), dụng cụ (1) là đồng hồ đo thời gian hiện số, nối với các cổng quang điện để đo thời gian bi chuyển động.'},
   {id:7,type:'mcq',question:'Hai đại lượng nào sau đây là hai đại lượng vectơ?',options:['Quãng đường và tốc độ.','Độ dịch chuyển và vận tốc.','Quãng đường và độ dịch chuyển.','Tốc độ và vận tốc.'],correct:1,explanation:'Độ dịch chuyển và vận tốc có cả độ lớn và hướng nên là đại lượng vectơ.'},
   {id:8,type:'mcq',question:'Độ dịch chuyển là',options:['một đại lượng vectơ, chỉ cho biết hướng của sự thay đổi vị trí của vật','một đại lượng vectơ, cho biết độ dài và hướng của sự thay đổi vị trí của vật.','một đại lượng vectơ, chỉ cho biết độ dài của sự thay đổi vị trí của vật','một đại lượng vô hướng, cho biết độ dài và hướng của sự thay đổi vị trí của vật.'],correct:1,explanation:'Độ dịch chuyển là đại lượng vectơ, cho biết cả độ dài và hướng của sự thay đổi vị trí.'},
-  {id:9,type:'mcq',question:'Trên các thiết bị thí nghiệm và trong phòng thí nghiệm thì kí hiệu nào sau đây cảnh báo nơi nguy hiểm về điện?',options:FIG.ico,html:true,correct:3,explanation:'Biển hình tam giác vàng có tia sét cảnh báo nguy hiểm về điện (A: từ trường, B: bức xạ laser, C: chất độc).'},
+  {id:9,type:'mcq',question:'Trên các thiết bị thí nghiệm và trong phòng thí nghiệm thì kí hiệu nào sau đây cảnh báo nơi nguy hiểm về điện?',options:FIG.ico,html:true,correct:3,explanation:'Biển hình tam giác vàng có tia sét cảnh báo nguy hiểm về điện (các biển còn lại báo từ trường, bức xạ laser, chất độc).'},
   {id:10,type:'mcq',question:'Đối tượng nghiên cứu của Vật lí học là',options:['Các dạng vận động đơn giản, tổng quát nhất của vật chất và tương tác giữa chúng','Thành phần cấu trúc, tính chất và sự biến đổi của các đơn chất và hợp chất.','Thế giới sinh vật gồm thực vật, động vật, vi sinh vật, nấm, …','Các dạng vận động của vật chất.'],correct:0,explanation:'Vật lí học nghiên cứu các dạng vận động đơn giản, tổng quát nhất của vật chất và tương tác giữa chúng.'},
   {id:11,type:'mcq',question:'Trong các phép đo dưới đây, đâu là phép đo trực tiếp? (1) Dùng thước đo chiều cao. (2) Dùng cân đo cân nặng. (3) Dùng cân và bình có cột chia thể tích đo khối lượng riêng của nước. (4) Dùng đồng hồ và cột cây số đo tốc độ của người lái xe.',options:['(2), (4).','(1), (2).','(2), (3), (4).','(1), (2), (4).'],correct:1,explanation:'(1) và (2) đọc trực tiếp trên dụng cụ. (3) và (4) phải tính qua công thức (ρ = m/V, v = s/t) nên là phép đo gián tiếp.'},
   {id:12,type:'mcq',question:'Một chất điểm xuất phát từ điểm A dịch chuyển đến điểm B, qua C rồi đến D và sau cùng dừng lại tại C. Độ dịch chuyển của chất điểm trong chuyển động nói trên là vectơ:',options:['AD','BC','AB','AC'],correct:3,explanation:'Độ dịch chuyển nối vị trí đầu (A) với vị trí cuối (C) nên là vectơ AC.'},
@@ -340,9 +349,24 @@ function grade(ex,ans){
 }
 
 /* =====================================================================
+   4b. ĐẢO CÂU HỎI / ĐÁP ÁN (xáo theo seed để xem lại đúng thứ tự cũ)
+   - Đảo câu: chỉ đảo trong từng phần (TN → Đúng/Sai → Trả lời ngắn)
+   - Đảo đáp án: chỉ áp dụng cho câu trắc nghiệm 4 lựa chọn
+   ===================================================================== */
+function rng(a){return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function shuf(a,r){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function build(ex,sd,sq,so){
+  if(!sq&&!so)return ex;
+  const r=rng(sd);let qs=ex.qs.map(q=>({...q}));
+  if(so)qs=qs.map(q=>{if(q.type!=='mcq')return q;const ix=shuf([0,1,2,3],r);return{...q,options:ix.map(k=>q.options[k]),correct:ix.indexOf(q.correct)}});
+  if(sq){const by=t=>qs.filter(q=>q.type===t);qs=[...shuf(by('mcq'),r),...shuf(by('tf'),r),...shuf(by('short'),r)]}
+  return{...ex,qs};
+}
+
+/* =====================================================================
    5. TRẠNG THÁI & TRANG CHỦ
    ===================================================================== */
-const S={view:'home',examId:'easy',time:45,ex:null,ans:[],i:0,end:0,total:0,timer:null};
+const S={view:'home',examId:'easy',time:45,sq:false,so:false,sd:0,ex:null,ans:[],i:0,end:0,total:0,timer:null};
 
 function home(){
   S.view='home';clearInterval(S.timer);
@@ -356,6 +380,10 @@ function home(){
    ${[15,30,45,60,90].map(m=>`<label class="chip"><input type="radio" name="tm" value="${m}" ${S.time===m?'checked':''} onchange="S.time=+this.value;$('#cm').value=''"><span>${m} phút</span></label>`).join('')}
    <label for="cm" class="muted" style="margin-left:6px">Hoặc nhập:</label><input id="cm" class="num" type="number" min="1" max="180" inputmode="numeric" placeholder="phút" oninput="customTime(this.value)">
   </div></section>
+  <section class="card"><h2>3. Tùy chọn</h2><div class="row" style="gap:6px 28px">
+   <label class="sw"><input type="checkbox" ${S.sq?'checked':''} onchange="S.sq=this.checked"><span class="tr"></span>Đảo thứ tự câu hỏi</label>
+   <label class="sw"><input type="checkbox" ${S.so?'checked':''} onchange="S.so=this.checked"><span class="tr"></span>Đảo thứ tự đáp án trắc nghiệm</label></div>
+   <p class="muted" style="margin:6px 0 0;font-size:.9rem">Câu hỏi chỉ được đảo trong từng phần (Trắc nghiệm, Đúng/Sai, Trả lời ngắn). Mỗi lần làm lại sẽ có một thứ tự mới.</p></section>
   <div class="row" style="margin-bottom:16px"><button class="btn" onclick="startExam()">${I('play')}Bắt đầu làm bài</button></div>
   <section class="card"><h2>Thang điểm (tổng 10 điểm mỗi đề)</h2><ul class="g">
    <li>Trắc nghiệm: 10 câu × 0,5 = <b>5 điểm</b>.</li>
@@ -365,7 +393,7 @@ function home(){
    <li><b>Đề chính thức (quy đổi thang 10):</b> 15 TN × 0,25 = 3,75đ · 4 câu Đúng/Sai (1 ý = 0,1đ · 2 ý = 0,25đ · 3 ý = 0,5đ · 4 ý = 1đ) = 4đ · 6 câu trả lời ngắn × 0,375 = 2,25đ.</li></ul></section>
   <section class="card"><div class="row" style="justify-content:space-between;margin-bottom:10px"><h2 style="margin:0">Lịch sử làm bài</h2>
    ${H.length?`<button class="btn danger" onclick="ask('Xóa lịch sử?','Toàn bộ lịch sử làm bài sẽ bị xóa và không thể khôi phục.','Xóa',()=>{clearHistory();home()})">${I('trash')}Xóa lịch sử</button>`:''}</div>
-   ${H.length?`<ul class="hist">${H.map(r=>`<li><div><b>${esc(EXAMS[r.e].name)}</b><br><small class="muted">${new Date(r.ts).toLocaleString('vi-VN')} · làm ${fmtDur(r.d)} / ${r.tm} phút</small></div><div class="row"><span class="sc">${r.s.toFixed(2)} / 10</span><button class="btn ghost" onclick="reviewHist(${r.ts})">${I('eye')}Xem lại</button></div></li>`).join('')}</ul>`:'<p class="muted" style="margin:0">Chưa có lượt làm bài nào. Hãy chọn một đề và bắt đầu!</p>'}
+   ${H.length?`<ul class="hist">${H.map(r=>`<li><div><b>${esc(EXAMS[r.e].name)}</b>${r.sq||r.so?' <span class="badge">'+[r.sq?'đảo câu':'',r.so?'đảo đáp án':''].filter(Boolean).join(' + ')+'</span>':''}<br><small class="muted">${new Date(r.ts).toLocaleString('vi-VN')} · làm ${fmtDur(r.d)} / ${r.tm} phút</small></div><div class="row"><span class="sc">${r.s.toFixed(2)} / 10</span><button class="btn ghost" onclick="reviewHist(${r.ts})">${I('eye')}Xem lại</button></div></li>`).join('')}</ul>`:'<p class="muted" style="margin:0">Chưa có lượt làm bài nào. Hãy chọn một đề và bắt đầu!</p>'}
    <p class="muted" style="margin:10px 0 0;font-size:.85rem">Lịch sử lưu bằng cookie (tối đa 10 lượt gần nhất). Nếu trình duyệt chặn cookie, lịch sử chỉ lưu trong phiên hiện tại.</p></section>`);
 }
 function customTime(v){const n=parseInt(v);if(n>=1&&n<=180){S.time=n;document.querySelectorAll('input[name=tm]').forEach(r=>r.checked=false)}}
@@ -377,7 +405,7 @@ function goHome(){if(S.view==='test')ask('Thoát khỏi bài làm?','Bài làm h
    ===================================================================== */
 function startExam(){
   if(!(S.time>=1&&S.time<=180)){$('#cm').focus();return}
-  S.ex=EXAMS[S.examId];S.ans=S.ex.qs.map(q=>q.type==='tf'?[null,null,null,null]:q.type==='short'?'':undefined);
+  S.sd=Math.floor(Math.random()*2147483646)+1;S.ex=build(EXAMS[S.examId],S.sd,S.sq,S.so);S.ans=S.ex.qs.map(q=>q.type==='tf'?[null,null,null,null]:q.type==='short'?'':undefined);
   S.i=0;S.view='test';S.total=S.time*60;S.end=Date.now()+S.total*1000;
   mount(`<h1 style="position:absolute;left:-9999px">${S.ex.name}</h1>
    <div class="bar"><strong>${S.ex.name}</strong><div class="timer" id="tm" role="timer" aria-label="Thời gian còn lại">${I('clock')}<span id="tt"></span></div>
@@ -419,7 +447,7 @@ function finish(auto){
   clearInterval(S.timer);S.view='result';$('#dlg').open&&$('#dlg').close();
   const used=Math.min(S.total,Math.max(0,Math.round(S.total-(S.end-Date.now())/1000)));
   const g=grade(S.ex,S.ans);
-  const rec={e:S.ex.id,ts:Date.now(),d:used,tm:S.time,s:g.total,a:packAns(S.ex,S.ans)};
+  const rec={e:S.ex.id,ts:Date.now(),d:used,tm:S.time,s:g.total,sd:S.sd,sq:+S.sq,so:+S.so,a:packAns(S.ex,S.ans)};
   saveHistory(rec);
   showResult(S.ex,S.ans,rec,auto);
 }
@@ -428,7 +456,7 @@ window.addEventListener('beforeunload',e=>{if(S.view==='test'){e.preventDefault(
 /* =====================================================================
    7. TRANG KẾT QUẢ / XEM LẠI
    ===================================================================== */
-function reviewHist(ts){const r=loadHistory().find(x=>x.ts===ts);if(!r)return;const ex=EXAMS[r.e];S.examId=ex.id;S.time=r.tm;showResult(ex,unpackAns(ex,r.a),r,false,true)}
+function reviewHist(ts){const r=loadHistory().find(x=>x.ts===ts);if(!r)return;const ex=build(EXAMS[r.e],r.sd||0,r.sq,r.so);S.examId=ex.id;S.time=r.tm;S.sq=!!r.sq;S.so=!!r.so;showResult(ex,unpackAns(ex,r.a),r,false,true)}
 function showResult(ex,ans,rec,auto,fromHist){
   S.view='result';const g=grade(ex,ans);const t=g.total;
   const cm=t>=8?'Rất tốt! Bạn nắm vững kiến thức.':t>=6.5?'Khá tốt, hãy xem lại các câu sai.':t>=5?'Đạt yêu cầu, cần ôn thêm một số phần.':'Cần ôn tập thêm — đọc kĩ lời giải bên dưới nhé.';
